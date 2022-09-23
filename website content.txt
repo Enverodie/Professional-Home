@@ -1,0 +1,42 @@
+Pages:
+    Homepage
+    Simulation Sandbox introduction page
+    Writings pages hub - links:
+        Poems
+            Individual writings Pages
+        Creative fiction
+            Individual writings Pages
+        Dynamic writing
+            Individual writings Pages
+
+Homepage features:
+
+> Navigation
+    Homepage (logo)
+    Simulation sandbox page
+    Written works page
+        * Poems
+        * Creative fiction
+        * Dynamic writing (coming soon)
+    Created graphics page
+    Minecraft builds page (because why not)
+
+    LinkedIn link
+    Github link
+    Updated resume (possibly?)
+    Contact me link (with separate page and form for auto email submission)
+    Comment about me link (with separate page, AI moderation, ability for me to delete, and ability to add an image)
+
+Newsletter subscription popup - with backend support
+
+About:
+    Brief professional introduction with an individualistic focus (don't make it sound corporate)
+    About me in more depth: professional
+    About Enverodie in depth
+    About the website, tech stack, github call to action
+
+Project showcase:
+    Simulation sandbox quick splash, link to project page as a whole
+
+I was here:
+    Canvas that can be clicked on ONCE per user (how is this determined?) that says "I was here" with a random orientation and color. Persists and can be viewed by other users.
