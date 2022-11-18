@@ -7,7 +7,7 @@
 	#63F72D
 	#32AB05
 
-	Theme 2 (Chosen):
+	Theme 2:
 	#210466
 	#6410C9
 	#6EECFF
@@ -20,9 +20,47 @@
 	#ADA599
 	#C3C5FA
 	#474AAD
+
+    Theme 4 (chosen):
+    #150123
+    #F36BFA
+    #FCDDFE
+    #15024F
+    #5C6DFF
+    #8F9AFF
 	*/
 
 /* || Core */
+
+:root {
+    --color1: #150123;
+    --color2: #F36BFA;
+    --color3: #FCDDFE;
+    --color4: #15024F;
+    --color5: #5C6DFF;
+    --color6: #8F9AFF;
+}
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fresca&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* || Typography */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    font-family: 'Fresca', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+}
+
+code {
+    font-family: 'Ubuntu Mono', monospace;
+}
 
 html,
 body {
@@ -32,7 +70,7 @@ body {
 }
 
 body {
-    background-color: red;
+    background-color: #150123;
     color: #333;
     margin: 0;
     padding: 8px;
