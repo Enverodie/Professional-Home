@@ -1,6 +1,8 @@
 <script>
 	import Index from './lib/routes/index/index.svelte';
+	import PageWrapper from './lib/components/page-wrappers/defaultPageWrapper.svelte'
 	import GlitchText from './lib/components/enverodieNameGlitch.svelte';
+	import Showcase from './lib/routes/index/project-showcase/projectShowcase.svelte';
 
 	export let variable;
 
@@ -15,16 +17,12 @@
 	</h1>
 	<span>Not green</span>
 	<Index /> -->
-	<GlitchText fontSize="128px" />
+	<PageWrapper>
+		<GlitchText fontSize="128px" />
+		<Showcase />
+	</PageWrapper>
 </main>
 
 <style lang="scss">
-	
-	h1 {
-		color: blue;
 
-		span {
-			color: green;
-		}
-	}
 </style>
