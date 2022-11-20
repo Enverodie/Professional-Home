@@ -1,17 +1,24 @@
 <script>
-
+    import ShowcaseItem from "./showcaseItem.svelte";
 </script>
 
 <section class="showcase">
-    <div class="showcaseItem showcase1"><div class="innerShowcase">
+    <div class="showcaseItem showcase1"><div class="innerShowcaseBorder"><div class="innerShowcase">
         Showcase 1
+    </div>
     </div></div>
-    <div class="showcaseItem showcase2"><div class="innerShowcase">
+    <div class="showcaseItem showcase2"><div class="innerShowcaseBorder"><div class="innerShowcase">
         Showcase 2
+    </div>
     </div></div>
-    <div class="showcaseItem showcase3"><div class="innerShowcase">
-        Showcase 3
-    </div></div>
+    <div class="showcaseItem showcase3">
+        <div class="innerShowcaseBorder"><div class="innerShowcase">
+            Showcase 3
+        </div></div>
+        <div class="innerShowcaseBorder"><div class="innerShowcase">
+            Showcase 3
+        </div></div>
+    </div>
 </section>
 
 <style lang="scss">
@@ -50,6 +57,15 @@
             }
         }
 
+        @mixin centerEverything {
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         $topLeft: (2 * $cropAmount) 0;
         $topRight: 100% 0;
         $bottomRight: calc(100% - (2 * $cropAmount)) 100%;
@@ -63,28 +79,31 @@
             top: 0;
             height: 100%;
             z-index: 3;
-
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            &>.innerShowcase {
+            
+            @include centerEverything();
+            
+            &>.innerShowcaseBorder {
                 position: relative;
-                $borderRadius: 1em;
-                width: calc(100% - $borderRadius);
-                height: calc(100% - $borderRadius);
+                $margin: .5em;
+                width: calc(100% - $margin);
+                height: calc(100% - $margin);
                 clip-path: inherit;
-                background-color: #00f6;
-                color: white;
-                background-position: center;
-                background-size: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                background-color: var(--color1);
+
+                background-image: conic-gradient(transparent 0deg, transparent 270deg, var(--color5) 280deg);
+                background-color: green;
+                
+                @include centerEverything();
+                
+                &>.innerShowcase {
+                    clip-path: inherit;
+                    $border: 1em;
+                    width: calc(100% - $border);
+                    height: calc(100% - $border);
+                    background-color: var(--color1);
+                    color: white;
+                }
+
             }
             
             &:hover {
@@ -116,22 +135,47 @@
                 }
             }
 
+            $moreButtonHeight: 20%;
+
+            &:last-child>.innerShowcaseBorder {
+                
+                &:first-child {
+                    height: calc(100% - $moreButtonHeight);
+                    clip-path: polygon(
+                        $topLeft,
+                        $topRight,
+                        100% 100%,
+                        calc(($moreButtonHeight / (100% / $cropAmount)) + .5em) 100%
+                    );
+                }
+                
+                &:last-child {
+                    clip-path: polygon(
+                        calc(($moreButtonHeight / (100% / $cropAmount)) + .5em) 0,
+                        $topRight,
+                        100% 100%,
+                        calc(.5em) 100%
+                    );
+                    height: $moreButtonHeight;
+                }
+            }
+
             &.showcase1 {
                 @include positionLeft(0);
                 // background-color: #f006;
-                background-image: url('https://www.travelmanagers.com.au/wp-content/uploads/2012/08/AdobeStock_254529936_Railroad-to-Denali-National-Park-Alaska_750x500.jpg')
+                // background-image: url('https://www.travelmanagers.com.au/wp-content/uploads/2012/08/AdobeStock_254529936_Railroad-to-Denali-National-Park-Alaska_750x500.jpg')
             }
 
             &.showcase2 {
                 @include positionLeft(1);
                 // background-color: #0f0;
-                background-image: url('https://cdn.britannica.com/50/6650-050-E268AC16/coniferous-forest-spruce-trees-forests-boreal-Northern.jpg');
+                // background-image: url('https://cdn.britannica.com/50/6650-050-E268AC16/coniferous-forest-spruce-trees-forests-boreal-Northern.jpg');
             }
 
             &.showcase3 {
                 @include positionLeft(2);
                 // background-color: #f006;
-                background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-beautiful-cala-goloritze-in-sardinia-royalty-free-image-1149841315-1559070275.jpg');
+                // background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-beautiful-cala-goloritze-in-sardinia-royalty-free-image-1149841315-1559070275.jpg');
             }
 
         }
