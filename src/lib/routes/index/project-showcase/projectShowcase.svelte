@@ -74,29 +74,29 @@
 
         --divisions: 3;
 
-        $moreButtonHeight: 20%;
+    $moreButtonHeight: 20%;
 
-        $endcapWidth: calc(100% / var(--divisions));
-        $defaultWidth: calc((100% / var(--divisions)) + ($cropAmount * 4));
+    $endcapWidth: calc(100% / var(--divisions));
+    $defaultWidth: calc((100% / var(--divisions)) + ($cropAmount * 4));
 
-        @mixin calcWidth($endcap) {
+    @mixin calcWidth($endcap) {
             @if $endcap { width: $endcapWidth; }
             @else { width: $defaultWidth; }
-        }
+    }
 
-        @mixin positionLeft($index) {
-            @if $index > 0 {
-                left: calc(
-                    0% 
-                    + $endcapWidth 
-                    + (($index - 1) * $defaultWidth)
+    @mixin positionLeft($index) {
+        @if $index > 0 {
+            left: calc(
+                0% 
+                + $endcapWidth 
+                + (($index - 1) * $defaultWidth)
                     - ($index * ($cropAmount * 2))
-                    );
-                }
-            @else {
-                left: 0%;     
-            }
+            );
         }
+        @else {
+            left: 0%;     
+        }
+    }
 
         // all the columns / direct children of the root element minus overlays
         &>.showcaseColumn {
@@ -119,7 +119,7 @@
                 background-color: var(--color1);
                 overflow: hidden;
 
-                // background-image: conic-gradient(transparent 0deg, transparent 270deg, var(--color5) 280deg);
+                // background-image: conic-gradient(transparent 0deg, transparent 270deg, var(--color7) 280deg);
                 &:before {
                     content: '';
                     position: absolute;
@@ -127,7 +127,7 @@
                     width: $backgroundSize;
                     height: $backgroundSize;
                     clip-path: none;
-                    @include setBorderBackground(var(--color5), 180deg, var(--color2));
+                    @include setBorderBackground(var(--color7), 180deg, var(--color2));
                     
                     animation: borderCycle 3s ease infinite;
                 }
@@ -151,7 +151,7 @@
                     }
                     
                     & :global(.innerShowcase2) {
-                        clip-path: polygon($topLeft, $topRight, $bottomRight, $bottomLeft);
+                        clip-path: polygon($topLeft, $topRight, $bottomRight, $bottomLeft);   
                     }
                     
                     & :global(.innerShowcase3) {
@@ -232,7 +232,7 @@
                 // background-color: #f006;
                 // background-image: url('https://www.travelmanagers.com.au/wp-content/uploads/2012/08/AdobeStock_254529936_Railroad-to-Denali-National-Park-Alaska_750x500.jpg')
                 &>.innerShowcaseBorder:before {
-                    @include setBorderBackground(var(--color5), 80deg, var(--color2));
+                    @include setBorderBackground(var(--color7), 80deg, var(--color2));
                     animation: borderCycle 3s ease infinite .1s;
                 }
                 
@@ -254,12 +254,12 @@
                 // background-color: #f006;
                 // background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-beautiful-cala-goloritze-in-sardinia-royalty-free-image-1149841315-1559070275.jpg');
                 .innerShowcaseBorder:nth-child(1):before {
-                    @include setBorderBackground(var(--color5), 120deg, var(--color2));
+                    @include setBorderBackground(var(--color7), 120deg, var(--color2));
                     animation: borderCycle 3s ease infinite .5s;
                 }
                 
                 .innerShowcaseBorder:nth-child(2):before {
-                    @include setBorderBackground(var(--color3), 180deg, var(--color5));
+                    @include setBorderBackground(var(--color4), 180deg, var(--color7));
                     animation: borderCycle 2s ease infinite .7s;
                 }
                 

@@ -17,14 +17,14 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
 <style lang='scss'>
 
     @mixin glitchStage01 {
-        // text-shadow: -.03em .03em 0 var(--color5);
+        // text-shadow: -.03em .03em 0 var(--color7);
         text-shadow: 0 0 0 var(--color2);
     }
     @mixin glitchStage02($intensity: 1.2) {
         $glowEmphasis: .04em;
         text-shadow: 
-            calc(.015em * $intensity) calc(-.025em* $intensity)  0 var(--color6),
-            calc(.015em * $intensity) calc(-.025em* $intensity)  $glowEmphasis var(--color6);
+            calc(.015em * $intensity) calc(-.025em* $intensity)  0 var(--color7),
+            calc(.015em * $intensity) calc(-.025em* $intensity)  $glowEmphasis var(--color7);
     }
     @mixin glitchStage03($intensity: 1.2) {
         $glowEmphasis: .04em;
@@ -36,8 +36,8 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
     @mixin glitchStage04($intensity: 1.2) {
         $glowEmphasis: .04em;
         text-shadow: 
-            calc(-.014em* $intensity)  calc(-.025em* $intensity)  0 var(--color5),
-            calc(-.014em* $intensity)  calc(-.025em* $intensity)  $glowEmphasis var(--color5);
+            calc(-.014em* $intensity)  calc(-.025em* $intensity)  0 var(--color7),
+            calc(-.014em* $intensity)  calc(-.025em* $intensity)  $glowEmphasis var(--color7);
     }
 
     $glitchIntensity: 1.1;

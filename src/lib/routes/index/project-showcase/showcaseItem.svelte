@@ -26,7 +26,8 @@
         width: calc(100% - $margin);
         height: calc(100% - $margin);
         position: relative;
-        color: var(--color3);
+        color: var(--color7);
+        text-decoration: none;
         
         &>div {
             @include centerEverything();
@@ -57,7 +58,7 @@
         }
 
         &:visited {
-            color: var(--color6);
+            color: var(--color7);
         }
 
         @include centerEverything();
@@ -65,9 +66,11 @@
         p {
             font-size: 28px;
             padding: .4em .7em;
-            // background-color: var(--color4);
+            // background-color: var(--color7);
             background-color: rgba(#15024F, .7);
             border-radius: 8px;
+            color: var(--color4);
+
             color: var(--color3);
         }
     }
