@@ -79,9 +79,10 @@
     $endcapWidth: calc(100% / var(--divisions));
     $defaultWidth: calc((100% / var(--divisions)) + ($cropAmount * 4));
 
+
     @mixin calcWidth($endcap) {
-            @if $endcap { width: $endcapWidth; }
-            @else { width: $defaultWidth; }
+        @if $endcap { width: calc($endcapWidth + $cropAmount); }
+        @else { width: calc($defaultWidth + $cropAmount); }
     }
 
     @mixin positionLeft($index) {
@@ -90,7 +91,7 @@
                 0% 
                 + $endcapWidth 
                 + (($index - 1) * $defaultWidth)
-                    - ($index * ($cropAmount * 2))
+                -  $cropAmount
             );
         }
         @else {
@@ -260,17 +261,18 @@
             
             &.showcase2 {
                 @include positionLeft(1);
+                display: none;
                 // background-color: #0f0;
                 // background-image: url('https://cdn.britannica.com/50/6650-050-E268AC16/coniferous-forest-spruce-trees-forests-boreal-Northern.jpg');
                 &>.innerShowcaseBorder:before {
-                    @include setBorderBackground(var(--color5), 600deg, var(--color2));
+                    @include setBorderBackground(var(--color7), 600deg, var(--color2));
                     animation: borderCycle 3s ease infinite .3s;
                 }
                 
             }
             
             &.showcase3 {
-                @include positionLeft(2);
+                @include positionLeft(1);
                 // background-color: #f006;
                 // background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-beautiful-cala-goloritze-in-sardinia-royalty-free-image-1149841315-1559070275.jpg');
                 .innerShowcaseBorder:nth-child(1):before {
@@ -287,4 +289,59 @@
 
         }
     }
+
+    @media only screen and (min-width: 900px) {
+
+        @mixin calcWidth($endcap) {
+            @if $endcap { width: $endcapWidth; }
+            @else { width: $defaultWidth; }
+        }
+
+        @mixin positionLeft($index) {
+            @if $index > 0 {
+                left: calc(
+                    0% 
+                    + $endcapWidth 
+                    + (($index - 1) * $defaultWidth)
+                    - ($index * ($cropAmount * 2))
+                );
+            }
+            @else {
+                left: 0%;     
+            }
+        }
+
+        section.showcase {
+            --divisions: 3;
+
+            &>.showcaseColumn.showcase1 {
+                @include calcWidth(true);
+                @include positionLeft(0);
+            }
+            
+            &>.showcaseColumn.showcase2 {
+                @include calcWidth(false);
+                @include positionLeft(1);
+                display: flex;
+            }
+            
+            &>.showcaseColumn.showcase3 {
+                @include calcWidth(true);
+                @include positionLeft(2);
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1300px) {
+        section.showcase {
+            height: 70vh;
+        }
+    }
+
+    @media only screen and (min-width: 1700px) {
+        section.showcase {
+            height: 75vh;
+        }
+    }
+
 </style>
