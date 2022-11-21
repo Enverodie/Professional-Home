@@ -4,17 +4,22 @@
     export let item;
     export let backgroundImage = "";
 
-    $: display = (item === 4) ? "Show more" : "Showcase " + item;
+    // $: display = (item === 4) ? "Show more" : "Showcase " + item;
+
+    $: classList = $$props.class.split(' ');
 
 </script>
 
-<a class="{$$props.class}" style="{$$props.style}; --bkgImg: url({backgroundImage})" href={href}>
-    <div>
-        <p>
+<a class="{classList[0]}" style="--bkgImg: url({backgroundImage})" href={href}>
+    <div class="{classList[1]}" style="{$$props.style}">
+        <div class="textFlex">
             <i class="fa-solid fa-arrow-left"></i>
-            {display} 
+            <!-- {display}  -->
+            <span>
+                <slot></slot>
+            </span>
             <!-- <FontAwesomeIcon icon="fa-solid fa-arrow-right" /> -->
-        </p>
+        </div>
     </div>
 </a>
 
@@ -36,6 +41,8 @@
             height: 100%;
             background-color: rgba(#15024F, .4);
             z-index: 2;
+
+            // padding-right: calc(100% - (2 * 10px));
         }
 
         &::before {

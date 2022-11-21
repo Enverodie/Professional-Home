@@ -6,14 +6,18 @@
     <div class="showcaseColumn showcase1">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase1" href="#" item={1} backgroundImage='/static/images/showcase1_thumbnail.png' />
+                <ShowcaseItem class="innerShowcase1 showcasePadding" href="#" item={1} backgroundImage='/static/images/showcase1_thumbnail.png'>
+                    Simulation Sandbox
+                </ShowcaseItem>
             </div>
         </div>
     </div>
     <div class="showcaseColumn showcase2">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase2" href="#" item={2} backgroundImage='/static/images/showcase3_thumbnail.png' />
+                <ShowcaseItem class="innerShowcase2 showcasePadding" href="#" item={2} backgroundImage='/static/images/showcase3_thumbnail.png'>
+                    Strange Structure
+                </ShowcaseItem>
             </div>
         </div>
     </div>
@@ -22,12 +26,16 @@
 
             <div class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase3" href="#" item={3} backgroundImage='/static/images/showcase2_thumbnail.png' />
+                    <ShowcaseItem class="innerShowcase3 showcasePadding" href="#" item={3} backgroundImage='/static/images/showcase4_thumbnail.png'>
+                        Time
+                    </ShowcaseItem>
                 </div>
             </div>
             <div class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase4" href="#" item={4} />
+                    <ShowcaseItem class="innerShowcase4" href="#" item={4} backgroundImage='/static/images/showcase2_thumbnail.jpg'>
+                        More
+                    </ShowcaseItem>
                 </div>
             </div>
 
@@ -66,14 +74,6 @@
     $bottomRight: calc(100% - (2 * $cropAmount)) 100%;
     $bottomLeft: 0% 100%;
 
-    section.showcase { // root element
-        width: 100%;
-        height: 60vh;
-        position: relative;
-        overflow: hidden;
-
-        --divisions: 3;
-
     $moreButtonHeight: 20%;
 
     $endcapWidth: calc(100% / var(--divisions));
@@ -97,6 +97,14 @@
             left: 0%;     
         }
     }
+
+    section.showcase { // root element
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        overflow: hidden;
+
+        --divisions: 2;
 
         // all the columns / direct children of the root element minus overlays
         &>.showcaseColumn {
@@ -148,6 +156,10 @@
 
                     & :global(.innerShowcase1) {
                         clip-path: polygon(0 0, $topRight, $bottomRight, 0% 100%);
+
+                        & :global(.showcasePadding) {
+                            padding-right: $cropAmount;
+                        }
                     }
                     
                     & :global(.innerShowcase2) {
@@ -156,10 +168,18 @@
                     
                     & :global(.innerShowcase3) {
                         clip-path: polygon($topLeft, $topRight, 100% 100%, calc(($moreButtonHeight / (100% / $cropAmount)) + $border - $margin) 100%);
+                        
+                        & :global(.showcasePadding) {
+                            padding-left: calc($cropAmount + $border);
+                        }
                     }
                     
                     & :global(.innerShowcase4) {
                         clip-path: polygon(calc(($moreButtonHeight / (100% / $cropAmount)) + $border - $margin) 0, $topRight, 100% 100%, calc($border - $margin) 100%);
+                        
+                        & :global(.showcasePadding) {
+                            padding-left: calc(( $moreButtonHeight / (100% / $cropAmount)) + $border - $margin);
+                        }
                     }
                 }
 
