@@ -50,17 +50,25 @@
             position: absolute;
             background-image: var(--bkgImg);
             background-position: center;
-            background-size: 100%;
+            background-size: cover;
+            // background-size: 100%;
             z-index: 1;
             width: 100%;
             height: 100%;
 
-            transition: background-size .2s ease-out;
+            transition: transform .2s ease-out;
         }
 
         &:hover, &:focus {
             &::before {
-                background-size: 175%;
+                // background-size: 175%;
+                transform: scale(1.75);
+            }
+
+            .textFlex {
+                box-shadow: 
+                    var(--color2) 0 0 10px,
+                    var(--color2) 0 0 10px;
             }
         }
 
@@ -70,15 +78,49 @@
 
         @include centerEverything();
 
-        p {
-            font-size: 28px;
+        div.textFlex {
+            display: flex;
+            gap: .4em;
+            align-items: center;
+            width: min-content;
+            font-size: 24px;
             padding: .4em .7em;
             // background-color: var(--color7);
             background-color: rgba(#15024F, .7);
             border-radius: 8px;
             color: var(--color4);
 
-            color: var(--color3);
+            &>span {
+                display: inline-block;
+            }
+
+            & * {
+                color: inherit;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+        a div.textFlex {
+            font-size: 16px;
+        }
+    }
+
+    @media only screen and (min-width: 950px) {
+        a div.textFlex {
+            font-size: 22px;
+        }
+    }
+
+    @media only screen and (min-width: 1100px) {
+        a div.textFlex {
+            font-size: 25px;
+        }
+    }
+
+    @media only screen and (min-width: 1300px) {
+        a div.textFlex {
+            font-size: 32px;
         }
     }
 </style>
