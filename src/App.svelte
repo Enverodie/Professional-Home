@@ -4,47 +4,23 @@
 	import PageWrapper from './lib/components/page-wrappers/indexPageWrapper.svelte'
 	import Navbar from './lib/components/navbar.svelte';
 	import Showcase from './lib/routes/index/project-showcase/projectShowcase.svelte';
-
-	// TODO: USE OR REMOVE
-	import hexToHsl from 'hex-to-hsl';
-
-	// Sets the color for the background squares. 
-	// Should match one of the brand colors (such as in global.scss). 
-	// Not set automatically.
-	const squareColor = '#F36BFA'; 
-
-	let hsl = hexToHsl(squareColor);
-
-	
-	// assign these to a css variable to transfer.
-	// TODO: USE OR REMOVE
-	$: squareHueRotate = `${hsl[0]}`; 
-	$: squareSaturationModifier = `${hsl[1]}`;
-	$: squareLightnessModifier = `${hsl[2]}`;
-
-
-	console.log(hexToHsl(squareColor));
 </script>
 
-<div style="
-	--squareHueRotate: {squareHueRotate}deg; 
-	--squareSaturationModifier: {squareSaturationModifier}%; 
-	--squareLightnessModifier: {squareLightnessModifier}%;
-">
-	<Header />
-	<Navbar />
-	<PageWrapper squareH='{squareHueRotate}deg' squareS='{squareSaturationModifier}%' squareL='{squareLightnessModifier}%'>
-		<!-- <h1 on:mouseenter={writeHello}>
-			Hello there <span>World</span>
-		</h1>
-		<span>Not green</span>
-		<Index /> -->
-		<article>
-			<Showcase />
-		</article>
-		
-	</PageWrapper>
-</div>
+
+<Header />
+<Navbar />
+<PageWrapper>
+	<!-- <h1 on:mouseenter={writeHello}>
+		Hello there <span>World</span>
+	</h1>
+	<span>Not green</span>
+	<Index /> -->
+	<article>
+		<Showcase />
+	</article>
+	
+</PageWrapper>
+
 	
 <style lang="scss">
 

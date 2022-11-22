@@ -1,12 +1,8 @@
 <script>
 
-    export let squareH = "0deg";
-    export let squareS = "100%";
-    export let squareL = "100%";
-
 </script>
 
-<main style="--squareHRotate: {squareH}; --squareS: {squareS}; --squareL: {squareL};">
+<main>
     <slot></slot>
     <aside>
         <div class="stickyItem">
