@@ -1,7 +1,6 @@
 <script>
 
     export let href = "#";
-    export let item;
     export let backgroundImage = "";
 
     // $: display = (item === 4) ? "Show more" : "Showcase " + item;
