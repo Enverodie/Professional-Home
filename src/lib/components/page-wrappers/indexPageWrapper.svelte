@@ -1,7 +1,13 @@
-<main>
-    <article>
-        <slot></slot>
-    </article>
+<script>
+
+    export let squareH = "0deg";
+    export let squareS = "100%";
+    export let squareL = "100%";
+
+</script>
+
+<main style="--squareHRotate: {squareH}; --squareS: {squareS}; --squareL: {squareL};">
+    <slot></slot>
     <aside>
         <div class="stickyItem">
             <p></p>
@@ -9,16 +15,25 @@
     </aside>
 </main>
     
-<style>
+<style lang="scss">
+
+    @import '../../routes/background.scss';
 
     main {
-        margin: 0 3.5em;
+        padding: 2em 3.5em;
         display: grid;
         grid-template-columns: 7fr 1fr;
         position: relative;
-    }
 
-    article {
+        
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            @include gridBackgroundImageNoFilter();
+            z-index: -1;
+        }
 
     }
     

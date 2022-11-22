@@ -20,7 +20,7 @@
         margin: 0;
         background-color: var(--color5);
         padding: 1em;
-        margin-bottom: 2em;
+        // margin-bottom: 2em;
 
         display: flex;
         flex-direction: row;
