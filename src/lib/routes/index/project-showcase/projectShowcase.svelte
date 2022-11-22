@@ -2,8 +2,8 @@
     import ShowcaseItem from "./showcaseItem.svelte";
 </script>
 
-<section class="showcase">
-    <div class="showcaseColumn showcase1">
+<div class="showcase">
+    <section class="showcaseColumn showcase1">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
                 <ShowcaseItem class="innerShowcase1 showcasePadding" href="#" item={1} backgroundImage='/static/images/showcase1_thumbnail.png'>
@@ -11,8 +11,8 @@
                 </ShowcaseItem>
             </div>
         </div>
-    </div>
-    <div class="showcaseColumn showcase2">
+    </section>
+    <section class="showcaseColumn showcase2">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
                 <ShowcaseItem class="innerShowcase2 showcasePadding" href="#" item={2} backgroundImage='/static/images/showcase3_thumbnail.png'>
@@ -20,28 +20,28 @@
                 </ShowcaseItem>
             </div>
         </div>
-    </div>
+    </section>
     <div class="showcaseColumn showcase3">
         <div class="showcase3OuterBox">
 
-            <div class="innerShowcaseBorder">
+            <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
                     <ShowcaseItem class="innerShowcase3 showcasePadding" href="#" item={3} backgroundImage='/static/images/showcase4_thumbnail.png'>
                         Time
                     </ShowcaseItem>
                 </div>
-            </div>
-            <div class="innerShowcaseBorder">
+            </section>
+            <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
                     <ShowcaseItem class="innerShowcase4" href="#" item={4} backgroundImage='/static/images/showcase2_thumbnail.jpg'>
                         More
                     </ShowcaseItem>
                 </div>
-            </div>
+            </section>
 
         </div>
     </div>
-</section>
+</div>
 
 <style lang="scss">
     @import '_centerEverything.scss';
@@ -99,7 +99,7 @@
         }
     }
 
-    section.showcase { // root element
+    .showcase { // root element
         width: 100%;
         height: 60vh;
         position: relative;
@@ -311,7 +311,7 @@
             }
         }
 
-        section.showcase {
+        .showcase {
             --divisions: 3;
 
             &>.showcaseColumn.showcase1 {
@@ -333,13 +333,13 @@
     }
 
     @media only screen and (min-width: 1300px) {
-        section.showcase {
+        .showcase {
             height: 70vh;
         }
     }
 
     @media only screen and (min-width: 1700px) {
-        section.showcase {
+        .showcase {
             height: 75vh;
         }
     }
