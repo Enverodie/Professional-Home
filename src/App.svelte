@@ -6,22 +6,16 @@
 	import Showcase from './lib/routes/index/project-showcase/projectShowcase.svelte';
 </script>
 
-
 <Header />
 <Navbar />
 <PageWrapper>
-	<!-- <h1 on:mouseenter={writeHello}>
-		Hello there <span>World</span>
-	</h1>
-	<span>Not green</span>
-	<Index /> -->
+
 	<article>
 		<Showcase />
 	</article>
 	
 </PageWrapper>
 
-	
 <style lang="scss">
 
 	article {

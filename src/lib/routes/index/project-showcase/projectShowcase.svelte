@@ -149,7 +149,6 @@
                     width: calc(100% - $border);
                     height: calc(100% - $border);
                     background-color: var(--color1);
-                    color: white;
                     overflow: hidden;
 
 
@@ -250,31 +249,26 @@
 
             &.showcase1 {
                 @include positionLeft(0);
-                // background-color: #f006;
-                // background-image: url('https://www.travelmanagers.com.au/wp-content/uploads/2012/08/AdobeStock_254529936_Railroad-to-Denali-National-Park-Alaska_750x500.jpg')
+
                 &>.innerShowcaseBorder:before {
                     @include setBorderBackground(var(--color7), 80deg, var(--color2));
                     animation: borderCycle 3s ease infinite .1s;
                 }
-                
             }
             
             &.showcase2 {
                 @include positionLeft(1);
                 display: none;
-                // background-color: #0f0;
-                // background-image: url('https://cdn.britannica.com/50/6650-050-E268AC16/coniferous-forest-spruce-trees-forests-boreal-Northern.jpg');
+
                 &>.innerShowcaseBorder:before {
                     @include setBorderBackground(var(--color7), 600deg, var(--color2));
                     animation: borderCycle 3s ease infinite .3s;
                 }
-                
             }
             
             &.showcase3 {
                 @include positionLeft(1);
-                // background-color: #f006;
-                // background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-beautiful-cala-goloritze-in-sardinia-royalty-free-image-1149841315-1559070275.jpg');
+
                 .innerShowcaseBorder:nth-child(1):before {
                     @include setBorderBackground(var(--color7), 120deg, var(--color2));
                     animation: borderCycle 3s ease infinite .5s;
@@ -284,9 +278,7 @@
                     @include setBorderBackground(var(--color4), 180deg, var(--color7));
                     animation: borderCycle 2s ease infinite .7s;
                 }
-                
             }
-
         }
     }
 

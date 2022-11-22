@@ -3,8 +3,6 @@
     export let href = "#";
     export let backgroundImage = "";
 
-    // $: display = (item === 4) ? "Show more" : "Showcase " + item;
-
     $: classList = $$props.class.split(' ');
 
 </script>
@@ -13,11 +11,9 @@
     <div class="{classList[1]}" style="{$$props.style}">
         <div class="textFlex">
             <i class="fa-solid fa-arrow-left"></i>
-            <!-- {display}  -->
             <span>
                 <slot></slot>
             </span>
-            <!-- <FontAwesomeIcon icon="fa-solid fa-arrow-right" /> -->
         </div>
     </div>
 </a>
@@ -38,10 +34,8 @@
 
             width: 100%;
             height: 100%;
-            background-color: rgba(#15024F, .4);
+            background-color: hsla(var(--color5H), var(--color5S), var(--color5L), .4);
             z-index: 2;
-
-            // padding-right: calc(100% - (2 * 10px));
         }
 
         &::before {
@@ -84,8 +78,7 @@
             width: min-content;
             font-size: 24px;
             padding: .4em .7em;
-            // background-color: var(--color7);
-            background-color: rgba(#15024F, .7);
+            background-color: hsla(var(--color5H), var(--color5S), var(--color5L), .7);
             border-radius: 8px;
             color: var(--color4);
 
