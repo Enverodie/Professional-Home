@@ -1,8 +1,8 @@
 <script>
-    import Header from './lib/routes/index/header/header.svelte';
-	import PageWrapper from './lib/components/page-wrappers/indexPageWrapper.svelte'
-	import Navbar from './lib/components/navbar.svelte';
-	import Showcase from './lib/routes/index/project-showcase/projectShowcase.svelte';
+    import Header from '../../routes/index/header/header.svelte';
+	import PageWrapper from '../../components/page-wrappers/indexPageWrapper.svelte'
+	import Navbar from '../../components/navbar.svelte';
+	import Showcase from '../../routes/index/project-showcase/projectShowcase.svelte';
 </script>
 
 <Header />
