@@ -68,6 +68,10 @@
     --color5: hsl(var(--color5H), var(--color5S), var(--color5L));
     --color6: hsl(var(--color6H), var(--color6S), var(--color6L));
     --color7: hsl(var(--color7H), var(--color7S), var(--color7L));
+
+    --boxImgSize: 55px;
+    --boxSize: 49px;
+    --boxOutsideSize: 3px; // (55-49)/2
 }
 
 /* Fonts */
