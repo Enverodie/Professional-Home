@@ -3,16 +3,42 @@
     const squareImgSize = 55;
     const whitespace = 3;
 
-    $: width = document.body.clientWidth;
-    // $: width = window.innerWidth;
+    let divSection; // set the style on this element directly
+    let width;
+    let divWidth;
 
-    $: leftPaddingPx = ((width) % squareImgSize); // how much further to the right must the padding push the container to align with the next grid box
-    // $: leftPaddingPx = 0;
-    let rightPaddingPx = 0;
+    $: if (divSection !== undefined && width !== undefined) {
+        divSection.style.paddingLeft = `${
+            squareImgSize + (
+                (
+                    (
+                        (width/2.0) - 
+                        (squareImgSize/2.0)
+                    ) % squareImgSize
+                ) + whitespace
+            )
+        }px`;
+        divSection.style.paddingRight = `${
+            (
+                
+                (
+                    (divWidth/2.0) - 
+                    ((width - divWidth)/2) -
+                    (squareImgSize/2.0)
+                ) % squareImgSize
+            ) + whitespace
+        }px`;
+    }
+
 </script>
 
-<main>
-    <div class="container" style="--leftPadding: {leftPaddingPx}px; --rightPadding: {rightPaddingPx}px;">
+<main bind:clientWidth={width} >
+    <div 
+        bind:this={divSection} 
+        bind:clientWidth={divWidth} 
+        class="container" 
+        >
+        <!-- style="--leftPadding: {leftPaddingPx}px; --rightPadding: {rightPaddingPx}px;" -->
         <slot></slot>
     </div>
     <aside>
@@ -27,15 +53,14 @@
     @import '../../routes/background.scss';
 
     main {
-        // padding: 2em 3.5em;
         display: grid;
         grid-template-columns: 7fr 1fr;
         position: relative;
 
-        &>.container {
-            padding-left: calc(var(--boxImgSize) + var(--leftPadding));
-            padding-right: var(--boxImgSize);
-        }
+        // &>.container {
+            // padding-left: calc(var(--boxImgSize) + var(--leftPadding));
+            // padding-right: var(--boxImgSize);
+        // }
         
         &:before {
             content: '';
