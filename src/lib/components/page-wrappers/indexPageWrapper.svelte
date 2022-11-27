@@ -9,7 +9,7 @@
 
     $: if (divSection !== undefined && width !== undefined) {
         divSection.style.paddingLeft = `${
-            squareImgSize + (
+            (
                 (
                     (
                         (width/2.0) - 
@@ -54,7 +54,7 @@
 
     main {
         display: grid;
-        grid-template-columns: 7fr 1fr;
+        grid-template-columns: 1fr;
         position: relative;
 
         // &>.container {
@@ -83,4 +83,15 @@
         width: 100%;
         top: 50vh;
     }
+
+    @media only screen and (min-width: 700px) {
+        main {
+            grid-template-columns: 7fr 1fr;
+        }
+        
+        main>div.container {
+            margin-left: 55px; // squareImgSize
+        }
+    }
+
 </style>
