@@ -2,6 +2,7 @@
     import Header from '../../routes/index/header/header.svelte';
 	import PageWrapper from '../../components/page-wrappers/indexPageWrapper.svelte'
 	import Navbar from '../../components/navbar.svelte';
+	import About from '../../routes/index/about/about.svelte';
 	import Showcase from '../../routes/index/project-showcase/projectShowcase.svelte';
 </script>
 
@@ -9,7 +10,11 @@
 <Navbar />
 <PageWrapper>
 
-	<article style="--heightExtension: {0}px; --marginLeftExtension: {0}px; --marginRightExtension: {0}px">
+	<article style="border-color: var(--color7)">
+		<About />
+	</article>
+
+	<article>
 		<Showcase />
 	</article>
 	
@@ -23,8 +28,6 @@
 		border: 2px solid hsla(var(--color2H), var(--color2S), var(--color2L), .1); // tied to opacity of square image in _background.scss
 		padding: 1em;
         margin-top: 58px;
-        margin-left: var(--marginLeftExtension);
-        margin-right: var(--marginRightExtension);
         margin-bottom: 0;
         height: auto; // change this later
 	}

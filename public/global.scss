@@ -86,12 +86,16 @@ p, label, div, img {
 
 h1 {
     font-family: 'Fresca', sans-serif;
-    color: var(--color5);
+    color: var(--color4);
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, hr {
     font-family: 'Lato', sans-serif;
-    color: var(--color5);
+    color: var(--color7);
+    text-shadow: 
+        1px 0px 0px var(--color2),
+        2px 0px 2px var(--color2);
+    // text-decoration: underline solid 2px var(--color7);
 }
 
 code {
