@@ -57,6 +57,7 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
         font-size: var(--font-size);
         font-weight: 400;
         padding: 1em 0 0;
+        font-family: 'Fresca', sans-serif;
 
         &>* {
             position: absolute;
