@@ -4,5 +4,5 @@
 </script>
 
 <header>
-    <GlitchText fontSize="164px" />
+    <GlitchText fontSize="200px" />
 </header>

@@ -29,7 +29,7 @@
 
         &>.navElements>a {
             display: inline-block;
-            background-color: var(--color3);
+            background-color: var(--color2);
             padding: .5em 2em;
             margin: 0em .75em;
             font-weight: 700;
