@@ -1,7 +1,5 @@
 <script>
-
-    const squareImgSize = 55;
-    const whitespace = 3;
+	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
 
     let divSection; // set the style on this element directly
     let width;
@@ -13,9 +11,9 @@
                 (
                     (
                         (width/2.0) - 
-                        (squareImgSize/2.0)
-                    ) % squareImgSize
-                ) + whitespace
+                        (SQUARE_IMG_SIZE/2.0)
+                    ) % SQUARE_IMG_SIZE
+                ) + SQUARE_IMG_WHITESPACE
             )
         }px`;
         divSection.style.paddingRight = `${
@@ -24,9 +22,9 @@
                 (
                     (divWidth/2.0) - 
                     ((width - divWidth)/2) -
-                    (squareImgSize/2.0)
-                ) % squareImgSize
-            ) + whitespace
+                    (SQUARE_IMG_SIZE/2.0)
+                ) % SQUARE_IMG_SIZE
+            ) + SQUARE_IMG_WHITESPACE
         }px`;
     }
 
@@ -90,7 +88,7 @@
         }
         
         main>div.container {
-            margin-left: 55px; // squareImgSize
+            margin-left: 55px; // SQUARE_IMG_SIZE
         }
     }
 
