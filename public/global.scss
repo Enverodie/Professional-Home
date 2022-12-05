@@ -72,6 +72,10 @@
     --boxImgSize: 55px;
     --boxSize: 49px;
     --boxOutsideSize: 3px; // (55-49)/2
+
+    --hoverShadow: 
+        1px 0px 0px var(--color2),
+        2px .2px .2px .2px var(--color2);
 }
 
 /* Fonts */
@@ -104,6 +108,10 @@ a, p, label, div, img {
 
 code {
     font-family: 'Ubuntu Mono', monospace;
+}
+
+.emoji {
+    filter: contrast(160%) hue-rotate(230deg);
 }
 
 html,
