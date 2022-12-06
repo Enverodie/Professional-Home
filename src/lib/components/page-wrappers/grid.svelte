@@ -33,6 +33,8 @@
         <slot></slot>
     </div>
 </main>
+<Footer />
+    
 <style lang="scss">
 
     @import '../../routes/background.scss';

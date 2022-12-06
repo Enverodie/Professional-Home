@@ -1,11 +1,17 @@
 <script>
-
+    const NAVIGABLE_ROUTES = ['/', '/Projects'];
+    let path = window.location.pathname;
+    
 </script>
 
 <nav>
     <div class="icon">Enverodie</div>
     <div class="navElements">
-        <a href="/Projects">Projects</a>
+        {#each NAVIGABLE_ROUTES as routeName}
+            {#if path !== routeName}
+                <a href="{routeName}">{routeName.slice(1) || "Home"}</a>
+            {/if}
+        {/each}
     </div>
 </nav>
 

@@ -1,4 +1,5 @@
 <script>
+	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
 
     let divSection; // set the style on this element directly
@@ -45,6 +46,7 @@
         </div>
     </aside>
 </main>
+<Footer />
     
 <style lang="scss">
 
