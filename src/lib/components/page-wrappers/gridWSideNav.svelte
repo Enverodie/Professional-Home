@@ -54,6 +54,7 @@
 
     main {
         display: grid;
+        padding-bottom: var(--boxImgSize);
         grid-template-columns: 1fr;
         position: relative;
 

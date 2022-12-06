@@ -41,6 +41,7 @@
 
     main {
         position: relative;
+        padding-bottom: var(--boxImgSize);
         
         &:before {
             content: '';
