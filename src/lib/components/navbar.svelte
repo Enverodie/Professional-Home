@@ -5,9 +5,7 @@
 <nav>
     <div class="icon">Enverodie</div>
     <div class="navElements">
-        <a href="#">About</a>
-        <a href="#">Projects</a>
-        <a href="#">More stuff</a>
+        <a href="/Projects">Projects</a>
     </div>
 </nav>
 

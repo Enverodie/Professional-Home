@@ -72,10 +72,6 @@
             &>label {
                 color: var(--color6);
                 text-decoration: none;
-                // position: absolute;
-                // text-align: center;
-                // z-index: 5;
-                // top: -1.4em;
                 transition: font-size .2s ease;
             }
 
