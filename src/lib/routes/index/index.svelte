@@ -1,6 +1,6 @@
 <script>
 	import Header from '../../routes/index/header/header.svelte';
-	import PageWrapper from '../../components/page-wrappers/indexPageWrapper.svelte'
+	import PageWrapper from '../../components/page-wrappers/gridWSideNav.svelte'
 	import Navbar from '../../components/navbar.svelte';
 	import About from '../../routes/index/about/about.svelte';
 	import Showcase from '../../routes/index/project-showcase/projectShowcase.svelte';
