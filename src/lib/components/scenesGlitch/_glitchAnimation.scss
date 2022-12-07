@@ -1,0 +1,44 @@
+@import '../dropShadowFilter';
+
+// reset to default, same as glitchStage04
+@mixin glitchStage01() {
+    $glowEmphasis: .5em;
+    filter: 
+        drop-shadow(0 0 $glowEmphasis var(--glitchColor));
+}
+
+@mixin glitchStage02($intensity) {
+    $glowEmphasis: .5em;
+    filter: 
+        drop-shadow(calc(.015em * $intensity) calc(-.025em* $intensity) 0 var(--glitchColor))
+        drop-shadow(calc(.015em * $intensity) calc(-.025em* $intensity) $glowEmphasis var(--glitchColor));
+}
+
+@mixin glitchStage03($intensity) {
+    $glowEmphasis: .5em;
+    filter:
+        drop-shadow(calc(.024em * $intensity) calc(.013em * $intensity) 0 var(--glitchColor))
+        drop-shadow(calc(.024em * $intensity) calc(.013em * $intensity) $glowEmphasis var(--glitchColor));
+}
+
+@mixin glitchStage05($intensity) {
+    $glowEmphasis: .5em;
+    filter:
+        drop-shadow(calc(-.014em* $intensity) calc(-.025em* $intensity) 0 var(--glitchColor))
+        drop-shadow(calc(-.014em* $intensity) calc(-.025em* $intensity) $glowEmphasis var(--glitchColor));
+}
+
+$glitchIntensity: 7;
+@keyframes glitchImg {
+    // $defaultFilter: dropShadowFilter(var(--glitchColor));
+    0% { @include glitchStage01()}
+    20% { @include glitchStage01()} // 1
+    21% { @include glitchStage02($glitchIntensity)}
+    40% { @include glitchStage02($glitchIntensity)} // 2
+    41% { @include glitchStage03($glitchIntensity)}
+    60% { @include glitchStage03($glitchIntensity)} // 3
+    61% { @include glitchStage01()}
+    80% { @include glitchStage01()} // 4
+    81% { @include glitchStage05($glitchIntensity)}
+    100% { @include glitchStage05($glitchIntensity)} // 5
+}

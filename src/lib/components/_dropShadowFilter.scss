@@ -1,5 +1,5 @@
-@mixin imageDropShadow($color) {
-    filter: 
+@function imageDropShadow($color) {
+    @return
         drop-shadow(0 0 4px $color)
-        drop-shadow(0 0 8px $color);
+        drop-shadow(0 0 8px $color)
 }
