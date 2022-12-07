@@ -1,8 +1,4 @@
-<script>
-    export let width = "auto";
-</script>
-
-<div class="wireframeContainer" style="width: {width}">
+<div class="wireframeContainer {$$props.class}">
     <img class="layer3" src="/static/svgs/citywireframe/citywireframe layer 3.svg" alt="" aria-hidden />
     <img class="layer2" src="/static/svgs/citywireframe/citywireframe layer 2.svg" alt="" aria-hidden />
     <img class="layer1" src="/static/svgs/citywireframe/citywireframe layer 1.svg" alt="" aria-hidden />
@@ -10,11 +6,7 @@
 
 <style lang="scss">
 
-    @mixin imageDropShadow($color) {
-        filter: 
-            drop-shadow(0 0 4px $color)
-            drop-shadow(0 0 8px $color);
-    }
+    @import '../dropShadowFilter';
 
     .wireframeContainer {
         position: relative;
@@ -47,7 +39,4 @@
         }
     }
 
-    img {
-        filter: drop-shadow(0 0 4px var(--color2));
-    }
 </style>

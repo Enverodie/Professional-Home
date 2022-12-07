@@ -1,17 +1,15 @@
 <script>
 
-export let fontSize = "64px";
 export let addUrlExtension = false;
 
 $: text = "Enverodie." + (addUrlExtension ? "com" : "");
 
 </script>
 
-<h2 class="enverodie glitch" style="--font-size: {fontSize}">
+<h2 class="{$$props.class} enverodie glitch">
     <span>{text}</span>
     <span aria-hidden="true">{text}</span>
     <span aria-hidden="true">{text}</span>
-    <!-- <span aria-hidden="true">{text}</span> -->
 </h2>
 
 <style lang='scss'>
@@ -54,7 +52,6 @@ $: text = "Enverodie." + (addUrlExtension ? "com" : "");
 
 .enverodie.glitch {
         position: relative;
-        font-size: var(--font-size);
         font-weight: 400;
         font-family: 'Fresca', sans-serif;
         margin: 0;

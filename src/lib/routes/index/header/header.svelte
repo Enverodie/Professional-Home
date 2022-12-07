@@ -5,16 +5,41 @@
 </script>
 
 <header>
-    <GlitchText fontSize="11.5vw" />
-    <CityGlitch width="44vw" />
+    <GlitchText class="headerText" />
+    <CityGlitch class="headerGraphic" />
 </header>
 
 <style lang="scss">
+
     header {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        padding: 4vh 4vw;
+        padding: 1vh 4vw 0;
+
+        &>:global(.headerText) {
+            font-size: 20vw;
+        }
+        
+        &>:global(.headerGraphic) {
+            width: 100%;
+        }
     }
+    
+    @media only screen and (min-width: 700px) {
+        header {
+            padding: 4vh 4vw;
+            flex-direction: row;
+
+            &>:global(.headerText) {
+                font-size: 11.5vw;
+            }
+            
+            &>:global(.headerGraphic) {
+                width: 44vw;
+            }
+        }
+    }
+
 </style>
