@@ -3,7 +3,7 @@
 export let fontSize = "64px";
 export let addUrlExtension = false;
 
-$: text = "Enverodie" + (addUrlExtension ? ".com" : "");
+$: text = "Enverodie." + (addUrlExtension ? "com" : "");
 
 </script>
 
@@ -57,6 +57,7 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
         font-size: var(--font-size);
         font-weight: 400;
         font-family: 'Fresca', sans-serif;
+        margin: 0;
 
         &>* {
             position: absolute;
