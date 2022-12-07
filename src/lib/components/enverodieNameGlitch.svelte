@@ -56,7 +56,6 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
         position: relative;
         font-size: var(--font-size);
         font-weight: 400;
-        padding: 1em 0 0;
         font-family: 'Fresca', sans-serif;
 
         &>* {
@@ -72,6 +71,7 @@ $: text = "Enverodie" + (addUrlExtension ? ".com" : "");
             $text-shadow-2: 0 0 .15em;
             
             &:nth-child(1) {
+                position: relative;
                 color: var(--color2);
                 z-index: 3;
                 text-shadow: $text-shadow-1, $text-shadow-2;
