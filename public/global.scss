@@ -66,6 +66,10 @@
     --color7S: 100%;    
     --color7L: 78%;
 
+    --colorAlertH: 360;
+    --colorAlertS: 100%;
+    --colorAlertL: 39%;
+
     --color1: hsl(var(--color1H), var(--color1S), var(--color1L));
     --color2: hsl(var(--color2H), var(--color2S), var(--color2L));
     --color3: hsl(var(--color3H), var(--color3S), var(--color3L));
@@ -73,6 +77,7 @@
     --color5: hsl(var(--color5H), var(--color5S), var(--color5L));
     --color6: hsl(var(--color6H), var(--color6S), var(--color6L));
     --color7: hsl(var(--color7H), var(--color7S), var(--color7L));
+    --colorAlert: hsl(var(--colorAlertH), var(--colorAlertS), var(--colorAlertL));
 
     --boxImgSize: 55px;
     --boxSize: 49px;
