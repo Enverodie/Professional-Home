@@ -1,12 +1,12 @@
 <script>
     import GlitchText from '../../../components/enverodieNameGlitch.svelte';
-	import CityGlitch from './../../../components/scenesGlitch/cityGlitch.svelte';
+	import GlitchController from './../../../components/scenesGlitch/glitchController.svelte';
 
 </script>
 
 <header>
     <GlitchText class="headerText" />
-    <CityGlitch class="headerGraphic" />
+    <GlitchController class="headerGraphic" />
 </header>
 
 <style lang="scss">
