@@ -1,4 +1,5 @@
 <script>
+	import ArticleBox from './../../components/articleBox.svelte';
     import PageWrapper from '../../components/page-wrappers/grid.svelte'
 	import Navbar from '../../components/navbar.svelte';
 
@@ -6,7 +7,7 @@
 
 <Navbar />
 <PageWrapper>
-    <div style="padding: 2em;">
-        <h1>Hello there</h1>
-    </div>
+    <ArticleBox>
+        <h1>Test</h1>
+    </ArticleBox>
 </PageWrapper>
