@@ -1,5 +1,5 @@
 <script>
-    import ShowcaseItem from "./showcaseItem.svelte";
+    import ShowcaseItem from "./projectShowcaseLink.svelte";
 </script>
 
 <div class="showcase">

@@ -2,14 +2,12 @@
 
 export let addUrlExtension = false;
 
-$: text = "Enverodie." + (addUrlExtension ? "com" : "");
-
 </script>
 
-<h2 class="{$$props.class} enverodie glitch">
-    <span>{text}</span>
-    <span aria-hidden="true">{text}</span>
-    <span aria-hidden="true">{text}</span>
+<h2 class="{$$props.class} glitch">
+    <span><slot></slot></span>
+    <span aria-hidden="true"><slot></slot></span>
+    <span aria-hidden="true"><slot></slot></span>
 </h2>
 
 <style lang='scss'>
@@ -50,7 +48,7 @@ $: text = "Enverodie." + (addUrlExtension ? "com" : "");
         100% { @include glitchStage04($glitchIntensity); }
     }
 
-.enverodie.glitch {
+.glitch {
         position: relative;
         font-weight: 400;
         font-family: 'Fresca', sans-serif;

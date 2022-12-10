@@ -1,11 +1,11 @@
 <script>
-    import GlitchText from '../../../components/enverodieNameGlitch.svelte';
+    import GlitchText from '../../../components/nameGlitch.svelte';
 	import GlitchController from './../../../components/scenesGlitch/glitchController.svelte';
 
 </script>
 
 <header>
-    <GlitchText class="headerText" />
+    <GlitchText class="headerText">Enverodie.</GlitchText>
     <GlitchController class="headerGraphic" />
 </header>
 
