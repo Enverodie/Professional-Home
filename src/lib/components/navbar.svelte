@@ -1,4 +1,5 @@
 <script>
+	import EnverodieIcon from './buttons/enverodieIcon.svelte';
 	import HumbleAnchor from './buttons/humbleAnchor.svelte';
 
     const NAVIGABLE_ROUTES = ['/', '/Projects'];
@@ -25,7 +26,10 @@
 </script>
 
 <nav>
-    <div class="icon">{getRouteName(path)}</div>
+    <div class="icon">
+        <EnverodieIcon />
+        <span>{getRouteName(path)}</span>
+    </div>
     <div class="navElements">
         {#each NAVIGABLE_ROUTES.filter(r => r !== path) as route, index}
             <HumbleAnchor 
@@ -68,7 +72,7 @@
             row-gap: .75em;
             flex-wrap: nowrap;
             overflow-x: auto;
-            padding: 0.15em 0.5em;
+            padding: 0.5em 0.5em;
 
             &>:global(.navFirstChild) {
                 margin-left: 0;
@@ -84,6 +88,9 @@
         font-weight: 700;
         font-size: 2em;
         margin-right: 1em;
+        display: flex;
+        align-items: center;
+        gap: 1em;
     }
 
 </style>
