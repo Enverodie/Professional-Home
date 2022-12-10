@@ -25,7 +25,7 @@
 
 <!-- Using this to preload all the components, to prevent a jump cut -->
 {#each renderableGlitchScenes as rgs}
-	<span style:display="none"><svelte:component this={rgs} /></span>
+	<div style:display="none"><svelte:component this={rgs} /></div>
 {/each}
 
 <svelte:component this={currentView} class="{$$props.class}"></svelte:component>
