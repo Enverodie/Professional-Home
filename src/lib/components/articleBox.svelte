@@ -39,6 +39,7 @@ article {
     // --padding-adjust-bottom: 0px;
 
     box-sizing: border-box;
+    float: left;
     background-color: var(--color1);
     border: 2px solid hsla(var(--color2H), var(--color2S), var(--color2L), .1); // tied to opacity of square image in _background.scss
     padding:
@@ -49,6 +50,7 @@ article {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
     
     
 }
