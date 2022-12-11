@@ -33,7 +33,7 @@
             </section>
             <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase4" href="#" item={4} backgroundImage='/static/images/showcase2_thumbnail.jpg'>
+                    <ShowcaseItem class="innerShowcase4" href="/Projects" item={4} backgroundImage='/static/images/showcase2_thumbnail.jpg'>
                         More
                     </ShowcaseItem>
                 </div>
