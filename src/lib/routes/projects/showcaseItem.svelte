@@ -10,6 +10,7 @@
 
     function setCarouselIndex(increment) {
         carouselIndex = (carouselIndex + increment) % images.length;
+        if (carouselIndex < 0) carouselIndex = images.length - 1;
     }
 
 </script>
