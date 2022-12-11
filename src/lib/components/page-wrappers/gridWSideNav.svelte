@@ -1,4 +1,9 @@
 <script>
+
+    /* The GridWSideNav component establishes a main section with horizontal spacing, 
+     * allowing for a side navigation component, aligning with a background grid image. 
+     */
+
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
 
@@ -37,7 +42,6 @@
         bind:clientWidth={divWidth} 
         class="container" 
         >
-        <!-- style="--leftPadding: {leftPaddingPx}px; --rightPadding: {rightPaddingPx}px;" -->
         <slot></slot>
     </div>
     <aside>
@@ -57,11 +61,6 @@
         padding-bottom: var(--boxImgSize);
         grid-template-columns: 1fr;
         position: relative;
-
-        // &>.container {
-            // padding-left: calc(var(--boxImgSize) + var(--leftPadding));
-            // padding-right: var(--boxImgSize);
-        // }
         
         &:before {
             content: '';
@@ -75,8 +74,8 @@
     }
     
     aside {
+        // TODO: Finish this
         margin: 0 auto;
-        
     }
     
     aside .stickyItem {
@@ -91,7 +90,7 @@
         }
         
         main>div.container {
-            margin-left: 55px; // SQUARE_IMG_SIZE
+            margin-left: var(--boxImgSize);
         }
     }
 

@@ -1,10 +1,15 @@
 <script>
 	
-    import SimulationCanvas from './simulationCanvas.svelte';
+    /* The ShowcaseItem component establishes the structure of a showcase.
+     * It is intended to be included as a direct child of an ArticleBox component 
+     * (though it doesn't have to be).
+     * 
+     * Note: will accept an optional slot "containedEffects" that will be 
+     * inserted between the image layer and the text layer to display additional
+     * visual effects (such as rendered with an HTML canvas).
+     */
 
     export let images = [{src: "/", alt:"image not found", description: "image not found"}];
-    export let displayImg = "";
-    export let alt = "";
 
     let carouselIndex = 0;
 
@@ -35,6 +40,8 @@
 </div>
 
 <style lang="scss">
+
+    /* The outer grid - contains the image and description */
     .grid {
         box-sizing: border-box;
         display: grid;
@@ -48,6 +55,7 @@
         }
     }
 
+    /* figureContainer contains the image, image caption, and change image buttons */
     .figureContainer {
 
         display: flex;
@@ -56,6 +64,7 @@
         height: 100%;
         box-sizing: border-box;
 
+        /* the class that contains the image and caption */
         .showcaseImage {
 
             display: flex;
@@ -74,6 +83,7 @@
 
     }
 
+    /* container for image carousel forward and backward buttons */
     .buttons {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -90,14 +100,11 @@
             border: none;
             cursor: pointer;
 
-            // transition: background linear 50ms;
-
             &:hover {
                 background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .8);
             }
 
             &:active {
-                transition: none;
                 background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .2);
             }
         }
@@ -108,7 +115,6 @@
         z-index: 2;
         box-sizing: border-box;
         background-color: hsla(var(--color1H), var(--color1S), var(--color1L), .5);
-        // background-color: aqua;
     }
 
     @media only screen and (min-width: 900px) {

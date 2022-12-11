@@ -1,7 +1,3 @@
-<script>
-    
-</script>
-
 <footer>
     <div class="grid">
         <div class="column">
@@ -26,12 +22,10 @@
         padding: var(--padding) var(--padding) 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        // padding: 1.2em 0.6em;
         border-collapse: collapse;
         width: 100%;
         
         &>.column {
-            // display: flex;
 
             &:first-child {
                 padding-bottom: var(--padding);

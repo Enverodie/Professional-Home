@@ -1,6 +1,9 @@
 <script>
 
-    /*
+    /* The SimulationCanvas component is meant to fill an optional slot in ShowcaseItem
+     * components. This one fits the theme of Simulation Sandbox. It draws a canvas
+     * with pseudo-randomly placed boxes every X amount of time.
+     * 
      * While it's true I would probably have included something like this *anyway*,
      * I know there's a javascript requirement for this final, so I'm creating this
      * canvas component *now* so I can guarantee without a shadow of a doubt that I

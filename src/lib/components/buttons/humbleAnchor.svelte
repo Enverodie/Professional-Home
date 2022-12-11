@@ -1,4 +1,13 @@
 <script>
+
+    /* The HumbleAnchor component provides a decorated anchor tag,
+     * but not an overwhelmingly fancy one.
+     * Therefore, it is humble!
+     * 
+     * Note: Provides the option to change its style if the link leads nowhere.
+     * Note 2: Accepts an optional slot "icon" where images won't be underlined.
+     */
+
     export let deadLink = false;
 
 </script>
@@ -43,6 +52,7 @@ a {
     }
 
     &:hover, &:focus {
+        // TODO: Come up with something here or remove
         /*
         text-shadow: 
             1px 1px 1px var(--color7),

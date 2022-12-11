@@ -1,5 +1,9 @@
 <script>
 
+    /* The ProjectShowcaseLink component is meant to handle the unique content of a ProjectShowcase component.
+     * Its entire purpose is to be nested inside exactly one ProjectShowcase component.
+     */
+
     export let href = "#";
     export let backgroundImage = "";
 
@@ -38,13 +42,13 @@
             z-index: 2;
         }
 
+        /* This is where the showcase image goes */
         &::before {
             content: '';
             position: absolute;
             background-image: var(--bkgImg);
             background-position: center;
             background-size: cover;
-            // background-size: 100%;
             z-index: 1;
             width: 100%;
             height: 100%;
@@ -71,6 +75,7 @@
 
         @include centerEverything();
 
+        /* Contains the descriptive text (and arrow) that explain the showcased item */
         div.textFlex {
             display: flex;
             gap: .4em;

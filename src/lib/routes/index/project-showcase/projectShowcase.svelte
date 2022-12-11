@@ -1,5 +1,12 @@
 <script>
+
+    /* The ProjectShowcase component establishes the structure of a showcase.
+     * It is intended to be included as a direct child of an ArticleBox component 
+     * (though it doesn't have to be).
+     */
+
     import ShowcaseItem from "./projectShowcaseLink.svelte";
+
 </script>
 
 <div class="showcase">
@@ -46,6 +53,7 @@
 <style lang="scss">
     @import '_centerEverything.scss';
 
+    /* Creates a custom gradient image that can be used as a border when applying a large enough layer over top of it. */
     @mixin setBorderBackground($color, $startAngle, $color2) {
         $frontFalloff: 1deg;
         $color2Position: 70deg;
@@ -79,7 +87,9 @@
     $endcapWidth: calc(100% / var(--divisions));
     $defaultWidth: calc((100% / var(--divisions)) + ($cropAmount * 4));
 
-
+    /* Used to calculate the width of one of the showcase items, provided it is/isn't an ending column.
+     * Takes a boolean value $endcap.
+     */
     @mixin calcWidth($endcap) {
         @if $endcap { width: calc($endcapWidth + $cropAmount); }
         @else { width: calc($defaultWidth + $cropAmount); }
@@ -128,7 +138,6 @@
                 background-color: var(--color1);
                 overflow: hidden;
 
-                // background-image: conic-gradient(transparent 0deg, transparent 270deg, var(--color7) 280deg);
                 &:before {
                     content: '';
                     position: absolute;
@@ -152,7 +161,7 @@
                     overflow: hidden;
 
 
-                    /* Change all these when the clip path for the corresponding elements change */
+                    /* Change all these if the clip path for the corresponding elements change */
 
                     & :global(.innerShowcase1) {
                         clip-path: polygon(0 0, $topRight, $bottomRight, 0% 100%);

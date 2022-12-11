@@ -1,8 +1,11 @@
 <script>
+
+	/* GlitchController accumulates all the glitch scenes in one and scrolls through them on a fixed time interval. */
+
 	import RiverGlitch from './riverGlitch.svelte';
 	import CityGlitch from './cityGlitch.svelte';
 
-	const renderableGlitchScenes = [RiverGlitch, CityGlitch];
+	const renderableGlitchScenes = [RiverGlitch, CityGlitch]; // Update this when a new glitch scene is created and imported
 	const switchTiming = 6000; // in milliseconds
 	let currentView = renderableGlitchScenes[0] || null;
 	

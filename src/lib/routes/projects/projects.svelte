@@ -1,4 +1,7 @@
 <script>
+
+    /* This is the base component for the /Projects route. */
+
 	import About from './../index/about/about.svelte';
 	import HumbleAnchor from './../../components/buttons/humbleAnchor.svelte';
 	import SimulationCanvas from './simulationCanvas.svelte';
@@ -10,6 +13,7 @@
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 
+    // TODO: consider moving this to a javascript file and use it elsewhere in the app.
     function showcaseImage(src, alt, description) {
         this.src = src;
         this.alt = alt;
@@ -64,6 +68,7 @@
         text-align: center;
     }
 
+    /* used to set the perfect spacing on glitch effects (like the one seen in the header on the homepage) on this specific route. */
     .nameGlitchPadding {
         padding: .5em 0;
 
@@ -75,6 +80,7 @@
         }
     }
 
+    /* used to set perfect spacing on buttons at the bottom of each article */
     .buttonsFlex {
         margin: 2.5em 0 1em;
         display: flex;
@@ -83,13 +89,6 @@
         width: 100%;
         justify-content: center;
         gap: 1em;
-
-        .buttonWithIcon {
-            display: flex;
-            align-items: center;
-            gap: .5em;
-            color: inherit;
-        }
     }
 
     

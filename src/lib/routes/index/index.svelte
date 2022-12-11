@@ -1,4 +1,7 @@
 <script>
+
+	/* This is the base component for the "/" route. */
+
 	import Header from '../../routes/index/header/header.svelte';
 	import PageWrapper from '../../components/page-wrappers/gridWSideNav.svelte'
 	import Navbar from '../../components/navbar.svelte';

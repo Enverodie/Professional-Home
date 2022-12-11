@@ -1,6 +1,10 @@
 <script>
 
-export let addUrlExtension = false;
+    /* The NameGlitch component creates a fancy styled H2 with a glitch effect.
+     *
+     * Note: The NameGlitch component is heavily inspired by Kevin Powell's youtube tutorial on Glitch text.
+     * https://www.youtube.com/watch?v=7Xyg8Ja7dyY
+     */
 
 </script>
 

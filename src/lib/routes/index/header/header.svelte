@@ -1,4 +1,9 @@
 <script>
+
+    /* This Header component is only meant to be featured on the Index page.
+     * Contains all the pretty, fancy splash stuff.
+     */
+
     import GlitchText from '../../../components/nameGlitch.svelte';
 	import GlitchController from './../../../components/scenesGlitch/glitchController.svelte';
 

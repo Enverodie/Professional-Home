@@ -1,4 +1,10 @@
 <script>
+
+    /* The Navbar component is a universal component that provides site navigation at the top of the page.
+     * It displays the icon to go to the homepage, as well as buttons for every available (and some not-yet-available)
+     * routes to navigate to.
+     */
+
 	import EnverodieIcon from './buttons/enverodieIcon.svelte';
 	import HumbleAnchor from './buttons/humbleAnchor.svelte';
 
@@ -6,12 +12,13 @@
     const INCOMPLETE_ROUTES = ['/Hire', '/Writings', '/CreatedGraphics', '/Blog', '/MinecraftBuilds', '/ContactMe']
     let path = window.location.pathname;
 
+    // Gets the name of a route string of the format provided in NAVIGABLE_ROUTES
     function getRouteName(route) {
         return route.slice(1) || "Home";
     }
 
+    // A helper function to decide whether or not the provided cssClass should be applied
     function printClass(index, target, cssClass) {
-        console.log(index, target, cssClass);
         if (index === target) {
             return cssClass;
         }

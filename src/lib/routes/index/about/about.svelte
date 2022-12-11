@@ -1,4 +1,10 @@
 <script>
+
+    /* The About component establishes the structure of the website's Index page about section.
+     * It is intended to be included as a direct child of an ArticleBox component 
+     * (though it doesn't have to be).
+     */
+
 	import AboutMe from './aboutMe.svelte';
 	import AboutTheSite from './aboutTheSite.svelte';
 	import AboutLinks from './aboutLinks.svelte';
@@ -12,6 +18,7 @@
 
 </script>
 
+<!-- I'm using the gridItem class as a way of adding empty columns to the grid layout; it serves no other purpose -->
 <div class="about">
     <div class="grid">
         <div class="gridItem"></div>
@@ -56,6 +63,7 @@
 
     }
 
+    /* Contains all the sections of about that are dominantly text-based. */
     .aboutText {
         
         :global(.aboutSection) {

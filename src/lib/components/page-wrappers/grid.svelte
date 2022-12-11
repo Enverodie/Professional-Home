@@ -1,4 +1,7 @@
 <script>
+
+    /* The Grid component establishes a full-page main section with horizontal spacing aligning with a background grid image. */
+
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
 
