@@ -7,7 +7,7 @@
 
 </script>
 
-<a class="{classList[0]}" style="--bkgImg: url({backgroundImage})" href={href}>
+<a class="{classList[0]}" style="--bkgImg: url({backgroundImage})" href={href} target={$$props.target}>
     <div class="{classList[1]}" style="{$$props.style}">
         <div class="textFlex">
             <i class="fa-solid fa-arrow-left"></i>
