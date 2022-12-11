@@ -5,9 +5,15 @@
 
 <a 
     href={$$props.href}
+    target={$$props.target}
     class="{deadLink ? "deadLink" : ""} {$$props.class}"
     >
     <slot></slot>
+    {#if $$slots.icon}
+        <span class="noUnderline">
+            <slot name="icon" />
+        </span>
+    {/if}
 </a>
 
 <style lang="scss">
@@ -25,6 +31,11 @@ a {
     padding: .5em 2em;
     margin: 0em .75em;
     font-weight: 900;
+    gap: .5em;
+
+    &>.noUnderline {
+        text-decoration: none !important;
+    }
 
     
     &:visited {
