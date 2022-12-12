@@ -41,6 +41,7 @@
 
     #mascotWithSign {
         max-height: 20vh;
+        max-width: 50%;
         float: right;
     }
 </style>
