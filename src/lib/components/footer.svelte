@@ -27,21 +27,22 @@
         
         &>.column {
 
+            display: flex;
+
             &:first-child {
                 padding-bottom: var(--padding);
-                display: flex;
                 align-items: end;
             }
     
             &:last-child {
-    
+                align-items: end;
+                justify-content: end;    
             }
         }    
     }
 
     #mascotWithSign {
         max-height: 20vh;
-        max-width: 50%;
-        float: right;
+        max-width: 90%;
     }
 </style>
