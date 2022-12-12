@@ -33,6 +33,7 @@
 .linksContainer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     margin: 1.5em 0 0;

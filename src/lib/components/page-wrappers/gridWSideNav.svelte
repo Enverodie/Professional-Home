@@ -84,6 +84,12 @@
         top: 50vh;
     }
 
+    @media only screen and (max-width: 390px) {
+        .container {
+            padding: 0 !important;
+        }
+    }
+
     @media only screen and (min-width: 700px) {
         main {
             grid-template-columns: 7fr 1fr;
