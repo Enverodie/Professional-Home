@@ -100,4 +100,21 @@
         gap: 1em;
     }
 
+    @media only screen and (max-width: 900px) {
+        
+        .navElements {
+            font-size: 16px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        .icon {
+            font-size: 18px;
+        }
+        
+        nav>.navElements {
+            font-size: 10px;
+        }
+    }
+
 </style>
