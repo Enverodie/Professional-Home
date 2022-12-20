@@ -9,7 +9,7 @@
 	import NameGlitch from './../../components/nameGlitch.svelte';
 	import ArticleBox from './../../components/articleBox.svelte';
     import PageWrapper from '../../components/page-wrappers/grid.svelte'
-	import Navbar from '../../components/navbar.svelte';
+	import Navbar from '../../components/navbar/navbar.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 
