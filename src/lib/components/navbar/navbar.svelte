@@ -12,17 +12,24 @@
 
     let path = window.location.pathname;
     let windowWidth;
+
+    let displayed = false;
+    $: cssStyleString = "--displayed: " + (displayed? "block" : "none");
+
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
+<div class="mobileNavMenu"  style={cssStyleString}>
+    <button on:click={() => displayed = false}>Hide menu</button>
+</div>
 <nav>
     <div class="icon">
         <EnverodieIcon />
         <span>{getRouteName(path)}</span>
     </div>
     {#if (windowWidth < 800)}
-        <HamburgerNavElements />
+        <HamburgerNavElements bind:displayed />
     {:else}
         <HorizontalNavElements />
     {/if}
@@ -30,6 +37,17 @@
 
 <style lang="scss">
     
+    .mobileNavMenu {
+        position: absolute;
+        display: var(--displayed);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        background-color: var(--color5);
+    }
+
     nav {
         position: sticky;
         top: 0;
