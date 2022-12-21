@@ -4,6 +4,7 @@
 
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
+    export let footer = true;
 
     const boxesFromEdges = 2;
     let divSection; // set the style on this element directly
@@ -37,7 +38,9 @@
         </div>
     </div>
 </main>
-<Footer />
+{#if (footer)}
+    <Footer />
+{/if}
     
 <style lang="scss">
 

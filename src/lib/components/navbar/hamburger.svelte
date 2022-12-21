@@ -3,13 +3,12 @@
     export let displayed;
     function clickHamburger() {
         displayed = !displayed;
-        console.log(displayed);
     }
 
 </script>
 
 <button 
-    class="button"
+    class="{$$props.class} button"
     on:click={clickHamburger}>
     <div class="innerIcon">
         <i class="fa-solid fa-bars"></i>

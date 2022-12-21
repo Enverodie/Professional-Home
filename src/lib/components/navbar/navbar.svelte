@@ -5,24 +5,24 @@
      * routes to navigate to.
      */
 
+    import PageWrapper from '../page-wrappers/grid.svelte';
 	import EnverodieIcon from '../buttons/enverodieIcon.svelte';
     import { getRouteName } from '../../constants/navigableRoutes'
     import HorizontalNavElements from './horizontalNavElements.svelte';
-    import HamburgerNavElements from './hamburgerNavElements.svelte';
+    import HamburgerNavElements from './hamburger.svelte';
+    import HumbleAnchor from '../buttons/humbleAnchor.svelte';
+    import MobileNavLinks from './mobileNavLinks.svelte';
 
     let path = window.location.pathname;
     let windowWidth;
 
     let displayed = false;
-    $: cssStyleString = "--displayed: " + (displayed? "block" : "none");
 
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<div class="mobileNavMenu"  style={cssStyleString}>
-    <button on:click={() => displayed = false}>Hide menu</button>
-</div>
+<MobileNavLinks bind:displayed />
 <nav>
     <div class="icon">
         <EnverodieIcon />
@@ -36,17 +36,6 @@
 </nav>
 
 <style lang="scss">
-    
-    .mobileNavMenu {
-        position: absolute;
-        display: var(--displayed);
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 999;
-        background-color: var(--color5);
-    }
 
     nav {
         position: sticky;
