@@ -37,11 +37,11 @@
 
     .mobileNavMenu {
 
-        --animationTime: 1s;
-        --animationTimingFunction: ease;
+        --animationTime: .4s;
+        --animationTimingFunction: steps(4);
 
         position: fixed;
-        display: flex; // would be flex but initially is none so it doesn't get rendered
+        display: flex;
         visibility: hidden;
         flex-direction: column;
         top: 0;
