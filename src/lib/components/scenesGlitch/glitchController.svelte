@@ -56,14 +56,14 @@
 		user-select: none; /* Standard syntax */
 
 		--transitionInSpeed: .16s;
-		--transitionOutSpeed: .08s;
+		--transitionOutSpeed: .16s;
 
 		&>:global(.glitchItem1) {
 			transform: translate(-100%, 0%);
 			clip-path: polygon(0 0, 100% 0, 100% 10%, 0 35%);
 			animation: 
 				glitchInFromLeft var(--transitionInSpeed) steps(4) 0.4s forwards,
-				glitchOutToRight var(--transitionOutSpeed) steps(4) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
+				glitchOutToRight var(--transitionOutSpeed) steps(2) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
 
 		}
 		
@@ -72,7 +72,7 @@
 			clip-path: polygon(0 53%, 100% 78%, 100% 10%, 0 35%);
 			animation: 
 				glitchInFromLeft var(--transitionInSpeed) steps(3) 0.37s forwards,
-				glitchOutToRight var(--transitionOutSpeed) steps(3) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
+				glitchOutToRight var(--transitionOutSpeed) steps(5) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
 
 		}
 
@@ -81,7 +81,7 @@
 			clip-path: polygon(0 53%, 100% 78%, 100% 100%, 0 100%);
 			animation: 
 				glitchInFromLeft var(--transitionInSpeed) steps(6) 0.3s forwards,
-				glitchOutToRight var(--transitionOutSpeed) steps(6) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
+				glitchOutToRight var(--transitionOutSpeed) steps(4) calc(var(--switchTimingMS) - var(--transitionOutSpeed));
 
 		}
 
