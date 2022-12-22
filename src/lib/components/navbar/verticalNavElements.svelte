@@ -1,4 +1,9 @@
 <script>
+
+    /* The VerticalNavElements component provides an overlay for navigating 
+     * to available/unavailable routes, links given in a vertical layout for small displays.
+     */
+
     import PageWrapper from '../page-wrappers/grid.svelte';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
     import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES, INCOMPLETE_ROUTES } from '../../constants/navigableRoutes'
@@ -38,7 +43,8 @@
     .mobileNavMenu {
 
         --animationTime: .4s;
-        --animationTimingFunction: steps(4);
+        // --animationTimingFunction: steps(4);
+        --animationTimingFunction: ease;
 
         position: fixed;
         display: flex;
@@ -54,11 +60,51 @@
         transition: 
             transform var(--animationTime) var(--animationTimingFunction), 
             visibility var(--animationTime) linear;
+
+        &::before {
+            --color: var(--color2);
+            z-index: -2;
+        }
+
+        &::after {
+            --color: var(--color6);
+            z-index: -1;
+        }
+
+        &::before, &::after {
+
+            --transparencyGradientAmount: 4%;
+            --visibleAmount: 5%;
+
+            content: '';
+            // background-color: var(--color6);
+            background-image: linear-gradient(180deg, transparent 0%, var(--color) var(--transparencyGradientAmount), var(--color) calc(var(--transparencyGradientAmount) + var(--visibleAmount)), transparent calc(var(--transparencyGradientAmount) + var(--visibleAmount) + var(--transparencyGradientAmount)));
+            background-position-y: -50vh;
+            background-size: 200% 200%;
+            mask: url("../static/images/backgroundSquare.png") repeat center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 70%;
+        }
     }
 
     .active {
         visibility: visible;
         transform: translate(0, 0vh);
+
+        --elapsedTime: 1.8s;
+        // --timingFunction: cubic-bezier(.44,.1,0,1.0);
+        --timingFunction: cubic-bezier(.65,0,0,1.0);
+
+        &::before {
+            animation: deployNavigation var(--elapsedTime) var(--timingFunction) -.3s forwards;
+        }
+        &::after {
+            animation: deployNavigation var(--elapsedTime) var(--timingFunction) -.04s forwards;
+        }
     }
 
     :global(.hamburgerAdjust) {
@@ -73,6 +119,12 @@
         
         &>:global(.navButton) {
             margin: 1em 0;
+        }
+    }
+
+    @keyframes deployNavigation {
+        to {
+            background-position-y: 100vh;
         }
     }
 

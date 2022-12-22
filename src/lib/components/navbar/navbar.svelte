@@ -11,7 +11,7 @@
     import HorizontalNavElements from './horizontalNavElements.svelte';
     import HamburgerNavElements from './hamburger.svelte';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
-    import MobileNavLinks from './mobileNavLinks.svelte';
+    import MobileNavLinks from './verticalNavElements.svelte';
 
     let path = window.location.pathname;
     let windowWidth;
