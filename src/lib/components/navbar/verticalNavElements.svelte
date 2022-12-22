@@ -4,7 +4,6 @@
      * to available/unavailable routes, links given in a vertical layout for small displays.
      */
 
-    import PageWrapper from '../page-wrappers/grid.svelte';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
     import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES, INCOMPLETE_ROUTES } from '../../constants/navigableRoutes'
     import Hamburger from './hamburger.svelte';
