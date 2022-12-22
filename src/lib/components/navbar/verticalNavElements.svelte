@@ -61,7 +61,7 @@
             visibility var(--animationTime) linear;
 
         &::before {
-            --color: var(--color6);
+            --color: var(--color2);
             z-index: -2;
         }
 
@@ -70,6 +70,24 @@
             --color: var(--color5);
             z-index: 1;
             mask-position: calc(50% + var(--offset)) calc(50% + var(--offset)) !important;
+        }
+
+        &.active {
+            visibility: visible;
+            transform: translate(0, 0vh);
+
+            --startTimeOffset: -.3s;
+            --timeSpent: 10s; // for testing
+            --timeSpent: 1.8s;
+            --timingFunction: cubic-bezier(.65,0,0,1.0);
+
+            &::before, &::after {
+                --loopOpacity: 25%;
+                animation: 
+                    deployNavigation var(--timeSpent) var(--timingFunction) var(--startTimeOffset),
+                    gridAnimation var(--timeSpent) var(--timingFunction) calc(var(--startTimeOffset) + var(--timeSpent) + 1s) infinite;
+            }
+
         }
 
         &::before, &::after {
@@ -93,23 +111,6 @@
             position: absolute;
             top: 0;
             left: 0;
-        }
-    }
-
-    .active {
-        visibility: visible;
-        transform: translate(0, 0vh);
-
-        --startTimeOffset: -.3s;
-        --timeSpent: 10s; // for testing
-        --timeSpent: 1.8s;
-        --timingFunction: cubic-bezier(.65,0,0,1.0);
-
-        &::before, &::after {
-            --loopOpacity: 25%;
-            animation: 
-                deployNavigation var(--timeSpent) var(--timingFunction) var(--startTimeOffset),
-                gridAnimation var(--timeSpent) var(--timingFunction) calc(var(--startTimeOffset) + var(--timeSpent) + 1s) infinite;
         }
     }
 
@@ -143,6 +144,5 @@
             opacity: var(--loopOpacity);
         }
     }
-
 
 </style>
