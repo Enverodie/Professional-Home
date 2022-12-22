@@ -8,11 +8,10 @@
 
 	const renderableGlitchScenes = [RiverGlitch, CityGlitch]; // Update this when a new glitch scene is created and imported
 	const switchTiming = 6000; // in milliseconds
-	let currentView = renderableGlitchScenes[0] || null;
 	
 	// uses closure to make sure each call to incrementActiveGlitch() can only increment a number up to the length of the array
 	const incrementActiveGlitch = (() => new function() {
-		let activeGlitchIndex = 0;
+		let activeGlitchIndex = Math.floor(Math.random() * renderableGlitchScenes.length);
 		function inc() {
 			activeGlitchIndex = (activeGlitchIndex + 1) % renderableGlitchScenes.length;
 			return activeGlitchIndex;
@@ -20,8 +19,14 @@
 		return inc;
 	})();
 
-	let renderGlitchScenesID = setInterval(() => {
+	let currentView = null;
+	function setNewScene() {
 		currentView = renderableGlitchScenes[incrementActiveGlitch()];
+	}
+	setNewScene();
+
+	let renderGlitchScenesID = setInterval(() => {
+		setNewScene();
 	}, switchTiming);
 
 	onDestroy(() => clearInterval(renderGlitchScenesID))
