@@ -43,7 +43,6 @@
     .mobileNavMenu {
 
         --animationTime: .4s;
-        // --animationTimingFunction: steps(4);
         --animationTimingFunction: ease;
 
         position: fixed;
@@ -62,13 +61,15 @@
             visibility var(--animationTime) linear;
 
         &::before {
-            --color: var(--color2);
+            --color: var(--color6);
             z-index: -2;
         }
 
         &::after {
-            --color: var(--color6);
-            z-index: -1;
+            --offset: 3px;
+            --color: var(--color5);
+            z-index: 1;
+            mask-position: calc(50% + var(--offset)) calc(50% + var(--offset)) !important;
         }
 
         &::before, &::after {
@@ -77,8 +78,13 @@
             --visibleAmount: 5%;
 
             content: '';
-            // background-color: var(--color6);
-            background-image: linear-gradient(180deg, transparent 0%, var(--color) var(--transparencyGradientAmount), var(--color) calc(var(--transparencyGradientAmount) + var(--visibleAmount)), transparent calc(var(--transparencyGradientAmount) + var(--visibleAmount) + var(--transparencyGradientAmount)));
+            pointer-events: none;
+            background-image: linear-gradient(180deg, 
+                transparent 0%, 
+                var(--color) var(--transparencyGradientAmount), 
+                var(--color) calc(var(--transparencyGradientAmount) + var(--visibleAmount)), 
+                transparent calc(var(--transparencyGradientAmount) + var(--visibleAmount) + var(--transparencyGradientAmount))
+                );
             background-position-y: -50vh;
             background-size: 200% 200%;
             mask: url("../static/images/backgroundSquare.png") repeat center;
@@ -87,7 +93,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 70%;
         }
     }
 
@@ -95,15 +100,16 @@
         visibility: visible;
         transform: translate(0, 0vh);
 
-        --elapsedTime: 1.8s;
-        // --timingFunction: cubic-bezier(.44,.1,0,1.0);
+        --startTimeOffset: -.3s;
+        --timeSpent: 10s; // for testing
+        --timeSpent: 1.8s;
         --timingFunction: cubic-bezier(.65,0,0,1.0);
 
-        &::before {
-            animation: deployNavigation var(--elapsedTime) var(--timingFunction) -.3s forwards;
-        }
-        &::after {
-            animation: deployNavigation var(--elapsedTime) var(--timingFunction) -.04s forwards;
+        &::before, &::after {
+            --loopOpacity: 25%;
+            animation: 
+                deployNavigation var(--timeSpent) var(--timingFunction) var(--startTimeOffset),
+                gridAnimation var(--timeSpent) var(--timingFunction) calc(var(--startTimeOffset) + var(--timeSpent) + 1s) infinite;
         }
     }
 
@@ -125,6 +131,16 @@
     @keyframes deployNavigation {
         to {
             background-position-y: 100vh;
+        }
+    }
+
+    @keyframes gridAnimation {
+        from {
+            opacity: var(--loopOpacity);
+        }
+        to {
+            background-position-y: 100vh;
+            opacity: var(--loopOpacity);
         }
     }
 
