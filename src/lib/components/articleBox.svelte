@@ -22,6 +22,7 @@
 </script>
 
 <article 
+    id={$$props.id}
     bind:this={article}
     bind:clientHeight={height}
     style='{extraStyles}; --padding-adjust-bottom:{padding}px;'

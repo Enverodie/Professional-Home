@@ -1,16 +1,14 @@
 <script>
 
-    /* The Navbar component is a universal component that provides site navigation at the top of the page.
+    /* The Navigation component is a universal component that provides site navigation at the top of the page.
      * It displays the icon to go to the homepage, as well as buttons for every available (and some not-yet-available)
      * routes to navigate to.
      */
 
-    import PageWrapper from '../page-wrappers/grid.svelte';
 	import EnverodieIcon from '../buttons/enverodieIcon.svelte';
     import { getRouteName } from '../../constants/navigableRoutes'
     import HorizontalNavElements from './horizontalNavElements.svelte';
     import HamburgerNavElements from './hamburger.svelte';
-    import HumbleAnchor from '../buttons/humbleAnchor.svelte';
     import MobileNavLinks from './verticalNavElements.svelte';
 
     let path = window.location.pathname;
@@ -23,28 +21,35 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <MobileNavLinks bind:displayed />
-<nav>
-    <div class="icon">
-        <EnverodieIcon />
-        <span>{getRouteName(path)}</span>
+<div class="stickToTop">
+    <nav>
+        <div class="icon">
+            <EnverodieIcon />
+            <span>{getRouteName(path)}</span>
+        </div>
+        {#if (windowWidth < 800)}
+            <HamburgerNavElements bind:displayed />
+        {:else}
+            <HorizontalNavElements />
+        {/if}
+    </nav>
+    <div style="position: absolute; right: 0;">
+        <slot name="inPageNav"></slot>
     </div>
-    {#if (windowWidth < 800)}
-        <HamburgerNavElements bind:displayed />
-    {:else}
-        <HorizontalNavElements />
-    {/if}
-</nav>
+</div>
 
 <style lang="scss">
 
-    nav {
+    .stickToTop {
         position: sticky;
         top: 0;
         z-index: 10;
         margin: 0;
+    }
+
+    nav {
         background-color: var(--color5);
         padding: .5em 1em;
-        // margin-bottom: 2em;
 
         display: flex;
         flex-direction: row;

@@ -4,6 +4,8 @@
 
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
+    import Navigation from '../navigation/navigation.svelte';
+    export let navigation = true;
     export let footer = true;
 
     const boxesFromEdges = 2;
@@ -27,6 +29,9 @@
 
 </script>
 
+{#if (navigation)}
+    <Navigation />
+{/if}
 <main bind:clientWidth={width} >
     <div class="staticPadding">
         <div 
