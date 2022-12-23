@@ -70,12 +70,6 @@
 
 {#if (navigation)}
     <Navigation>
-        <!-- <div class="mainGrid" slot="inPageNav">
-            <div class="blank" style="width: 100%; height: 0;" aria-hidden="true"></div>
-            <div class="inPageNav" style="--height: {navboxH}px" bind:this={navContainerElement}>
-                <SidebarNav />
-            </div>
-        </div> -->
         <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={navContainerElement}>
             <SidebarNav />
         </div>
@@ -89,7 +83,7 @@
         >
         <slot></slot>
     </div>
-    <aside class="stickyItem"></aside> <!-- May be useful later -->
+    <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
 </main>
 {#if (footer)}
     <Footer />
@@ -98,14 +92,6 @@
 <style lang="scss">
 
     @import '../../routes/background.scss';
-
-    .blank {
-        pointer-events: none;
-        user-select: none;
-        height: 0;
-        width: 0;
-        visibility: hidden;
-    }
 
     .mainGrid {
         width: 100%;
@@ -135,8 +121,6 @@
     }
     
     .inPageNav {
-        // TODO: Finish this
-        // grid-column: 2;
         display: none;
         position: relative;
         margin: 0 auto;
