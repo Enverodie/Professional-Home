@@ -33,7 +33,7 @@
             <HorizontalNavElements />
         {/if}
     </nav>
-    <div style="position: absolute; right: 0;">
+    <div style="position: absolute; right: 0; overflow: hidden;">
         <slot name="inPageNav"></slot>
     </div>
 </div>
