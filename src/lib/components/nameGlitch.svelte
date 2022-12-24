@@ -8,11 +8,11 @@
 
 </script>
 
-<h2 class="{$$props.class} glitch">
+<h1 class="{$$props.class} glitch">
     <span><slot></slot></span>
     <span aria-hidden="true"><slot></slot></span>
     <span aria-hidden="true"><slot></slot></span>
-</h2>
+</h1>
 
 <style lang='scss'>
 
