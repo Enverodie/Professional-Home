@@ -1,17 +1,20 @@
 <script>
-
+    
     /* The GridWSideNav component establishes a main section with horizontal spacing, 
      * allowing for a side navigation component, aligning with a background grid image. 
      */
-
+    
     import { onMount } from 'svelte';
     import Navigation from '../navigation/navigation.svelte';
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
     import SidebarNav from '../sidebarNav.svelte';
-
+	import IntersectionHandler from './../intersectionHandler.svelte';
+    
     export let navigation = true;
     export let footer = true;
+    export let trackedIDs = [];
+    export let positionPercent = 0;
 
     let mainElement, navContainerElement;
 
@@ -32,7 +35,6 @@
         if (navContainerElement) {
             let nCE = navContainerElement.getBoundingClientRect();
             navboxClientY = nCE.y;
-            console.log(windowHeight + "-" + navboxClientY + "-" + Math.max((-mainH - mainClientY + windowHeight), 0));
             navboxH = windowHeight - navboxClientY - Math.max((-mainH - mainClientY + windowHeight), 0);
         }
     }
@@ -66,12 +68,13 @@
 
 </script>
 
+<IntersectionHandler bind:trackedIDs bind:positionPercent />
 <svelte:window bind:innerHeight={windowHeight} on:resize={updateGeometryData} on:scroll={updateGeometryData} />
 
 {#if (navigation)}
     <Navigation>
         <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={navContainerElement}>
-            <SidebarNav />
+            <SidebarNav bind:scrollToSections={trackedIDs} bind:positionPercent />
         </div>
     </Navigation>
 {/if}

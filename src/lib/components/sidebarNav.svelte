@@ -1,7 +1,8 @@
 <script>
 
     // export let scrollToSections = ["about", "test", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "showcase"];
-    export let scrollToSections = ["about", "showcase"];
+    export let scrollToSections = [];
+    export let positionPercent = 0;
 
     let altText = "Navigate to ";
 
