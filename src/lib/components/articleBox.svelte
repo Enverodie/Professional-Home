@@ -21,6 +21,7 @@
 
 </script>
 
+<div style="margin-top:58px" />
 <article 
     id={$$props.id}
     bind:this={article}
@@ -56,7 +57,6 @@
         padding:
             // calc(var(--defaultPadding) + (var(--padding-adjust-bottom) / 2)) 
             var(--defaultPadding);
-        margin-top: 58px;
         // margin-bottom: calc(var(--boxImgSize) * 2 - var(--padding-adjust-bottom));
         display: flex;
         justify-content: center;

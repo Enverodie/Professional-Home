@@ -22,7 +22,8 @@
 
     function calculateUIValue() {
         let position = 0;
-        for (let i = 0, id = trackedIDs[i]; i < trackedIDs.length; i++) {
+        for (let i = 0; i < trackedIDs.length; i++) {
+            let id = trackedIDs[i]
             position = i;
             if (visibleElements.has(id)) break;
         }
@@ -43,8 +44,7 @@
      */
     function addIntersectionObservers(idArray) {
         let options = {
-            rootMargin: '20% 0px',
-            threshold: .5
+            threshold: .2
         }
         let observer = new IntersectionObserver(onIntersect, options);
         for (let id of idArray) {
