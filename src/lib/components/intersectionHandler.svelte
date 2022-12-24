@@ -42,6 +42,7 @@
      */
     function addIntersectionObservers(idArray) {
         let options = {
+            rootMargin: "-20% 0px"
             // threshold: .1
         }
         let observer = new IntersectionObserver(onIntersect, options);
