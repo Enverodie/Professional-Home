@@ -1,13 +1,11 @@
 <script>
 
     import { onMount } from 'svelte';
-	import ProjectShowcaseLink from './../routes/index/project-showcase/projectShowcaseLink.svelte';
 
     export let trackedIDs = [];
-    export let positionPercent = 0;
+    export let position = 0;
     
     let visibleElements = new Set();
-    let root;
     
     function addToVisible(intersectsArray) {
         for (let intersect of intersectsArray) {
@@ -21,20 +19,20 @@
     }
 
     function calculateUIValue() {
-        let position = 0;
+        let positionBuilding = 0;
         for (let i = 0; i < trackedIDs.length; i++) {
             let id = trackedIDs[i]
-            position = i;
+            positionBuilding = i;
             if (visibleElements.has(id)) break;
         }
-        position += Math.max(visibleElements.size-1, 0) / 2.0;
-        positionPercent = position / (trackedIDs.length - 1.0);
+        positionBuilding += Math.max(visibleElements.size-1, 0) / 2.0;
+        position = positionBuilding;
+        // positionPercent = positionBuilding / (trackedIDs.length - 1.0);
     }
 
     function onIntersect(intersects) {
         addToVisible(intersects);
         calculateUIValue();
-        console.log(positionPercent);
     }
 
     /**
@@ -44,7 +42,7 @@
      */
     function addIntersectionObservers(idArray) {
         let options = {
-            threshold: .2
+            // threshold: .1
         }
         let observer = new IntersectionObserver(onIntersect, options);
         for (let id of idArray) {

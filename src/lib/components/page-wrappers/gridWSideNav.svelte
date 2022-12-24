@@ -14,7 +14,7 @@
     export let navigation = true;
     export let footer = true;
     export let trackedIDs = [];
-    export let positionPercent = 0;
+    export let position = 0;
 
     let mainElement, navContainerElement;
 
@@ -68,13 +68,13 @@
 
 </script>
 
-<IntersectionHandler bind:trackedIDs bind:positionPercent />
+<IntersectionHandler bind:trackedIDs bind:position />
 <svelte:window bind:innerHeight={windowHeight} on:resize={updateGeometryData} on:scroll={updateGeometryData} />
 
 {#if (navigation)}
     <Navigation>
         <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={navContainerElement}>
-            <SidebarNav bind:scrollToSections={trackedIDs} bind:positionPercent />
+            <SidebarNav bind:scrollToSections={trackedIDs} bind:position />
         </div>
     </Navigation>
 {/if}

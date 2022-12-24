@@ -10,11 +10,15 @@
     import HorizontalNavElements from './horizontalNavElements.svelte';
     import HamburgerNavElements from './hamburger.svelte';
     import MobileNavLinks from './verticalNavElements.svelte';
+    import { navbar } from '../../stores/gui.js'
 
     let path = window.location.pathname;
     let windowWidth;
 
+    let nav;
     let displayed = false;
+
+    $: nav && navbar.set(nav);
 
 </script>
 
@@ -22,7 +26,7 @@
 
 <MobileNavLinks bind:displayed />
 <div class="stickToTop">
-    <nav>
+    <nav bind:this={nav}>
         <div class="icon">
             <EnverodieIcon />
             <span>{getRouteName(path)}</span>

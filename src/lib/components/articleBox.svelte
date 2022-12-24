@@ -6,16 +6,23 @@
      */
 
 	import { SQUARE_IMG_SIZE } from './../constants/grid.js';
+    import { navbar } from '../stores/gui.js';
 
     export let extraStyles = "";
 
-    let article, height;
+    let navbarHeight = 0;
     
-    let buffer = 0; 
+    navbar.subscribe(newNavbar => {
+        if (newNavbar) {
+            navbarHeight = newNavbar.getBoundingClientRect().height;
+        }
+    })
+
+    let height;
+
     let padding = 0; 
 
-    $: if (article !== undefined && height !== undefined) {
-        console.log(height, SQUARE_IMG_SIZE, height % SQUARE_IMG_SIZE)
+    $: if (height !== undefined) {
         padding = height % SQUARE_IMG_SIZE;
     }
 
@@ -24,9 +31,8 @@
 <div style="margin-top:58px" />
 <article 
     id={$$props.id}
-    bind:this={article}
     bind:clientHeight={height}
-    style='{extraStyles}; --padding-adjust-bottom:{padding}px;'
+    style='{extraStyles}; --padding-adjust-bottom:{padding}px; --jumpTo-Margin: {navbarHeight}px'
     >
     <div class="slotContainer">
         <slot></slot>
@@ -62,7 +68,7 @@
         justify-content: center;
         flex-direction: column;
         width: 100%;
-        
+        scroll-margin-top: calc(var(--jumpTo-Margin) + 1em);
         
     }
 
