@@ -28,7 +28,6 @@
 
 </script>
 
-<div style="margin-top:58px" />
 <article 
     id={$$props.id}
     bind:clientHeight={height}
@@ -64,6 +63,7 @@
             // calc(var(--defaultPadding) + (var(--padding-adjust-bottom) / 2)) 
             var(--defaultPadding);
         // margin-bottom: calc(var(--boxImgSize) * 2 - var(--padding-adjust-bottom));
+        margin-top: 58px;
         display: flex;
         justify-content: center;
         flex-direction: column;
