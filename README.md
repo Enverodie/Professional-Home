@@ -1,4 +1,4 @@
 # Enverodie.com
 ## Official code repository
 
-This project uses Svelte v3 with SCSS.
+This project uses SvelteKit with SCSS.
