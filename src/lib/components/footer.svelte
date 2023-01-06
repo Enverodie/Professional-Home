@@ -4,7 +4,7 @@
             Enverodie.com, &copy; 2022 Stephen M. Smith
         </div>
         <div class="column">
-            <img id="mascotWithSign" src="/static/images/footer.png" alt="Enverodie mascot" />
+            <img id="mascotWithSign" src="/images/footer.png" alt="Enverodie mascot" />
         </div>
     </div>
 </footer>

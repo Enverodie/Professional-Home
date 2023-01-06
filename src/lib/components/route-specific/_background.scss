@@ -1,5 +1,5 @@
 @mixin gridBackgroundImage($hueRotate, $saturation, $hueBrightness, $opacity: 1) {
-    background: url('/static/images/backgroundSquareRed.png') repeat;
+    background: url('/images/backgroundSquareRed.png') repeat;
     background-position-x: center;
     filter: 
         hue-rotate($hueRotate)
@@ -13,7 +13,7 @@
 }
 
 @mixin gridBackgroundImageNoFilter() {
-    background: url('/static/images/backgroundSquarePinkTransparent.png') repeat;
+    background: url('/images/backgroundSquarePinkTransparent.png') repeat;
     background-position-x: center;
     isolation: isolate;
 }

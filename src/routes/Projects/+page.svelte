@@ -2,13 +2,12 @@
 
     /* This is the base component for the /Projects route. */
 
-	import About from './../index/about/about.svelte';
-	import HumbleAnchor from './../../components/buttons/humbleAnchor.svelte';
-	import SimulationCanvas from './simulationCanvas.svelte';
-	import ShowcaseItem from './showcaseItem.svelte';
-	import NameGlitch from './../../components/nameGlitch.svelte';
-	import ArticleBox from './../../components/articleBox.svelte';
-    import PageWrapper from '../../components/page-wrappers/grid.svelte'
+    import PageWrapper from '$lib/components/page-wrappers/grid.svelte'
+	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
+	import SimulationCanvas from '$lib/components/route-specific/projects/simulationCanvas.svelte';
+	import ShowcaseItem from '$lib/components/route-specific/projects/showcaseItem.svelte';
+	import NameGlitch from '$lib/components/nameGlitch.svelte';
+	import ArticleBox from '$lib/components/articleBox.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 
@@ -20,10 +19,10 @@
     }
 
     let simulationSandboxImages = [
-        new showcaseImage("/static/images/showcase/simulationSandbox01.png", "Colorful field of cellular automata on black background", "Conway's Game of Life lifeforms clashing with a 1D cellular automata"),
-        new showcaseImage("/static/images/showcase/simulationSandbox02.png", "Colorful field of cellular automata on black background", "Merge chaos in multiple dimensions"),
-        new showcaseImage("/static/images/showcase/simulationSandbox03.png", "Pink Conway cells flowing from purple 1D automata on black background", "Watch strange emergent properties and interesting phenomena result from your experiments"),
-        new showcaseImage("/static/images/showcase/simulationSandbox04.png", "Multiple 1D cellular automata in faint triangles flowing and merging downwards", "And see how lifeforms can clash")
+        new showcaseImage("/images/showcase/simulationSandbox01.png", "Colorful field of cellular automata on black background", "Conway's Game of Life lifeforms clashing with a 1D cellular automata"),
+        new showcaseImage("/images/showcase/simulationSandbox02.png", "Colorful field of cellular automata on black background", "Merge chaos in multiple dimensions"),
+        new showcaseImage("/images/showcase/simulationSandbox03.png", "Pink Conway cells flowing from purple 1D automata on black background", "Watch strange emergent properties and interesting phenomena result from your experiments"),
+        new showcaseImage("/images/showcase/simulationSandbox04.png", "Multiple 1D cellular automata in faint triangles flowing and merging downwards", "And see how lifeforms can clash")
     ]
 
 </script>
@@ -49,7 +48,7 @@
             <div class="buttonsFlex">
                 <HumbleAnchor href="https://github.com/Enverodie/SimulationSandbox" target="_blank">
                     Source code
-                    <i slot="icon"><img src="./static/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/></i>
+                    <i slot="icon"><img src="/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/></i>
                 </HumbleAnchor>
                 <HumbleAnchor href="http://simulationsandbox.enverodie.com/" target="_blank">
                     Play! 

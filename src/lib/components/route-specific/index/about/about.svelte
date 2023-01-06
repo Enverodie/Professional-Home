@@ -42,7 +42,7 @@
         </div>
         <div class="gridItem"></div>
         <div class="gridItem">
-            <img src="/static/images/about.png" alt="Enverodie mascot waving image" />
+            <img src="/images/about.png" alt="Enverodie mascot waving" />
         </div>
     </div>
 </div>

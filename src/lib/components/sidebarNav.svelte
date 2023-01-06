@@ -31,11 +31,11 @@
 
             {#if (index === positionInt)}
                 <span class="navDiamond" style="--topPercent: {positionFloat * 100}%">
-                    <img src="/static/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
+                    <img src="/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
                 </span>
             {/if}
             <img 
-                src="/static/svgs/sidebarNav/endcapDiamond.svg" 
+                src="/svgs/sidebarNav/endcapDiamond.svg" 
                 alt={altText + location} 
                 />
 
@@ -43,11 +43,11 @@
 
             {#if (index === positionInt)}
                 <span class="navDiamond" style="--topPercent: {positionFloat * 100}%">
-                    <img src="/static/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
+                    <img src="/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
                 </span>
             {/if}
             <img 
-                src="/static/svgs/sidebarNav/endcapDiamond.svg" 
+                src="/svgs/sidebarNav/endcapDiamond.svg" 
                 alt={altText + location} 
                 style="transform: rotate(180deg);"
                 />
@@ -56,11 +56,11 @@
 
             {#if (index === positionInt)}
                 <span class="navDiamond" style="--topPercent: {positionFloat * 100}%">
-                    <img src="/static/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
+                    <img src="/svgs/sidebarNav/locationDiamondSized.svg" alt="Diamond" />
                 </span>
             {/if}
             <img
-                src="/static/svgs/sidebarNav/middleDiamond.svg"
+                src="/svgs/sidebarNav/middleDiamond.svg"
                 alt={altText + location}
                 />
 

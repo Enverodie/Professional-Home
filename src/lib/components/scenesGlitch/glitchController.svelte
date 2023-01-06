@@ -2,7 +2,7 @@
 
 	/* GlitchController accumulates all the glitch scenes in one and scrolls through them on a fixed time interval. */
 
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import RiverGlitch from './riverGlitch.svelte';
 	import CityGlitch from './cityGlitch.svelte';
 
@@ -23,11 +23,17 @@
 	function setNewScene() {
 		currentView = renderableGlitchScenes[incrementActiveGlitch()];
 	}
-	setNewScene();
 
-	let renderGlitchScenesID = setInterval(() => {
+	let renderGlitchScenesID;
+	
+	onMount(() => {
 		setNewScene();
-	}, switchTiming);
+
+		renderGlitchScenesID = setInterval(() => {
+			setNewScene();
+		}, switchTiming);
+	})
+
 
 	onDestroy(() => clearInterval(renderGlitchScenesID))
 

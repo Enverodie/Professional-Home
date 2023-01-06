@@ -18,6 +18,8 @@
         if (carouselIndex < 0) carouselIndex = images.length - 1;
     }
 
+    let cursorPosition;
+
 </script>
 
 <div style="width: 100%; height: 100%; position: relative; box-sizing: border-box;">

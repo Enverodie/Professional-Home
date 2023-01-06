@@ -1,8 +1,11 @@
 <script>
-    import { NAVIGABLE_ROUTES, INCOMPLETE_ROUTES, getRouteName, printClass, splitPascalCase } from '../../constants/navigableRoutes'
+    import { page } from '$app/stores';
+    import { NAVIGABLE_ROUTES, INCOMPLETE_ROUTES, getRouteName, printClass, splitPascalCase } from '../../constants/navigableRoutes';
     import HumbleAnchor from "../buttons/humbleAnchor.svelte";
 
-    let path = window.location.pathname;
+    // let path = window.location.pathname;
+    let path = $page.url.pathname;
+
 </script>
 
 <div class="navElements">

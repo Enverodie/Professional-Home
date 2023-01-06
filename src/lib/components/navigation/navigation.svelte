@@ -11,8 +11,10 @@
     import HamburgerNavElements from './hamburger.svelte';
     import MobileNavLinks from './verticalNavElements.svelte';
     import { navbar } from '../../stores/gui.js'
+    import { page } from '$app/stores'
 
-    let path = window.location.pathname;
+    // let path = window.location.pathname;
+    let path = $page.url.pathname;
     let windowWidth;
 
     let nav;

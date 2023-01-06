@@ -4,13 +4,16 @@
      * to available/unavailable routes, links given in a vertical layout for small displays.
      */
 
+    import { page } from '$app/stores';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
     import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES, INCOMPLETE_ROUTES } from '../../constants/navigableRoutes'
     import Hamburger from './hamburger.svelte';
 
+
     export let displayed = false;
 
-    let path = window.location.pathname;
+    // let path = window.location.pathname;
+    let path = $page.url.pathname;
 
 </script>
 
@@ -104,7 +107,7 @@
                 );
             background-position-y: -50vh;
             background-size: 200% 200%;
-            mask: url("../static/images/backgroundSquare.png") repeat center;
+            mask: url("/images/backgroundSquare.png") repeat center;
             width: 100%;
             height: 100%;
             position: absolute;

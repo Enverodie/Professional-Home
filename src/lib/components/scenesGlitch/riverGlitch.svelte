@@ -1,7 +1,7 @@
 <div class="wireframeContainer {$$props.class}">
-    <img class="layer3" src="/static/svgs/riverwireframe/riverwireframe layer 3.svg" alt="" aria-hidden="true" />
-    <img class="layer2" src="/static/svgs/riverwireframe/riverwireframe layer 2.svg" alt="" aria-hidden="true" />
-    <img class="layer1" src="/static/svgs/riverwireframe/riverwireframe layer 1.svg" alt="" aria-hidden="true" />
+    <img class="layer3" src="/svgs/riverwireframe/riverwireframe layer 3.svg" alt="" aria-hidden="true" />
+    <img class="layer2" src="/svgs/riverwireframe/riverwireframe layer 2.svg" alt="" aria-hidden="true" />
+    <img class="layer1" src="/svgs/riverwireframe/riverwireframe layer 1.svg" alt="" aria-hidden="true" />
 </div>
 
 <style lang="scss">

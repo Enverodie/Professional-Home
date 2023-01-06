@@ -94,7 +94,7 @@
     
 <style lang="scss">
 
-    @import '../../routes/background.scss';
+    @import '../route-specific/background.scss';
 
     .mainGrid {
         width: 100%;

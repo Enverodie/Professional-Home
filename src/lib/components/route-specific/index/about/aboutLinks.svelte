@@ -7,7 +7,7 @@
 
          <a id="aboutLinks-LinkedIn" href="https://www.linkedin.com/in/enverodie/" target="_blank">
             <label for="aboutLinks-LinkedIn">LinkedIn</label>
-            <img src="./static/svgs/LinkedIn-Logos/LI-In-Bug.png" alt="Linkedin" />
+            <img src="/svgs/LinkedIn-Logos/LI-In-Bug.png" alt="Linkedin" />
         </a>
     </div>
     <!-- 
@@ -17,7 +17,7 @@
      <div>
          <a id="aboutLinks-GitHub" href="https://github.com/Enverodie" target="_blank">
             <label for="aboutLinks-GitHub">GitHub</label>
-            <img src="./static/svgs/github-mark/github-mark-white.svg" alt="Github" />
+            <img src="/svgs/github-mark/github-mark-white.svg" alt="Github" />
         </a>
     </div>
     <div>

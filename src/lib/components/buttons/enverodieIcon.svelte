@@ -1,5 +1,5 @@
 <a href='/'>
-    <img src='static/svgs/E_logo.svg' alt="Enverodie home" />
+    <img src='/svgs/E_logo.svg' alt="Enverodie home" />
 </a>
 
 <style>

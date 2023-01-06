@@ -1,8 +1,19 @@
-// svelte.config.js
-const preprocess = require('svelte-preprocess');
+import adapter from '@sveltejs/adapter-node';
+import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess.js';
 
-module.exports = {
-    preprocess: preprocess(),
-    // ...other svelte options could go here
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	preprocess: sveltePreprocess(
+		// {
+		// 	scss: {
+		// 		includePaths: ['src/scss'],
+		// 		prependData: `@use 'src/lib/styles/global.scss';`
+		// 	}
+		// }
+	),
+	kit: {
+		adapter: adapter()
+	}
 };
 
+export default config;

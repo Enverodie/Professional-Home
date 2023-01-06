@@ -13,7 +13,7 @@
     <section class="showcaseColumn showcase1">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase1 showcasePadding" href="http://simulationsandbox.enverodie.com/" target="_blank" item={1} backgroundImage='/static/images/showcase1_thumbnail.png'>
+                <ShowcaseItem class="innerShowcase1 showcasePadding" href="http://simulationsandbox.enverodie.com/" target="_blank" item={1} backgroundImage='/images/showcase1_thumbnail.png'>
                     Simulation Sandbox
                 </ShowcaseItem>
             </div>
@@ -22,7 +22,7 @@
     <section class="showcaseColumn showcase2">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase2 showcasePadding" href="#" item={2} backgroundImage='/static/images/showcase3_thumbnail.jpg'>
+                <ShowcaseItem class="innerShowcase2 showcasePadding" href="#" item={2} backgroundImage='/images/showcase3_thumbnail.jpg'>
                     Strange Structure
                 </ShowcaseItem>
             </div>
@@ -33,14 +33,14 @@
 
             <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase3 showcasePadding" href="#" item={3} backgroundImage='/static/images/showcase4_thumbnail.jpg'>
+                    <ShowcaseItem class="innerShowcase3 showcasePadding" href="#" item={3} backgroundImage='/images/showcase4_thumbnail.jpg'>
                         Time
                     </ShowcaseItem>
                 </div>
             </section>
             <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase4" href="/Projects" item={4} backgroundImage='/static/images/showcase2_thumbnail.jpg'>
+                    <ShowcaseItem class="innerShowcase4" href="/Projects" item={4} backgroundImage='/images/showcase2_thumbnail.jpg'>
                         More
                     </ShowcaseItem>
                 </div>
