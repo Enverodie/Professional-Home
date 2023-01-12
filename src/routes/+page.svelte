@@ -8,18 +8,27 @@
 	import Showcase from '$lib/components/route-specific/index/project-showcase/projectShowcase.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
 
+	const borderColor = "var(--color7)";
+
 	let trackedIDs = ["about", "showcase"]; // must be in order of appearance on page
+	let viewportPosition;
+
+	$: viewportPositionFull = Math.floor(viewportPosition);
 
 </script>
 <Header />
-<PageWrapper bind:trackedIDs>
+<PageWrapper bind:trackedIDs bind:position={viewportPosition}>
 
-	<ArticleBox id="about" extraStyles="border-color: var(--color7)">
+	<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPositionFull === 0) ? `border-color: ${borderColor}` : ''} >
 		<About />
 	</ArticleBox>
 
-	<ArticleBox id="showcase">
+	<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPositionFull === 1) ? `border-color: ${borderColor}` : ''}>
 		<Showcase />
+	</ArticleBox>
+
+	<ArticleBox id={trackedIDs[2]} extraStyles="padding: 0; {(viewportPositionFull === 2) ? `border-color: ${borderColor}` : ''}" >
+		<IWasHere />
 	</ArticleBox>
 	
 </PageWrapper>

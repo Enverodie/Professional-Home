@@ -69,6 +69,7 @@
         flex-direction: column;
         width: 100%;
         scroll-margin-top: calc(var(--jumpTo-Margin) + 1em);
+        transition: border .5s ease;
         
     }
 
