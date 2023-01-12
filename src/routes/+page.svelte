@@ -7,10 +7,11 @@
 	import About from '$lib/components/route-specific/index/about/about.svelte';
 	import Showcase from '$lib/components/route-specific/index/project-showcase/projectShowcase.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
+	import IWasHere from '$lib/components/route-specific/index/i-was-here/iWasHere.svelte';
 
 	const borderColor = "var(--color7)";
 
-	let trackedIDs = ["about", "showcase"]; // must be in order of appearance on page
+	let trackedIDs = ["about", "showcase", "iWasHere"]; // must be in order of appearance on page
 	let viewportPosition;
 
 	$: viewportPositionFull = Math.floor(viewportPosition);
