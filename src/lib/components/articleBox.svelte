@@ -5,7 +5,8 @@
      * These things can be styled specifically by updating the extraStyles prop.
      */
 
-	import { SQUARE_IMG_SIZE } from './../constants/grid.js';
+    import { onMount } from 'svelte';
+    import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '$lib/constants/grid.js';
     import { navbar } from '../stores/gui.js';
 
     export let extraStyles = "";
@@ -22,18 +23,24 @@
 
     let padding = 0; 
 
-    $: if (height !== undefined) {
-        padding = height % SQUARE_IMG_SIZE;
-    }
+    // $: if (height !== undefined) {
+    //     padding = height % SQUARE_IMG_SIZE;
+    // }
+
+    onMount(() => {
+        console.log("Height: " + height);
+        console.log((height%SQUARE_IMG_SIZE)/2);
+        padding = (height % SQUARE_IMG_SIZE)-SQUARE_IMG_WHITESPACE / 2;
+    })
 
 </script>
 
 <article 
     id={$$props.id}
-    bind:clientHeight={height}
+    bind:offsetHeight={height}
     style='{extraStyles}; --padding-adjust-bottom:{padding}px; --jumpTo-Margin: {navbarHeight}px'
     >
-    <div class="slotContainer">
+    <div class="slotContainer" style="--squaresBuffer: {padding}px">
         <slot></slot>
     </div>
 </article>
@@ -82,7 +89,7 @@
         content: '';
         display: flex;
         width: 100%;
-        height: var(--squaresBuffer);
+        // padding-top: var(--squaresBuffer);
     }
 
 </style>
