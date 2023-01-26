@@ -1,6 +1,6 @@
 <script>
     
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate } from 'svelte';
     import { fabric } from 'fabric';
 	import Controls from './controls.svelte';
 
@@ -9,7 +9,7 @@
     const canvasSize = 3000;
     
     let containerWidth, containerHeight;
-    let canvas, placeCanvas, canvasContainer;
+    let canvas;
     
     let rotationNumber, color;
     let lastClickPosition = {x: 0, y:0};
@@ -41,26 +41,24 @@
         }
     }
 
-    $: { // set canvas size when dependencies change
-        if (canvas) {
-            canvas.setWidth(containerWidth);
-            canvas.setHeight(containerHeight);
-        }
+    function setCanvasDimensions() {
+        canvas.setWidth(containerWidth);
+        canvas.setHeight(containerHeight);
     }
 
-    $: { // set the text to the last clicked position
-        if (canvas) {
-            fabricText.set('left', Math.min(Math.max(lastClickPosition.x, 0), canvasSize-fontSize));
-            fabricText.set('top', Math.min(Math.max(lastClickPosition.y, 0), canvasSize-fontSize));
-            canvas.renderAll();            
-        }
+    function updateTextPosition() {
+        fabricText.set('left', Math.min(Math.max(lastClickPosition.x, 0), canvasSize-fontSize));
+        fabricText.set('top', Math.min(Math.max(lastClickPosition.y, 0), canvasSize-fontSize));
+        canvas.renderAll();            
     }
 
     onMount(() => {
 
         canvas = new fabric.Canvas('placeCanvas');
+        setCanvasDimensions();
         canvas.selection = false;
         lastClickPosition = {x: containerWidth/2, y: containerHeight/2}; // lets the text be initially positioned in a visible spot
+        updateTextPosition();
 
         canvas.add(fabricText);
 
@@ -71,6 +69,7 @@
             opt.e.stopPropagation();
             lastClickPosition = opt.absolutePointer;
         });
+
         // algorithm from: 
         // http://fabricjs.com/fabric-intro-part-5
         // additional readings:
@@ -83,7 +82,6 @@
             opt.e.stopPropagation();
             var delta = opt.e.deltaY;
             var zoom = canvas.getZoom();
-            console.log(zoom);
             zoom *= 0.999 ** delta;
             if (zoom > maxZoom) zoom = maxZoom;
             if (zoom < minZoom) zoom = minZoom;
@@ -97,7 +95,6 @@
             // vpt[5]: vertical translation
 
             if (zoom < 400 / canvasSize) { // this controls when the canvas starts shrinking
-                console.log("Threshold crossed")
                 vpt[4] = 200 - canvasSize * zoom / 2;
                 vpt[5] = 200 - canvasSize * zoom / 2;
             } 
@@ -118,22 +115,23 @@
 
 </script>
 
-<div class="canvasContainer" bind:this={canvasContainer} bind:clientWidth={containerWidth} bind:clientHeight={containerHeight}>
+<svelte:window on:resize={setCanvasDimensions} />
+
+<div class="canvasContainer" bind:clientWidth={containerWidth} bind:clientHeight={containerHeight} on:click={updateTextPosition}>
     <div class="information">
         <h2>I was here</h2>
         <div class="controls">
             <Controls bind:color bind:rotationNumber />
         </div>
     </div>
-    <canvas id="placeCanvas" />
-    <!-- <canvas id="hereCanvas" bind:this={placeCanvas} width={containerWidth} height={containerHeight} /> -->
-    <!-- <canvas id="hereCanvas" bind:this={canvas} width={containerWidth} height={containerHeight} /> -->
+    <div class="canvasses">
+        <canvas id="placeCanvas" />
+    </div>
 </div>
 
 <style lang="scss">
 
     .canvasContainer {
-        width: 100%;
         height: 60vh;
         display: flex;
         justify-content: center;
@@ -160,7 +158,7 @@
         }
     }
     
-    canvas {
+    .canvasses {
         position: absolute;
         top: 0;
         left: 0;
