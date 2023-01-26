@@ -1,5 +1,5 @@
-export const NAVIGABLE_ROUTES = ['/', '/Projects'];
-export const INCOMPLETE_ROUTES = ['/Hire', '/Writings', '/CreatedGraphics', '/Blog', '/MinecraftBuilds', '/ContactMe']
+export const NAVIGABLE_ROUTES = ['/', '/Projects', '/Hire'];
+export const INCOMPLETE_ROUTES = ['/Writings', '/CreatedGraphics', '/Blog', '/MinecraftBuilds', '/ContactMe']
 
 // Gets the name of a route string of the format provided in NAVIGABLE_ROUTES
 export function getRouteName(route) {
