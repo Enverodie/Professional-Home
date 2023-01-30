@@ -10,6 +10,7 @@
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
     import SidebarNav from '../sidebarNav.svelte';
 	import IntersectionHandler from './../intersectionHandler.svelte';
+    import { spacingFunctionName } from '../articleBox.svelte';
     
     export let navigation = true;
     export let footer = true;
@@ -26,9 +27,16 @@
     let width;
     let divWidth;
 
-    function getPaddingLeft() {
+    /*
+        Spacings represent the amount of room
+        between each child in px
+
+        REQUIRED OF EACH GRID WRAPPER
+    */
+
+    function getSpacingLeft() {
         if (!width) return 0;
-        let padding = (
+        let spacing = (
             (
                 (
                     (width/2.0) - 
@@ -36,33 +44,33 @@
                 ) % SQUARE_IMG_SIZE
             ) + SQUARE_IMG_WHITESPACE
         );
-        return padding;
+        return spacing;
     }
 
-    function getPaddingRight() {
+    function getSpacingRight() {
         if (!width) return 0;
-        let padding = (
+        let spacing = (
             (
                 (divWidth/2.0) - 
                 ((width - divWidth)/2) -
                 (SQUARE_IMG_SIZE/2.0)
             ) % SQUARE_IMG_SIZE
         ) + SQUARE_IMG_WHITESPACE;
-        return padding;
+        return spacing;
     }
 
-    function updatePadding(outputElement = false) {
-        let paddingL = getPaddingLeft();
-        let paddingR = getPaddingRight();
+    function updateSpacingFunction() {
+        
+        function setSpacing() {
+            let spacingLeft = getSpacingLeft();
+            let spacingRight = getSpacingRight();
 
-        function setPadding(HTMLElement) {
-            HTMLElement.style.paddingLeft = `${paddingL}px`;
-            HTMLElement.style.paddingRight = `${paddingR}px`;
+            return { spacingLeft, spacingRight };
         }
-
-        if (outputElement) setPadding(outputElement);
-        else setContext("setPadding", setPadding);
+        setContext(spacingFunctionName, setSpacing);
     }
+
+    updateSpacingFunction();
 
     function updateGeometryData() {
         if (mainElement) {
@@ -78,7 +86,6 @@
     }
 
     onMount(() => {
-        updatePadding(divSection);
         updateGeometryData();
     })
 
@@ -90,7 +97,7 @@
 <!--  -->
 <svelte:window 
     bind:innerHeight={windowHeight} 
-    on:resize={() => {updatePadding(divSection); updateGeometryData()}} 
+    on:resize={() => {updateSpacingFunction(); updateGeometryData()}} 
     on:scroll={updateGeometryData} />
 
 {#if (navigation)}
@@ -106,7 +113,7 @@
 
 <main class="mainGrid" bind:this={mainElement} bind:clientWidth={width} >
     
-    <!-- This element can get padding based on the background grid -->
+    <!-- This element can get spacing based on the background grid -->
     <div 
         bind:this={divSection} 
         bind:clientWidth={divWidth} 

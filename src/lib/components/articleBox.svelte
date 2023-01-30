@@ -1,16 +1,21 @@
+<script context="module">
+
+    export const spacingFunctionName = "setSpacingArticle";
+    
+</script>
 <script>
 
     /* ArticleBox is an essential component for every article on any page.
      * It provides the <article> tag, as well as nice spacing and borders.
-     * These things can be styled specifically by updating the extraStyles prop.
      */
 
-    import { onMount } from 'svelte';
+    import { getContext, onMount } from 'svelte';
     import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '$lib/constants/grid.js';
     import { navbar } from '../stores/gui.js';
 
     export let extraStyles = "";
 
+    let article;
     let navbarHeight = 0;
     
     navbar.subscribe(newNavbar => {
@@ -21,36 +26,72 @@
 
     let height;
 
-    let padding = 0; 
+    let spacingLeft, spacingRight, spacingTop, spacingBottom;
 
-    // $: if (height !== undefined) {
-    //     padding = height % SQUARE_IMG_SIZE;
-    // }
+    const getSpacing = getContext(spacingFunctionName);
+    function setSpacing() {
+        let spacing = getSpacing();
+        
+        spacingLeft = spacing.spacingLeft || 0;
+        spacingRight = spacing.spacingRight || 0;
+        spacingTop = spacing.spacingTop || 0;
+        spacingBottom = spacing.spacingBottom || 0;
+    }
 
     onMount(() => {
-        console.log("Height: " + height);
-        console.log((height%SQUARE_IMG_SIZE)/2);
-        padding = (height % SQUARE_IMG_SIZE)-SQUARE_IMG_WHITESPACE / 2;
+        setSpacing();
     })
 
 </script>
 
-<article 
-    id={$$props.id}
-    bind:offsetHeight={height}
-    style='{extraStyles}; --padding-adjust-bottom:{padding}px; --jumpTo-Margin: {navbarHeight}px'
-    >
-    <div class="slotContainer" style="--squaresBuffer: {padding}px">
-        <slot></slot>
-    </div>
-</article>
+
+<!-- 
+    We need a div with padding 
+    surrounding the article 
+    as opposed to margin applied to the article
+    because this component's parent needs its width,
+    and box-sizing cannot include margin in width calculations.
+-->
+<div style="
+    padding-bottom: {spacingBottom}px;
+    padding-top: {spacingTop}px;
+    padding-left: {spacingLeft}px;
+    padding-right: {spacingRight}px;
+    ">
+    <article 
+        id={$$props.id}
+        bind:offsetHeight={height}
+        style="
+            {extraStyles};
+            --jumpTo-Margin: {navbarHeight}px;
+            "
+        >
+
+        <!-- 
+            provides ::before and ::after pseudoelements 
+            in an attempt to vertical align 
+            the articles with the background.
+         -->
+        <div class="slotContainer">
+
+            <!-- The article's content -->
+            <slot />
+
+        </div>
+    </article>
+
+</div>
+
+<!-- 
+    marginCollapseFix is a way of 
+    removing the default margin-collapse behavior
+    so as to not mess up future height calculations 
+    to match the background grid.
+ -->
 <div class="marginCollapseFix"></div>
 
 <style lang="scss">
 
-    /* marginCollapseFix is a way of removing the default margin-collapse behavior, 
-     * so as to not mess up future height calculations to match the background grid.
-     */
     .marginCollapseFix {
         display: flex;
         width: 100%;
@@ -60,7 +101,6 @@
     article {
 
         --defaultPadding: 1em;
-        // --padding-adjust-bottom: 0px;
 
         box-sizing: border-box;
         float: left;
@@ -80,7 +120,6 @@
         
     }
 
-    /* slotContainer and its corresponding before and after tags are an attempt to get the top and bottom of the articles to align with a background grid. */
     .slotContainer {
         // margin: 1em;
     }

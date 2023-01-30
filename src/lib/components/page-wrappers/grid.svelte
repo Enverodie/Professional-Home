@@ -2,22 +2,28 @@
 
     /* The Grid component establishes a full-page main section with horizontal spacing aligning with a background grid image. */
 
-    import { onMount, setContext } from 'svelte';
+    import { setContext } from 'svelte';
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
     import Navigation from '../navigation/navigation.svelte';
     export let navigation = true;
     export let footer = true;
     export let backgroundPosition = "absolute";
+    import { spacingFunctionName } from '../articleBox.svelte';
 
     const boxesFromEdges = 2;
-    let divSection; // set the style on this element directly
     let width;
-    let divWidth;
 
-    function getPadding() {
+    /*
+        Spacings represent the amount of room
+        between each child in px
+
+        REQUIRED OF EACH GRID WRAPPER
+    */
+
+    function getSpacingRightLeft() {
         if (!width) return 0;
-        let padding = (
+        let spacing = (
             (
                 (
                     (width/2.0) - 
@@ -25,29 +31,25 @@
                 ) % SQUARE_IMG_SIZE
             ) + SQUARE_IMG_WHITESPACE
         );
-        return padding;
+        return spacing;
     }
 
-    function updatePadding(outputElement = false) {
-        let padding = getPadding();
+    function updateSpacingFunction() {
+        
+        function setSpacing() {
+            let spacing = getSpacingRightLeft();
 
-        // THIS IS WHERE THE PADDING IS PUT INTO THE STYLE
-        function setPadding(HTMLElement) {
-            HTMLElement.style.paddingLeft = `${padding}px`;
-            HTMLElement.style.paddingRight = `${padding}px`;
+            return { spacingLeft: spacing, spacingRight: spacing };
         }
-        if (outputElement) setPadding(outputElement);
-        else setContext("setPadding", setPadding);
+        setContext(spacingFunctionName, setSpacing);
     }
-
-    onMount(() => {
-        updatePadding(divSection);
-    });
+    
+    updateSpacingFunction();
   
 
 </script>
 
-<svelte:window on:resize={() => {updatePadding(divSection)}} />
+<svelte:window on:resize={() => {updateSpacingFunction()}} />
 
 {#if (navigation)}
     <Navigation />
@@ -55,13 +57,7 @@
 <main style="--bPosition: {backgroundPosition}" bind:clientWidth={width} >
     <slot name="nonPadded"></slot>
     <div class="staticPadding">
-        <div 
-            bind:this={divSection} 
-            bind:clientWidth={divWidth} 
-            class="container" 
-            >
-            <slot></slot>
-        </div>
+        <slot></slot>
     </div>
 </main>
 {#if (footer)}
