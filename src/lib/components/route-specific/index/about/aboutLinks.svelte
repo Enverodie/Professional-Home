@@ -5,7 +5,7 @@
      -->
      <div>
 
-         <a id="aboutLinks-LinkedIn" href="https://www.linkedin.com/in/enverodie/" target="_blank">
+         <a id="aboutLinks-LinkedIn" href="https://www.linkedin.com/in/enverodie/" target="_blank" rel="noreferrer">
             <label for="aboutLinks-LinkedIn">LinkedIn</label>
             <img src="/svgs/LinkedIn-Logos/LI-In-Bug.png" alt="Linkedin" />
         </a>
@@ -15,13 +15,13 @@
         https://github.com/logos
      -->
      <div>
-         <a id="aboutLinks-GitHub" href="https://github.com/Enverodie" target="_blank">
+         <a id="aboutLinks-GitHub" href="https://github.com/Enverodie" target="_blank" rel="noreferrer">
             <label for="aboutLinks-GitHub">GitHub</label>
             <img src="/svgs/github-mark/github-mark-white.svg" alt="Github" />
         </a>
     </div>
     <div>
-        <a id="aboutLinks-Resume" href="#" target="_blank">
+        <a id="aboutLinks-Resume" href="#" target="_blank" rel="noreferrer">
             <label for="aboutLinks-Resume">Resume</label>
             <i class="fa-solid fa-file-lines" style="font-size: 60px"></i>
         </a>

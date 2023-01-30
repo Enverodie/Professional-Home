@@ -39,18 +39,18 @@
                 Simulation Sandbox is a personal project I started over the summer of 2022. While version 1.0 is out now, it is still a work in progress.<br>
                 <br>
                 This purely <span title="HTML, CSS, & JS" style="text-decoration: underline dotted;">vanilla</span> implementation was my way of learning HTML canvas 
-                and getting more confident with my abilities in JavaScript. <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank">Cellular automata</a> has fascinated me for years, and it's been a goal of mine to build my own 
+                and getting more confident with my abilities in JavaScript. <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank" rel="noreferrer">Cellular automata</a> has fascinated me for years, and it's been a goal of mine to build my own 
                 simulations. I also love sandbox games, so I realized that a "zero player game" can quickly become a sandbox game with the provided tools. I hope to 
                 provide that with Simulation Sandbox.<br>
                 <br>
                 Future versions plan to include bug fixes, compatibility with more browsers & platforms, the ability to create custom lifeforms, and more.
             </p>
             <div class="buttonsFlex">
-                <HumbleAnchor href="https://github.com/Enverodie/SimulationSandbox" target="_blank">
+                <HumbleAnchor href="https://github.com/Enverodie/SimulationSandbox" target="_blank" rel="noreferrer">
                     Source code
                     <i slot="icon"><img src="/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/></i>
                 </HumbleAnchor>
-                <HumbleAnchor href="http://simulationsandbox.enverodie.com/" target="_blank">
+                <HumbleAnchor href="http://simulationsandbox.enverodie.com/" target="_blank" rel="noreferrer">
                     Play! 
                     <i slot="icon" class="fa-solid fa-arrow-right"></i>
                 </HumbleAnchor>
