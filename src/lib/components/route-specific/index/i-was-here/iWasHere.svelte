@@ -1,7 +1,7 @@
 <script>
     
     import { onMount, afterUpdate } from 'svelte';
-    import { fabric } from 'fabric';
+    // import { fabric } from 'fabric';
 	import Controls from './controls.svelte';
 
     const textToFill = "I was here!";
@@ -15,6 +15,7 @@
     let lastClickPosition = {x: 0, y:0};
     // TODO: consider reserving a specific color for mobile users
 
+    /*
     let fabricText = new fabric.Text(textToFill, {
         left: 0,
         top: 0,
@@ -25,20 +26,25 @@
         fontFamily: "Lato",
         fontSize: fontSize
     });
+    */
 
     $: { // set rotation value when GUI number changes
+        /*
         if (canvas) {
             fabricText.set('angle', rotationNumber);
             canvas.renderAll();
 
         }
+        */
     }
 
     $: { // change color when GUI color changes
+        /*
         if (canvas) {
             fabricText.set('fill', color);
             canvas.renderAll();
         }
+        */
     }
 
     function setCanvasDimensions() {
@@ -47,22 +53,24 @@
     }
 
     function updateTextPosition() {
+        /*
         fabricText.set('left', Math.min(Math.max(lastClickPosition.x, 0), canvasSize-fontSize));
         fabricText.set('top', Math.min(Math.max(lastClickPosition.y, 0), canvasSize-fontSize));
-        canvas.renderAll();            
+        canvas.renderAll();         
+        */   
     }
 
     onMount(() => {
 
-        canvas = new fabric.Canvas('placeCanvas');
+        // canvas = new fabric.Canvas('placeCanvas');
         setCanvasDimensions();
-        canvas.selection = false;
+        // canvas.selection = false;
         lastClickPosition = {x: containerWidth/2, y: containerHeight/2}; // lets the text be initially positioned in a visible spot
         updateTextPosition();
 
-        canvas.add(fabricText);
+        // canvas.add(fabricText);
 
-        canvas.forEachObject((obj) => {obj.selectable = false})
+        // canvas.forEachObject((obj) => {obj.selectable = false})
 
         canvas.on('mouse:down', function(opt) {
             opt.e.preventDefault();
@@ -76,6 +84,7 @@
         // http://fabricjs.com/docs/fabric.Canvas.html
         // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform
         canvas.on('mouse:wheel', function(opt) {
+            /*
             const maxZoom = 20;
             const minZoom = .01;
             opt.e.preventDefault();
@@ -85,7 +94,7 @@
             zoom *= 0.999 ** delta;
             if (zoom > maxZoom) zoom = maxZoom;
             if (zoom < minZoom) zoom = minZoom;
-            canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+            // canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
             var vpt = this.viewportTransform;
             // vpt[0]: horizontal scaling
             // vpt[1]: vertical skewing
@@ -110,6 +119,7 @@
                     vpt[5] = canvas.getHeight() - canvasSize * zoom;
                 }
             }
+            */
         });
     });
 
@@ -117,7 +127,12 @@
 
 <svelte:window on:resize={setCanvasDimensions} />
 
-<div class="canvasContainer" bind:clientWidth={containerWidth} bind:clientHeight={containerHeight} on:click={updateTextPosition}>
+<!-- on:click={updateTextPosition} -->
+<div 
+    class="canvasContainer" 
+    bind:clientWidth={containerWidth} 
+    bind:clientHeight={containerHeight} 
+    >
     <div class="information">
         <h2>I was here</h2>
         <div class="controls">

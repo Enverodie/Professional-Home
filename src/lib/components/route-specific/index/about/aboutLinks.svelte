@@ -21,7 +21,7 @@
         </a>
     </div>
     <div>
-        <a id="aboutLinks-Resume" href="#" target="_blank" rel="noreferrer">
+        <a id="aboutLinks-Resume" href="/resume" target="_blank" rel="noreferrer">
             <label for="aboutLinks-Resume">Resume</label>
             <i class="fa-solid fa-file-lines" style="font-size: 60px"></i>
         </a>
