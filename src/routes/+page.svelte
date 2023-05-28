@@ -11,7 +11,8 @@
 
 	const borderColor = "var(--color7)";
 
-	let trackedIDs = ["about", "showcase", "iWasHere"]; // must be in order of appearance on page
+	// let trackedIDs = ["about", "showcase", "iWasHere"]; // must be in order of appearance on page
+	let trackedIDs = ["about", "showcase"]; // must be in order of appearance on page
 	let viewportPosition;
 
 	$: viewportPositionFull = Math.floor(viewportPosition);
@@ -28,8 +29,8 @@
 		<Showcase />
 	</ArticleBox>
 
-	<ArticleBox id={trackedIDs[2]} extraStyles="padding: 0; {(viewportPositionFull === 2) ? `border-color: ${borderColor}` : ''}" >
+	<!-- <ArticleBox id={trackedIDs[2]} extraStyles="padding: 0; {(viewportPositionFull === 2) ? `border-color: ${borderColor}` : ''}" >
 		<IWasHere />
-	</ArticleBox>
+	</ArticleBox> -->
 	
 </PageWrapper>

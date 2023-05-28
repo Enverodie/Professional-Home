@@ -11,13 +11,15 @@
      * considered cheating a little bit, so I didn't want to create that ambiguity.
      */
 
-    import { onMount } from 'svelte';
+    import { afterUpdate, onMount } from 'svelte';
+    export let parentWidth;
+    export let parentHeight;
     
     const potentialSquareColors = ['#5C6CFF', '#F36BFA', '#9805FA']
     const squareSize = 15;
     const waitB4DrawingSquares = 400;
     const cursorPositionOnCanvas = {x: 0, y: 0};
-    let canvas, ctx, container, containerWidth, containerHeight;
+    let canvas, ctx, container, containerWidth, containerHeight, canvasWidth, canvasHeight;
 
     // solution from Adam Grant (Oct. 15, 2021):
     // https://stackoverflow.com/a/28222246/15818885
@@ -74,8 +76,22 @@
     onMount(() => {
         ctx = canvas.getContext('2d');
         drawNextSquare(ctx);
+        console.log("simulationCanvas mounted");
     })
 
+    afterUpdate(() => {
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+        console.log("updated: ", containerWidth, containerHeight);
+    })
+
+    $: console.log("cwidth: " + containerWidth);
+    $: console.log("cheight: " + containerHeight);
 
 </script>
 
@@ -86,11 +102,12 @@
     bind:this={container}
     bind:clientWidth={containerWidth}
     bind:clientHeight={containerHeight}
+    on:load={() => {console.log("loaded")}}
     >
     <canvas 
         bind:this={canvas}
-        width={containerWidth}
-        height={containerHeight}
+        width={`${ parentWidth }px`}
+        height={`${ parentHeight }px`}
         >
     </canvas>
 </div>

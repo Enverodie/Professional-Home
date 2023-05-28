@@ -12,6 +12,7 @@
     export let images = [{src: "/", alt:"image not found", description: "image not found"}];
 
     let carouselIndex = 0;
+    let height, width;
 
     function setCarouselIndex(increment) {
         carouselIndex = (carouselIndex + increment) % images.length;
@@ -22,8 +23,8 @@
 
 </script>
 
-<div style="width: 100%; height: 100%; position: relative; box-sizing: border-box;">
-    <slot name="containedEffects" cursorPosition={cursorPosition} />
+<div style="width: 100%; height: 100%; position: relative; box-sizing: border-box;" bind:clientHeight={height} bind:clientWidth={width}>
+    <slot name="containedEffects" cursorPosition={cursorPosition} parentHeight={height} parentWidth={width} />
     <div class="grid">
         <div class="figureContainer">
             <figure class="showcaseImage">

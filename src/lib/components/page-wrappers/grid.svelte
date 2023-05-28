@@ -1,3 +1,6 @@
+<script context="module">
+
+</script>
 <script>
 
     /* The Grid component establishes a full-page main section with horizontal spacing aligning with a background grid image. */
@@ -31,6 +34,25 @@
                 ) % SQUARE_IMG_SIZE
             ) + SQUARE_IMG_WHITESPACE
         );
+
+        let boxes;
+        console.log(width);
+        switch(true) {
+            case (width >= 1500):
+                boxes = 3;
+                break;
+            case (width >= 1200):
+                boxes = 2;
+                break;
+            case (width >= 550):
+                boxes = 1;
+                break;
+            default:
+                boxes = 0;
+        }
+        console.log("spacing b4: " + spacing);
+        spacing += boxes * SQUARE_IMG_SIZE;
+        console.log("spacing after  : " + spacing, boxes, width >= 550);
         return spacing;
     }
 
@@ -83,6 +105,7 @@
 
     }
 
+    /*
     .staticPadding {
         --numberOfBoxes: 0;
         padding: 0 calc(var(--boxImgSize) * var(--numberOfBoxes));
@@ -105,5 +128,5 @@
             --numberOfBoxes: 3;
         }
     }
-
+    */
 </style>

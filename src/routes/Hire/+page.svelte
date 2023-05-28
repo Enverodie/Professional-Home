@@ -2,11 +2,14 @@
     
     import PageWrapper from '$lib/components/page-wrappers/grid.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
+    import SectionBox from '../../lib/components/sectionBox.svelte';
 
 </script>
 
 <PageWrapper backgroundPosition="fixed">
-    <div slot="nonPadded">
+    <ArticleBox>Test</ArticleBox>
+    <SectionBox>Test</SectionBox>
+    <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac orci phasellus egestas tellus. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Tellus integer feugiat scelerisque varius. Urna nunc id cursus metus aliquam. Et magnis dis parturient montes nascetur ridiculus. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Egestas egestas fringilla phasellus faucibus scelerisque. Arcu cursus vitae congue mauris rhoncus. Aliquam etiam erat velit scelerisque in dictum non consectetur.
 
 Scelerisque purus semper eget duis at. Quam lacus suspendisse faucibus interdum posuere lorem ipsum. Posuere morbi leo urna molestie at. Platea dictumst vestibulum rhoncus est pellentesque elit. Gravida neque convallis a cras semper auctor. Massa id neque aliquam vestibulum morbi blandit. At urna condimentum mattis pellentesque id nibh tortor id. Eu consequat ac felis donec. Adipiscing elit pellentesque habitant morbi tristique senectus et netus. Dolor purus non enim praesent elementum facilisis. Enim facilisis gravida neque convallis a cras semper. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Purus faucibus ornare suspendisse sed nisi lacus sed. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Fusce id velit ut tortor pretium.
