@@ -13,7 +13,7 @@
     <section class="showcaseColumn showcase1">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase1 showcasePadding" href="http://simulationsandbox.enverodie.com/" target="_blank" item={1} backgroundImage='/images/showcase1_thumbnail.png'>
+                <ShowcaseItem class="innerShowcase1 showcasePadding" href="http://simulationsandbox.enverodie.com/" target="_blank" rel="noreferrer" item={1} backgroundImage='/images/showcase1_thumbnail.png'>
                     Simulation Sandbox
                 </ShowcaseItem>
             </div>
