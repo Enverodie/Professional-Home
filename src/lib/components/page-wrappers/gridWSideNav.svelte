@@ -12,26 +12,28 @@
 	import IntersectionHandler from './../intersectionHandler.svelte';
     import { spacingFunctionName } from '../articleBox.svelte';
     
+    // component properties
+
     export let navigation = true;
     export let footer = true;
-    export let trackedIDs = [];
+    export let trackedIDs = []; // optional value - if no tracked ids, remove side nav
     export let position = 0;
 
-    let mainElement, navContainerElement;
+    // component internal state
+
+    let mainElement; // we assign this to <main> on load to get its bounding box
+    let primaryNavContainerElement; // we assign this to the main <nav> on load to get its bounding box
 
     let windowHeight;
     let mainHeight, mainClientY;
     let navboxH = 0, navboxClientY;
 
-    let divSection; // set the style on this element directly
     let width;
     let divWidth;
 
     /*
         Spacings represent the amount of room
         between each child in px
-
-        REQUIRED OF EACH GRID WRAPPER
     */
 
     function getSpacingLeft() {
@@ -72,14 +74,16 @@
 
     updateSpacingFunction();
 
+    // this function's primary use in in accurately resizing the side navigation container
+    // (so the side nav can be properly "centered" on the screen)
     function updateGeometryData() {
         if (mainElement) {
             let mE = mainElement.getBoundingClientRect();
             mainHeight = mE.height;
             mainClientY = mE.y;
         } 
-        if (navContainerElement) {
-            let nCE = navContainerElement.getBoundingClientRect();
+        if (primaryNavContainerElement) {
+            let nCE = primaryNavContainerElement.getBoundingClientRect();
             navboxClientY = nCE.y;
             navboxH = windowHeight - navboxClientY - Math.max((-mainHeight - mainClientY + windowHeight), 0);
         }
@@ -100,22 +104,23 @@
     on:resize={() => {updateSpacingFunction(); updateGeometryData()}} 
     on:scroll={updateGeometryData} />
 
-{#if (navigation)}
+{#if (navigation && trackedIDs.length > 0)}
     <Navigation>
         <!-- The diamonds + bounding box for diamonds on the side of the screen -->
-        <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={navContainerElement}>
+        <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={primaryNavContainerElement}>
 
             <!-- The diamonds component -->
             <SidebarNav bind:scrollToSections={trackedIDs} bind:position />
         </div>
     </Navigation>
+{:else if (navigation)}
+    <Navigation />
 {/if}
 
 <main class="mainGrid" bind:this={mainElement} bind:clientWidth={width} >
     
     <!-- This element can get spacing based on the background grid -->
     <div 
-        bind:this={divSection} 
         bind:clientWidth={divWidth} 
         class="container" 
         >

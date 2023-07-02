@@ -1,8 +1,0 @@
-! fix chrome bug with displaying box mobile nav
-* create graphics page w/ scroll expansion (desktop + tablet)
-* add codepen link to homepage links
-* index: change background border to blue *when the user scrolls over it*
-! fix body not spanning entire screen heigth w/o enough content
-! fix "more" on index being tiny on mobile landscape mode
-* add social media special tags + images for SPA
-* get rid of all FontAwesome icons and FontAwesome header

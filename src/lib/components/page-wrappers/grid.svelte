@@ -1,6 +1,3 @@
-<script context="module">
-
-</script>
 <script>
 
     /* The Grid component establishes a full-page main section with horizontal spacing aligning with a background grid image. */
