@@ -1,27 +1,47 @@
 <script>
-
-    /* The Grid component establishes a full-page main section with horizontal spacing aligning with a background grid image. */
-
-    import { setContext } from 'svelte';
+    
+    /* The GridWSideNav component establishes a main section with horizontal spacing, 
+     * allowing for a side navigation component, aligning with a background grid image. 
+     */
+    
+    import { onMount, setContext } from 'svelte';
+    import Navigation from '../navigation/navigation.svelte';
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
-    import Navigation from '../navigation/navigation.svelte';
+    import SidebarNav from '../sidebarNav.svelte';
+	import IntersectionHandler from './../intersectionHandler.svelte';
+    import { spacingFunctionName } from '../articleBox.svelte';
+    
+    // component properties
+
     export let navigation = true;
     export let footer = true;
+    export let trackedIDs = []; // optional value - if no tracked ids, remove side nav
+    export let position = 0;
     export let backgroundPosition = "absolute";
-    import { spacingFunctionName } from '../articleBox.svelte';
 
-    const boxesFromEdges = 2;
+    // component internal state
+
+    const minWidthForExtraBox = 700; // make sure this matches the stylesheet below
+
+    let mainElement; // we assign this to <main> on load to get its bounding box
+    let primaryNavContainerElement; // we assign this to the main <nav> on load to get its bounding box
+
+    let windowHeight;
+    let mainHeight, mainClientY;
+    let navboxH = 0, navboxClientY;
+
     let width;
+    let divWidth;
+
+    $: showSideNav = trackedIDs.length > 0;
 
     /*
         Spacings represent the amount of room
         between each child in px
-
-        REQUIRED OF EACH GRID WRAPPER
     */
 
-    function getSpacingRightLeft() {
+    function getSpacingLeft() {
         if (!width) return 0;
         let spacing = (
             (
@@ -31,65 +51,134 @@
                 ) % SQUARE_IMG_SIZE
             ) + SQUARE_IMG_WHITESPACE
         );
+        return spacing;
+    }
 
-        let boxes;
-        console.log(width);
-        switch(true) {
-            case (width >= 1500):
-                boxes = 3;
-                break;
-            case (width >= 1200):
-                boxes = 2;
-                break;
-            case (width >= 550):
-                boxes = 1;
-                break;
-            default:
-                boxes = 0;
-        }
-        console.log("spacing b4: " + spacing);
-        spacing += boxes * SQUARE_IMG_SIZE;
-        console.log("spacing after  : " + spacing, boxes, width >= 550);
+    function getSpacingRight() {
+        if (!width) return 0;
+        let spacing = (
+            (
+                (divWidth/2.0) - 
+                ((width - divWidth)/2) -
+                (SQUARE_IMG_SIZE/2.0)
+            ) % SQUARE_IMG_SIZE
+        ) + SQUARE_IMG_WHITESPACE;
         return spacing;
     }
 
     function updateSpacingFunction() {
         
         function setSpacing() {
-            let spacing = getSpacingRightLeft();
+            let extraBoxLeft = 0, extraBoxRight = 0;
+            if (!showSideNav) {
+                let extraBoxes;
+                switch(true) {
+                    case (width >= 1500):
+                        extraBoxes = 3;
+                        break;
+                    case (width >= 1200):
+                        extraBoxes = 2;
+                        break;
+                    case (width >= 550):
+                        extraBoxes = 1;
+                        break;
+                    default:
+                        extraBoxes = 0;
+                }
+                extraBoxes *= SQUARE_IMG_SIZE;
+                extraBoxLeft = extraBoxes;
+                extraBoxRight = extraBoxes;
+            }
+            else if (width >= minWidthForExtraBox) {
+                extraBoxLeft = SQUARE_IMG_SIZE;
+            }
 
-            return { spacingLeft: spacing, spacingRight: spacing };
+            let spacingLeft = getSpacingLeft();
+            spacingLeft += extraBoxLeft;
+            let spacingRight = getSpacingRight();
+            spacingRight += extraBoxRight;
+
+            return { spacingLeft, spacingRight };
         }
         setContext(spacingFunctionName, setSpacing);
     }
-    
+
     updateSpacingFunction();
-  
+
+    // this function's primary use in in accurately resizing the side navigation container
+    // (so the side nav can be properly "centered" on the screen)
+    function updateGeometryData() {
+        if (mainElement) {
+            let mE = mainElement.getBoundingClientRect();
+            mainHeight = mE.height;
+            mainClientY = mE.y;
+        } 
+        if (primaryNavContainerElement) {
+            let nCE = primaryNavContainerElement.getBoundingClientRect();
+            navboxClientY = nCE.y;
+            navboxH = windowHeight - navboxClientY - Math.max((-mainHeight - mainClientY + windowHeight), 0);
+        }
+    }
+
+    onMount(() => {
+        updateGeometryData();
+    })
 
 </script>
 
-<svelte:window on:resize={() => {updateSpacingFunction()}} />
+<!-- Performs logic that updates integer value of element being viewed -->
+<IntersectionHandler bind:trackedIDs bind:position />
 
-{#if (navigation)}
+<svelte:window 
+    bind:innerHeight={windowHeight} 
+    on:resize={() => {updateSpacingFunction(); updateGeometryData()}} 
+    on:scroll={updateGeometryData} />
+
+{#if (navigation && showSideNav)}
+    <Navigation>
+        <!-- The diamonds + bounding box for diamonds on the side of the screen -->
+        <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={primaryNavContainerElement}>
+
+            <!-- The diamonds component -->
+            <SidebarNav bind:scrollToSections={trackedIDs} bind:position />
+        </div>
+    </Navigation>
+{:else if (navigation)}
     <Navigation />
 {/if}
-<main style="--bPosition: {backgroundPosition}" bind:clientWidth={width} >
-    <slot name="nonPadded"></slot>
-    <div class="staticPadding">
+
+<main class="{showSideNav? 'mainGridWithSideNav' : ''}" style="--bPosition: {backgroundPosition}" bind:this={mainElement} bind:clientWidth={width} >
+    
+    <!-- This element can get spacing based on the background grid -->
+    <div 
+        bind:clientWidth={divWidth} 
+        class="container" 
+        >
         <slot></slot>
     </div>
+    {#if (showSideNav)}
+        <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
+    {/if}
 </main>
+
 {#if (footer)}
     <Footer />
 {/if}
     
+
 <style lang="scss">
 
     @import '../route-specific/background.scss';
 
+    .mainGridWithSideNav {
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+
     main {
-        position: relative;
         padding-bottom: var(--boxImgSize);
+        position: relative;
         
         &:before {
             content: '';
@@ -102,28 +191,35 @@
 
     }
 
-    /*
-    .staticPadding {
-        --numberOfBoxes: 0;
-        padding: 0 calc(var(--boxImgSize) * var(--numberOfBoxes));
+    .stickyItem {
+        position: sticky;
+        top: 0;
+    }
+    
+    .inPageNav {
+        display: none;
+        position: relative;
+        margin: 0 auto;
+        width: calc(100vw / 8);
+        height: var(--height);
+        justify-content: center;
+        align-items: center;
     }
 
-    @media only screen and (min-width: 550px) {
-        .staticPadding {
-            --numberOfBoxes: 1;
+    @media only screen and (max-width: 390px) {
+        .container {
+            padding: 0 !important;
         }
     }
 
-    @media only screen and (min-width: 1200px) {
-        .staticPadding {
-            --numberOfBoxes: 2;
+    @media only screen and (min-width: 700px) {
+        .mainGridWithSideNav {
+            grid-template-columns: 7fr 1fr;
+        }
+
+        .inPageNav {
+            display: flex;
         }
     }
 
-    @media only screen and (min-width: 1500px) {
-        .staticPadding {
-            --numberOfBoxes: 3;
-        }
-    }
-    */
 </style>

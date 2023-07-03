@@ -1,6 +1,6 @@
 <script>
     
-    import PageWrapper from '$lib/components/page-wrappers/gridWSideNav.svelte';
+    import PageWrapper from '$lib/components/page-wrappers/grid.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
     import SectionBox from '../../lib/components/sectionBox.svelte';
 

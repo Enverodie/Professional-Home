@@ -3,7 +3,7 @@
 	/* This is the base component for the "/" route. */
 	
 	import Header from '$lib/components/route-specific/index/header/header.svelte';
-	import PageWrapper from '$lib/components/page-wrappers/gridWSideNav.svelte'
+	import PageWrapper from '$lib/components/page-wrappers/grid.svelte'
 	import About from '$lib/components/route-specific/index/about/about.svelte';
 	import Showcase from '$lib/components/route-specific/index/project-showcase/projectShowcase.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
