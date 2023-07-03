@@ -2,7 +2,7 @@
 
     /* This is the base component for the /Projects route. */
 
-    import PageWrapper from '$lib/components/page-wrappers/grid.svelte'
+    import PageWrapper from '$lib/components/page-wrappers/gridWSideNav.svelte'
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
 	import SimulationCanvas from '$lib/components/route-specific/projects/simulationCanvas.svelte';
 	import ShowcaseItem from '$lib/components/route-specific/projects/showcaseItem.svelte';

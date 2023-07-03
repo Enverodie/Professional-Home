@@ -18,8 +18,11 @@
     export let footer = true;
     export let trackedIDs = []; // optional value - if no tracked ids, remove side nav
     export let position = 0;
+    export let backgroundPosition = "absolute";
 
     // component internal state
+
+    const minWidthForExtraBox = 700; // make sure this matches the stylesheet below
 
     let mainElement; // we assign this to <main> on load to get its bounding box
     let primaryNavContainerElement; // we assign this to the main <nav> on load to get its bounding box
@@ -30,6 +33,8 @@
 
     let width;
     let divWidth;
+
+    $: showSideNav = trackedIDs.length > 0;
 
     /*
         Spacings represent the amount of room
@@ -64,8 +69,34 @@
     function updateSpacingFunction() {
         
         function setSpacing() {
+            let extraBoxLeft = 0, extraBoxRight = 0;
+            if (!showSideNav) {
+                let extraBoxes;
+                switch(true) {
+                    case (width >= 1500):
+                        extraBoxes = 3;
+                        break;
+                    case (width >= 1200):
+                        extraBoxes = 2;
+                        break;
+                    case (width >= 550):
+                        extraBoxes = 1;
+                        break;
+                    default:
+                        extraBoxes = 0;
+                }
+                extraBoxes *= SQUARE_IMG_SIZE;
+                extraBoxLeft = extraBoxes;
+                extraBoxRight = extraBoxes;
+            }
+            else if (width >= minWidthForExtraBox) {
+                extraBoxLeft = SQUARE_IMG_SIZE;
+            }
+
             let spacingLeft = getSpacingLeft();
+            spacingLeft += extraBoxLeft;
             let spacingRight = getSpacingRight();
+            spacingRight += extraBoxRight;
 
             return { spacingLeft, spacingRight };
         }
@@ -98,13 +129,12 @@
 <!-- Performs logic that updates integer value of element being viewed -->
 <IntersectionHandler bind:trackedIDs bind:position />
 
-<!--  -->
 <svelte:window 
     bind:innerHeight={windowHeight} 
     on:resize={() => {updateSpacingFunction(); updateGeometryData()}} 
     on:scroll={updateGeometryData} />
 
-{#if (navigation && trackedIDs.length > 0)}
+{#if (navigation && showSideNav)}
     <Navigation>
         <!-- The diamonds + bounding box for diamonds on the side of the screen -->
         <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={primaryNavContainerElement}>
@@ -117,7 +147,7 @@
     <Navigation />
 {/if}
 
-<main class="mainGrid" bind:this={mainElement} bind:clientWidth={width} >
+<main class="{showSideNav? 'mainGridWithSideNav' : ''}" style="--bPosition: {backgroundPosition}" bind:this={mainElement} bind:clientWidth={width} >
     
     <!-- This element can get spacing based on the background grid -->
     <div 
@@ -126,7 +156,9 @@
         >
         <slot></slot>
     </div>
-    <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
+    {#if (showSideNav)}
+        <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
+    {/if}
 </main>
 
 {#if (footer)}
@@ -138,8 +170,7 @@
 
     @import '../route-specific/background.scss';
 
-    .mainGrid {
-        width: 100%;
+    .mainGridWithSideNav {
         display: grid;
         grid-template-columns: 1fr;
 
@@ -153,7 +184,7 @@
             content: '';
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: var(--bPosition);
             @include gridBackgroundImageNoFilter();
             z-index: -1;
         }
@@ -182,12 +213,8 @@
     }
 
     @media only screen and (min-width: 700px) {
-        .mainGrid {
+        .mainGridWithSideNav {
             grid-template-columns: 7fr 1fr;
-        }
-        
-        main>div.container {
-            margin-left: var(--boxImgSize);
         }
 
         .inPageNav {
