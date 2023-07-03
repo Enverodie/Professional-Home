@@ -44,6 +44,7 @@
 
 </script>
 
+<svelte:window on:resize={() => setSpacing()} />
 
 <!-- 
     We need a div with padding 
