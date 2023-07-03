@@ -10,7 +10,7 @@
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
     import SidebarNav from '../sidebarNav.svelte';
 	import IntersectionHandler from './../intersectionHandler.svelte';
-    import { spacingFunctionName } from '../articleBox.svelte';
+    import { spacingFunctionName } from '../positionInWrapper.svelte';
     
     // component properties
 

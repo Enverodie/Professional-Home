@@ -1,4 +1,5 @@
 <script>
+	import PositionInWrapper from './../../lib/components/positionInWrapper.svelte';
     
     import PageWrapper from '$lib/components/page-wrappers/grid.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
@@ -7,8 +8,12 @@
 </script>
 
 <PageWrapper backgroundPosition="fixed">
-    <ArticleBox>Test</ArticleBox>
-    <SectionBox>Test</SectionBox>
+    <PositionInWrapper>
+        <ArticleBox>Test</ArticleBox>
+    </PositionInWrapper>
+    <PositionInWrapper>
+        <SectionBox>Test</SectionBox>
+    </PositionInWrapper>
     <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac orci phasellus egestas tellus. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Tellus integer feugiat scelerisque varius. Urna nunc id cursus metus aliquam. Et magnis dis parturient montes nascetur ridiculus. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Egestas egestas fringilla phasellus faucibus scelerisque. Arcu cursus vitae congue mauris rhoncus. Aliquam etiam erat velit scelerisque in dictum non consectetur.
 

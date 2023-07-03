@@ -1,4 +1,5 @@
 <script>
+	import PositionInWrapper from './../lib/components/positionInWrapper.svelte';
 	
 	/* This is the base component for the "/" route. */
 	
@@ -19,12 +20,16 @@
 <Header />
 <PageWrapper bind:trackedIDs bind:position={viewportPosition}>
 
-	<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPositionFull === 0) ? `border-color: ${borderColor}` : ''} >
-		<About />
-	</ArticleBox>
+	<PositionInWrapper>
+		<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPositionFull === 0) ? `border-color: ${borderColor}` : ''} >
+			<About />
+		</ArticleBox>
+	</PositionInWrapper>
 
-	<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPositionFull === 1) ? `border-color: ${borderColor}` : ''}>
-		<Showcase />
-	</ArticleBox>
-	
+	<PositionInWrapper>
+		<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPositionFull === 1) ? `border-color: ${borderColor}` : ''}>
+			<Showcase />
+		</ArticleBox>
+	</PositionInWrapper>
+		
 </PageWrapper>
