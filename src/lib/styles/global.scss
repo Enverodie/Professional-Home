@@ -79,9 +79,17 @@
     --color7: hsl(var(--color7H), var(--color7S), var(--color7L));
     --colorAlert: hsl(var(--colorAlertH), var(--colorAlertS), var(--colorAlertL));
 
-    --boxImgSize: 55px;
-    --boxSize: 49px;
-    --boxOutsideSize: 3px; // (55-49)/2
+    $boxImgSizeUnitless: 55;
+    $boxOutsideSizeUnitless: 3;
+    $boxSizeUnitless: $boxImgSizeUnitless - $boxOutsideSizeUnitless;
+
+    --boxImgSizeUnitless: $boxImgSizeUnitless;
+    --boxOutsideSizeUnitless: $boxOutsideSizeUnitless; // (55-49)/2
+    --boxSizeUnitless: calc(var(--boxImgSizeUnitless) - var(--boxOutsideSizeUnitless));
+
+    --boxImgSize: calc(1px * var(--boxImgSizeUnitless));
+    --boxSize: calc(1px * var(--boxSizeUnitless));
+    --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless)); 
 
     --hoverShadow: 
         1px 0px 0px var(--color2),
