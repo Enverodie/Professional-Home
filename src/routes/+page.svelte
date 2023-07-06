@@ -3,10 +3,10 @@
 	
 	/* This is the base component for the "/" route. */
 	
-	import Header from '$lib/components/route-specific/index/header/header.svelte';
-	import PageWrapper from '$lib/components/page-wrappers/grid.svelte'
-	import About from '$lib/components/route-specific/index/about/about.svelte';
-	import Showcase from '$lib/components/route-specific/index/project-showcase/projectShowcase.svelte';
+	import Header from './+pageComponents/header/header.svelte';
+	import PageWrapper from '$lib/components/layout/grid.svelte'
+	import About from './+pageComponents/about/about.svelte';
+	import Showcase from './+pageComponents/project-showcase/projectShowcase.svelte';
 	import ArticleBox from '$lib/components/articleBox.svelte';
 
 	const borderColor = "var(--color7)";
