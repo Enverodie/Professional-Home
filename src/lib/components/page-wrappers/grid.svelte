@@ -67,7 +67,7 @@
 
 <svelte:window 
     bind:innerHeight={windowHeight} 
-    on:resize={() => {updateGeometryData()}} 
+    on:resize={updateGeometryData} 
     on:scroll={updateGeometryData} />
 
 <!-- Navigation stuff -->
