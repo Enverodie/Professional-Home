@@ -9,37 +9,16 @@
      * It provides the <article> tag, as well as nice spacing and borders.
      */
 
-    import { getContext, onMount } from 'svelte';
-    import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '$lib/constants/grid.js';
     import { navbar } from '../stores/gui.js';
 
     export let extraStyles = "";
 
-    let article;
     let navbarHeight = 0;
     
     navbar.subscribe(newNavbar => {
         if (newNavbar) {
             navbarHeight = newNavbar.getBoundingClientRect().height;
         }
-    })
-
-    let height;
-
-    let spacingLeft, spacingRight, spacingTop, spacingBottom;
-
-    const getSpacing = getContext(spacingFunctionName);
-    function setSpacing() {
-        let spacing = getSpacing();
-        
-        spacingLeft = spacing.spacingLeft || 0;
-        spacingRight = spacing.spacingRight || 0;
-        spacingTop = spacing.spacingTop || 0;
-        spacingBottom = spacing.spacingBottom || 0;
-    }
-
-    onMount(() => {
-        setSpacing();
     })
 
 </script>
@@ -53,15 +32,9 @@
     and box-sizing cannot include margin in width calculations.
 -->
 <div class="sectionSurrounding">
-    <div style="
-        padding-bottom: {spacingBottom}px;
-        padding-top: {spacingTop}px;
-        padding-left: {spacingLeft}px;
-        padding-right: {spacingRight}px;
-        ">
+    <div>
         <section 
             id={$$props.id}
-            bind:offsetHeight={height}
             style="
                 {extraStyles};
                 --jumpTo-Margin: {navbarHeight}px;
