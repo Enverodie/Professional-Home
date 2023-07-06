@@ -3,7 +3,6 @@
     
     import PageWrapper from '$lib/components/layout/grid.svelte';
 	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
-    import SectionBox from '../../lib/components/contentboxes/sectionBox.svelte';
 
 </script>
 

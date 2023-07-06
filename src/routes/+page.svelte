@@ -19,13 +19,13 @@
 <PageWrapper bind:trackedIDs bind:position={viewportPosition} showSideNav={true}>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPosition === 0) ? `border-color: ${borderColor}` : ''} >
+		<ArticleBox id={trackedIDs[0]} style={(viewportPosition === 0) ? `border-color: ${borderColor}` : ''} >
 			<About />
 		</ArticleBox>
 	</PositionInWrapper>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPosition === 1) ? `border-color: ${borderColor}` : ''}>
+		<ArticleBox id={trackedIDs[1]} style={(viewportPosition === 1) ? `border-color: ${borderColor}` : ''}>
 			<Showcase />
 		</ArticleBox>
 	</PositionInWrapper>

@@ -3,12 +3,8 @@
     /* ArticleBox provides the <article> tag.
      */
 
-    import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '$lib/constants/grid.js';
     import { navbar } from '$lib/stores/gui.js';
 
-    export let extraStyles = "";
-
-    let article;
     let navbarHeight = 0;
     
     navbar.subscribe(newNavbar => {
@@ -17,37 +13,18 @@
         }
     })
 
-    let height;
-
 </script>
 
-<!-- 
-    We need a div with padding 
-    surrounding the article 
-    as opposed to margin applied to the article
-    because this component's parent needs its width,
-    and box-sizing cannot include margin in width calculations.
--->
-
-<article 
-    id={$$props.id}
-    bind:offsetHeight={height}
-    style="
-        {extraStyles};
-        --jumpTo-Margin: {navbarHeight}px;
-        "
-    >
+<article id={$$props.id} style="{$$props.style}; --jumpTo-Margin: {navbarHeight}px;">
 
     <!-- 
         provides ::before and ::after pseudoelements 
         in an attempt to vertical align 
         the articles with the background.
-        -->
+    -->
     <div class="slotContainer">
-
         <!-- The article's content -->
         <slot />
-
     </div>
 </article>
 
@@ -63,7 +40,7 @@
         background-color: var(--color1);
         border: 2px solid hsla(var(--color2H), var(--color2S), var(--color2L), .1); // tied to opacity of square image in _background.scss
         padding: var(--defaultPadding);
-        margin-top: 58px;
+        margin-top: calc(var(--boxImgSize) + var(--boxOutsideSize));
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -73,15 +50,10 @@
         
     }
 
-    .slotContainer {
-        // margin: 1em;
-    }
-
     .slotContainer::before, .slotContainer::after {
         content: '';
         display: flex;
         width: 100%;
-        // padding-top: var(--squaresBuffer);
     }
 
 </style>
