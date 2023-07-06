@@ -3,36 +3,10 @@
     export const spacingFunctionName = "setSpacingArticle";
     
 </script>
-<script>
-    
-    import { getContext, onMount } from 'svelte';
 
-    let spacingLeft, spacingRight, spacingTop, spacingBottom;
-
-    const getSpacing = getContext(spacingFunctionName);
-    function setSpacing() {
-        let spacing = getSpacing();
-        
-        spacingLeft = spacing.spacingLeft || 0;
-        spacingRight = spacing.spacingRight || 0;
-        spacingTop = spacing.spacingTop || 0;
-        spacingBottom = spacing.spacingBottom || 0;
-    }
-
-    onMount(() => {
-        setSpacing();
-    })
-
-</script>
-
-<svelte:window on:resize={() => setSpacing()} />
-
-<div style="
-    padding-bottom: {spacingBottom}px;
-    padding-top: {spacingTop}px;
-    padding-left: {spacingLeft}px;
-    padding-right: {spacingRight}px;
-    ">
+<div
+    class="wrapperPositioned {spacingFunctionName}"
+    >
     <slot />
 </div>
 

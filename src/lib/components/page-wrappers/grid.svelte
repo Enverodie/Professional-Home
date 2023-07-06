@@ -1,16 +1,22 @@
+<script context="module">
+
+    export const gridColumns = 8;
+    export const mainColumn = 7;
+    export const sidebarColumn = gridColumns - mainColumn;
+
+</script>
 <script>
     
     /* The GridWSideNav component establishes a main section with horizontal spacing, 
      * allowing for a side navigation component, aligning with a background grid image. 
      */
     
-    import { onMount, setContext } from 'svelte';
+    import { onMount } from 'svelte';
     import Navigation from '../navigation/navigation.svelte';
 	import Footer from './../footer.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from './../../constants/grid.js';
     import SidebarNav from '../sidebarNav.svelte';
 	import IntersectionHandler from './../intersectionHandler.svelte';
-    import { spacingFunctionName } from '../positionInWrapper.svelte';
     
     // component properties
 
@@ -22,8 +28,6 @@
 
     // component internal state
 
-    const minWidthForExtraBox = 700; // make sure this matches the stylesheet below
-
     let mainElement; // we assign this to <main> on load to get its bounding box
     let primaryNavContainerElement; // we assign this to the main <nav> on load to get its bounding box
 
@@ -31,79 +35,10 @@
     let mainHeight, mainClientY;
     let navboxH = 0, navboxClientY;
 
-    let width;
-    let divWidth;
+    let width = 0;
+    let divWidth = 0;
 
     $: showSideNav = trackedIDs.length > 0;
-
-    /*
-        Spacings represent the amount of room
-        between each child in px
-    */
-
-    function getSpacingLeft() {
-        if (!width) return 0;
-        let spacing = (
-            (
-                (
-                    (width/2.0) - 
-                    (SQUARE_IMG_SIZE/2.0)
-                ) % SQUARE_IMG_SIZE
-            ) + SQUARE_IMG_WHITESPACE
-        );
-        return spacing;
-    }
-
-    function getSpacingRight() {
-        if (!width) return 0;
-        let spacing = (
-            (
-                (divWidth/2.0) - 
-                ((width - divWidth)/2) -
-                (SQUARE_IMG_SIZE/2.0)
-            ) % SQUARE_IMG_SIZE
-        ) + SQUARE_IMG_WHITESPACE;
-        return spacing;
-    }
-
-    function updateSpacingFunction() {
-        
-        function setSpacing() {
-            let extraBoxLeft = 0, extraBoxRight = 0;
-            if (!showSideNav) {
-                let extraBoxes;
-                switch(true) {
-                    case (width >= 1500):
-                        extraBoxes = 3;
-                        break;
-                    case (width >= 1200):
-                        extraBoxes = 2;
-                        break;
-                    case (width >= 550):
-                        extraBoxes = 1;
-                        break;
-                    default:
-                        extraBoxes = 0;
-                }
-                extraBoxes *= SQUARE_IMG_SIZE;
-                extraBoxLeft = extraBoxes;
-                extraBoxRight = extraBoxes;
-            }
-            else if (width >= minWidthForExtraBox) {
-                extraBoxLeft = SQUARE_IMG_SIZE;
-            }
-
-            let spacingLeft = getSpacingLeft();
-            spacingLeft += extraBoxLeft;
-            let spacingRight = getSpacingRight();
-            spacingRight += extraBoxRight;
-
-            return { spacingLeft, spacingRight };
-        }
-        setContext(spacingFunctionName, setSpacing);
-    }
-
-    updateSpacingFunction();
 
     // this function's primary use in in accurately resizing the side navigation container
     // (so the side nav can be properly "centered" on the screen)
@@ -131,13 +66,21 @@
 
 <svelte:window 
     bind:innerHeight={windowHeight} 
-    on:resize={() => {updateSpacingFunction(); updateGeometryData()}} 
+    on:resize={() => {updateGeometryData()}} 
     on:scroll={updateGeometryData} />
 
 {#if (navigation && showSideNav)}
     <Navigation>
         <!-- The diamonds + bounding box for diamonds on the side of the screen -->
-        <div slot="inPageNav" class="inPageNav" style="--height: {navboxH}px" bind:this={primaryNavContainerElement}>
+        <div 
+            slot="inPageNav" 
+            class="inPageNav" 
+            style="
+                --height: {navboxH}px; 
+                --gridColumns: {gridColumns};
+                --sidebarColumns: {sidebarColumn};
+                " 
+            bind:this={primaryNavContainerElement}>
 
             <!-- The diamonds component -->
             <SidebarNav bind:scrollToSections={trackedIDs} bind:position />
@@ -147,7 +90,18 @@
     <Navigation />
 {/if}
 
-<main class="{showSideNav? 'mainGridWithSideNav' : ''}" style="--bPosition: {backgroundPosition}" bind:this={mainElement} bind:clientWidth={width} >
+<main 
+    class="{showSideNav? 'mainGridWithSideNav' : ''}" 
+    style="
+        --bPosition: {backgroundPosition};
+        --mainColumnFR: {mainColumn}fr;
+        --sidebarColumnFR: {sidebarColumn}fr;
+        --baseSpacingLeftValue: {((((width/2.0) - (SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE)}px;
+        --baseSpacingRightValue: {(((divWidth/2.0) - ((width - divWidth)/2) -(SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE}px;
+        " 
+    bind:this={mainElement} 
+    bind:clientWidth={width} 
+    >
     
     <!-- This element can get spacing based on the background grid -->
     <div 
@@ -173,10 +127,12 @@
     .mainGridWithSideNav {
         display: grid;
         grid-template-columns: 1fr;
-
     }
 
     main {
+        --extraBoxRight: 0; 
+        --extraBoxLeft: var(--extraBoxRight);
+
         padding-bottom: var(--boxImgSize);
         position: relative;
         
@@ -187,6 +143,11 @@
             position: var(--bPosition);
             @include gridBackgroundImageNoFilter();
             z-index: -1;
+        }
+
+        :global(.wrapperPositioned) {
+            padding-left: calc(var(--baseSpacingLeftValue) + (var(--boxImgSize) * var(--extraBoxLeft)));
+            padding-right: calc(var(--baseSpacingRightValue) + (var(--boxImgSize) * var(--extraBoxRight)));
         }
 
     }
@@ -200,7 +161,7 @@
         display: none;
         position: relative;
         margin: 0 auto;
-        width: calc(100vw / 8);
+        width: calc((100vw / var(--gridColumns)) * var(--sidebarColumns));
         height: var(--height);
         justify-content: center;
         align-items: center;
@@ -212,14 +173,29 @@
         }
     }
 
+    @media only screen and (min-width: 550px) {
+        main { --extraBoxRight: 1; }
+    }
+
     @media only screen and (min-width: 700px) {
         .mainGridWithSideNav {
-            grid-template-columns: 7fr 1fr;
+            --extraBoxLeft: 1;
+            --extraBoxRight: 0;
+
+            grid-template-columns: var(--mainColumnFR) var(--sidebarColumnFR);
         }
 
         .inPageNav {
             display: flex;
         }
+    }
+
+    @media only screen and (min-width: 1200px) {
+        main { --extraBoxRight: 2; }
+    }
+
+    @media only screen and (min-width: 1500px) {
+        main { --extraBoxRight: 3; }
     }
 
 </style>
