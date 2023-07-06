@@ -70,8 +70,10 @@
         &::after {
             --offset: 3px;
             --color: var(--color5);
+            --maskPosition: calc(50% + var(--offset)) calc(50% + var(--offset)); 
             z-index: 1;
-            mask-position: calc(50% + var(--offset)) calc(50% + var(--offset)) !important;
+            mask-position: var(--maskPosition) !important;
+            -webkit-mask-position: var(--maskPosition) !important;
         }
 
         &.active {
@@ -84,7 +86,8 @@
             --timingFunction: cubic-bezier(.65,0,0,1.0);
 
             &::before, &::after {
-                --loopOpacity: 25%;
+                --loopOpacity: .4;
+                opacity: 1;
                 animation: 
                     deployNavigation var(--timeSpent) var(--timingFunction) var(--startTimeOffset),
                     gridAnimation var(--timeSpent) var(--timingFunction) calc(var(--startTimeOffset) + var(--timeSpent) + 1s) infinite;
@@ -108,6 +111,7 @@
             background-position-y: -50vh;
             background-size: 200% 200%;
             mask: url("/images/backgroundSquare.png") repeat center;
+            -webkit-mask: url("/images/backgroundSquare.png") repeat center;
             width: 100%;
             height: 100%;
             position: absolute;
