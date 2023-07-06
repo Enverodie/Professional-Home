@@ -1,7 +1,7 @@
 <footer>
     <div class="grid">
         <div class="column">
-            Enverodie.com, &copy; 2022 Stephen M. Smith
+            Enverodie.com, &copy; {new Date().getFullYear()} Stephen M. Smith
         </div>
         <div class="column">
             <img id="mascotWithSign" src="/images/footer.png" alt="Enverodie mascot" />
