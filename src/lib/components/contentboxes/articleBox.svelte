@@ -4,7 +4,7 @@
      */
 
     import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '$lib/constants/grid.js';
-    import { navbar } from '../stores/gui.js';
+    import { navbar } from '$lib/stores/gui.js';
 
     export let extraStyles = "";
 

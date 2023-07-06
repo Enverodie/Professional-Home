@@ -1,12 +1,13 @@
 <div class="wireframeContainer {$$props.class}">
-    <img class="layer3" src="/svgs/riverwireframe/riverwireframe layer 3.svg" alt="" aria-hidden="true" />
-    <img class="layer2" src="/svgs/riverwireframe/riverwireframe layer 2.svg" alt="" aria-hidden="true" />
-    <img class="layer1" src="/svgs/riverwireframe/riverwireframe layer 1.svg" alt="" aria-hidden="true" />
+    <img class="layer3" src="/svgs/citywireframe/citywireframe layer 3.svg" alt="" aria-hidden="true" />
+    <img class="layer2" src="/svgs/citywireframe/citywireframe layer 2.svg" alt="" aria-hidden="true" />
+    <img class="layer1" src="/svgs/citywireframe/citywireframe layer 1.svg" alt="" aria-hidden="true" />
 </div>
 
 <style lang="scss">
 
-    @import '../dropShadowFilter';
+    @import '../../../styles/background';
+    @import '../../../styles/dropShadowFilter';
     @import 'glitchAnimation';
     
     .wireframeContainer {
@@ -26,14 +27,14 @@
             }
 
             &.layer3 {
-                --glitchColor: #F36BFA;
+                --glitchColor: #F261FA;
                 filter: imageDropShadow(var(--glitchColor));
                 animation: glitchImg 3242ms infinite 13ms;
                 z-index: 3;
             }
 
             &.layer2 {
-                --glitchColor: #5C6DFF;
+                --glitchColor: #D807E3;
                 filter: imageDropShadow(var(--glitchColor));
                 animation: glitchImg 2278ms infinite 26ms;
                 z-index: 2;

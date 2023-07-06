@@ -13,10 +13,10 @@
     
     import { onMount } from 'svelte';
     import Navigation from '../navigation/navigation.svelte';
-	import Footer from '../footer.svelte';
+	import Footer from '../footer/mainFooter.svelte';
 	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '../../constants/grid.js';
-    import SidebarNav from '../sidebarNav.svelte';
-	import IntersectionHandler from '../intersectionHandler.svelte';
+    import SidebarNav from '../navigation/sidebarNav.svelte';
+	import IntersectionHandler from '$lib/components/utilities/intersectionHandler.svelte';
     
     // component properties
 

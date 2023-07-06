@@ -23,7 +23,7 @@
 </a>
 
 <style lang="scss">
-    @import '_centerEverything.scss';
+    @import '../../../lib/styles/centerEverything';
 
     a {
         $margin: 1.5em;

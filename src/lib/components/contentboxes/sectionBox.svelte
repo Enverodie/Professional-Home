@@ -9,7 +9,7 @@
      * It provides the <article> tag, as well as nice spacing and borders.
      */
 
-    import { navbar } from '../stores/gui.js';
+    import { navbar } from '../../stores/gui.js';
 
     export let extraStyles = "";
 

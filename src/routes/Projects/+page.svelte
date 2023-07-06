@@ -1,14 +1,14 @@
 <script>
-	import PositionInWrapper from './../../lib/components/positionInWrapper.svelte';
-
+    
     /* This is the base component for the /Projects route. */
-
+    
     import PageWrapper from '$lib/components/layout/grid.svelte'
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
 	import SimulationCanvas from './+pageComponents/simulationCanvas.svelte';
 	import ShowcaseItem from './+pageComponents/showcaseItem.svelte';
-	import NameGlitch from '$lib/components/nameGlitch.svelte';
-	import ArticleBox from '$lib/components/articleBox.svelte';
+	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
+	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
+	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 

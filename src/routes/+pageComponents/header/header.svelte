@@ -4,8 +4,8 @@
      * Contains all the pretty, fancy splash stuff.
      */
 
-    import GlitchText from '$lib/components/nameGlitch.svelte';
-	import GlitchController from '$lib/components/scenesGlitch/glitchController.svelte';
+    import GlitchText from '$lib/components/texts/nameGlitch.svelte';
+	import GlitchController from '$lib/components/specialFX/scenesGlitch/glitchController.svelte';
 
 </script>
 

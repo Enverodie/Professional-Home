@@ -1,5 +1,5 @@
 <script>
-	import PositionInWrapper from './../lib/components/positionInWrapper.svelte';
+	import PositionInWrapper from './../lib/components/utilities/positionInWrapper.svelte';
 	
 	/* This is the base component for the "/" route. */
 	
@@ -7,7 +7,7 @@
 	import PageWrapper from '$lib/components/layout/grid.svelte'
 	import About from './+pageComponents/about/about.svelte';
 	import Showcase from './+pageComponents/project-showcase/projectShowcase.svelte';
-	import ArticleBox from '$lib/components/articleBox.svelte';
+	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
 
 	const borderColor = "var(--color7)";
 

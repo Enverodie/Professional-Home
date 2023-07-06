@@ -51,7 +51,7 @@
 </div>
 
 <style lang="scss">
-    @import '_centerEverything.scss';
+    @import '../../../lib/styles/centerEverything';
 
     /* Creates a custom gradient image that can be used as a border when applying a large enough layer over top of it. */
     @mixin setBorderBackground($color, $startAngle, $color2) {
