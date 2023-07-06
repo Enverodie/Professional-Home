@@ -14,20 +14,18 @@
 	let trackedIDs = ["about", "showcase"]; // must be in order of appearance on page
 	let viewportPosition;
 
-	$: viewportPositionFull = Math.floor(viewportPosition);
-
 </script>
 <Header />
-<PageWrapper bind:trackedIDs bind:position={viewportPosition}>
+<PageWrapper bind:trackedIDs bind:position={viewportPosition} showSideNav={true}>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPositionFull === 0) ? `border-color: ${borderColor}` : ''} >
+		<ArticleBox id={trackedIDs[0]} extraStyles={(viewportPosition === 0) ? `border-color: ${borderColor}` : ''} >
 			<About />
 		</ArticleBox>
 	</PositionInWrapper>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPositionFull === 1) ? `border-color: ${borderColor}` : ''}>
+		<ArticleBox id={trackedIDs[1]} extraStyles={(viewportPosition === 1) ? `border-color: ${borderColor}` : ''}>
 			<Showcase />
 		</ArticleBox>
 	</PositionInWrapper>

@@ -22,6 +22,7 @@
 
     export let navigation = true;
     export let footer = true;
+    export let showSideNav = false;
     export let trackedIDs = []; // optional value - if no tracked ids, remove side nav
     export let position = 0;
     export let backgroundPosition = "absolute";
@@ -38,7 +39,7 @@
     let width = 0;
     let divWidth = 0;
 
-    $: showSideNav = trackedIDs.length > 0;
+    // $: showSideNav = trackedIDs.length > 0;
 
     // this function's primary use in in accurately resizing the side navigation container
     // (so the side nav can be properly "centered" on the screen)
@@ -69,6 +70,7 @@
     on:resize={() => {updateGeometryData()}} 
     on:scroll={updateGeometryData} />
 
+<!-- Navigation stuff -->
 {#if (navigation && showSideNav)}
     <Navigation>
         <!-- The diamonds + bounding box for diamonds on the side of the screen -->
@@ -90,6 +92,7 @@
     <Navigation />
 {/if}
 
+<!-- Main content holder -->
 <main 
     class="{showSideNav? 'mainGridWithSideNav' : ''}" 
     style="
@@ -115,6 +118,7 @@
     {/if}
 </main>
 
+<!-- Footer -->
 {#if (footer)}
     <Footer />
 {/if}
