@@ -3,23 +3,15 @@
     /* The SimulationCanvas component is meant to fill an optional slot in ShowcaseItem
      * components. This one fits the theme of Simulation Sandbox. It draws a canvas
      * with pseudo-randomly placed boxes every X amount of time.
-     * 
-     * While it's true I would probably have included something like this *anyway*,
-     * I know there's a javascript requirement for this final, so I'm creating this
-     * canvas component *now* so I can guarantee without a shadow of a doubt that I
-     * met the javascript requirement. While Svelte is javascript, it might be 
-     * considered cheating a little bit, so I didn't want to create that ambiguity.
      */
 
-    import { afterUpdate, onMount } from 'svelte';
-    export let parentWidth;
-    export let parentHeight;
+    import { onMount } from 'svelte';
     
     const potentialSquareColors = ['#5C6CFF', '#F36BFA', '#9805FA']
     const squareSize = 15;
     const waitB4DrawingSquares = 400;
     const cursorPositionOnCanvas = {x: 0, y: 0};
-    let canvas, ctx, container, containerWidth, containerHeight, canvasWidth, canvasHeight;
+    let canvas, ctx, container, containerWidth, containerHeight;
 
     // solution from Adam Grant (Oct. 15, 2021):
     // https://stackoverflow.com/a/28222246/15818885
@@ -76,22 +68,7 @@
     onMount(() => {
         ctx = canvas.getContext('2d');
         drawNextSquare(ctx);
-        console.log("simulationCanvas mounted");
-    })
-
-    afterUpdate(() => {
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-        console.log("updated: ", containerWidth, containerHeight);
-    })
-
-    $: console.log("cwidth: " + containerWidth);
-    $: console.log("cheight: " + containerHeight);
+    });
 
 </script>
 
@@ -102,12 +79,11 @@
     bind:this={container}
     bind:clientWidth={containerWidth}
     bind:clientHeight={containerHeight}
-    on:load={() => {console.log("loaded")}}
     >
     <canvas 
         bind:this={canvas}
-        width={`${ parentWidth }px`}
-        height={`${ parentHeight }px`}
+        width={`${ containerWidth }px`}
+        height={`${ containerHeight }px`}
         >
     </canvas>
 </div>
@@ -130,7 +106,6 @@
         z-index: 1;
         opacity: .5;
         pointer-events: none;
-        
     }
 
 </style>

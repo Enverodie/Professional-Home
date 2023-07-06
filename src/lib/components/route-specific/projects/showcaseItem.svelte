@@ -9,10 +9,13 @@
      * visual effects (such as rendered with an HTML canvas).
      */
 
+    import { onMount } from "svelte";
+
     export let images = [{src: "/", alt:"image not found", description: "image not found"}];
 
     let carouselIndex = 0;
     let height, width;
+    let mounted;
 
     function setCarouselIndex(increment) {
         carouselIndex = (carouselIndex + increment) % images.length;
@@ -21,26 +24,32 @@
 
     let cursorPosition;
 
+    onMount(() => {
+        mounted = true;
+    })
+
 </script>
 
-<div style="width: 100%; height: 100%; position: relative; box-sizing: border-box;" bind:clientHeight={height} bind:clientWidth={width}>
-    <slot name="containedEffects" cursorPosition={cursorPosition} parentHeight={height} parentWidth={width} />
-    <div class="grid">
-        <div class="figureContainer">
-            <figure class="showcaseImage">
-                <img src={images[carouselIndex].src} alt={images[carouselIndex].alt} >
-                <figcaption>{images[carouselIndex].description}</figcaption>
-            </figure>
-            <div class="buttons">
-                <button class="prev" on:click={() => {setCarouselIndex(-1)}}>&lsaquo;</button>
-                <button class="next" on:click={() => {setCarouselIndex(1)}}>&rsaquo;</button>
+{#if (mounted)}
+    <div style="width: 100%; height: 100%; position: relative; box-sizing: border-box;">
+        <slot name="containedEffects" cursorPosition={cursorPosition} />
+        <div class="grid">
+            <div class="figureContainer">
+                <figure class="showcaseImage">
+                    <img src={images[carouselIndex].src} alt={images[carouselIndex].alt} >
+                    <figcaption>{images[carouselIndex].description}</figcaption>
+                </figure>
+                <div class="buttons">
+                    <button class="prev" on:click={() => {setCarouselIndex(-1)}}>&lsaquo;</button>
+                    <button class="next" on:click={() => {setCarouselIndex(1)}}>&rsaquo;</button>
+                </div>
+            </div>
+            <div class="content">
+                <slot></slot>
             </div>
         </div>
-        <div class="content">
-            <slot></slot>
-        </div>
     </div>
-</div>
+{/if}
 
 <style lang="scss">
 
