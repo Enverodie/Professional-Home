@@ -13,6 +13,8 @@
     import { navbar } from '../../stores/gui.js'
     import { page } from '$app/stores'
 
+    const desktopNavBreakpoint = 800;
+
     // let path = window.location.pathname;
     let path = $page.url.pathname;
     let windowWidth;
@@ -26,20 +28,25 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<MobileNavLinks bind:displayed />
-<div class="stickToTop">
+{#if (windowWidth < desktopNavBreakpoint)}
+    <MobileNavLinks bind:displayed />
+    {#if (displayed)}
+        <div class="navSizeReplica" style={"--navHeight: " + nav?.getBoundingClientRect().height + 'px;'} />
+    {/if}
+{/if}
+<div class={"stickToTop" + ((displayed && windowWidth < desktopNavBreakpoint)? ' mobileLinksDisplayed' : '')}>
     <nav bind:this={nav}>
         <div class="icon">
             <EnverodieIcon />
             <span>{getRouteName(path)}</span>
         </div>
-        {#if (windowWidth < 800)}
-            <HamburgerNavElements bind:displayed />
+        {#if (windowWidth >= desktopNavBreakpoint)}
+            <HorizontalNavElements bind:displayed />
         {:else}
-            <HorizontalNavElements />
+            <HamburgerNavElements bind:displayed />
         {/if}
     </nav>
-    <div style="position: absolute; right: 0; overflow: hidden;">
+    <div class="inPageNavContainer">
         <slot name="inPageNav"></slot>
     </div>
 </div>
@@ -53,6 +60,15 @@
         margin: 0;
     }
 
+    .mobileLinksDisplayed {
+        position: fixed;
+        width: 100%;
+
+        .inPageNavContainer {
+            visibility: hidden;
+        }
+    }
+
     nav {
         background-color: var(--color5);
         padding: .5em 1em;
@@ -61,15 +77,26 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        .icon {
+            font-weight: 700;
+            font-size: 2em;
+            margin-right: 1em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
     }
 
-    .icon {
-        font-weight: 700;
-        font-size: 2em;
-        margin-right: 1em;
-        display: flex;
-        align-items: center;
-        gap: 1em;
+    .navSizeReplica {
+        background-color: var(--color5);
+        height: var(--navHeight);
+    }
+
+    .inPageNavContainer {
+        position: absolute;
+        right: 0;
+        overflow: hidden;
     }
 
     @media only screen and (max-width: 400px) {

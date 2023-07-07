@@ -20,9 +20,6 @@
 <div class="mobileNavMenu" class:active={displayed}>
     <div class="navButtons">
         
-        <div style="display: flex; justify-content: end; margin-bottom: 2em;">
-            <Hamburger class="hamburgerAdjust" bind:displayed />
-        </div>
         {#each NAVIGABLE_ROUTES.filter(item => item !== path) as route}
             <HumbleAnchor class="navButton" href={route}>
                 {splitPascalCase(getRouteName(route))}
@@ -55,7 +52,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        z-index: 100;
+        z-index: 9;
         background-color: hsla(var(--color5H), var(--color5S), var(--color5L), .95);
         transform: translate(0, -100vh);
         transition: 
