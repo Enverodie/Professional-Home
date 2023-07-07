@@ -1,17 +1,25 @@
 <script>
+    import AnimatedHamburger from "../specialFX/animatedHamburger/animatedHamburger.svelte";
+
 
     export let displayed;
+
+    const animationDuration = 0.1; // in seconds
+    $: animating = false;
+
     function clickHamburger() {
         displayed = !displayed;
+        animating = true;
+        setTimeout(() => {animating = false}, animationDuration*1000);
     }
 
 </script>
 
 <button 
-    class="{$$props.class} button"
+    class={($$props.class || '') + " button"}
     on:click={clickHamburger}>
     <div class="innerIcon">
-        <i class="fa-solid fa-bars"></i>
+        <AnimatedHamburger class="icon" style={"--animatingClassAnimationDuration: " + animationDuration + 's;'} {animating} />    
     </div>
 </button>
 
@@ -28,8 +36,8 @@
         cursor: pointer;
         transition: transform 150ms ease;
 
-        &:focus .innerIcon i {
-            // border: red 2px solid;
+        &:focus .innerIcon :global(.icon) {
+            transition: filter 150ms ease;
             filter: drop-shadow(.1em .05em .05em var(--color2))
         }
         
@@ -37,22 +45,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
 
-        &:active {
-            background: none;
-            animation: rotate180 150ms ease forwards;
-            
-            &>.innerIcon {
-                transform: scale(.8);
+            :global(.icon) {
+                height: 1.2em;
+                width: 100%;
             }
-        }
-    }
-
-    @keyframes rotate180 {
-        from {}
-        to {
-            transform: rotate(180deg);
+            
         }
     }
 
