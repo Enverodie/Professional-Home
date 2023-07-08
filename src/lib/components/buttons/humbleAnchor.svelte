@@ -19,9 +19,9 @@
     >
     <slot></slot>
     {#if $$slots.icon}
-        <span class="noUnderline">
+        <div class="noUnderline">
             <slot name="icon" />
-        </span>
+        </div>
     {/if}
 </a>
 
@@ -44,6 +44,8 @@ a {
 
     &>.noUnderline {
         text-decoration: none !important;
+        display: flex;
+        justify-content: center;
     }
 
     

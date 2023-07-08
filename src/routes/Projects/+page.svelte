@@ -50,11 +50,11 @@
                 <div class="buttonsFlex">
                     <HumbleAnchor href="https://github.com/Enverodie/SimulationSandbox" target="_blank" rel="noreferrer">
                         Source code
-                        <i slot="icon"><img src="/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/></i>
+                        <img slot="icon" src="/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/>
                     </HumbleAnchor>
                     <HumbleAnchor href="http://simulationsandbox.enverodie.com/" target="_blank" rel="noreferrer">
                         Play! 
-                        <i slot="icon" class="fa-solid fa-arrow-right"></i>
+                        <img slot="icon" src="/svgs/arrows/arrow-white.svg" alt="<-" aria-hidden style="transform: rotate(180deg); height: 1em;" />
                     </HumbleAnchor>
                 </div>
             </ShowcaseItem>

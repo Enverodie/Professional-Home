@@ -23,7 +23,7 @@
     <div>
         <a id="aboutLinks-Resume" href="/resume" target="_blank" rel="noreferrer">
             <label for="aboutLinks-Resume">Resume</label>
-            <i class="fa-solid fa-file-lines" style="font-size: 60px"></i>
+            <img src="/svgs/customIcons/document.svg" alt="Resume" />
         </a>
     </div>
 </div>
@@ -65,7 +65,7 @@
                     font-size: 0px;
                 }
                 
-                &>img, &>i{
+                &>img {
                     filter: drop-shadow(0px 0px .3em var(--color6));
                 }
             }
@@ -76,7 +76,7 @@
                 transition: font-size .2s ease;
             }
 
-            &>img, &>i{
+            &>img {
                 height: 60px;
                 z-index: 1;
             }
