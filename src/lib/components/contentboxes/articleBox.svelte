@@ -38,7 +38,7 @@
         box-sizing: border-box;
         float: left;
         background-color: var(--color1);
-        border: 2px solid hsla(var(--color2H), var(--color2S), var(--color2L), .1); // tied to opacity of square image in _background.scss
+        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
         padding: var(--defaultPadding);
         margin-top: calc(var(--boxImgSize) + var(--boxOutsideSize));
         display: flex;

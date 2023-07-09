@@ -29,9 +29,11 @@
 </script>
 
 <PageWrapper>
-    <div class="nameGlitchPadding">
-        <NameGlitch class="headline">Code projects</NameGlitch>
-    </div>
+    <PositionInWrapper>
+        <div class="nameGlitchPadding">
+        <NameGlitch>Code projects</NameGlitch>
+        </div>
+    </PositionInWrapper>
     <PositionInWrapper>
         <ArticleBox extraStyles={articleBoxEdits}>
             <ShowcaseItem images={simulationSandboxImages}>
@@ -72,7 +74,7 @@
     .nameGlitchPadding {
         padding: .5em 0;
 
-        --fontSize: 64px;
+        --fontSize: 32px;
         font-size: var(--fontSize);
         
         :global(.headline) {

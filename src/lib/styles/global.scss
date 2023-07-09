@@ -91,15 +91,18 @@
 
     $boxImgSizeUnitless: 55;
     $boxOutsideSizeUnitless: 3;
+    $boxStrokeSizeUnitless: 2;
     $boxSizeUnitless: $boxImgSizeUnitless - $boxOutsideSizeUnitless;
 
     --boxImgSizeUnitless: #{$boxImgSizeUnitless};
     --boxOutsideSizeUnitless: #{$boxOutsideSizeUnitless}; // (55-49)/2
+    --boxStrokeSizeUnitless: #{$boxStrokeSizeUnitless};
     --boxSizeUnitless: calc(var(--boxImgSizeUnitless) - var(--boxOutsideSizeUnitless));
 
     --boxImgSize: calc(1px * var(--boxImgSizeUnitless));
     --boxSize: calc(1px * var(--boxSizeUnitless));
     --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless)); 
+    --boxStrokeSize: calc(1px * var(--boxStrokeSizeUnitless));
 
     --hoverShadow: 
         1px 0px 0px var(--color2),

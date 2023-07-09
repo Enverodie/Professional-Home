@@ -5,7 +5,8 @@
 </script>
 
 <div
-    class="wrapperPositioned {spacingFunctionName}"
+    class={"wrapperPositioned" + " " + spacingFunctionName + " " + ($$props.class || '')}
+    style={$$props.style || ''}
     >
     <slot />
 </div>

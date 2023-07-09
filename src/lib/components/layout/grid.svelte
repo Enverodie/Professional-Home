@@ -1,8 +1,12 @@
 <script context="module">
 
+    import { createBackgroundGridImage } from '../../constants/grid.js';
+
     export const gridColumns = 8;
     export const mainColumn = 7;
     export const sidebarColumn = gridColumns - mainColumn;
+
+    let backgroundGridImage = createBackgroundGridImage('hsla(297, 93%, 70%, .1)'); // color 2
 
 </script>
 <script>
@@ -38,8 +42,9 @@
 
     let width = 0;
     let divWidth = 0;
-
-    // $: showSideNav = trackedIDs.length > 0;
+    
+    $: baseSpacingLeftValue = ((((width/2.0) - (SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE);
+    $: baseSpacingRightValue = (((divWidth/2.0) - ((width - divWidth)/2) -(SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE - 1;
 
     // this function's primary use in in accurately resizing the side navigation container
     // (so the side nav can be properly "centered" on the screen)
@@ -93,30 +98,36 @@
 {/if}
 
 <!-- Main content holder -->
-<main 
-    class="{showSideNav? 'mainGridWithSideNav' : ''}" 
+<div 
+    class="mainContainer"
     style="
+        --backgroundImage: url('{backgroundGridImage}');
         --bPosition: {backgroundPosition};
-        --mainColumnFR: {mainColumn}fr;
-        --sidebarColumnFR: {sidebarColumn}fr;
-        --baseSpacingLeftValue: {((((width/2.0) - (SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE)}px;
-        --baseSpacingRightValue: {(((divWidth/2.0) - ((width - divWidth)/2) -(SQUARE_IMG_SIZE/2.0)) % SQUARE_IMG_SIZE) + SQUARE_IMG_WHITESPACE}px;
-        " 
-    bind:this={mainElement} 
-    bind:clientWidth={width} 
-    >
-    
-    <!-- This element can get spacing based on the background grid -->
-    <div 
-        bind:clientWidth={divWidth} 
-        class="container" 
+    ">
+    <main 
+        class="{showSideNav? 'mainGridWithSideNav' : ''}" 
+        style="
+            --mainColumnFR: {mainColumn}fr;
+            --sidebarColumnFR: {sidebarColumn}fr;
+            --baseSpacingLeftValue: {baseSpacingLeftValue}px;
+            --baseSpacingRightValue: {baseSpacingRightValue}px;
+            " 
+        bind:this={mainElement} 
+        bind:clientWidth={width} 
         >
-        <slot></slot>
-    </div>
-    {#if (showSideNav)}
-        <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
-    {/if}
-</main>
+        
+        <!-- This element can get spacing based on the background grid -->
+        <div 
+            bind:clientWidth={divWidth} 
+            class="container" 
+            >
+            <slot></slot>
+        </div>
+        {#if (showSideNav)}
+            <aside class="stickyItem"></aside> <!-- May be useful later; otherwise used as whitespace for the sidebar nav -->
+        {/if}
+    </main>
+</div>
 
 <!-- Footer -->
 {#if (footer)}
@@ -128,6 +139,25 @@
 
     @import '../../styles/background.scss';
 
+    .mainContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        overflow-x: hidden;
+        flex: 1;
+        
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: var(--bPosition);
+            @include gridBackgroundImage(var(--backgroundImage));
+            z-index: -1;
+        }
+    }
+
     .mainGridWithSideNav {
         display: grid;
         grid-template-columns: 1fr;
@@ -136,18 +166,11 @@
     main {
         --extraBoxRight: 0; 
         --extraBoxLeft: var(--extraBoxRight);
+        width: 100vw;
 
         padding-bottom: var(--boxImgSize);
         position: relative;
         
-        &:before {
-            content: '';
-            width: 100%;
-            height: 100%;
-            position: var(--bPosition);
-            @include gridBackgroundImageNoFilter();
-            z-index: -1;
-        }
 
         :global(.wrapperPositioned) {
             padding-left: calc(var(--baseSpacingLeftValue) + (var(--boxImgSize) * var(--extraBoxLeft)));
