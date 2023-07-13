@@ -7,17 +7,16 @@
     import { page } from '$app/stores';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
     import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES, INCOMPLETE_ROUTES } from '../../constants/navigableRoutes'
-    import Hamburger from './hamburger.svelte';
-
+    import { createBackgroundGridImage } from '../../constants/grid';
 
     export let displayed = false;
 
-    // let path = window.location.pathname;
+    const maskImage = createBackgroundGridImage('white');
     let path = $page.url.pathname;
 
 </script>
 
-<div class="mobileNavMenu" class:active={displayed}>
+<div class="mobileNavMenu" class:active={displayed} style="--backgroundMask: url({maskImage});">
     <div class="navButtons">
         
         {#each NAVIGABLE_ROUTES.filter(item => item !== path) as route}
@@ -107,8 +106,8 @@
                 );
             background-position-y: -50vh;
             background-size: 200% 200%;
-            mask: url("/images/backgroundSquare.png") repeat center;
-            -webkit-mask: url("/images/backgroundSquare.png") repeat center;
+            mask: var(--backgroundMask) repeat center;
+            -webkit-mask: var(--backgroundMask) repeat center;
             width: 100%;
             height: 100%;
             position: absolute;
