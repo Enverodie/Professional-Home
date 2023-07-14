@@ -25,7 +25,7 @@
 	</PositionInWrapper>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[1]} style={(viewportPosition === 1) ? `border-color: ${borderColor}` : ''}>
+		<ArticleBox id={trackedIDs[1]} style={(viewportPosition === 1) ? `border-color: ${borderColor}` : ''} fullHeight={true}>
 			<Showcase />
 		</ArticleBox>
 	</PositionInWrapper>

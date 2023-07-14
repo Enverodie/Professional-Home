@@ -111,7 +111,8 @@
 
     .showcase { // root element
         width: 100%;
-        height: 60vh;
+        // height: 60vh;
+        height: 100%;
         position: relative;
         overflow: hidden;
 
@@ -335,13 +336,15 @@
 
     @media only screen and (min-width: 1300px) {
         .showcase {
-            height: 70vh;
+            // height: 70vh;
+            height: 100%;
         }
     }
 
     @media only screen and (min-width: 1700px) {
         .showcase {
-            height: 75vh;
+            // height: 75vh;
+            height: 100%;
         }
     }
 

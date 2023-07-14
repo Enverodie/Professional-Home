@@ -1,6 +1,6 @@
 <script context="module">
 
-    import { createBackgroundGridImage } from '../../constants/grid.js';
+    import { SQUARE_IMG_SIZE, createBackgroundGridImage } from '../../constants/grid.js';
 
     export const gridColumns = 8;
     export const mainColumn = 7;
@@ -15,10 +15,10 @@
      * allowing for a side navigation component, aligning with a background grid image. 
      */
     
-    import { onMount } from 'svelte';
+    import { onMount, setContext } from 'svelte';
     import Navigation from '../navigation/navigation.svelte';
 	import Footer from '../footer/mainFooter.svelte';
-	import { SQUARE_IMG_SIZE, SQUARE_IMG_WHITESPACE } from '../../constants/grid.js';
+	import { SQUARE_IMG_WHITESPACE } from '../../constants/grid.js';
     import SidebarNav from '../navigation/sidebarNav.svelte';
 	import IntersectionHandler from '$lib/components/utilities/intersectionHandler.svelte';
     
@@ -60,6 +60,13 @@
             navboxH = windowHeight - navboxClientY - Math.max((-mainHeight - mainClientY + windowHeight), 0);
         }
     }
+
+    setContext('getHeight', (element) => {
+        if (typeof element === 'undefined') return;
+        let height = element.getBoundingClientRect().height;
+        console.log("element from getHeight", element, element.getBoundingClientRect());
+        return height + (SQUARE_IMG_SIZE - (height % SQUARE_IMG_SIZE));
+    })
 
     onMount(() => {
         updateGeometryData();
@@ -173,8 +180,19 @@
         
 
         :global(.wrapperPositioned) {
+            display: flex;
+            box-sizing: border-box;
+            margin-top: var(--boxImgSize);
+            padding-top: var(--boxOutsideSize);
+            padding-bottom: var(--boxOutsideSize);
             padding-left: calc(var(--baseSpacingLeftValue) + (var(--boxImgSize) * var(--extraBoxLeft)));
             padding-right: calc(var(--baseSpacingRightValue) + (var(--boxImgSize) * var(--extraBoxRight)));
+            height: calc(var(--boxImgSize) * 14);
+        }
+
+        :global(.wrapperPositioned>*) {
+            flex: 1;
+            justify-content: center;
         }
 
     }

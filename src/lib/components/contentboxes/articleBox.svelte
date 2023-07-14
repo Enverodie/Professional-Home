@@ -5,6 +5,8 @@
 
     import { navbar } from '$lib/stores/gui.js';
 
+    export let fullHeight = false;
+
     let navbarHeight = 0;
     
     navbar.subscribe(newNavbar => {
@@ -22,7 +24,7 @@
         in an attempt to vertical align 
         the articles with the background.
     -->
-    <div class="slotContainer">
+    <div class="slotContainer" style={fullHeight? 'height: 100%;' : ''}>
         <!-- The article's content -->
         <slot />
     </div>
@@ -33,14 +35,10 @@
 
     article {
 
-        --defaultPadding: 1em;
-
         box-sizing: border-box;
-        float: left;
         background-color: var(--color1);
         border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
         padding: var(--defaultPadding);
-        margin-top: calc(var(--boxImgSize) + var(--boxOutsideSize));
         display: flex;
         justify-content: center;
         flex-direction: column;

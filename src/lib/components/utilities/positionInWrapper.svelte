@@ -3,10 +3,25 @@
     export const spacingFunctionName = "setSpacingArticle";
     
 </script>
+<script>
+
+    import { getContext, onMount } from 'svelte';
+
+    const heightFunction = getContext('getHeight');
+
+    let element;
+    // let newHeight;
+    
+    $: newHeight = heightFunction(element?.children[0]);
+    // onMount(() => {
+    // })
+
+</script>
 
 <div
+    bind:this={element}
     class={"wrapperPositioned" + " " + spacingFunctionName + " " + ($$props.class || '')}
-    style={$$props.style || ''}
+    style={($$props.style || '') + (newHeight ? `--height: ${newHeight}px;` : '')}
     >
     <slot />
 </div>
