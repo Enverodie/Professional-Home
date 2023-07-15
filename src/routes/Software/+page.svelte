@@ -68,18 +68,6 @@
         text-align: center;
     }
 
-    /* used to set the perfect spacing on glitch effects (like the one seen in the header on the homepage) on this specific route. */
-    .nameGlitchPadding {
-        padding: .5em 0;
-
-        --fontSize: 32px;
-        font-size: var(--fontSize);
-        
-        :global(.headline) {
-            font-size: var(--fontSize)
-        }
-    }
-
     /* used to set perfect spacing on buttons at the bottom of each article */
     .buttonsFlex {
         margin: 2.5em 0 1em;
