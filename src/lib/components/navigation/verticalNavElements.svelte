@@ -6,29 +6,20 @@
 
     import { page } from '$app/stores';
     import HumbleAnchor from '../buttons/humbleAnchor.svelte';
-    import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES, INCOMPLETE_ROUTES } from '../../constants/navigableRoutes'
+    import { getRouteName, splitPascalCase, NAVIGABLE_ROUTES } from '../../constants/navigableRoutes'
     import { createBackgroundGridImage } from '../../constants/grid';
 
     export let displayed = false;
 
     const maskImage = createBackgroundGridImage('white');
-    let path = $page.url.pathname;
 
 </script>
 
 <div class="mobileNavMenu" class:active={displayed} style="--backgroundMask: url({maskImage});">
     <div class="navButtons">
         
-        {#each NAVIGABLE_ROUTES.filter(item => item !== path) as route}
+        {#each NAVIGABLE_ROUTES.filter(r => !(r === '/' && $page.url.pathname === r)) as route}
             <HumbleAnchor class="navButton" href={route}>
-                {splitPascalCase(getRouteName(route))}
-            </HumbleAnchor>
-        {/each}
-        {#each INCOMPLETE_ROUTES as route}
-            <HumbleAnchor 
-                class="navButton" 
-                deadLink={true} 
-                href={route}>
                 {splitPascalCase(getRouteName(route))}
             </HumbleAnchor>
         {/each}
