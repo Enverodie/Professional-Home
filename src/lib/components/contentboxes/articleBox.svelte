@@ -5,6 +5,9 @@
 
     import { navbar } from '$lib/stores/gui.js';
 
+    export let boxesAbove = 1;
+    if (!boxesAbove) boxesAbove = 0;
+
     let navbarHeight = 0;
     
     navbar.subscribe(newNavbar => {
@@ -15,7 +18,7 @@
 
 </script>
 
-<article id={$$props.id} style="{$$props.style}; --jumpTo-Margin: {navbarHeight}px;">
+<article id={$$props.id} style={($$props.style?  $$props.style + ';' : '') + ` --jumpTo-Margin: ${navbarHeight}px; --boxesAbove: ${boxesAbove};`}>
 
     <!-- 
         provides ::before and ::after pseudoelements 
@@ -38,7 +41,7 @@
         background-color: var(--color1);
         border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
         padding: var(--defaultPadding);
-        margin-top: calc(var(--boxImgSize) + var(--boxOutsideSize));
+        margin-top: calc((var(--boxImgSize) * var(--boxesAbove)) + var(--boxOutsideSize));
         display: flex;
         justify-content: center;
         flex-direction: column;

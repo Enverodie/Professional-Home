@@ -6,7 +6,6 @@
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
 	import SimulationCanvas from './+pageComponents/simulationCanvas.svelte';
 	import ShowcaseItem from './+pageComponents/showcaseItem.svelte';
-	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
 	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
     import SectionHeader from '../../lib/components/texts/sectionHeader.svelte';
@@ -34,12 +33,7 @@
     <SectionHeader>Code projects</SectionHeader>
 
     <PositionInWrapper>
-        <div class="nameGlitchPadding">
-        <NameGlitch>Code projects</NameGlitch>
-        </div>
-    </PositionInWrapper>
-    <PositionInWrapper>
-        <ArticleBox extraStyles={articleBoxEdits}>
+        <ArticleBox extraStyles={articleBoxEdits} boxesAbove={false}>
             <ShowcaseItem images={simulationSandboxImages}>
                 <SimulationCanvas slot="containedEffects" />
                 <h2>Simulation Sandbox</h2>
