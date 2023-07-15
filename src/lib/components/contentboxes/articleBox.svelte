@@ -33,8 +33,6 @@
 
     article {
 
-        --defaultPadding: 1em;
-
         box-sizing: border-box;
         float: left;
         background-color: var(--color1);

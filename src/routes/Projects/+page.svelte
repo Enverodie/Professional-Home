@@ -9,6 +9,7 @@
 	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
 	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
+    import SectionHeader from '../../lib/components/texts/sectionHeader.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 
@@ -29,6 +30,9 @@
 </script>
 
 <PageWrapper>
+    
+    <SectionHeader>Code projects</SectionHeader>
+
     <PositionInWrapper>
         <div class="nameGlitchPadding">
         <NameGlitch>Code projects</NameGlitch>

@@ -101,12 +101,14 @@
 
     --boxImgSize: calc(1px * var(--boxImgSizeUnitless));
     --boxSize: calc(1px * var(--boxSizeUnitless));
-    --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless)); 
+    --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless));
     --boxStrokeSize: calc(1px * var(--boxStrokeSizeUnitless));
 
     --hoverShadow: 
         1px 0px 0px var(--color2),
         2px .2px .2px .2px var(--color2);
+
+    --defaultPadding: 1em;
 }
 
 /* Fonts */
