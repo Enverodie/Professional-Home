@@ -15,8 +15,7 @@
 
     const desktopNavBreakpoint = 800;
 
-    // let path = window.location.pathname;
-    let path = $page.url.pathname;
+    let path = $page.error ? "Enverodie.com" : getRouteName($page.url.pathname);
     let windowWidth;
 
     let nav;
@@ -38,7 +37,7 @@
     <nav bind:this={nav}>
         <div class="icon">
             <EnverodieIcon />
-            <span>{getRouteName(path)}</span>
+            <span>{path}</span>
         </div>
         {#if (windowWidth >= desktopNavBreakpoint)}
             <HorizontalNavElements bind:displayed />
