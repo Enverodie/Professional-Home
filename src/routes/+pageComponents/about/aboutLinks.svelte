@@ -20,6 +20,16 @@
             <img src="/svgs/github-mark/github-mark-white.svg" alt="Github" />
         </a>
     </div>
+    <!-- 
+        Blog on CodePen's icon usage + source:
+        https://blog.codepen.io/2014/03/07/codepen-icon/
+     -->
+     <div>
+         <a id="aboutLinks-CodePen" href="https://codepen.io/enverodie" target="_blank" rel="noreferrer">
+            <label for="aboutLinks-GitHub">CodePen</label>
+            <img src="/svgs/Codepen-Logos/codepen-logo-white.svg" alt="CodePen" />
+        </a>
+    </div>
     <div>
         <a id="aboutLinks-Resume" href="/resume" target="_blank" rel="noreferrer">
             <label for="aboutLinks-Resume">Resume</label>
