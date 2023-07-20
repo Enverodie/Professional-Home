@@ -1,0 +1,594 @@
+[{
+  "_id": {
+    "$oid": "64b5c6a11a95c025dfb6a4c0"
+  },
+  "postName": "Cyberpunk Dance",
+  "dateCreated": {
+    "$date": "2019-06-08T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I've never been to a rave, but I love the way they look in media. So, because I'm a big fan of electronic music, pretty lights, and technology, I wanted to make this render. I was also inspired by an article I read  about programmer DJs. Was a wild idea.",
+  "shortDescription": "I created a futuristic rave scene inspired by an article I read about programmer DJs.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "cpd9.png"
+},
+{
+  "_id": {
+    "$oid": "64b5db5d1a95c025dfb6a4c9"
+  },
+  "postName": "Dreamscape",
+  "dateCreated": {
+    "$date": "2020-09-10T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I had a weird dream once, that didn't seem to have much meaning, so I knew I wouldn't remember it. However, it had an amazing scene in it that I never wanted to forget. So, from memory, I did my best to recreate what I saw from sketches and notes I took that morning and then creating that scene in Blender over the next few days. This is the result, and it is very close to what I saw!",
+  "shortDescription": "I recreated a scene I saw in a dream.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "ds34.png"
+},
+{
+  "_id": {
+    "$oid": "64b5ddb91a95c025dfb6a4ca"
+  },
+  "postName": "Extreme Environment",
+  "dateCreated": {
+    "$date": "2018-10-14T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "An attempt at a realistic render. I took on a \"extreme environments\" theme and modelled a flooded city block somewhere in Florida.",
+  "shortDescription": "A realistic render of a flooded city block.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "ee22.png"
+},
+{
+  "_id": {
+    "$oid": "64b5e6ff4b8dfba2180dd10b"
+  },
+  "postName": "Future City Slums",
+  "dateCreated": {
+    "$date": "2018-08-05T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I created this render as part of a casual Blender competition. The theme was \"Dystopian.\" I wanted to create something that felt futuristic, sterile, and overwhelmingly controlled.",
+  "shortDescription": "I created a dystopian render.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "fcs 31.png"
+},
+{
+  "_id": {
+    "$oid": "64b62216ed17a4bdbcd14300"
+  },
+  "postName": "Misty Forest",
+  "dateCreated": {
+    "$date": "2020-01-08T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "This was a test render. Blender 2.8 entirely overhauled  the user interface and added tons of new features. I was experimenting with the (then new) Eevee rendering engine and trying to adapt to the new UI. As I was experimenting, I created this scene, rendered this image, and really liked it.",
+  "shortDescription": "Experimenting with Blender 2.8 features.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "mf2.png"
+},
+{
+  "_id": {
+    "$oid": "64b622a5ed17a4bdbcd14301"
+  },
+  "postName": "Magical Forest",
+  "dateCreated": {
+    "$date": "2019-01-02T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I wanted to create a scene that fit on a ultrawide / two monitor desktop. I was also playing around with a tree generation plugin. The result is this weird forest where the leaves are lighter than air and glow.",
+  "shortDescription": "Playing around with a tree generation plugin.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "mf14.png"
+},
+{
+  "_id": {
+    "$oid": "64b622feed17a4bdbcd14302"
+  },
+  "postName": "Secret Chest",
+  "dateCreated": {
+    "$date": "2018-06-24T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I usually focus on grand scenes when I do Blender renders. This time I wanted to change it up a bit, and put all my focus on one central object. I put a significant amount of work into the chest in this scene; far more than anything else. I also first put depth of field into use to truly focus that one object.",
+  "shortDescription": "I challenged myself to make a single object look fantastic.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "secret chest project 15.png"
+},
+{
+  "_id": {
+    "$oid": "64b6232fed17a4bdbcd14303"
+  },
+  "postName": "Strange Structure",
+  "dateCreated": {
+    "$date": "2018-11-24T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "People have asked me what this is. And I don't have an answer. It's a strange structure. Originally this scene came about because I was playing around with the default cube one day, no particular goal in mind. I came up with a bizarre shape, and looking at it from a certain angle, I figured it'd make a great \"colossal object.\" Then more ideas kept emerging from that.",
+  "shortDescription": "This is what happens to the default cube without any plan.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "stranges13.png"
+},
+{
+  "_id": {
+    "$oid": "64b62385ed17a4bdbcd14305"
+  },
+  "postName": "Technology V.S. Nature",
+  "dateCreated": {
+    "$date": "2018-06-10T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "This scene was created as part of a casual Blender competition. The theme was \"Technology VS Nature,\" and this was my submission. It was also my first experience with texture painting, and I'm very happy with how it turned out on the tire and cans.",
+  "shortDescription": "I made a cartoon-y scene based on a theme.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "tecvsnat17.png"
+},
+{
+  "_id": {
+    "$oid": "64b624bded17a4bdbcd14306"
+  },
+  "postName": "Time",
+  "dateCreated": {
+    "$date": "2019-01-06T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I wanted to experiment with different resolutions and aspect ratios. I also wanted to create a clean, minimalist render with few visual elements, but still have that scene look interesting. I went through several iterations of this, including one with a silhouette of a man standing by the void.",
+  "shortDescription": "I wanted to create a minimalistic, abstract scene.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "time17.png"
+},
+{
+  "_id": {
+    "$oid": "64b62522ed17a4bdbcd14307"
+  },
+  "postName": "Time Travel",
+  "dateCreated": {
+    "$date": "2018-07-01T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I'm bad at modelling anatomy - human or otherwise. So, I wanted to at least make a good hand. Based somewhat on my own hand, I created a scene of what it might look like to travel back in time, from whenver in the future this is to the time this render was finalized.",
+  "shortDescription": "What it might look like to travel back in time.",
+  "type": [
+    0,
+    1
+  ],
+  "fileName": "timetravel 26 compressed.jpg"
+},
+{
+  "_id": {
+    "$oid": "64b62592ed17a4bdbcd14308"
+  },
+  "postName": "PatriotBot Logo",
+  "dateCreated": {
+    "$date": "2017-09-10T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "This was our First Tech Challenge team's logo design for the 2017-18 season. We used it on our shirts and for the buttons we passed out at the event.",
+  "shortDescription": "I designed our team's FTC logo.",
+  "type": [
+    0,
+    0
+  ],
+  "fileName": [
+    "Shirt style.png",
+    "button style 2.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b626ebed17a4bdbcd14309"
+  },
+  "postName": "PatriotBot Logo 2",
+  "dateCreated": {
+    "$date": "2018-10-08T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I wanted to make our logo even more clever than the previous year, so I drew out some  sketches until I settled one one I really liked. With the team's approval, I made a final logo in Photoshop. It was then used in some of our buttons, on our shirts (which I'm extremely proud of), and in our engineering notebook.",
+  "shortDescription": "I designed our FTC team's second logo.",
+  "type": [
+    0,
+    0
+  ],
+  "fileName": [
+    "Patbot logo 2.png",
+    "patbot-shirt.jpg"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b62743ed17a4bdbcd1430a"
+  },
+  "postName": "Shattered Planet",
+  "dateCreated": {
+    "$date": "2017-07-08T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "One day I opened Photoshop with no idea what I wanted to make, so I decided to make my own planet. The ideas kept  coming from there.",
+  "shortDescription": "Bored in Photoshop one day - made a broken up planet.",
+  "type": [
+    0,
+    0
+  ],
+  "fileName": "Planet Project.png"
+},
+{
+  "_id": {
+    "$oid": "64b628ffed17a4bdbcd1430d"
+  },
+  "postName": "Zandra Stronghold",
+  "dateCreated": {
+    "$date": "2021-01-04T08:16:39.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "The first stronghold I found in my survival world, \"Zandra,\" is deep underneath a dark oak forest. Because it was tough to get to, I wanted to build a structure that lets me get to and from the End dimension easier. This was my first mega-project - it features multiple water elevators and multiple levels for item storage before reaching the stronghold. I'm extremely happy with how it ended up looking, especially the detail with the obsidian ender dragon heads facing direction.",
+  "shortDescription": "I built a grandiose structure to let me go to and from the End portal faster.",
+  "type": [
+    0,
+    3
+  ],
+  "fileName": [
+    "2021-01-04_07.13.10.png",
+    "2021-01-04_04.16.39.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b62b4ced17a4bdbcd1430e"
+  },
+  "postName": "Server House",
+  "dateCreated": {
+    "$date": "2022-06-18T13:49:17.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I built a few houses on my friend's server where I tried putting grass and flowers right outside the windows on each floor. I think it worked extremely well, and I'm very happy with this build in particular.",
+  "shortDescription": "I built some houses in a friend's server.",
+  "type": [
+    0,
+    3
+  ],
+  "fileName": "2022-06-18_09.49.17.png"
+},
+{
+  "_id": {
+    "$oid": "64b62bc0ed17a4bdbcd1430f"
+  },
+  "postName": "Gothic Victorian Estate",
+  "dateCreated": {
+    "$date": "2023-05-27T14:08:02.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "In survival, I cleared out a massive pit where I was going to have a small cottage and a wheat farm. With amazing luck, while I was clearing out the land I found a ravine that perfectly cut between the main road and the area I was creating, so I made a small bridge - the only level entrance to the area. I ended up leaving the project after I cleared out the area and did some terraforming, only to revisit it later on. I wasn't in the best of moods when I came back, so I scrapped the cottage and instead decided to build the most intimidating gothic house imaginable in creative mode.  I finished the farm, while keeping a land bridge to where I wanted to build the windmill. Keeping to the theme, I then built a windmill - careful to keep it a similar height to the house. I added a mineshaft entrance, and then added all the extra details to seal the effect.",
+  "shortDescription": "I built a gothic-themed area resembling a small estate.",
+  "type": [
+    0,
+    3
+  ],
+  "fileName": [
+    "2023-05-28_14.37.53.png",
+    "2023-05-27_10.08.02.png",
+    "2023-05-27_10.09.24.png",
+    "2023-05-28_14.37.59.png",
+    "2023-05-28_14.38.04.png",
+    "2023-05-28_14.44.52.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b62d6fed17a4bdbcd14310"
+  },
+  "postName": "Orsus Commerce Center",
+  "dateCreated": {
+    "$date": "2023-07-15T08:04:32.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "One of my biggest dreams in Minecraft was to have my own lively village, created exclusively from cured zombie villagers and their children. My survival world, Zandra, has had a town at spawn for a long time. I call it \"Orsus\", which can be translated from Latin to mean \"beginning.\" Recently, I achieved my long-time dream. Villagers are now all over the streets, but they mainly like to congregate in front of the enchantment towers, where I built a series of street vendor stands. To accomodate this, I also built a community center using the \"purple portal\" glass effect and some spare purple, magenta, and pink glass. I think it looks amazing.",
+  "shortDescription": "I achieved my dream of having a lively minecraft village, so I made the commerce center beautiful to accomodate.",
+  "type": [
+    0,
+    3
+  ],
+  "fileName": [
+    "2023-07-15_04.04.32.png",
+    "2023-07-15_04.04.39.png",
+    "2023-07-15_16.20.06.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b62f2bed17a4bdbcd14311"
+  },
+  "postName": "JAG Trophies 2019",
+  "dateCreated": {
+    "$date": "2019-02-07T00:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I participated in the February 2019 regional JAG Career Development Conference to compete with other high school JAG programs. There were various competitive categories JAG students could prepare for, and the category I competed in was Career Presentation, where I gave a presentation of a career path I was interested in and had done extensive research in. I ended up winning first prize in our region (left trophy), qualifying me for state competition. I also contributed greatly to another competition category, the JAG commercial, that our school's JAG submitted together. I did much of the commercial's direction, filming, and edited the footage together using Adobe Premiere Pro. As a result, we won the trophy for best JAG commercial in the region (right trophy), also qualifying us for state.",
+  "shortDescription": "I won 1st place in the 2019 JAG regional Career Presentation and edited the winning regional JAG Commercial.",
+  "type": [
+    0,
+    2
+  ],
+  "fileName": "jag-trophies.JPG"
+},
+{
+  "_id": {
+    "$oid": "64b6336eed17a4bdbcd14312"
+  },
+  "postName": "Custom Keyboard",
+  "dateCreated": {
+    "$date": "2022-12-19T08:03:11.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "Ever since I got into custom mechanical keyboards, I've had my eyes on the Rekt 1800. I love full layout keyboards, but in the custom mech keyboard community, they're hard to find. On Black Friday, I got one, complete with a beautiful keycap set and a free set of switches. I had a hotswap keyboard before building this one, so I had a good idea which switch I ultimately wanted to solder in to this board. \nBoard: Rekt1800 (lilac) \nKeycaps: CannonCaps Esper \nSwitches: Kailh Box Royal",
+  "shortDescription": "I built my dream keyboard!",
+  "type": [
+    0,
+    2
+  ],
+  "fileName": [
+    "keyboard-3.jpg",
+    "keyboard-1.jpg",
+    "keyboard-2.jpg"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b6347ced17a4bdbcd14313"
+  },
+  "postName": "Luddy Selfie",
+  "dateCreated": {
+    "$date": "2023-02-01T09:17:55.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "Me, standing in front of a classroom in preparation for a Code@IU meeting.",
+  "shortDescription": "Just a picture of me.",
+  "type": [
+    0,
+    2
+  ],
+  "fileName": "luddy-selfie.jpg"
+},
+{
+  "_id": {
+    "$oid": "64b635fded17a4bdbcd14314"
+  },
+  "postName": "Neighborhood cats",
+  "dateCreated": {
+    "$date": "2021-11-12T09:04:31.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I got home from university one day and a bunch of cats came up to me. They're super cute.",
+  "shortDescription": "They love me",
+  "type": [
+    0,
+    2
+  ],
+  "fileName": "neighborhood-cats.jpg"
+},
+{
+  "_id": {
+    "$oid": "64b63903ed17a4bdbcd14316"
+  },
+  "postName": "Rainbow",
+  "dateCreated": {
+    "$date": "2012-10-25T12:12:11.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I took a picture of a rainbow on the IU Bloomington campus on my way to class one morning.",
+  "shortDescription": "Rainbow on IU campus",
+  "type": [
+    0,
+    2
+  ],
+  "fileName": "rainbow.jpg"
+},
+{
+  "_id": {
+    "$oid": "64b6436bed17a4bdbcd14317"
+  },
+  "postName": "34.01",
+  "dateCreated": {
+    "$date": "2019-12-02T15:26:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "I wrote this abstract, odd story as part of a creative writing course at Ivy Tech. I used it as an excuse to practice creating atmosphere.",
+  "shortDescription": "An abstract, uncanny story.",
+  "type": [
+    1,
+    0
+  ],
+  "fileName": "34.01 v2.txt"
+},
+{
+  "_id": {
+    "$oid": "64b64635ed17a4bdbcd14318"
+  },
+  "postName": "Alone Together",
+  "dateCreated": {
+    "$date": "2019-12-08T15:26:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "A man thinks to himself while he drives on a backroad towards home late at night. I wrote this short story to practice the use of voice in literature, as well as to experiment with first, second, and third person pronouns as it relates to the narrative. There is quite a bit of language, as I try to detail a character's unfiltered internal monologue. Be warned.",
+  "shortDescription": "A man thinks to himself while he drives on a backroad towards home late at night.",
+  "type": [
+    1,
+    0
+  ],
+  "fileName": "Alone Together v3.txt"
+},
+{
+  "_id": {
+    "$oid": "64b64702ed17a4bdbcd14319"
+  },
+  "postName": "Masquerade",
+  "dateCreated": {
+    "$date": "2019-08-14T17:45:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "When I wrote this, I didn't know what to do in life. This poem attempts to speak to anyone who hasn't found their passion yet.",
+  "shortDescription": "For those who haven't found their way.",
+  "type": [
+    1,
+    1
+  ],
+  "fileName": "Masquerade.txt"
+},
+{
+  "_id": {
+    "$oid": "64b647a0ed17a4bdbcd1431a"
+  },
+  "postName": "Retail Nights",
+  "dateCreated": {
+    "$date": "2019-12-08T18:57:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "An old soul meets a new night shift hiree at a grocery store. But something feels off.",
+  "shortDescription": "An old soul meets a new night shift hiree at a grocery store. But something feels off.",
+  "type": [
+    1,
+    0
+  ],
+  "fileName": "Retail Nights v2.txt"
+},
+{
+  "_id": {
+    "$oid": "64b64855ed17a4bdbcd1431b"
+  },
+  "postName": "The Nighttime Perspective",
+  "dateCreated": {
+    "$date": "2019-11-04T16:33:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "After school, a girl sets off for home but goes on an even bigger journey. I wrote this short story as an exercise in \"setting\" for a creative writing course at Ivy Tech. I wanted to create something truly about the journey rather than the destination.",
+  "shortDescription": "After school, a girl sets off for home but goes on an even bigger journey.",
+  "type": [
+    1,
+    0
+  ],
+  "fileName": "The nighttime perspective v3.txt"
+},
+{
+  "_id": {
+    "$oid": "64b649d4ed17a4bdbcd1431c"
+  },
+  "postName": "White Flag",
+  "dateCreated": {
+    "$date": "2019-08-27T15:00:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "",
+  "shortDescription": "",
+  "type": [
+    1,
+    1
+  ],
+  "fileName": "White Flag.txt"
+},
+{
+  "_id": {
+    "$oid": "64b64bafed17a4bdbcd1431d"
+  },
+  "postName": "Hackerman on a Subway",
+  "dateCreated": {
+    "$date": "2022-10-01T18:15:00.000Z"
+  },
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "",
+  "shortDescription": "",
+  "type": [
+    1,
+    1
+  ],
+  "fileName": "Hackerman on a Subway.txt"
+}]

@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "64b5d7b71a95c025dfb6a4c3"
+  },
+  "type": "visual",
+  "subtypes": [
+    {
+      "type": "2d art",
+      "subtypes": []
+    },
+    {
+      "type": "blender render",
+      "subtypes": []
+    },
+    {
+      "type": "photo",
+      "subtypes": []
+    },
+    {
+      "type": "minecraft build",
+      "subtypes": []
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64b5d8551a95c025dfb6a4c5"
+  },
+  "type": "textual",
+  "subtypes": [
+    {
+      "type": "short stories",
+      "subtypes": []
+    },
+    {
+      "type": "poems",
+      "subtypes": []
+    }
+  ]
+}]
