@@ -12,13 +12,12 @@ export const load = async function({ params }) {
             { $sort: { dateCreated: -1} },
             { $limit: 5 }
         ]).toArray();
-        // console.log(topPosts);
         dbResponse.data = topPosts;
         dbResponse.connected = true;
     }
     catch (e) {
         console.error(e);
-        dbResponse.errorMsg = e;
+        dbResponse.errorMsg = e.message;
         dbResponse.connected = false;
     }
     finally {
