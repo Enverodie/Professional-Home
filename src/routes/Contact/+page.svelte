@@ -9,7 +9,7 @@
 
 <PageWrapper backgroundPosition="fixed">
 
-	<SectionHeader>Contact</SectionHeader>
+	<SectionHeader rowsUsed={2}>Contact</SectionHeader>
 
 	<PositionInWrapper>
 		<ArticleBox boxesAbove={false}>

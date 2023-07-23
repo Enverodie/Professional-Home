@@ -73,6 +73,7 @@
             color: var(--color7);
             border: var(--boxStrokeSize) solid var(--color6);
             font-weight: bold;
+            padding: 1em 0;
 
             .text {
                 margin: calc(var(--defaultPadding) * 2);

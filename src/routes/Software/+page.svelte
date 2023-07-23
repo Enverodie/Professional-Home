@@ -30,7 +30,7 @@
 
 <PageWrapper>
     
-    <SectionHeader>Code projects</SectionHeader>
+    <SectionHeader rowsUsed={2}>Code projects</SectionHeader>
 
     <PositionInWrapper>
         <ArticleBox extraStyles={articleBoxEdits} boxesAbove={false}>

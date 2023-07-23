@@ -104,7 +104,7 @@
 </script>
 
 <div 
-    class={($$props.class? $$props.class + ';' : '') + "showcase"}
+    class={"showcase" + ($$props.class? " " + $$props.class : '') }
     style={($$props.style? $$props.style + ';' : '') + `
         --numHorizontal: ${cols};
         --numVertical: ${rows};
