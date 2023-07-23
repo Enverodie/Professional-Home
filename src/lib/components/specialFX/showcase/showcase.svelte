@@ -11,7 +11,7 @@
      * Properties expected of each image object:
      *
      * required:
-     *  fd: object(src: string, alt: string) / object (title: string, hexTo: css hex, hexFrom: css hex)
+     *  fd: object(src: string, alt: string) / object (title: string)
      *  description: a small description of the image
      * 
      * optional:

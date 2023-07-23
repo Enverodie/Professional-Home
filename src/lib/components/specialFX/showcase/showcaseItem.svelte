@@ -138,6 +138,8 @@
                 color: var(--color1);
                 font-weight: bold;
                 text-shadow: 0px 0px 2px var(--color3);
+                text-align: center;
+                overflow: hidden;
                 object-fit: cover;
                 background-size: cover;
                 border-radius: 5px;
