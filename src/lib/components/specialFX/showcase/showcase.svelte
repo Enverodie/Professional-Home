@@ -11,8 +11,7 @@
      * Properties expected of each image object:
      *
      * required:
-     *  src: a file directory
-     *  alt: an alt tag for the image
+     *  fd: object(src: string, alt: string) / object (title: string, hexTo: css hex, hexFrom: css hex)
      *  description: a small description of the image
      * 
      * optional:
@@ -129,7 +128,7 @@
     position: relative;
     background-color: var(--backgroundColor);
     overflow: hidden;
-    box-shadow: 0px 0px 1em purple;
+    box-shadow: 0px 0px 1em var(--color2);
     border-radius: 5px;
 
     width: 100%;

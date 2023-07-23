@@ -7,14 +7,20 @@
 <PageWrapper>
     <ArticleBox>
         <Showcase style="height: 40vh" images={[
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
-            {src: '/creativePosts/Planet Project.png', alt: 'planet', description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {title: "The Planet"}, description: 'I made a planet'},
+            {fd: {title: "This is a test title"}, description: 'I made a planet'},
+            {fd: {title: "I wonder what happens if I do this"}, description: 'I made a planet'},
+            {fd: {title: "I wonder what happens if I do that"}, description: 'I made a planet'},
+            {fd: {title: "omg it's so pretti"}, description: 'I made a planet'},
+            {fd: {title: "Short title"}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
+            {fd: {src: '/creativePosts/Planet Project.png', alt: 'planet'}, description: 'I made a planet'},
         ]} />
     </ArticleBox>
 </PageWrapper>

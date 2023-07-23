@@ -7,6 +7,29 @@
         expandHeight, expandWidth 
     } = imageData;
 
+    let displayImage = true;
+    let hexTo = '#0000', hexFrom = "#0000";
+    if (imgData.fd.title) {
+        displayImage = false;
+        let workedTitle = imgData.fd.title;
+        while (workedTitle.length < 3) workedTitle += ' ';
+        const hexOptions = 256;
+        const strlen = 5;
+        let numString0 = workedTitle.split('').filter((item, i) => {return i % 3 === 0}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
+        let numString0Reversed = numString0.split('').reverse().join('');
+        
+        let numString1 = workedTitle.split('').filter((item, i) => {return i % 3 === 1}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
+        let numString1Reversed = numString1.split('').reverse().join('');
+        
+        let numString2 = workedTitle.split('').filter((item, i) => {return i % 3 === 2}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
+        let numString2Reversed = numString2.split('').reverse().join('');
+
+        hexFrom = `rgb(${numString0Reversed.substring(0, strlen) % hexOptions}, ${numString1Reversed.substring(0, strlen) % hexOptions}, ${numString2Reversed.substring(0, strlen) % hexOptions})`;
+        hexTo = `rgb(${numString0.substring(0, strlen) % hexOptions}, ${numString1.substring(0, strlen) % hexOptions}, ${numString2.substring(0, strlen) % hexOptions})`;
+        
+    } 
+
+
 </script>
 <div 
     class={($$props.class || '') + 'showcaseItem'} 
@@ -24,7 +47,11 @@
             --moveLeft: {moveLeftAmount};
             --moveUp: {moveUpAmount};
         '>
-            <img src='{imgData.src}' alt={imgData.alt || ''} />
+            {#if displayImage}
+                <img class="itemDisplay" src='{imgData.fd.src}' alt={imgData.fd.alt || ''} />
+            {:else}
+                <div class="itemDisplay" style="--hexTo: {hexTo}; --hexFrom: {hexFrom};">{imgData.fd.title}</div>
+            {/if}
             <div class='attribution'>{imgData.description || ''}</div>
         </div>
     </div>
@@ -101,12 +128,20 @@
                 border: calc(var(--padding)*2) solid var(--backgroundColor);
             }
 
-            img {
+            .itemDisplay {
                 position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width: 100%;
                 height: 100%;
+                color: var(--color1);
+                font-weight: bold;
+                text-shadow: 0px 0px 2px var(--color3);
                 object-fit: cover;
+                background-size: cover;
                 border-radius: 5px;
+                background-image: linear-gradient(135deg, var(--hexFrom), var(--hexTo));
             }
 
             .attribution {
@@ -115,12 +150,14 @@
                 top: 0;
                 right: 0;
                 width: 0%;
+                height: 100%;
                 overflow: hidden;
                 color: white;
                 box-sizing: border-box;
                 padding: .5em var(--horizontalPadding);
                 transition: width var(--transitionStyle) .1s, padding var(--transitionStyle) .1s;
                 white-space: nowrap;
+                background-color: hsla(var(--color1H), var(--color1S), var(--color1L), .8);
             }
         }
 
