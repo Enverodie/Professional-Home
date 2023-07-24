@@ -1,6 +1,9 @@
 <script>
 
     export let imageData;
+
+    const allowedFileTypes = ['.png', '.jpg', '.jpeg', '.svg'];
+
     let { 
         imgData, row, col, 
         moveUpAmount, moveLeftAmount, 
@@ -9,9 +12,10 @@
 
     let displayImage = true;
     let hexTo = '#0000', hexFrom = "#0000";
-    if (imgData.fd.title) {
+    let fileName = (typeof imgData.fileName === "string")? imgData.fileName : imgData.fileName[0];
+    if (!allowedFileTypes.includes(fileName.substring(fileName.lastIndexOf('.'), fileName.length).toLowerCase())) {
         displayImage = false;
-        let workedTitle = imgData.fd.title;
+        let workedTitle = imgData.postName;
         while (workedTitle.length < 3) workedTitle += ' ';
         const hexOptions = 256;
         const strlen = 5;
@@ -48,11 +52,16 @@
             --moveUp: {moveUpAmount};
         '>
             {#if displayImage}
-                <img class="itemDisplay" src='{imgData.fd.src}' alt={imgData.fd.alt || ''} />
+                <img class="itemDisplay" src='/creativePosts/{fileName}' alt={imgData.description || ''} />
             {:else}
-                <div class="itemDisplay" style="--hexTo: {hexTo}; --hexFrom: {hexFrom};">{imgData.fd.title}</div>
+                <div class="itemDisplay" style="--hexTo: {hexTo}; --hexFrom: {hexFrom};">{imgData.postName}</div>
             {/if}
-            <div class='attribution'>{imgData.description || ''}</div>
+            <div class='attribution'>
+                {#if displayImage}
+                    <b>{imgData.postName}</b>
+                {/if}
+                {imgData.description || ''}
+            </div>
         </div>
     </div>
 
