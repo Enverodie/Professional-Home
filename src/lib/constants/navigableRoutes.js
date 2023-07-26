@@ -1,8 +1,8 @@
-export const NAVIGABLE_ROUTES = ['/', '/Software', '/Creative', '/Contact'];
+export const NAVIGABLE_ROUTES = ['/', '/software', '/creative', '/contact'];
 
 // Gets the name of a route string of the format provided in NAVIGABLE_ROUTES
 export function getRouteName(route) {
-    return route.slice(1) || "Home";
+    return (route[1] && (route[1].toUpperCase() + route.slice(2))) || "Home";
 }
 
 // A helper function to decide whether or not the provided cssClass should be applied
