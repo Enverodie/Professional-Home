@@ -9,8 +9,6 @@
 
     export let data;
 
-    let dbResponse = data.props.dbResponse;
-
 </script>
 
 <PageWrapper>
@@ -27,7 +25,7 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Artwork
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={dbResponse.successful? dbResponse.data.topPosts2DRenders : []} />
+            <Showcase class="creativePageShowcase" images={data.topPosts2DRenders.successful? data.topPosts2DRenders.data : []} />
         </ArticleBox>
     </PositionInWrapper>
     
@@ -36,7 +34,7 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Written Works
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={dbResponse.successful? dbResponse.data.topPostsTexts : []} />
+            <Showcase class="creativePageShowcase" images={data.topPostsTexts.successful? data.topPostsTexts.data : []} />
         </ArticleBox>
     </PositionInWrapper>
     
@@ -45,7 +43,7 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Personal & Gaming
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={dbResponse.successful? dbResponse.data.topPostsPersonal : []} />
+            <Showcase class="creativePageShowcase" images={data.topPostsPersonal.successful? data.topPostsPersonal.data : []} />
         </ArticleBox>
     </PositionInWrapper>
     

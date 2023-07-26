@@ -1,4 +1,4 @@
-import mongoclient, { mongodb_connect, mongodb_disconnect } from '$db/mongo';
+import mongoclient from '$db/mongo';
 
 const maxItems2DRenders = 6;
 const numLiked2DRenders = 2;
@@ -12,6 +12,11 @@ const numLikedPersonal = 2;
 const matchFilterArtworks = { 'type.0': 0, $or: [{ 'type.1': 0 }, { 'type.1': 1 }] };
 const matchFilterTexts = { 'type.0': 1 };
 const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 }] };
+
+function checkClientEnabled() {
+    if (!mongoclient) throw new Error('Mongo connection does not exist.');
+    return;
+}
 
 function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
     // code for creating a union: https://stackoverflow.com/a/55289023/15818885
@@ -84,33 +89,53 @@ function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
     ];
 }
 
-export const load = async function({ params }) {
-
-    let dbResponse = {};
-
+const getTopPosts = async (maxItems, numTopLiked, matchFilter) => {
+    console.log("getting top posts...");
+    let topPosts = { successful: false };
     try {
-        await mongodb_connect();
+        checkClientEnabled();
         let db = await mongoclient.db('creative_works');
-        // let topPosts = await db.collection('posts').aggregate([
-        //     { $filter: filter },
-        //     { $sort: { dateCreated: -1} },
-        //     { $limit: maxItems2DRenders }
-        // ]).toArray();
-        let topPosts2DRenders = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks)).toArray();
-        let topPostsTexts = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItemsTexts, numLikedTexts, matchFilterTexts)).toArray();
-        let topPostsPersonal = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItemsPersonal, numLikedPersonal, matchFilterPersonal)).toArray();
-        dbResponse.data = { topPosts2DRenders, topPostsTexts, topPostsPersonal };
-        dbResponse.successful = true;
+        let data = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItems, numTopLiked, matchFilter)).toArray();
+        topPosts.data = data;
+        topPosts.successful = true;
     }
     catch (e) {
         console.error(e);
-        dbResponse.errorMsg = e.message;
-        dbResponse.successful = false;
+        topPosts.errorMsg = e.message;
     }
     finally {
-        mongodb_disconnect();
-        return {
-            props: { dbResponse }
-        };
+        return topPosts;
+    }
+}
+
+const getSearchResults = async (query) => {
+    let results = { successful: false };
+    try {
+        checkClientEnabled();
+        let db = await mongoclient.db('creative_works');
+        let data;// = await db.collection('posts').find(); // TODO: finish this query
+        results.data = data;
+        results.successful = true;
+    }
+    catch (e) {
+        console.error(e);
+        results.errorMsg = e.message;
+    }
+    finally {
+        return results;
+    }
+}
+
+export const load = async function({ url, depends, cookies }) {
+
+    // console.log("url: ", url, 'searchparams q: ', url.searchParams.get('q'));
+
+    // depends('app:postSearched');
+
+    return {
+        topPosts2DRenders: getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks),
+        topPostsTexts: getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts),
+        topPostsPersonal: getTopPosts(maxItemsPersonal, numLikedPersonal, matchFilterPersonal),
+        searchResults: getSearchResults(url.searchParams.get('q')),
     }
 }

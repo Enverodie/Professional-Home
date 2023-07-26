@@ -1,6 +1,9 @@
 <script>
+	import { onMount } from 'svelte';
 
+    import debounce from 'lodash.debounce';
     import { page } from '$app/stores';
+    import { goto, invalidate } from "$app/navigation";
 
     const sampleDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
@@ -47,15 +50,23 @@
     ];
 
     // let searchbar = null; // would be bound to div class="searchbar"
-    let inputField = "";
+    export let inputField = "";
+    let searchInput;
+
+    const debouncedInput = debounce(() => {
+        let query = new URLSearchParams($page.url.searchParams.toString());
+        query.set('q', inputField);
+        // invalidate('app:postSearched');
+        goto(`?${query.toString()}`, { reactivateSearch: true });
+    }, 200);
 
     // $: resultsActive = (searchbar && searchbar.contains(document.activeElement));
 
 </script>
 <div class="searchbar">
     <div class="searchSection">
-        <input class="typehere" type="text" autocomplete="off" placeholder="Search..." bind:value={inputField} />
-        <img class="searchIcon" src="/svgs/Magnifying glass.svg" alt="search" />
+        <input class="typehere" type="text" autocomplete="off" placeholder="Search..." on:input={debouncedInput} bind:value={inputField} />
+        <img class="searchIcon" src="/svgs/Magnifying glass.svg" alt="search" autofocus={ ((typeof history !== 'undefined') && history?.reactivateSearch) || false } />
     </div>
     {#if (results.length > 0)}
         <div class={"resultsSection"}>
