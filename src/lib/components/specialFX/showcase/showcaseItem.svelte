@@ -1,5 +1,6 @@
 <script>
 
+    import { page } from '$app/stores';
     import { titleGradientGenerator } from '$lib/constants/titleGradientGen.js';
 
     export let imageData;
@@ -22,10 +23,11 @@
         colorFrom = rgb.rgbFrom;
     } 
 
+    $: linkHasFocus = false;
 
 </script>
 <div 
-    class={($$props.class || '') + 'showcaseItem'} 
+    class={($$props.class || '') + 'showcaseItem' + (linkHasFocus? ' linkHasFocus' : '')} 
     style={($$props.style || '') + `
         --rowsDown: ${row}; 
         --colsDown: ${col}; 
@@ -33,7 +35,7 @@
         --numTakenV: ${imgData.height};
     `}>
 
-    <div class='itemAnchor'>
+    <a class='itemAnchor' href={$page.url.pathname + "/post?id="+imgData._id} on:focus={() => linkHasFocus = true} on:blur={() => linkHasFocus = false}>
         <div class='itemResizer' style='
             --resizeW: {expandWidth};
             --resizeH: {expandHeight};
@@ -43,16 +45,18 @@
             {#if displayImage}
                 <img class="itemDisplay" src='/creativePosts/{fileName}' alt={imgData.description || ''} />
             {:else}
-                <div class="itemDisplay" style="--hexTo: {colorTo}; --hexFrom: {colorFrom};">{imgData.postName}</div>
+                <div class="itemDisplay" style="--hexTo: {colorTo}; --hexFrom: {colorFrom}; padding: 2ch;">{imgData.postName}</div>
             {/if}
-            <div class='attribution'>
-                {#if displayImage}
-                    <b>{imgData.postName}</b>
-                {/if}
-                {imgData.description || ''}
-            </div>
+            {#if imgData.description}
+                <div class='labelBox'>
+                    <div class="labelBoxText">
+                        <div class="title">{imgData.postName}</div>
+                        {imgData.description || ''}
+                    </div>
+                </div>
+            {/if}
         </div>
-    </div>
+    </a>
 
 </div>
 <style lang="scss">
@@ -76,11 +80,15 @@
     padding: var(--padding);
     box-sizing: border-box;
     z-index: 1;
-    &:hover { z-index: 5; animation: none; }
+
+    &:hover { z-index: 6; }
+    &.linkHasFocus { z-index: 5; }
+    &:hover, &.linkHasFocus { animation: none; }
     animation: zIndexReset var(--transitionStyle) forwards;
 
     .itemAnchor {
 
+        display: block;
         position: relative;
         width: 100%;
         height: 100%;
@@ -107,6 +115,7 @@
 
             position: relative;
             display: block;
+            overflow: hidden;
 
             bottom: 0;
             right: 0;
@@ -133,9 +142,10 @@
                 align-items: center;
                 width: 100%;
                 height: 100%;
-                color: var(--color1);
+                color: var(--color3);
                 font-weight: bold;
-                text-shadow: 0px 0px 2px var(--color3);
+                box-sizing: border-box;
+                // text-shadow: 0px 0px 2px var(--color3);
                 text-align: center;
                 overflow: hidden;
                 object-fit: cover;
@@ -144,24 +154,49 @@
                 background-image: linear-gradient(var(--defaultThumbnailGradientAngle), var(--hexFrom), var(--hexTo));
             }
 
-            .attribution {
-                --horizontalPadding: 0;
-                position: absolute;
+            .labelBox {
+                position: relative;
                 top: 0;
-                right: 0;
-                width: 0%;
-                height: 100%;
-                overflow: hidden;
+                left: 0;
+                width: 100%;
+                height: inherit;
+                transform: translateX(100%);
+                overflow: clip;
                 color: white;
                 box-sizing: border-box;
-                padding: .5em var(--horizontalPadding);
-                transition: width var(--transitionStyle) .1s, padding var(--transitionStyle) .1s;
-                white-space: nowrap;
-                background-color: hsla(var(--color1H), var(--color1S), var(--color1L), .8);
+                transition: transform var(--transitionStyle) .1s, padding var(--transitionStyle) .1s;
+                // white-space: nowrap;
+                
+                .labelBoxText {
+                    text-align: center;
+                    position: absolute;
+                    box-sizing: border-box;
+                    top: 0;
+                    left: 0;
+                    height: inherit;
+                    width: 100%;
+                    min-width: min-content;
+                    padding: 1em;
+                    background-color: hsla(var(--color1H), var(--color1S), var(--color1L), .8);
+                    
+                    .title {
+                        font-weight: bold;
+                        color: var(--color6);
+                        margin: 0 0 1em;
+                    }
+                }
             }
         }
 
-        &:hover .itemResizer {
+        &:focus {
+            outline: none;
+            .itemResizer {
+                outline: var(--focusOutlineStyle);
+            }
+        }
+
+        &:hover .itemResizer, &:focus .itemResizer {
+            
             width: calc(
                 100% + 
                 (var(--widthSingleBox) * var(--resizeW)) +
@@ -181,9 +216,8 @@
                 (2 * var(--padding) * var(--moveUp))
             );
 
-            .attribution {
-                --horizontalPadding: .5ch;
-                width: 100%;
+            .labelBox {
+                transform: translateX(0%);
             }
         }
 
@@ -196,6 +230,18 @@
     }
     to {
         z-index: 0;
+    }
+}
+
+@media (min-width: 800px) {
+    .labelBoxText {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    .labelBoxText {
+        width: calc(100% / 3) !important;
     }
 }
 

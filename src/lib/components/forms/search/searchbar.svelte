@@ -142,7 +142,8 @@
 
         // flex-direction: column;
         display: grid;
-        grid-auto-flow: column;
+        flex-direction: column;
+        grid-auto-flow: row;
         grid-template-columns: 1fr;
         margin-top: var(--normalSpacing);
         padding-top: var(--normalSpacing);
@@ -173,6 +174,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                font-weight: bold;
             }
 
             .description {
@@ -195,6 +197,7 @@
 
     @media (min-width: 1000px) {
         .resultsSection {
+            grid-auto-flow: column;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(3, 1fr);
         }
