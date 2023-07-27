@@ -60,10 +60,6 @@
         goto(`?${query.toString()}`, { reactivateSearch: true });
     }, 200);
 
-    // $: resultsActive = (searchbar && searchbar.contains(document.activeElement));
-
-    // $: console.log("history stuff: ", history);
-
 </script>
 <div class="searchbar">
     <div class="searchSection">

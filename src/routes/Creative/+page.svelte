@@ -8,6 +8,7 @@
 	import Showcase from '$lib/components/specialFX/showcase/showcase.svelte';
 
     export let data;
+    console.log("data received in page: ", data);
 
 </script>
 
