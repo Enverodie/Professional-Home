@@ -1,3 +1,3 @@
-export const GET = ({ request, cookies }) => {
+// export const GET = ({ request, cookies }) => {
     
-}
+// }

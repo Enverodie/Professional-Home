@@ -91,11 +91,14 @@ function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
 
 const getTopPosts = async (maxItems, numTopLiked, matchFilter) => {
     console.log("getting top posts...");
+    checkClientEnabled();
+    let db = await mongoclient.db('creative_works');
+    let data = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItems, numTopLiked, matchFilter)).toArray();
+    return data;
+    // removed error handling here, leaving it up to the components
+    /*
     let topPosts = { successful: false };
     try {
-        checkClientEnabled();
-        let db = await mongoclient.db('creative_works');
-        let data = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItems, numTopLiked, matchFilter)).toArray();
         topPosts.data = data;
         topPosts.successful = true;
     }
@@ -106,36 +109,54 @@ const getTopPosts = async (maxItems, numTopLiked, matchFilter) => {
     finally {
         return topPosts;
     }
+    */
 }
 
-const getSearchResults = async (query) => {
-    let results = { successful: false };
-    try {
-        checkClientEnabled();
-        let db = await mongoclient.db('creative_works');
-        let data;// = await db.collection('posts').find(); // TODO: finish this query
-        results.data = data;
-        results.successful = true;
-    }
-    catch (e) {
-        console.error(e);
-        results.errorMsg = e.message;
-    }
-    finally {
-        return results;
-    }
-}
+// const getSearchResults = async (query) => {
+//     let results = { successful: false };
+//     try {
+//         checkClientEnabled();
+//         let db = await mongoclient.db('creative_works');
+//         let data;// = await db.collection('posts').find(); // TODO: finish this query
+//         results.data = data;
+//         results.successful = true;
+//     }
+//     catch (e) {
+//         console.error(e);
+//         results.errorMsg = e.message;
+//     }
+//     finally {
+//         return results;
+//     }
+// }
 
-export const load = async function({ url, depends, cookies }) {
+export const load = function() {
 
     // console.log("url: ", url, 'searchparams q: ', url.searchParams.get('q'));
 
     // depends('app:postSearched');
 
     return {
-        topPosts2DRenders: getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks),
-        topPostsTexts: getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts),
-        topPostsPersonal: getTopPosts(maxItemsPersonal, numLikedPersonal, matchFilterPersonal),
-        searchResults: getSearchResults(url.searchParams.get('q')),
+        streamed: {
+            topPosts2DRenders: new Promise(
+                (resolve, reject) => { 
+                    getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks)
+                        .then(response => {resolve(response)})
+                        .catch(e => reject(e));
+                }),
+            topPostsTexts: new Promise(
+                (resolve, reject) => { 
+                    getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts)
+                        .then(response => {resolve(response)})
+                        .catch(e => reject(e));
+                }),
+            topPostsPersonal: new Promise(
+                (resolve, reject) => { 
+                    getTopPosts(maxItemsPersonal, numLikedPersonal, matchFilterPersonal)
+                        .then(response => {resolve(response)})
+                        .catch(e => reject(e));
+                }),
+        }
+        // searchResults: getSearchResults(url.searchParams.get('q')),
     }
 }

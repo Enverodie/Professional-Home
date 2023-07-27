@@ -25,7 +25,13 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Artwork
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={data.topPosts2DRenders.successful? data.topPosts2DRenders.data : []} />
+            {#await data.streamed.topPosts2DRenders}
+                <Showcase class="creativePageShowcase" fillBoxText='Loading...' />
+            {:then result} 
+                <Showcase class="creativePageShowcase" images={result} />
+            {:catch error}
+                <Showcase class="creativePageShowcase" fillBoxText={error.message} />
+            {/await}
         </ArticleBox>
     </PositionInWrapper>
     
@@ -34,7 +40,13 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Written Works
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={data.topPostsTexts.successful? data.topPostsTexts.data : []} />
+            {#await data.streamed.topPostsTexts}
+                <Showcase class="creativePageShowcase" fillBoxText='Loading...' />
+            {:then result} 
+                <Showcase class="creativePageShowcase" images={result} />
+            {:catch error}
+                <Showcase class="creativePageShowcase" fillBoxText={error.message} />
+            {/await}
         </ArticleBox>
     </PositionInWrapper>
     
@@ -43,7 +55,13 @@
             <SectionHeader withinGrid={false} style="margin: 0 0 1em; background-image: none;" rowsUsed={1}>
                 Personal & Gaming
             </SectionHeader>
-            <Showcase class="creativePageShowcase" images={data.topPostsPersonal.successful? data.topPostsPersonal.data : []} />
+            {#await data.streamed.topPostsPersonal}
+                <Showcase class="creativePageShowcase" fillBoxText="Loading..." />
+            {:then result} 
+                <Showcase class="creativePageShowcase" images={result} />
+            {:catch error}
+                <Showcase class="creativePageShowcase" fillBoxText={error.message} />
+            {/await}
         </ArticleBox>
     </PositionInWrapper>
     

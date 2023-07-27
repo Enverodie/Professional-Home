@@ -25,78 +25,82 @@
      * 
     */
     export let images = [];
+    export let fillBoxText = '';
 
     let imageCount = images.length || 0;
     let rows = Math.floor(Math.sqrt(imageCount));
     let cols = Math.ceil(imageCount / rows) || 0;
-
-    images.forEach(img => {
-        
-        // substitute undefined values:
-        // (values I know don't exist yet)
-        img.height = img.height || height;
-        img.expandHeight = img.expandHeight || expandHeight;
-        img.width = img.width || width;
-        img.expandWidth = img.expandWidth || expandWidth;
-
-        // not expected property from source
-        img.used = false;
-
-    });
-    let taken = Array.from(Array(rows), () => new Array(cols));
     let filteredImages = [];
 
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            let nextImage = images.find(image => {
-                let allSlotsClear = taken.slice(i, i+image.height).every(col => col.slice(j, j+image.width).every(coord => coord === undefined));
-                return (
-                    allSlotsClear &&
-                    (image.width <= cols-j) && // fits horizontally
-                    (image.height <= rows-i) && // fits vertically
-                    !image.used
-                );
-            });
-            if (nextImage) {
-                nextImage.used = true;
-                
-                for (let k = i; k < i+nextImage.height && k < taken.length; k++) {
-                    for (let l = j; l < j+nextImage.width && l < taken[k].length; l++) {
-                        taken[k][l] = 1;
+    if (images.length > 0) {
+
+        images.forEach(img => {
+            
+            // substitute undefined values:
+            // (values I know don't exist yet)
+            img.height = img.height || height;
+            img.expandHeight = img.expandHeight || expandHeight;
+            img.width = img.width || width;
+            img.expandWidth = img.expandWidth || expandWidth;
+
+            // not expected property from source
+            img.used = false;
+
+        });
+        let taken = Array.from(Array(rows), () => new Array(cols));
+
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                let nextImage = images.find(image => {
+                    let allSlotsClear = taken.slice(i, i+image.height).every(col => col.slice(j, j+image.width).every(coord => coord === undefined));
+                    return (
+                        allSlotsClear &&
+                        (image.width <= cols-j) && // fits horizontally
+                        (image.height <= rows-i) && // fits vertically
+                        !image.used
+                    );
+                });
+                if (nextImage) {
+                    nextImage.used = true;
+                    
+                    for (let k = i; k < i+nextImage.height && k < taken.length; k++) {
+                        for (let l = j; l < j+nextImage.width && l < taken[k].length; l++) {
+                            taken[k][l] = 1;
+                        }
                     }
-                }
 
-                // move up amount
-                let fullExpandedHeight = nextImage.height + nextImage.expandHeight;
-                let moveUpAmount = Math.floor(Math.random() * fullExpandedHeight);
-                if (moveUpAmount > fullExpandedHeight / 2) moveUpAmount = Math.floor(fullExpandedHeight/2);
-                if (moveUpAmount > i) moveUpAmount = i; // top border
-                moveUpAmount = Math.max(moveUpAmount, nextImage.expandHeight - (rows - (i+nextImage.height))); // bottom border
-
-                // move left amount
-                let fullExpandedWidth = nextImage.width + nextImage.expandWidth;
-                let moveLeftAmount = Math.floor(Math.random() * (fullExpandedWidth));
-                if (moveLeftAmount > fullExpandedWidth / 2) moveLeftAmount = Math.floor(fullExpandedWidth/2);
-                if (moveLeftAmount > j) moveLeftAmount = j; // left border
-                moveLeftAmount = Math.max(moveLeftAmount, nextImage.expandWidth - (cols - (j+nextImage.width))); // right border
-
-                let expandHeight = nextImage.expandHeight;
-                let expandWidth = nextImage.expandWidth;
-
-                if (nextImage.height + nextImage.expandHeight > rows) {
-                    expandHeight = Math.max(0, rows-nextImage.height);
+                    // move up amount
+                    let fullExpandedHeight = nextImage.height + nextImage.expandHeight;
+                    let moveUpAmount = Math.floor(Math.random() * fullExpandedHeight);
+                    if (moveUpAmount > fullExpandedHeight / 2) moveUpAmount = Math.floor(fullExpandedHeight/2);
                     if (moveUpAmount > i) moveUpAmount = i; // top border
-                } 
-                if (nextImage.width + nextImage.expandWidth > cols) {
-                    expandWidth = Math.max(0, cols-nextImage.width);
+                    moveUpAmount = Math.max(moveUpAmount, nextImage.expandHeight - (rows - (i+nextImage.height))); // bottom border
+
+                    // move left amount
+                    let fullExpandedWidth = nextImage.width + nextImage.expandWidth;
+                    let moveLeftAmount = Math.floor(Math.random() * (fullExpandedWidth));
+                    if (moveLeftAmount > fullExpandedWidth / 2) moveLeftAmount = Math.floor(fullExpandedWidth/2);
                     if (moveLeftAmount > j) moveLeftAmount = j; // left border
+                    moveLeftAmount = Math.max(moveLeftAmount, nextImage.expandWidth - (cols - (j+nextImage.width))); // right border
+
+                    let expandHeight = nextImage.expandHeight;
+                    let expandWidth = nextImage.expandWidth;
+
+                    if (nextImage.height + nextImage.expandHeight > rows) {
+                        expandHeight = Math.max(0, rows-nextImage.height);
+                        if (moveUpAmount > i) moveUpAmount = i; // top border
+                    } 
+                    if (nextImage.width + nextImage.expandWidth > cols) {
+                        expandWidth = Math.max(0, cols-nextImage.width);
+                        if (moveLeftAmount > j) moveLeftAmount = j; // left border
+                    }
+
+                    filteredImages.push({ imgData: nextImage, row: i, col: j, moveUpAmount, moveLeftAmount, expandHeight, expandWidth });
+
                 }
-
-                filteredImages.push({ imgData: nextImage, row: i, col: j, moveUpAmount, moveLeftAmount, expandHeight, expandWidth });
-
-            }
-            else {
-                // no available image to fill this slot
+                else {
+                    // no available image to fill this slot
+                }
             }
         }
     }
@@ -109,13 +113,19 @@
         --numHorizontal: ${cols};
         --numVertical: ${rows};
     `}>
-    {#each filteredImages as image}
-        <ShowcaseItem 
-            imageData={image} style="
-                --numHorizontal: {cols};
-                --numVertical: {rows};
-            "/>
-    {/each}
+    {#if fillBoxText.length > 0}
+        <div class="fullContainerText">
+            <h3>{fillBoxText}</h3>
+        </div>
+    {:else}
+        {#each filteredImages as image}
+            <ShowcaseItem 
+                imageData={image} style="
+                    --numHorizontal: {cols};
+                    --numVertical: {rows};
+                "/>
+        {/each}
+    {/if}
 </div>
 
 <style lang="scss">
@@ -134,6 +144,17 @@
     width: 100%;
     height: 100%;
 
+}
+
+.fullContainerText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

@@ -50,7 +50,7 @@
     ];
 
     // let searchbar = null; // would be bound to div class="searchbar"
-    export let inputField = "";
+    export let inputField = $page.url.searchParams.get('q') || '';
     let searchInput;
 
     const debouncedInput = debounce(() => {
@@ -62,10 +62,14 @@
 
     // $: resultsActive = (searchbar && searchbar.contains(document.activeElement));
 
+    // $: console.log("history stuff: ", history);
+
 </script>
 <div class="searchbar">
     <div class="searchSection">
         <input class="typehere" type="text" autocomplete="off" placeholder="Search..." on:input={debouncedInput} bind:value={inputField} />
+        <!-- Caution: I don't know how adding autofocus on the *image* works but adding it to input doesn't. Keep an eye on this... -->
+        <!-- svelte-ignore a11y-autofocus -->
         <img class="searchIcon" src="/svgs/Magnifying glass.svg" alt="search" autofocus={ ((typeof history !== 'undefined') && history?.reactivateSearch) || false } />
     </div>
     {#if (results.length > 0)}
