@@ -1,4 +1,4 @@
-import mongoclient from '$db/mongo';
+import mongoclient, { checkClientEnabled } from '$db/mongo';
 
 const maxItems2DRenders = 6;
 const numLiked2DRenders = 2;
@@ -12,11 +12,6 @@ const numLikedPersonal = 2;
 const matchFilterArtworks = { 'type.0': 0, $or: [{ 'type.1': 0 }, { 'type.1': 1 }] };
 const matchFilterTexts = { 'type.0': 1 };
 const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 }] };
-
-function checkClientEnabled() {
-    if (!mongoclient) throw new Error('Mongo connection does not exist.');
-    return;
-}
 
 function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
     // code for creating a union: https://stackoverflow.com/a/55289023/15818885
@@ -95,40 +90,7 @@ const getTopPosts = async (maxItems, numTopLiked, matchFilter) => {
     let db = await mongoclient.db('creative_works');
     let data = await db.collection('posts').aggregate(topPostsAggregateFunction(maxItems, numTopLiked, matchFilter)).toArray();
     return data;
-    // removed error handling here, leaving it up to the components
-    /*
-    let topPosts = { successful: false };
-    try {
-        topPosts.data = data;
-        topPosts.successful = true;
-    }
-    catch (e) {
-        console.error(e);
-        topPosts.errorMsg = e.message;
-    }
-    finally {
-        return topPosts;
-    }
-    */
 }
-
-// const getSearchResults = async (query) => {
-//     let results = { successful: false };
-//     try {
-//         checkClientEnabled();
-//         let db = await mongoclient.db('creative_works');
-//         let data;// = await db.collection('posts').find(); // TODO: finish this query
-//         results.data = data;
-//         results.successful = true;
-//     }
-//     catch (e) {
-//         console.error(e);
-//         results.errorMsg = e.message;
-//     }
-//     finally {
-//         return results;
-//     }
-// }
 
 export const load = function() {
 
@@ -155,6 +117,5 @@ export const load = function() {
                         .catch(e => reject(e));
                 }),
         }
-        // searchResults: getSearchResults(url.searchParams.get('q')),
     }
 }

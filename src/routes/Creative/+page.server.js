@@ -1,6 +1,8 @@
-const getSearchQuery = async (url) => {
-    console.log("called getSearchQuery...");
-    console.log(url);
+import mongoclient, { checkClientEnabled } from '$db/mongo';
+
+const getSearchQuery = async function(url) {
+    console.log("getting search query results...");
+    let searchString = url.searchParams.get('q');
 }
 
 export const load = ({ url }) => {
@@ -9,8 +11,8 @@ export const load = ({ url }) => {
     
     return {
         streamedPage: {
-            getSearchQuery: new Promise(
-                (res, rej) => {getSearchQuery(url.searchParams)
+            searchResults: new Promise(
+                (res, rej) => {getSearchQuery(url)
                     .then(response => {res(response)})
                     .catch(err => {rej(err)})
                 }),

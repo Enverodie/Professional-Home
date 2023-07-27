@@ -5,6 +5,11 @@ import { USE_MONGODB, MONGO_CLUSTER, MONGO_USER, MONGO_PASS } from '$env/static/
 const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_CLUSTER}/?retryWrites=true&w=majority`;
 const client = (USE_MONGODB.toString().toLowerCase() == 'true')? new MongoClient(uri) : null;
 
+export function checkClientEnabled() {
+    if (!client) throw new Error('Mongo connection does not exist.');
+    return;
+}
+
 // export function mongodb_connect() {
 //     console.log("Connecting to MongoDB...");
 //     if (USE_MONGODB == 'true') return client.connect();

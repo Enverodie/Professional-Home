@@ -1,5 +1,7 @@
 <script>
 
+    import { titleGradientGenerator } from '$lib/constants/titleGradientGen.js';
+
     export let imageData;
 
     const allowedFileTypes = ['.png', '.jpg', '.jpeg', '.svg'];
@@ -11,26 +13,13 @@
     } = imageData;
 
     let displayImage = true;
-    let hexTo = '#0000', hexFrom = "#0000";
+    let colorTo = '#0000', colorFrom = "#0000";
     let fileName = (typeof imgData.fileName === "string")? imgData.fileName : imgData.fileName[0];
     if (!allowedFileTypes.includes(fileName.substring(fileName.lastIndexOf('.'), fileName.length).toLowerCase())) {
         displayImage = false;
-        let workedTitle = imgData.postName;
-        while (workedTitle.length < 3) workedTitle += ' ';
-        const hexOptions = 256;
-        const strlen = 5;
-        let numString0 = workedTitle.split('').filter((item, i) => {return i % 3 === 0}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
-        let numString0Reversed = numString0.split('').reverse().join('');
-        
-        let numString1 = workedTitle.split('').filter((item, i) => {return i % 3 === 1}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
-        let numString1Reversed = numString1.split('').reverse().join('');
-        
-        let numString2 = workedTitle.split('').filter((item, i) => {return i % 3 === 2}).reduce((accumulator, currentItem) => accumulator += currentItem.charCodeAt(0), '');
-        let numString2Reversed = numString2.split('').reverse().join('');
-
-        hexFrom = `rgb(${numString0Reversed.substring(0, strlen) % hexOptions}, ${numString1Reversed.substring(0, strlen) % hexOptions}, ${numString2Reversed.substring(0, strlen) % hexOptions})`;
-        hexTo = `rgb(${numString0.substring(0, strlen) % hexOptions}, ${numString1.substring(0, strlen) % hexOptions}, ${numString2.substring(0, strlen) % hexOptions})`;
-        
+        let rgb = titleGradientGenerator(imgData.postName);
+        colorTo = rgb.rgbTo;
+        colorFrom = rgb.rgbFrom;
     } 
 
 
@@ -54,7 +43,7 @@
             {#if displayImage}
                 <img class="itemDisplay" src='/creativePosts/{fileName}' alt={imgData.description || ''} />
             {:else}
-                <div class="itemDisplay" style="--hexTo: {hexTo}; --hexFrom: {hexFrom};">{imgData.postName}</div>
+                <div class="itemDisplay" style="--hexTo: {colorTo}; --hexFrom: {colorFrom};">{imgData.postName}</div>
             {/if}
             <div class='attribution'>
                 {#if displayImage}
@@ -152,7 +141,7 @@
                 object-fit: cover;
                 background-size: cover;
                 border-radius: 5px;
-                background-image: linear-gradient(135deg, var(--hexFrom), var(--hexTo));
+                background-image: linear-gradient(var(--defaultThumbnailGradientAngle), var(--hexFrom), var(--hexTo));
             }
 
             .attribution {
