@@ -8,7 +8,6 @@
 	import Showcase from '$lib/components/specialFX/showcase/showcase.svelte';
 
     export let data;
-    console.log("data received in page: ", data);
 
 </script>
 
@@ -17,7 +16,7 @@
 
     <PositionInWrapper>
         <ArticleBox style="margin-top: var(--boxOutsideSize);">
-            <Searchbar />
+            <Searchbar results={data.streamedPage.searchResults} />
         </ArticleBox>
     </PositionInWrapper>
 

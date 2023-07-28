@@ -2,10 +2,9 @@
 
     import { page } from '$app/stores';
     import { titleGradientGenerator } from '$lib/constants/titleGradientGen.js';
+    import { getFileExtension, allowedFileTypes } from '$lib/constants/fileExtension.js';
 
     export let imageData;
-
-    const allowedFileTypes = ['.png', '.jpg', '.jpeg', '.svg'];
 
     let { 
         imgData, row, col, 
@@ -16,7 +15,7 @@
     let displayImage = true;
     let colorTo = '#0000', colorFrom = "#0000";
     let fileName = (typeof imgData.fileName === "string")? imgData.fileName : imgData.fileName[0];
-    if (!allowedFileTypes.includes(fileName.substring(fileName.lastIndexOf('.'), fileName.length).toLowerCase())) {
+    if (!allowedFileTypes.includes(getFileExtension(fileName))) {
         displayImage = false;
         let rgb = titleGradientGenerator(imgData.postName);
         colorTo = rgb.rgbTo;
