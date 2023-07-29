@@ -40,8 +40,8 @@
                     <figcaption>{images[carouselIndex].description}</figcaption>
                 </figure>
                 <div class="buttons">
-                    <button class="prev" on:click={() => {setCarouselIndex(-1)}}>&lsaquo;</button>
-                    <button class="next" on:click={() => {setCarouselIndex(1)}}>&rsaquo;</button>
+                    <button class="carousel prev" on:click={() => {setCarouselIndex(-1)}}>&lsaquo;</button>
+                    <button class="carousel next" on:click={() => {setCarouselIndex(1)}}>&rsaquo;</button>
                 </div>
             </div>
             <div class="content">
@@ -100,26 +100,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         box-sizing: border-box;
-        
-        &>button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: .1em;
-            padding: 0.2em;
-            color: var(--color4);
-            background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
-            border: none;
-            cursor: pointer;
-
-            &:hover {
-                background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .8);
-            }
-
-            &:active {
-                background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .2);
-            }
-        }
     }
 
     .content {

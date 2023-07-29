@@ -39,7 +39,7 @@
         box-sizing: border-box;
         float: left;
         background-color: var(--color1);
-        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
+        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity));
         padding: var(--defaultPadding);
         margin-top: calc((var(--boxImgSize) * var(--boxesAbove)) + var(--boxOutsideSize));
         display: flex;

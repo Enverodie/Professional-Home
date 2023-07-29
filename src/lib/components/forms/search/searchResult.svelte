@@ -2,7 +2,7 @@
 
     import { page } from '$app/stores';
     import { titleGradientGenerator } from '$lib/constants/titleGradientGen.js';
-    import { getFileExtension, allowedFileTypes } from '$lib/constants/fileExtension.js';
+    import { getFileExtension, imgFileTypes } from '$lib/constants/fileExtension.js';
 
     export let searchedString = '';
     export let postData;
@@ -25,7 +25,7 @@
 
 <a class="result" href={$page.url.pathname + '/post?id=' + postData._id}>
 
-    {#if !allowedFileTypes.includes(getFileExtension(usedFileName))}
+    {#if !imgFileTypes.includes(getFileExtension(usedFileName))}
         <div 
             class="thumbnail" 
             style={`background-image: linear-gradient(
