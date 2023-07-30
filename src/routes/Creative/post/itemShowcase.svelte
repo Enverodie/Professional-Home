@@ -9,15 +9,21 @@
     let { fileNames } = files;
 
     let imageIndex = 0;
-    if (typeof fileNames === 'string') {
-        fileNames = [fileNames];
-        // fileData = [fileData];
-    };
+    if (typeof fileNames === 'string') fileNames = [fileNames];
 
     async function getFileText(fileName) {
         let result = await fetch($page.url.origin + '/creativePosts/' + fileName);
         result = await result.text();
         return result;
+    }
+
+    function updateImageIndex(offset) {
+        imageIndex += offset;
+        let isNegative = imageIndex < 0;
+        imageIndex = Math.abs(imageIndex);
+        imageIndex %= fileNames.length;
+        if (!isNegative) return;
+        imageIndex = fileNames.length - imageIndex;
     }
 
 </script>
@@ -46,13 +52,15 @@
             <!-- Can't be displayed -->
             <div class="activeItem">
                 File type cannot be displayed.
-                <a href={'/creativePosts/' + fileName}>Download</a>
+                <a href={'/creativePosts/' + fileNames[imageIndex]} download>Download</a>
             </div>
         {/if}
     </div>
     {#if fileNames.length > 1}
-        <button class="carousel" on:click={() => {imageIndex--}}>&lsaquo;</button>
-        <button class="carousel" on:click={() => {imageIndex++}}>&rsaquo;</button>
+        <div class="buttons">
+            <button class="carousel" on:click={() => {updateImageIndex(-1)}}>&lsaquo;</button>
+            <button class="carousel" on:click={() => {updateImageIndex(1)}}>&rsaquo;</button>
+        </div>
     {/if}
 </div>
 
@@ -60,6 +68,18 @@
 
     .itemShowcase {
 
+    }
+
+    .activeItem {
+        width: 100%;
+    }
+
+    .buttons {
+        display: flex;
+        width: 100%;
+        button {
+            flex: 1;
+        }
     }
 
 </style>

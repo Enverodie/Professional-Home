@@ -1,10 +1,9 @@
 <script>
     
-    import { page } from '$app/stores';
-    import { get } from 'svelte/store'
     import PageWrapper from "$lib/components/layout/grid.svelte";
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
 	import NameGlitch from './../../../lib/components/texts/nameGlitch.svelte';
+    import Thumb from '$lib/components/buttons/thumb.svelte';
     import ItemShowcase from './itemShowcase.svelte';
 	import Comment from './comment.svelte';
 
@@ -15,13 +14,21 @@
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     if (postData.comments == null) postData.comments = [];
 
+    let likePressed, dislikePressed;
+
+    function updateVote(newValue, positiveVote) {
+        if (positiveVote && newValue) dislikePressed = false;
+        if (!positiveVote && newValue) likePressed = false;
+    }
+
 </script>
 
-<PageWrapper>
+<PageWrapper padBottom={false}>
 <PositionInWrapper>
     <div class="postContent">
         
         <section class="theActualPost">
+
             <div class="details">
                 <header>
                     <div class="title">
@@ -37,17 +44,23 @@
                     </div>
                     <div class="types">
                         {#each postData.type as typeKey}
-                            {typeKey}, 
+                            <span>{typeKey}</span>
                         {/each}
                     </div>
                     <div class="votes">
-                        <div class="likes">{postData.likes}</div>
-                        <div class="dislikes">{postData.dislikes}</div>
+                        <Thumb bind:active={likePressed} down={false} onPressed={(newValue) => {updateVote(newValue, true)}} />
+                        {postData.likes + likePressed}
+                        <Thumb bind:active={dislikePressed} down={true} onPressed={(newValue) => {updateVote(newValue, false)}} />
+                        {postData.dislikes + dislikePressed}
                     </div>
                 </header>
-                <div class="description">{postData.description}</div>
+                <div class="description">
+                    {postData.description}
+                </div>
             </div>
+
             <ItemShowcase files={{fileNames: postData.fileName /*, fileData: postData.fileData */}} />
+
         </section>
         <section class="comments">
             {#each postData.comments as comment}
@@ -62,10 +75,40 @@
 <style lang="scss">
     
     .postContent {
-        // width: 68ch;
+        padding: 1rem;
         background-color: var(--color1);
-        border-right: var(--color2) var(--boxOpacity) var(--boxStrokeSize);
-        border-left: var(--color2) var(--boxOpacity) var(--boxStrokeSize);
+        border-right: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
+        border-left: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
+        flex: 1;
+    }
+
+    .theActualPost {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .date {
+        color: var(--color6);
+    }
+
+    .types {
+        color: var(--color7);
+        gap: 1ch;
+
+        ::after {
+            content: ' > ';
+        }
+
+        :last-child::after {
+            content: '';
+        }
+    }
+
+    .votes {
+        display: flex;
+        align-items: center;
+        gap: 1ch;
+        margin: .5em 0 .5em;
     }
 
 </style>
