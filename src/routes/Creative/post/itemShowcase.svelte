@@ -27,12 +27,9 @@
     }
 
     function updateImageIndex(offset) {
-        imageIndex += offset;
-        let isNegative = imageIndex < 0;
-        imageIndex = Math.abs(imageIndex);
-        imageIndex %= fileNames.length;
-        if (!isNegative) return;
-        imageIndex = fileNames.length - imageIndex;
+        let newvalue = (imageIndex + offset) % fileNames.length;
+        if (newvalue < 0) newvalue = fileNames.length + newvalue;
+        imageIndex = newvalue;
     }
 
     let active = false;
