@@ -17,26 +17,40 @@ async function loadFromDB(url) {
     if (!id) throw redirect(307, '/creative');
     checkClientEnabled();
     let db = await mongoclient.db('creative_works');
-    let results = await db.collection('posts').aggregate([
-        { $match: { _id: new ObjectId(id) } }, 
-        { $project: {
-            _id: {
-                $toString: "$_id",
-            },
-            postName: "$postName",
-            dateCreated: "$dateCreated",
-            type: "$type",
-            likes: "$likes",
-            dislikes: "$dislikes",
-            description: "$longDescription",
-            fileName: "$fileName",
-            comments: "$comments",
-        }}
-    ]).toArray();
-    let result = results[0];
-    // if (typeof result.fileName === 'object') result.fileData = result.fileName.map(item => {getStringFromFile(item)});
-    // else result.fileData = getStringFromFile(result.fileName, url);
-    // console.log(result);
+    let [ dataResults, typeReference ] = await Promise.all([
+        new Promise((resolve, reject) => {
+            db.collection('posts').aggregate([
+                { $match: { _id: new ObjectId(id) } },
+                { $project: {
+                    _id: {
+                        $toString: "$_id",
+                    },
+                    postName: "$postName",
+                    dateCreated: "$dateCreated",
+                    type: "$type",
+                    likes: "$likes",
+                    dislikes: "$dislikes",
+                    shortDescription: "$shortDescription",
+                    description: "$longDescription",
+                    fileName: "$fileName",
+                    comments: "$comments",
+                }}
+            ]).toArray()
+            .then(result => {resolve(result)})
+            .catch(error => reject(error));
+        }),
+        new Promise((resolve, reject) => {
+            db.collection('postType_enum').find().toArray()
+                .then(result => {resolve(result)})
+                .catch(error => {reject(error)});
+        })
+    ]);
+    let result = dataResults[0];
+    let objectAtCurrentDepth = {subtypes: typeReference};
+    result.type = result.type.map(index => {
+        objectAtCurrentDepth = objectAtCurrentDepth.subtypes[index];
+        return objectAtCurrentDepth.type;
+    });
     return result; // it's safe to return index 0 since we're matching by PK
 }
 

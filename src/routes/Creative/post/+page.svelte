@@ -6,6 +6,7 @@
     import Thumb from '$lib/components/buttons/thumb.svelte';
     import ItemShowcase from './itemShowcase.svelte';
 	import Comment from './comment.svelte';
+    import { navbar } from '$lib/stores/gui.js';
 
     export let data;
     let postData = data.postData;
@@ -21,7 +22,21 @@
         if (!positiveVote && newValue) likePressed = false;
     }
 
+    let navbarHeight = 0;
+    navbar.subscribe(newNavbar => {
+        if (newNavbar) {
+            navbarHeight = newNavbar.getBoundingClientRect().height;
+        }
+    })
+
 </script>
+
+<svelte:head>
+    <meta property="og:title" content={postData.postName} />
+    <meta property="og:description" content={postData.shortDescription} />
+    <meta property="og:author" content="Stephen M. Smith" />
+    <meta property="og:image" content={''} />
+</svelte:head>
 
 <PageWrapper padBottom={false}>
 <PositionInWrapper>
@@ -35,16 +50,16 @@
                         <NameGlitch>{postData.postName}</NameGlitch>
                     </div>
                     <div class="date">
-                    {
-                        days[postData.dateCreated.getDay()] + ", " + 
-                        months[postData.dateCreated.getMonth()] + " " + 
-                        postData.dateCreated.getDate() + ", " +
-                        postData.dateCreated.getFullYear()
-                    }
+                        {
+                            days[postData.dateCreated.getDay()] + ", " + 
+                            months[postData.dateCreated.getMonth()] + " " + 
+                            postData.dateCreated.getDate() + ", " +
+                            postData.dateCreated.getFullYear()
+                        }
                     </div>
                     <div class="types">
                         {#each postData.type as typeKey}
-                            <span>{typeKey}</span>
+                            <span><div class="box">{typeKey}</div></span>
                         {/each}
                     </div>
                     <div class="votes">
@@ -54,12 +69,15 @@
                         {postData.dislikes + dislikePressed}
                     </div>
                 </header>
+                <a class="thePostLink" href="#thePost">Go to post</a>
                 <div class="description">
                     {postData.description}
                 </div>
             </div>
 
-            <ItemShowcase files={{fileNames: postData.fileName /*, fileData: postData.fileData */}} />
+            <div id="thePost" style="--navbarHeight: {navbarHeight}px;">
+                <ItemShowcase files={{fileNames: postData.fileName /*, fileData: postData.fileData */}} />
+            </div>
 
         </section>
         <section class="comments">
@@ -74,17 +92,33 @@
 
 <style lang="scss">
     
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+
     .postContent {
         padding: 1rem;
         background-color: var(--color1);
         border-right: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
         border-left: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
         flex: 1;
+
+        &>* {
+            // padding: .5em;
+            margin: 1em;
+        }
     }
 
     .theActualPost {
+        --subtleBorderRadius: 5px;
+        --vMargins: .4em;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+
+        #thePost {
+            scroll-margin-top: calc(var(--navbarHeight));
+        }
+
     }
 
     .date {
@@ -92,8 +126,29 @@
     }
 
     .types {
-        color: var(--color7);
+        --boxPadding: .2em;
+        --color: var(--color7);
+        color: var(--color);
         gap: 1ch;
+        text-transform: capitalize;
+        margin-left: calc(-1 * var(--boxPadding));
+        
+        &>*:first-child .box {
+            margin-left: 0;
+        }
+
+        &>*:last-child .box {
+            margin-right: 0;
+        }
+
+        .box {
+            color: var(--color);
+            display: inline-block;
+            margin: .2em;
+            padding: var(--boxPadding);
+            background-color: var(--color5);
+            border-radius: var(--subtleBorderRadius);
+        }
 
         ::after {
             content: ' > ';
@@ -108,7 +163,39 @@
         display: flex;
         align-items: center;
         gap: 1ch;
-        margin: .5em 0 .5em;
+        margin: var(--vMargins) 0;
+    }
+
+    .thePostLink {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--color1);
+        font-weight: bold;
+        background-color: var(--color2);
+        border-radius: var(--subtleBorderRadius);
+        padding: .4em;
+    }
+
+    .description {
+        margin: 1em 0;
+    }
+
+    @media (min-width: 1000px) {
+        .theActualPost {
+            // grid-template-columns: 2fr 1fr;
+            display: flex;
+
+            .details { flex: 2; }
+
+            #thePost { 
+                flex: 1;
+                width: calc(100% / 3);
+
+                :global(.itemShowcase) {
+                    height: 100%;
+                }
+            }
+        }
     }
 
 </style>

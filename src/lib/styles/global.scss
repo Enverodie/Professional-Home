@@ -251,6 +251,10 @@ button.carousel {
     &:active {
         background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .2);
     }
+
+    &:focus {
+        outline: var(--focusOutlineStyle);
+    }
 }
 
 /* re-enable later?

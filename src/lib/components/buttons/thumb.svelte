@@ -22,6 +22,7 @@
 <style lang="scss">
     button {
         padding: 0;
+        margin: 0;
         background-color: transparent !important;
         border: none;
         cursor: pointer;
