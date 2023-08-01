@@ -92,30 +92,35 @@ const getTopPosts = async (maxItems, numTopLiked, matchFilter) => {
     return data;
 }
 
-export const load = function() {
+export const load = function({url}) {
 
     console.log("ran load in layout.server.js");
 
+    let streamed = {};
+    
+    // ONLY if our pathname is the root of /creative do we load the data for that page
+    if (url.pathname === '/creative') streamed = {
+        topPosts2DRenders: new Promise(
+            (resolve, reject) => {
+                getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks)
+                    .then(response => { resolve(response) })
+                    .catch(e => reject(e));
+            }),
+        topPostsTexts: new Promise(
+            (resolve, reject) => {
+                getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts)
+                    .then(response => { resolve(response) })
+                    .catch(e => reject(e));
+            }),
+        topPostsPersonal: new Promise(
+            (resolve, reject) => {
+                getTopPosts(maxItemsPersonal, numLikedPersonal, matchFilterPersonal)
+                    .then(response => { resolve(response) })
+                    .catch(e => reject(e));
+            }),
+    }
+
     return {
-        streamed: {
-            topPosts2DRenders: new Promise(
-                (resolve, reject) => { 
-                    getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks)
-                        .then(response => {resolve(response)})
-                        .catch(e => reject(e));
-                }),
-            topPostsTexts: new Promise(
-                (resolve, reject) => { 
-                    getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts)
-                        .then(response => {resolve(response)})
-                        .catch(e => reject(e));
-                }),
-            topPostsPersonal: new Promise(
-                (resolve, reject) => { 
-                    getTopPosts(maxItemsPersonal, numLikedPersonal, matchFilterPersonal)
-                        .then(response => {resolve(response)})
-                        .catch(e => reject(e));
-                }),
-        }
+        streamed,
     }
 }
