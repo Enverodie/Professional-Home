@@ -22,7 +22,7 @@
     <section class="showcaseColumn showcase2">
         <div class="innerShowcaseBorder">
             <div class="innerShowcase">
-                <ShowcaseItem class="innerShowcase2 showcasePadding" href="https://sallyride.enverodie.com" item={2} backgroundImage='/images/showcase2_thumbnail.png'>
+                <ShowcaseItem class="innerShowcase2 showcasePadding" href="https://sallyride.enverodie.com" item={2} backgroundImage='/images/showcase2_thumbnail.PNG'>
                     Sally Ride Outreach Campaign
                 </ShowcaseItem>
             </div>
