@@ -15,10 +15,13 @@
 
     export let files;
 
-    let { fileNames } = files;
+    let { fileNames, fileType } = files;
 
-    let imageIndex = 0;
+    let showcaseIndex = 0;
     if (typeof fileNames === 'string') fileNames = [fileNames];
+    let isImage = imgFileTypes.includes(getFileExtension(fileNames[showcaseIndex]));
+    let isText = txtFileTypes.includes(getFileExtension(fileNames[showcaseIndex]));
+    let isShortStory = (fileType[0] === 1 && fileType[1] === 0); // comes from postType_enum in mongo.js
 
     async function getFileText(fileName) {
         let result = await fetch($page.url.origin + '/creativePosts/' + fileName);
@@ -26,10 +29,10 @@
         return result;
     }
 
-    function updateImageIndex(offset) {
-        let newvalue = (imageIndex + offset) % fileNames.length;
+    function updateShowcaseIndex(offset) {
+        let newvalue = (showcaseIndex + offset) % fileNames.length;
         if (newvalue < 0) newvalue = fileNames.length + newvalue;
-        imageIndex = newvalue;
+        showcaseIndex = newvalue;
     }
 
     let active = false;
@@ -40,14 +43,34 @@
                 active = false;
                 return;
             case "ArrowRight":
-                updateImageIndex(1);
+                updateShowcaseIndex(1);
                 return;
             case "ArrowLeft":
-                updateImageIndex(-1);
+                updateShowcaseIndex(-1);
                 return;
             default:
                 return;
         }
+    }
+
+    function uncoverCensored(e) {
+        if (!e.target) return;
+        if (!e.target.classList?.contains('censored')) return;
+
+        const toggleClassName = "uncovered";
+
+        if (e.target.classList.contains(toggleClassName)) e.target.classList.remove(toggleClassName);
+        else e.target.classList.add(toggleClassName);
+    }
+
+    let censorChecked = true;
+    if (typeof localStorage !== "undefined") {
+        let stored = localStorage.getItem("useCensorFilter");
+        if (stored != null) censorChecked = stored === 'true';
+    }
+    function clickedCensorCheck(e) {
+        censorChecked = !censorChecked;
+        localStorage.setItem("useCensorFilter", censorChecked);
     }
 
 </script>
@@ -57,8 +80,11 @@
 <div class="itemShowcase" class:active style="--navbarHeight: {navbarHeight}px">
     <div class="buttons">
         {#if fileNames.length > 1}
-            <button class="carousel" on:click={() => {updateImageIndex(-1)}}>&lsaquo;</button>
-            <button class="carousel" on:click={() => {updateImageIndex(1)}}>&rsaquo;</button>
+            <button class="carousel" on:click|preventDefault={() => {updateShowcaseIndex(-1)}}>&lsaquo;</button>
+            <button class="carousel" on:click|preventDefault={() => {updateShowcaseIndex(1)}}>&rsaquo;</button>
+        {/if}
+        {#if isText}
+            <label class="carousel" on:click|preventDefault={clickedCensorCheck}>Hide Censored <input type="checkbox" checked={censorChecked} /></label>
         {/if}
         {#if active}
             <button class="carousel xbutton" on:click={() => {active = false}}>X</button>
@@ -68,17 +94,15 @@
     </div>
     <div class="content">
         <GlitchBox scrollable={active}>
-            {#if imgFileTypes.includes(getFileExtension(fileNames[imageIndex]))}
-                <!-- Can be displayed in image -->
-                <img class="activeItem" style="position: absolute;" src={'/creativePosts/' + fileNames[imageIndex]} alt="" />
-            {:else if txtFileTypes.includes(getFileExtension(fileNames[imageIndex]))}
-                <!-- Can be displayed via text -->
-                {#await getFileText(fileNames[imageIndex])}
+            {#if isImage}
+                <img class="activeItem" style="position: absolute;" src={'/creativePosts/' + fileNames[showcaseIndex]} alt="" />
+            {:else if isText}
+                {#await getFileText(fileNames[showcaseIndex])}
                     <!-- fetch is pending -->
                 {:then value}
                     <!-- fetch was fulfilled -->
                     <div class="textPositioner">
-                        <div class="activeItem textItem">
+                        <div class="activeItem textItem " class:isShortStory class:censorChecked on:click={uncoverCensored}>
                             {@html value}
                         </div>
                     </div>
@@ -89,10 +113,9 @@
                     </div>
                 {/await}
             {:else}
-                <!-- Can't be displayed -->
                 <div class="activeItem">
                     File type cannot be displayed.
-                    <a href={'/creativePosts/' + fileNames[imageIndex]} download>Download</a>
+                    <a href={'/creativePosts/' + fileNames[showcaseIndex]} download>Download</a>
                 </div>
             {/if}
         </GlitchBox>
@@ -146,7 +169,6 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        white-space: pre-line;
         object-fit: cover;
         
         &.textItem {
@@ -174,6 +196,48 @@
         .xbutton {
             width: 2em;
             flex: inherit;
+        }
+    }
+
+    .textItem.isShortStory {
+        text-indent: 3ch;
+    }
+
+    .textItem.censorChecked {
+        
+        :global(.censored) {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+            color: transparent;
+            cursor: pointer;
+        }
+
+        :global(.censored.uncovered) {
+            -webkit-touch-callout: inherit; /* iOS Safari */
+            -webkit-user-select: inherit; /* Safari */
+            -khtml-user-select: inherit; /* Konqueror HTML */
+            -moz-user-select: inherit; /* Old versions of Firefox */
+            -ms-user-select: inherit; /* Internet Explorer/Edge */
+            user-select: inherit; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+            color: inherit;
+        }
+    }
+
+    label.carousel {
+
+        padding-left: .5em;
+        padding-right: .5em;
+
+        input {
+            margin: .5em 0 .5em .5em;
+            box-sizing: border-box;
+            cursor: pointer;
         }
     }
 

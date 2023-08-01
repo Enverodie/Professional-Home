@@ -1,30 +1,27 @@
-There sits a red, white, and blue flag,
-slammed into the lifeless terrain.
-A foreign dust mass
-left that foreign object on the soil.
-It sits, without an inherent purpose-
-The colors’ vibrance foreign to this land.
-It carries the essence of Earth.
-
-There sits a yellow and glaring red flag,
-slammed into the lifeless terrain.
-A shielded mass
-left that foreign object on the soil.
-It watches the other foreign object
-without an inherent reason for contempt.
-The colors’ vibrance foreign to this land.
-It carries the essence of our neighbor.
-
-Yet another, and another, and another-
-similar colors, different banner,
-slammed into the lifeless terrain.
-They scorn each other silently
-in a foreign land,
-yet bearing the same essence of Earth.
-
-Now the only flags to remain are
-silent, lifeless.
-Bathed in a seething white.
-Bleached by the same sun,
-the same strain,
-it bears our essence.
+<p>There sits a red, white, and blue flag,<br />
+slammed into the lifeless terrain.<br />
+A foreign dust mass<br />
+left that foreign object on the soil.<br />
+It sits, without an inherent purpose-<br />
+The colors’ vibrance foreign to this land.<br />
+It carries the essence of Earth.</p>
+<p>There sits a yellow and glaring red flag,<br />
+slammed into the lifeless terrain.<br />
+A shielded mass<br />
+left that foreign object on the soil.<br />
+It watches the other foreign object<br />
+without an inherent reason for contempt.<br />
+The colors’ vibrance foreign to this land.<br />
+It carries the essence of our neighbor.</p>
+<p>Yet another, and another, and another-<br />
+similar colors, different banner,<br />
+slammed into the lifeless terrain.<br />
+They scorn each other silently<br />
+in a foreign land,<br />
+yet bearing the same essence of Earth.</p>
+<p>Now the only flags to remain are<br />
+silent, lifeless.<br />
+Bathed in a seething white.<br />
+Bleached by the same sun,<br />
+the same strain,<br />
+it bears our essence.</p>

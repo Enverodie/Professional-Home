@@ -31,3 +31,64 @@ process.on('SIGINT', () => {console.log("Running MongoDB cleanup command"); clea
 process.on('SIGTERM', () => {console.log("Running MongoDB cleanup command"); cleanup();});
 
 export default client;
+
+export const MongoCreativeLookup = new function() {
+    
+    // connect all _enum properties with respective index values in DB
+    // DB format: [ <index#> <sub-index#> <sub-sub-index#> ... ]
+
+    this.postType_enum = [
+        {
+            type: "image",
+            subtypes: [
+                {
+                    type: "2d art",
+                    subtypes: [
+
+                    ]
+                },
+                {
+                    type: "blender render",
+                    subtypes: [
+
+                    ]
+                },
+                {
+                    type: "photo",
+                    subtypes: [
+
+                    ]
+                },
+                {
+                    type: "minecraft build",
+                    subtypes: [
+
+                    ]
+                },
+            ]
+        },
+        {
+            type: "text",
+            subtypes: [
+                {
+                    type: "short story",
+                    subtypes: [
+
+                    ]
+                },
+                {
+                    type: "poem",
+                    subtypes: [
+
+                    ]
+                },
+            ]
+        }
+    ];
+
+    this.contentWarnings_enum = [
+        "High language",
+        "Mild violence",
+        "Major violence",
+    ];
+}

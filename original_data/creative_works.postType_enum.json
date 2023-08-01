@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "64b5d7b71a95c025dfb6a4c3"
   },
-  "type": "visual",
+  "type": "image",
   "subtypes": [
     {
       "type": "2d art",
@@ -26,7 +26,7 @@
   "_id": {
     "$oid": "64b5d8551a95c025dfb6a4c5"
   },
-  "type": "textual",
+  "type": "text",
   "subtypes": [
     {
       "type": "short stories",

@@ -58,8 +58,8 @@
                         }
                     </div>
                     <div class="types">
-                        {#each postData.type as typeKey}
-                            <span><div class="box">{typeKey}</div></span>
+                        {#each postData.typeName as typeName}
+                            <span><div class="box">{typeName}</div></span>
                         {/each}
                     </div>
                     <div class="votes">
@@ -76,7 +76,7 @@
             </div>
 
             <div id="thePost" style="--navbarHeight: {navbarHeight}px;">
-                <ItemShowcase files={{fileNames: postData.fileName /*, fileData: postData.fileData */}} />
+                <ItemShowcase files={{fileNames: postData.fileName, fileType: postData.type /*, fileData: postData.fileData */}} />
             </div>
 
         </section>

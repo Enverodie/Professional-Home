@@ -112,6 +112,7 @@
 
     --defaultPadding: 1em;
     --defaultThumbnailGradientAngle: 135deg;
+    --defaultButtonBorderRadius: 2px;
 
     --focusOutlineStyle: var(--boxStrokeSize) solid var(--color2);
 }
@@ -206,7 +207,7 @@ textarea {
     margin: 0 0 0.5em 0;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: var(--defaultButtonBorderRadius);
 }
 
 input:disabled {
@@ -233,7 +234,7 @@ button:focus {
     border-color: #666;
 }
 
-button.carousel {
+.carousel {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,6 +243,7 @@ button.carousel {
     color: var(--color4);
     background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
     border: none;
+    border-radius: var(--defaultButtonBorderRadius);
     cursor: pointer;
 
     &:hover {

@@ -1,29 +1,25 @@
-They know where they’re going-
-To the magical land of success-
-because they worked hard,
-played by the rules,
-understood the definition.
-Most do not.
-
-They know what they’re getting-
-A handout of comfort-
-because they found their fit,
-their niche,
-their passion.
-Some will not.
-
-They know what they’re presenting-
-An example of pride-
-because they are perfect,
-ideal citizens,
-machines.
-Few are not.
-
-They know what they’re doing-
-Creating a monster-
-a system of titanium
-only built with moldy cogs.
-False prophets.
-
-They found their way.
-I can not.
+<p>They know where they’re going-<br />
+To the magical land of success-<br />
+because they worked hard,<br />
+played by the rules,<br />
+understood the definition.<br />
+Most do not.</p>
+<p>They know what they’re getting-<br />
+A handout of comfort-<br />
+because they found their fit,<br />
+their niche,<br />
+their passion.<br />
+Some will not.</p>
+<p>They know what they’re presenting-<br />
+An example of pride-<br />
+because they are perfect,<br />
+ideal citizens,<br />
+machines.<br />
+Few are not.</p>
+<p>They know what they’re doing-<br />
+Creating a monster-<br />
+a system of titanium<br />
+only built with moldy cogs.<br />
+False prophets.</p>
+<p>They found their way.<br />
+I can not.</p>
