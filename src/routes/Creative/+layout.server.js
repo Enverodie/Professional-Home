@@ -17,7 +17,6 @@ const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 
 function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
     // code for creating a union: https://stackoverflow.com/a/55289023/15818885
     // how I learned to use $reduce: https://stackoverflow.com/a/60955249/15818885
-    console.log({ $match: { ...matchFilter, ...universalFilter } })
     return [
         { $limit: 1 }, // Reduce the result set to a single document.
         { $project: { _id: 1 } }, // Strip all fields except the Id.
