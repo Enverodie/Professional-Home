@@ -46,6 +46,7 @@ function aggregateSearch(string) {
                 },
             },
         },
+        { $match: { contentWarnings: { $nin: [0] } }},
         { $limit: 6 },
         {
             $project:

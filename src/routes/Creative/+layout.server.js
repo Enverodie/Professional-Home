@@ -9,6 +9,7 @@ const numLikedTexts = 2;
 const maxItemsPersonal = 6;
 const numLikedPersonal = 2;
 
+const universalFilter = { contentWarnings: { $nin: [0] } };
 const matchFilterArtworks = { 'type.0': 0, $or: [{ 'type.1': 0 }, { 'type.1': 1 }] };
 const matchFilterTexts = { 'type.0': 1 };
 const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 }] };
@@ -16,6 +17,7 @@ const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 
 function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
     // code for creating a union: https://stackoverflow.com/a/55289023/15818885
     // how I learned to use $reduce: https://stackoverflow.com/a/60955249/15818885
+    console.log({ $match: { ...matchFilter, ...universalFilter } })
     return [
         { $limit: 1 }, // Reduce the result set to a single document.
         { $project: { _id: 1 } }, // Strip all fields except the Id.
@@ -26,7 +28,7 @@ function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
             $lookup: {
                 from: "posts",
                 pipeline: [
-                    { $match: matchFilter },
+                    { $match: {...matchFilter, ...universalFilter} },
                     { $sort: { likes: -1, dislikes: 1, dateCreated: -1 } },
                     { $limit: numTopLiked },
                 ],
@@ -37,7 +39,7 @@ function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
             $lookup: {
                 from: "posts",
                 pipeline: [
-                    { $match: matchFilter },
+                    { $match: { ...matchFilter, ...universalFilter } },
                     { $sort: { dateCreated: -1 } },
                     { $limit: maxItems },
                 ],
@@ -97,7 +99,7 @@ export const load = function({url}) {
     console.log("ran load in layout.server.js");
 
     let streamed = {};
-    
+
     // ONLY if our pathname is the root of /creative do we load the data for that page
     if (url.pathname === '/creative') streamed = {
         topPosts2DRenders: new Promise(
