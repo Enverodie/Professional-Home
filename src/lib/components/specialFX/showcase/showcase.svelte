@@ -138,8 +138,10 @@
     position: relative;
     background-color: var(--backgroundColor);
     overflow: hidden;
-    box-shadow: 0px 0px 1em var(--color2);
-    border-radius: 5px;
+    border: var(--boxStrokeSize) solid var(--color2);
+    box-sizing: border-box;
+    // box-shadow: 0px 0px 1em var(--color2);
+    // border-radius: 5px;
 
     width: 100%;
     height: 100%;

@@ -9,11 +9,15 @@
     export let results;
 
     export let inputField = $page.url.searchParams.get('q') || '';
-
+    if (typeof history !== 'undefined' && history.scrollPos) {
+        document.documentElement.scrollTop = document.body.scrollTop = history.scrollPos
+    };
+    $: if (typeof history !== 'undefined') console.log(history);
+    
     const debouncedInput = debounce(() => {
         let query = new URLSearchParams($page.url.searchParams.toString());
         query.set('q', inputField);
-        goto(`?${query.toString()}`, { reactivateSearch: true });
+        goto(`?${query.toString()}`);
     }, 200);
 
 </script>
@@ -25,17 +29,21 @@
         <img class="searchIcon" src="/svgs/Magnifying glass.svg" alt="search" autofocus={ ((typeof history !== 'undefined') && history?.reactivateSearch) || false } />
     </div>
     {#await results}
+    <div class="resultsSection">
         Loading...
+    </div>
     {:then resolvedResults}
         {#if (resolvedResults.length > 0)}
-            <div class={"resultsSection"}>
+            <div class="resultsSection">
                 {#each resolvedResults as result}
                     <SearchResult searchedString={inputField} postData={result} />
                 {/each}
             </div>
         {/if}
     {:catch error}
+        <div class="resultsSection">
             {error.message}
+        </div>
     {/await}
 </div>
 <style lang="scss">
@@ -48,6 +56,7 @@
         padding: var(--normalSpacing);
         border: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid var(--boxStrokeSize);
         color: var(--color3);
+        position: relative;
     }
     
     .searchSection {
@@ -69,6 +78,13 @@
 
     .resultsSection {
 
+        position: absolute;
+        left: calc(-1 * var(--boxStrokeSize));
+        box-sizing: border-box;
+        width: calc(100% + (2 * var(--boxStrokeSize)));
+        z-index: 6;
+        background-color: var(--color1);
+        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
         display: grid;
         flex-direction: column;
         grid-auto-flow: row;

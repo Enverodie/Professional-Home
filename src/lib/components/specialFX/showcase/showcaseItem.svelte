@@ -149,7 +149,7 @@
                 overflow: hidden;
                 object-fit: cover;
                 background-size: cover;
-                border-radius: 5px;
+                // border-radius: 5px;
                 background-image: linear-gradient(var(--defaultThumbnailGradientAngle), var(--hexFrom), var(--hexTo));
             }
 

@@ -1,7 +1,7 @@
 import mongoclient, { checkClientEnabled } from '$db/mongo';
 
-const maxItems2DRenders = 6;
-const numLiked2DRenders = 2;
+const maxItemsPrimary = 12;
+const numLikedPrimary = 4;
 
 const maxItemsTexts = 6;
 const numLikedTexts = 2;
@@ -12,6 +12,7 @@ const numLikedPersonal = 2;
 const universalFilter = { contentWarnings: { $nin: [0] } };
 const matchFilterArtworks = { 'type.0': 0, $or: [{ 'type.1': 0 }, { 'type.1': 1 }] };
 const matchFilterTexts = { 'type.0': 1 };
+const matchFilterPrimary = { $or: [matchFilterArtworks, matchFilterTexts] };
 const matchFilterPersonal = { 'type.0': 0, $or: [{ 'type.1': 2 }, { 'type.1': 3 }] };
 
 function topPostsAggregateFunction(maxItems, numTopLiked, matchFilter) {
@@ -101,15 +102,9 @@ export const load = function({url}) {
 
     // ONLY if our pathname is the root of /creative do we load the data for that page
     if (url.pathname === '/creative') streamed = {
-        topPosts2DRenders: new Promise(
+        topPostsPrimary: new Promise(
             (resolve, reject) => {
-                getTopPosts(maxItems2DRenders, numLiked2DRenders, matchFilterArtworks)
-                    .then(response => { resolve(response) })
-                    .catch(e => reject(e));
-            }),
-        topPostsTexts: new Promise(
-            (resolve, reject) => {
-                getTopPosts(maxItemsTexts, numLikedTexts, matchFilterTexts)
+                getTopPosts(maxItemsPrimary, numLikedPrimary, matchFilterPrimary)
                     .then(response => { resolve(response) })
                     .catch(e => reject(e));
             }),
