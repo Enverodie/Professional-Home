@@ -20,7 +20,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@mongodb-js/zstd": "^1.1.0",
 		"aws4": "^1.12.0",
 		"canvas": "^2.11.2",
 		"kerberos": "^2.0.1",
