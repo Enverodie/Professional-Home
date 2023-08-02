@@ -3,7 +3,6 @@
     import debounce from 'lodash.debounce';
     import { page } from '$app/stores';
     import { goto } from "$app/navigation";
-    import { getFileExtension } from '$lib/constants/fileExtension.js';
 	import SearchResult from './searchResult.svelte';
     
     export let results;

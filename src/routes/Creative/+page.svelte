@@ -17,7 +17,7 @@
     <SectionHeader rowsUsed={2}>Creative Showcase</SectionHeader>
 
     <PositionInWrapper>
-        <ArticleBox style="margin-top: var(--boxOutsideSize);">
+        <ArticleBox style="margin-top: var(--boxOutsideSize);" overflow={'true'}>
             <Searchbar results={data.streamedPage.searchResults} />
             <div class="creativePageShowcase grid">
 

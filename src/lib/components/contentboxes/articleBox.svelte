@@ -6,6 +6,7 @@
     import { navbar } from '$lib/stores/gui.js';
 
     export let boxesAbove = 1;
+    export let overflow = false;
     if (!boxesAbove) boxesAbove = 0;
 
     let navbarHeight = 0;
@@ -25,7 +26,7 @@
         in an attempt to vertical align 
         the articles with the background.
     -->
-    <div class="slotContainer">
+    <div class="slotContainer" style={overflow? "overflow: auto;" : ''}>
         <!-- The article's content -->
         <slot />
     </div>
