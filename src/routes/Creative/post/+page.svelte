@@ -99,8 +99,8 @@
     .postContent {
         padding: 1rem;
         background-color: var(--color1);
-        border-right: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
-        border-left: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid var(--boxStrokeSize);
+        border-right: var(--defaultBackgroundBoxBorder);
+        border-left: var(--defaultBackgroundBoxBorder);
         flex: 1;
 
         &>* {

@@ -113,6 +113,7 @@
     --defaultPadding: 1em;
     --defaultThumbnailGradientAngle: 135deg;
     --defaultButtonBorderRadius: 2px;
+    --defaultBackgroundBoxBorder: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid var(--boxStrokeSize);
     --defaultButtonBackgroundColor: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
 
     --focusOutlineStyle: var(--boxStrokeSize) solid var(--color2);

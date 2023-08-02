@@ -76,7 +76,7 @@
         align-items: center;
 
         &:hover {
-            background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .1);
+            background-color: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity));
             .description { text-decoration: underline; }
         }
 

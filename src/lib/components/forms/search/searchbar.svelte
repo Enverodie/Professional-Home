@@ -5,7 +5,7 @@
     import { goto } from "$app/navigation";
 	import SearchResult from './searchResult.svelte';
     
-    export let results;
+    export let results = [];
 
     export let inputField = $page.url.searchParams.get('q') || '';
     if (typeof history !== 'undefined' && history.scrollPos) {
@@ -19,7 +19,7 @@
     }, 200);
 
 </script>
-<div class="searchbar">
+<div class={"searchbar " + $$props.class}>
     <div class="searchSection">
         <input class="typehere" type="text" autocomplete="off" placeholder="Search..." on:input={debouncedInput} bind:value={inputField} />
         <!-- Caution: I don't know how adding autofocus on the *image* works but adding it to input doesn't. Keep an eye on this... -->
@@ -52,7 +52,7 @@
 
         background-color: var(--color1);
         padding: var(--normalSpacing);
-        border: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid var(--boxStrokeSize);
+        border: var(--defaultBackgroundBoxBorder);
         color: var(--color3);
         position: relative;
     }
@@ -69,6 +69,7 @@
             border: none;
             margin: 0;
             color: var(--color3);
+            width: 100%;
             &:focus { outline: none; }
         }
         .searchIcon { height: 100%; }
@@ -82,14 +83,14 @@
         width: calc(100% + (2 * var(--boxStrokeSize)));
         z-index: 7;
         background-color: var(--color1);
-        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
+        border: var(--defaultBackgroundBoxBorder);
         display: grid;
         flex-direction: column;
         grid-auto-flow: row;
         grid-template-columns: 1fr;
         margin-top: var(--normalSpacing);
         padding-top: var(--normalSpacing);
-        border-top: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid 1px;
+        border-top: hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity)) solid 1px;
     }
 
     @media (min-width: 1000px) {

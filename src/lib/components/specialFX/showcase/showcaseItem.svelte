@@ -35,7 +35,7 @@
         --numTakenV: ${imgData.height};
     `}>
 
-    <a class='itemAnchor' href={$page.url.pathname + "/post?id="+imgData._id} on:focus={() => linkHasFocus = true} on:blur={() => linkHasFocus = false}>
+    <a class='itemAnchor' href={"/creative/post?id="+imgData._id} on:focus={() => linkHasFocus = true} on:blur={() => linkHasFocus = false}>
         <div class='itemResizer' style='
             --resizeW: {expandWidth};
             --resizeH: {expandHeight};
