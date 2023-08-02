@@ -35,7 +35,15 @@
 
 <style lang="scss">
 
-    .button1 { border-radius: 0; }
+    .button1 { 
+        border-radius: 0; 
+        -webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+        &:active {
+            background-color: inherit;
+        }
+    }
 
     .dropdown {
 
