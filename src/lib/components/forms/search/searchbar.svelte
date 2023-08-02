@@ -80,7 +80,7 @@
         left: calc(-1 * var(--boxStrokeSize));
         box-sizing: border-box;
         width: calc(100% + (2 * var(--boxStrokeSize)));
-        z-index: 6;
+        z-index: 7;
         background-color: var(--color1);
         border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
         display: grid;
