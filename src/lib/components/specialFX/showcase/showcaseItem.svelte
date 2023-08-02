@@ -5,6 +5,7 @@
     import { getFileExtension, imgFileTypes } from '$lib/constants/fileExtension.js';
 
     export let imageData;
+    export let labelBoxSize;
 
     let { 
         imgData, row, col, 
@@ -47,7 +48,7 @@
                 <div class="itemDisplay" style="--hexTo: {colorTo}; --hexFrom: {colorFrom}; padding: 2ch;">{imgData.postName}</div>
             {/if}
             {#if imgData.description}
-                <div class='labelBox'>
+                <div class={'labelBox ' + labelBoxSize}>
                     <div class="labelBoxText">
                         <div class="title">{imgData.postName}</div>
                         {imgData.description || ''}
@@ -150,6 +151,7 @@
                 object-fit: cover;
                 background-size: cover;
                 // border-radius: 5px;
+                background-color: white;
                 background-image: linear-gradient(var(--defaultThumbnailGradientAngle), var(--hexFrom), var(--hexTo));
             }
 
@@ -236,11 +238,23 @@
     .labelBoxText {
         width: 50% !important;
     }
+
+    .medium .labelBoxText, .small .labelBoxText {
+        width: 100% !important;
+    }
 }
 
 @media (min-width: 1000px) {
     .labelBoxText {
         width: calc(100% / 3) !important;
+    }
+
+    .medium .labelBoxText {
+        width: 75% !important;
+    }
+
+    .small .labelBoxText {
+        width: 100% !important;
     }
 }
 

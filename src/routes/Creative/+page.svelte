@@ -6,6 +6,8 @@
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
 	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
 	import Showcase from '$lib/components/specialFX/showcase/showcase.svelte';
+    import HumbleAnchor from "../../lib/components/buttons/humbleAnchor.svelte";
+    import GlitchBox from "../../lib/components/contentboxes/glitchBox.svelte";
 
     export let data;
 
@@ -19,7 +21,7 @@
             <Searchbar results={data.streamedPage.searchResults} />
             <div class="creativePageShowcase grid">
 
-                <div class="artworkAndWritingHeader">
+                <div class="header artworkAndWritingHeader">
                     <SectionHeader withinGrid={false} style="margin: 0; background-image: none;" rowsUsed={1}>
                         Artwork & Writings
                     </SectionHeader>
@@ -28,28 +30,28 @@
                     {#await data.streamed.topPostsPrimary}
                         <Showcase fillBoxText='Loading...' />
                     {:then result} 
-                        <Showcase images={result} />
+                        <Showcase images={result} rows={4} />
                     {:catch error}
                         <Showcase fillBoxText={error.message} />
                     {/await}
                 </div>
 
-                <div class="myPickHeader">
+                <div class="header myPickHeader">
                     <SectionHeader withinGrid={false} style="margin: 0; background-image: none;" rowsUsed={1}>
                         My Picks
                     </SectionHeader>
                 </div>
                 <div class="myPick">
-                    {#await data.streamed.topPostsPersonal}
+                    {#await data.streamed.recommendedPosts}
                         <Showcase fillBoxText='Loading...' />
                     {:then result} 
-                        <Showcase images={result} />
+                        <Showcase images={result} rows={1} cols={3} labelBoxSize={'small'} />
                     {:catch error}
                         <Showcase fillBoxText={error.message} />
                     {/await}
                 </div>
 
-                <div class="personalAndGamingHeader">
+                <div class="header personalAndGamingHeader">
                     <SectionHeader withinGrid={false} style="margin: 0 0; background-image: none;" rowsUsed={1}>
                         Personal & Gaming
                     </SectionHeader>
@@ -58,14 +60,16 @@
                     {#await data.streamed.topPostsPersonal}
                         <Showcase fillBoxText='Loading...' />
                     {:then result} 
-                        <Showcase images={result} />
+                        <Showcase images={result} rows={3} labelBoxSize={'medium'} />
                     {:catch error}
                         <Showcase fillBoxText={error.message} />
                     {/await}
                 </div>
 
                 <div class="more">
-
+                    <GlitchBox>
+                        <HumbleAnchor href="#" class="moreButton">More <img slot="icon" src="/svgs/arrows/arrow-white.svg" alt="<-" aria-hidden style="transform: rotate(180deg); height: 1em;" /></HumbleAnchor>
+                    </GlitchBox>
                 </div>
 
             </div>
@@ -78,6 +82,7 @@
 
     .grid {
         display: grid;
+        grid-template-rows: auto repeat(8, 1fr) auto repeat(2, 1fr) auto repeat(8, 1fr);
         grid-template-areas:
                 "artworkAndWritingHeader"
                 "artworkAndWriting"
@@ -88,9 +93,7 @@
                 "artworkAndWriting"
                 "artworkAndWriting"
                 "artworkAndWriting"
-                "artworkAndWriting"
                 "myPickHeader"
-                "myPick"
                 "myPick"
                 "myPick"
                 "personalAndGamingHeader"
@@ -106,9 +109,12 @@
         grid-row-gap: 1.2em;
     }
 
-    .artworkAndWritingHeader { grid-area: artworkAndWritingHeader; }
-    .myPickHeader { grid-area: myPickHeader; }
-    .personalAndGamingHeader { grid-area: personalAndGamingHeader; }
+    .header {
+        align-self: end;
+        &.artworkAndWritingHeader { grid-area: artworkAndWritingHeader; }
+        &.myPickHeader { grid-area: myPickHeader; }
+        &.personalAndGamingHeader { grid-area: personalAndGamingHeader; }
+    }
 
     .artworkAndWriting {
         grid-area: artworkAndWriting;
@@ -124,6 +130,28 @@
 
     .more {
         grid-area: more;
+        :global(.moreButton) {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            // color: var(--color7);
+            color: var(--color4);
+            background-color: transparent;
+            box-sizing: border-box;
+            // border: var(--boxStrokeSize) solid var(--color6);
+            border: var(--boxStrokeSize) solid transparent;
+            transition: background-color .1s ease-in-out, color .1s ease-in-out;
+        }
+        
+        :global(.moreButton:hover) {
+            color: var(--color1);
+            background-color: var(--color2);
+            border: var(--boxStrokeSize) solid var(--color2);
+        }
+
+        :global(.moreButton:hover img) {
+            color: var(--color1);
+        }
     }
 
 
@@ -169,7 +197,7 @@
 
     @media only screen and (min-width: 1300px) {
         :global(.creativePageShowcase) {
-            height: 90vh !important;
+            height: 80vh !important;
         }
     }
 

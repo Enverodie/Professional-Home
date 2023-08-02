@@ -25,14 +25,20 @@
      * 
     */
     export let images = [];
+    export let labelBoxSize = 'large';
     export let fillBoxText = '';
+    export let limit;
 
-    let imageCount = images.length || 0;
-    let rows = Math.floor(Math.sqrt(imageCount));
-    let cols = Math.ceil(imageCount / rows) || 0;
+    let imageCount = Math.min(
+        (typeof limit !== 'undefined' ? limit : images.length), 
+        images.length
+    );
+    
+    export let rows = Math.floor(Math.sqrt(imageCount));
+    export let cols = Math.ceil(imageCount / rows) || 0;
     let filteredImages = [];
 
-    if (images.length > 0) {
+    if (imageCount > 0) {
 
         images.forEach(img => {
             
@@ -120,7 +126,7 @@
     {:else}
         {#each filteredImages as image}
             <ShowcaseItem 
-                imageData={image} style="
+                imageData={image} labelBoxSize={labelBoxSize} style="
                     --numHorizontal: {cols};
                     --numVertical: {rows};
                 "/>

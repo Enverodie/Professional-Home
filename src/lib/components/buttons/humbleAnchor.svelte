@@ -15,7 +15,7 @@
 <a 
     href={$$props.href}
     target={$$props.target}
-    class="{deadLink ? "deadLink" : ""} {$$props.class}"
+    class="{deadLink ? "deadLink " : ""} {$$props.class}"
     >
     <slot></slot>
     {#if $$slots.icon}

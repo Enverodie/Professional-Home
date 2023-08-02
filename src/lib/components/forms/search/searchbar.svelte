@@ -12,7 +12,6 @@
     if (typeof history !== 'undefined' && history.scrollPos) {
         document.documentElement.scrollTop = document.body.scrollTop = history.scrollPos
     };
-    $: if (typeof history !== 'undefined') console.log(history);
     
     const debouncedInput = debounce(() => {
         let query = new URLSearchParams($page.url.searchParams.toString());
