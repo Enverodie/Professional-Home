@@ -3,6 +3,7 @@
     // options is Object[] with {value:String, active:Boolean} values
     export let options = [];
     export let onClickOption = (index) => {};
+    export let removeFromContentFlow = true;
 
     let hideDropdown = true;
     function toggleDropdown() {
@@ -18,12 +19,12 @@
 
 </script>
 
-<div class="dropdown">
+<div class={"dropdown " + $$props.class}>
     <button class="button1 selector" on:click={toggleDropdown}>
         <slot>Select</slot>
         <div class="arrow" class:hideDropdown>▼</div>
     </button>
-    <ul class:hideDropdown>
+    <ul class:hideDropdown class:removeFromContentFlow>
         {#each options as option, index}
             <li><label class="button1" class:unselected={!options[index].active}>
                 {option.value}
@@ -46,6 +47,8 @@
     }
 
     .dropdown {
+        width: 100%;
+        position: relative;
 
         &>* {
             width: 100%;
@@ -55,6 +58,8 @@
 
     .selector {
         justify-content: space-between;
+        position: relative;
+        z-index: 9;
 
         .arrow {
 
@@ -68,6 +73,7 @@
         margin: 0;
         padding: 0;
         border-top: var(--boxStrokeSize) solid var(--color5);
+        z-index: 7;
 
         li {
             list-style-type: none;
@@ -84,6 +90,10 @@
             }
         }
 
+        &.removeFromContentFlow {
+            position: absolute;
+            width: 100%;
+        }
         &.hideDropdown { display: none; }
     }
 
