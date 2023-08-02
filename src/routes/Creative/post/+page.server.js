@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit"
-import mongoclient, { checkClientEnabled, MongoCreativeLookup } from '$db/mongo.js';
 import { ObjectId } from "mongodb";
+import mongoclient, { checkClientEnabled, MongoCreativeLookup, projection_post } from '$db/mongo.js';
 
 async function loadFromDB(url) {
     let id = url.searchParams.get('id');
@@ -9,22 +9,7 @@ async function loadFromDB(url) {
     let db = await mongoclient.db('creative_works');
     let dataResults = await db.collection('posts').aggregate([
         { $match: { _id: new ObjectId(id) } },
-        {
-            $project: {
-                _id: {
-                    $toString: "$_id",
-                },
-                postName: "$postName",
-                dateCreated: "$dateCreated",
-                type: "$type",
-                likes: "$likes",
-                dislikes: "$dislikes",
-                shortDescription: "$shortDescription",
-                description: "$longDescription",
-                fileName: "$fileName",
-                comments: "$comments",
-            }
-        }
+        { $project: projection_post }
     ]).toArray();
     let result = dataResults[0];
     let objectAtCurrentDepth = {subtypes: MongoCreativeLookup.postType_enum};
