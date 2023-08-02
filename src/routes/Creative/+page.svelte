@@ -68,7 +68,7 @@
 
                 <div class="more">
                     <GlitchBox>
-                        <HumbleAnchor href="#" class="moreButton">More <img slot="icon" src="/svgs/arrows/arrow-white.svg" alt="<-" aria-hidden style="transform: rotate(180deg); height: 1em;" /></HumbleAnchor>
+                        <HumbleAnchor href="/creative/all" class="moreButton">More <img slot="icon" src="/svgs/arrows/arrow-white.svg" alt="<-" aria-hidden style="transform: rotate(180deg); height: 1em;" /></HumbleAnchor>
                     </GlitchBox>
                 </div>
 
@@ -135,7 +135,7 @@
             height: 100%;
             margin: 0;
             // color: var(--color7);
-            color: var(--color4);
+            color: var(--color4) !important;
             background-color: transparent;
             box-sizing: border-box;
             // border: var(--boxStrokeSize) solid var(--color6);
@@ -144,7 +144,7 @@
         }
         
         :global(.moreButton:hover) {
-            color: var(--color1);
+            color: var(--color1) !important;
             background-color: var(--color2);
             border: var(--boxStrokeSize) solid var(--color2);
         }
