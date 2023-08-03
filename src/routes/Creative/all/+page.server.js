@@ -1,3 +1,4 @@
+/*
 import { filter_artworks, filter_texts, filter_images, filter_minecraft, getAllPosts } from "$db/mongo.js";
 export const load = function ({url}) {
 
@@ -94,3 +95,4 @@ export const load = function ({url}) {
         }
     }
 }
+*/

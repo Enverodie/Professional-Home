@@ -1,3 +1,4 @@
+/*
 import mongoclient, { checkClientEnabled, searchAggregateFunction } from '$db/mongo';
 
 const getSearchQuery = async function(url) {
@@ -27,3 +28,4 @@ export const load = ({ url }) => {
         }
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 import { redirect } from "@sveltejs/kit"
 import { ObjectId } from "mongodb";
 import mongoclient, { checkClientEnabled, MongoCreativeLookup, projection_post } from '$db/mongo.js';
@@ -25,3 +26,4 @@ export const load = async ({ url }) => {
         postData: await loadFromDB(url),
     }
 }
+*/

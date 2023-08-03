@@ -1,3 +1,4 @@
+/*
 import { getTopPosts, getPostsByID, filter_artworkAndWriting, filter_personalPosts, recommended } from '$db/mongo';
 
 export const load = function({url}) {
@@ -32,3 +33,4 @@ export const load = function({url}) {
         streamed,
     }
 }
+*/
