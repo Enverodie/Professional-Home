@@ -1,5 +1,6 @@
-import { createCanvas } from "canvas";
+// import { createCanvas } from "canvas";
 
+/*
 export const SQUARE_IMG_SIZE = 55;
 export const SQUARE_IMG_WHITESPACE = 3;
 
@@ -15,3 +16,4 @@ export const createBackgroundGridImage = (hexColor) => {
         (SQUARE_IMG_SIZE - (2*SQUARE_IMG_WHITESPACE) - 2));
     return image.toDataURL();
 }
+*/
