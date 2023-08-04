@@ -5,6 +5,8 @@
      * (though it doesn't have to be).
      */
 
+     import { page } from '$app/stores';
+
     import ShowcaseItem from "./projectShowcaseLink.svelte";
 
 </script>
@@ -40,7 +42,7 @@
             </section>
             <section class="innerShowcaseBorder">
                 <div class="innerShowcase">
-                    <ShowcaseItem class="innerShowcase4" href="/creative" item={4} backgroundImage='/images/showcase4_thumbnail.jpg'>
+                    <ShowcaseItem class="innerShowcase4" href={$page.url.origin + "/creative"} item={4} backgroundImage='/images/showcase4_thumbnail.jpg'>
                         More
                     </ShowcaseItem>
                 </div>
