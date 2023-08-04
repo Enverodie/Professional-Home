@@ -20,7 +20,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"canvas": "^2.11.2",
 		"lodash.debounce": "^4.0.8",
 		"mongodb": "^5.7.0"
 	}
