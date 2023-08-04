@@ -1,4 +1,4 @@
-import { filter_artworks, filter_texts, filter_images, filter_minecraft, getAllPosts } from "$db/mongo.js";
+import { getAllPosts } from "$db/mongo.js";
 export const load = function ({url}) {
 
     // filters
@@ -20,6 +20,7 @@ export const load = function ({url}) {
 
     let query = url.searchParams.get('q');
     let sortByIndex = parseInt(url.searchParams.get('s'));
+    let pageNumber = parseInt(url.searchParams.get('p'));
     let categoryIndex = url.searchParams.get('c');
 
     // sanitization & application
@@ -87,7 +88,7 @@ export const load = function ({url}) {
         sortBy,
         streamed: {
             allPosts: new Promise((resolve, reject) => {
-                getAllPosts(accumulatedCategories, accumulatedSort, query)
+                getAllPosts(accumulatedCategories, accumulatedSort, pageNumber, query)
                     .then(response => {console.log(response, `response length: ${response.length}`); resolve(response)})
                     .catch(error => {reject(error)});
             })

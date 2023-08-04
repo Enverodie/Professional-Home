@@ -278,7 +278,7 @@ export const getPostsByID = async (idArray) => {
     return data;
 }
 
-export const getAllPosts = async (filters, sorting, searchQuery) => {
+export const getAllPosts = async (filters, sorting, pageNumber, searchQuery) => {
     checkClientEnabled();
     let db = await client.db('creative_works');
     let aggregateArray = [];
@@ -286,6 +286,17 @@ export const getAllPosts = async (filters, sorting, searchQuery) => {
     if (useSearchQuery) aggregateArray.push(...searchAggregateFunction(searchQuery, undefined, false));
     if (filters) aggregateArray.push({$match: filters});
     if (sorting && !useSearchQuery) aggregateArray.push({$sort: sorting});
+    /*
+    aggregateArray.push({$addFields: {'totalCount' : }})
+    if (pageNumber) {
+        aggregateArray.push({$addFields: {
+
+        }})
+        aggregateArray.push({$skip: {
+    
+        }})
+    } 
+    */
     aggregateArray.push({$project: projection_thumbnail});
 
     let data = await db.collection('posts').aggregate(aggregateArray).toArray();
