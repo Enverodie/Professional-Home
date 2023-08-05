@@ -62,12 +62,13 @@
                             <span><div class="box">{typeName}</div></span>
                         {/each}
                     </div>
-                    <div class="votes">
+                    <!-- Coming soon -->
+                    <!-- <div class="votes">
                         <Thumb bind:active={likePressed} down={false} onPressed={(newValue) => {updateVote(newValue, true)}} />
                         {postData.likes + likePressed}
                         <Thumb bind:active={dislikePressed} down={true} onPressed={(newValue) => {updateVote(newValue, false)}} />
                         {postData.dislikes + dislikePressed}
-                    </div>
+                    </div> -->
                 </header>
                 <a class="thePostLink" href="#thePost">Go to post</a>
                 <div class="description">
