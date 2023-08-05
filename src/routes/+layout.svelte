@@ -5,8 +5,10 @@
     import { onMount } from 'svelte';
 
     let title = "Enverodie";
+    let shortTitle = title;
     function setTitle() {
-        title = `Enverodie - ${getRouteName($page.url.pathname)}`;
+        shortTitle = getRouteName($page.url.pathname);
+        title = `${title} - ${shortTitle}`;
     }
     
     $: if ($navigating === null) setTitle();
@@ -15,6 +17,8 @@
 
 <svelte:head>
     <title>{title}</title>
+    <meta property="og:title" content={shortTitle} />
+    <meta property="twitter:title" content={shortTitle} />
 </svelte:head>
 <slot></slot>
 

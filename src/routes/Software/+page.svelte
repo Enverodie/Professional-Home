@@ -2,6 +2,7 @@
     
     /* This is the base component for the /Projects route. */
     
+	import HeadMetadata from '$lib/components/utilities/headMetadata.svelte';
     import PageWrapper from '$lib/components/layout/grid.svelte'
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
 	import SimulationCanvas from './+pageComponents/simulationCanvas.svelte';
@@ -27,6 +28,8 @@
     ]
 
 </script>
+
+<HeadMetadata />
 
 <PageWrapper>
     

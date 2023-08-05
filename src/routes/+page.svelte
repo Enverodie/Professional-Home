@@ -1,5 +1,6 @@
 <script>
-	import PositionInWrapper from './../lib/components/utilities/positionInWrapper.svelte';
+	import HeadMetadata from '$lib/components/utilities/headMetadata.svelte';
+	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
 	
 	/* This is the base component for the "/" route. */
 	
@@ -15,6 +16,9 @@
 	let viewportPosition;
 
 </script>
+
+<HeadMetadata />
+
 <Header />
 <PageWrapper bind:trackedIDs bind:position={viewportPosition} showSideNav={true}>
 
