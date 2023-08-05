@@ -15,7 +15,7 @@
 
 </script>
 
-<div class="mobileNavMenu" class:active={displayed} style="--backgroundMask: url({maskImage});">
+<div class="mobileNavMenu" class:active={displayed} style="--backgroundMask: url('{maskImage}');">
     <div class="navButtons">
         
         {#each NAVIGABLE_ROUTES.filter(r => !(r === '/' && $page.url.pathname === r)) as route}
