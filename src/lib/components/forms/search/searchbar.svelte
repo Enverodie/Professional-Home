@@ -11,10 +11,13 @@
     if (typeof history !== 'undefined' && history.scrollPos) {
         document.documentElement.scrollTop = document.body.scrollTop = history.scrollPos
     };
+
+    export let onInputFinished = (newUrlSearchParams) => {}
     
     const debouncedInput = debounce(() => {
         let query = new URLSearchParams($page.url.searchParams.toString());
         query.set('q', inputField);
+        onInputFinished(query);
         goto(`?${query.toString()}`);
     }, 200);
 

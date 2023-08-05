@@ -13,20 +13,23 @@
     <Dropdown type="checkbox" class="category" options={categories} onClickOption={() => {
         let query = new URLSearchParams($page.url.searchParams.toString());
         let indexes = categories.reduce((previousValue, currentValue, currentIndex) => {
-            console.log(previousValue, currentValue, currentIndex);
             if (previousValue !== '' && currentValue.active) previousValue += ',';
             if (currentValue.active) return previousValue + currentIndex
             else return previousValue;
         }, '');
         query.set('c', indexes);
+        query.set('rp', 't');
         goto(`?${query.toString()}`);
     }}>Filter by category</Dropdown>
     <Dropdown class="sort" options={sortBy} onClickOption={(index) => {
         let query = new URLSearchParams($page.url.searchParams.toString());
         query.set('s', index);
+        query.set('rp', 't');
         goto(`?${query.toString()}`);
     }}>Sort by</Dropdown>
-    <Searchbar class="spacing" />
+    <Searchbar class="spacing" onInputFinished={(preparedQuery) => {
+        preparedQuery.set('rp', 't');
+    }} />
 </div>
 
 <style lang="scss">

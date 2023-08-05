@@ -3,7 +3,7 @@ export const load = function ({url}) {
 
     // filters
     const categories = [
-        { value: 'Blender projects', active: false }, // filter_
+        { value: 'Blender projects', active: false },
         { value: 'Other art', active: false },
         { value: 'Short stories', active: false },
         { value: 'Poems', active: false },
@@ -19,13 +19,23 @@ export const load = function ({url}) {
     const sortRecent = { dateCreated: -1 };
 
     let query = url.searchParams.get('q');
-    let sortByIndex = parseInt(url.searchParams.get('s'));
+    let resetPagination = url.searchParams.get('rp');
     let pageNumber = parseInt(url.searchParams.get('p'));
     let categoryIndex = url.searchParams.get('c');
+    let sortByIndex = parseInt(url.searchParams.get('s'));
 
     // sanitization & application
     
+    // assert whether pagination needs to be reset
+    if (resetPagination === 't') resetPagination = true;
+    else resetPagination = false;
+
+    // assert pagination
+    if (!(Number.isSafeInteger(pageNumber) && pageNumber > 0) || resetPagination) pageNumber = 1;
+
+    // assert categories
     if (typeof categoryIndex === 'string') {
+        // make sure each category param is valid and set active if so
         categoryIndex.split(',').forEach(item => {
             item = parseInt(item);
             if (Number.isSafeInteger(item) && item >= 0 && item < categories.length) {
@@ -33,14 +43,9 @@ export const load = function ({url}) {
             }
         })
     }
-    else categories.forEach(category => {category.active = true})
-
-    // 0 is the default, so if we didn't understand the input or didn't get any set to the default
-    if ( !(Number.isSafeInteger(sortByIndex) && sortByIndex >= 0 && sortByIndex < sortBy.length)) sortByIndex = 0;
-    sortBy[sortByIndex].active = true;
-
-    let accumulatedCategories = [], accumulatedSort = { $sort: { likes: -1, dislikes: 1, dateCreated: -1 } };
-
+    else categories.forEach(category => {category.active = true});
+    
+    let accumulatedCategories = [];
     categories.forEach(category => {
         if (!category.active) return;
         switch(category.value) {
@@ -69,6 +74,12 @@ export const load = function ({url}) {
     if (accumulatedCategories.length > 0) accumulatedCategories = {$or: accumulatedCategories};
     else accumulatedCategories = {};
 
+    // assert sorting method
+    // 0 is the default, so if we didn't understand the input or didn't get any set to the default
+    if (!(Number.isSafeInteger(sortByIndex) && sortByIndex >= 0 && sortByIndex < sortBy.length)) sortByIndex = 0;
+    sortBy[sortByIndex].active = true;
+
+    let accumulatedSort = { $sort: { likes: -1, dislikes: 1, dateCreated: -1 } };
     switch(sortBy[sortByIndex].value) {
         case 'recent':
             accumulatedSort = sortRecent
@@ -81,15 +92,14 @@ export const load = function ({url}) {
             break;
     }
 
-    // console.log( accumulatedCategories, accumulatedSort );
-
     return {
         categories,
         sortBy,
+        pageNumber,
         streamed: {
             allPosts: new Promise((resolve, reject) => {
                 getAllPosts(accumulatedCategories, accumulatedSort, pageNumber, query)
-                    .then(response => {console.log(response, `response length: ${response.length}`); resolve(response)})
+                    .then(response => {resolve(response)})
                     .catch(error => {reject(error)});
             })
         }

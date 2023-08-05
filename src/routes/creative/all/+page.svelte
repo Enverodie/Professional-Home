@@ -1,4 +1,5 @@
 <script>
+	import Pagination from './../../../lib/components/forms/pagination/pagination.svelte';
 
     import PageWrapper from "$lib/components/layout/grid.svelte";
     import SectionHeader from "$lib/components/texts/sectionHeader.svelte";
@@ -23,9 +24,19 @@
                 {#await data.streamed.allPosts}
                     <Showcase fillBoxText='Loading...' />
                 {:then result} 
-                    <Showcase images={result} cols={5} />
+                    <!-- {console.log("result of allPosts: ", result)} -->
+                    <Showcase images={result.results} cols={5} />
                 {:catch error}
                     <Showcase fillBoxText={error.message} />
+                {/await}
+            </div>
+            <div class="pagination">
+                {#await data.streamed.allPosts}
+                    <Pagination />
+                {:then result}
+                    <Pagination usedPageNumber={data.pageNumber} postsCount={result.sizeBeforeSkip} onSetPage={(query) => {
+                        query.set('rp', 'f');
+                    }} />
                 {/await}
             </div>
         </ArticleBox>

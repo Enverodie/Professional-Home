@@ -278,27 +278,48 @@ export const getPostsByID = async (idArray) => {
     return data;
 }
 
+const PAGINATION_SKIP_SIZE = 25;
+
 export const getAllPosts = async (filters, sorting, pageNumber, searchQuery) => {
     checkClientEnabled();
     let db = await client.db('creative_works');
     let aggregateArray = [];
     let useSearchQuery = searchQuery && searchQuery.length > MIN_SEARCH_CHARS;
+    if (typeof pageNumber === 'undefined') pageNumber = 0;
     if (useSearchQuery) aggregateArray.push(...searchAggregateFunction(searchQuery, undefined, false));
     if (filters) aggregateArray.push({$match: filters});
     if (sorting && !useSearchQuery) aggregateArray.push({$sort: sorting});
-    /*
-    aggregateArray.push({$addFields: {'totalCount' : }})
-    if (pageNumber) {
-        aggregateArray.push({$addFields: {
-
-        }})
-        aggregateArray.push({$skip: {
-    
-        }})
-    } 
-    */
     aggregateArray.push({$project: projection_thumbnail});
+    
+    const fullAggregation = [
+        { $limit: 1 }, // Reduce the result set to a single document.
+        { $project: { _id: 1 } }, // Strip all fields except the Id.
+        { $project: { _id: 0 } }, // Strip the id. The document is now empty.
 
-    let data = await db.collection('posts').aggregate(aggregateArray).toArray();
-    return data;
+        {
+            $lookup: {
+                from: "posts",
+                pipeline: [...aggregateArray],
+                as: "results",
+            },
+        },
+        {
+            $addFields: {
+                sizeBeforeSkip: {
+                    $size: '$results'
+                }
+            }
+        },
+        {
+            $project: {
+                results: {
+                    $slice: ['$results', PAGINATION_SKIP_SIZE*(pageNumber-1), PAGINATION_SKIP_SIZE*pageNumber]
+                },
+                sizeBeforeSkip: '$sizeBeforeSkip'
+            }
+        }
+    ]
+
+    let data = await db.collection('posts').aggregate(fullAggregation).toArray();
+    return data[0];
 }
