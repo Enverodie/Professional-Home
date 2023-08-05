@@ -82,7 +82,7 @@
     }
 
     .withinGrid {
-        height: calc(var(--boxImgSize) * var(--rowsUsed));
+        height: calc((var(--boxImgSize) + 1px) * var(--rowsUsed));
         .textBox {
             // width: 100%;
             padding: 0;
