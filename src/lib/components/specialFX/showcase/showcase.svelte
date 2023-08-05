@@ -144,7 +144,7 @@
     position: relative;
     background-color: var(--backgroundColor);
     overflow: hidden;
-    border: var(--boxStrokeSize) solid var(--color2);
+    border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity));
     box-sizing: border-box;
     // box-shadow: 0px 0px 1em var(--color2);
     // border-radius: 5px;

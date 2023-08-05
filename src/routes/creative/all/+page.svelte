@@ -47,6 +47,9 @@
 <style lang="scss">
     .results {
         height: 70vh;
+        padding: .75ch;
+        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), var(--boxOpacity));
+        margin: var(--defaultPadding) 0;
 
         :global(.showcase) {
             border: none;

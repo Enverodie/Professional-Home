@@ -99,14 +99,13 @@
                 margin: 0;
                 display: flex;
                 justify-content: space-between;
-                background-color: var(--defaultButtonBackgroundColor);
                 border: none !important;
                 width: 100%;
                 box-sizing: border-box;
-                background-color: hsla(var(--color5H), var(--color5S), var(--color5L), .6);
+                background-color: var(--color5);
 
                 &.selected {
-                    background-color: var(--defaultButtonBackgroundColor);
+                    background-color: var(--color2);
                 }
                 input { display: inline-block; }
             }

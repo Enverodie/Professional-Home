@@ -42,6 +42,18 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
+    }
+    
+    .label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &>* {
+            padding: 0;
+            margin: 0;
+        }
     }
 
     .paginationNumber {
