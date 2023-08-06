@@ -1,4 +1,5 @@
 <script>
+	import HeadMetadata from '$lib/components/utilities/headMetadata.svelte';
 	import Pagination from './../../../lib/components/forms/pagination/pagination.svelte';
 
     import PageWrapper from "$lib/components/layout/grid.svelte";
@@ -11,6 +12,11 @@
     export let data;
 
 </script>
+
+<HeadMetadata 
+    title="All posts - Enverodie"
+    description="See all the creative stuff I've posted!"
+/>
 
 <PageWrapper>
     <SectionHeader rowsUsed={2}>Creative Showcase</SectionHeader>

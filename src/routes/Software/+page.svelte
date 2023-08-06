@@ -29,7 +29,11 @@
 
 </script>
 
-<HeadMetadata />
+<HeadMetadata 
+    title="Software - Enverodie"
+    description="See all of the software and web projects I have developed!"
+    image={[simulationSandboxImages[0].src]}
+/>
 
 <PageWrapper>
     

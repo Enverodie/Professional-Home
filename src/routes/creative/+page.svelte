@@ -1,5 +1,6 @@
 <script>
     
+	import HeadMetadata from '$lib/components/utilities/headMetadata.svelte';
     import PageWrapper from "$lib/components/layout/grid.svelte";
     import SectionHeader from "$lib/components/texts/sectionHeader.svelte";
 	import Searchbar from '$lib/components/forms/search/searchbar.svelte';
@@ -12,6 +13,11 @@
     export let data;
 
 </script>
+
+<HeadMetadata 
+    title="Creative - Enverodie"
+    description="Come check out all the cool, creative things I've done or want to show off!"
+/>
 
 <PageWrapper>
     <SectionHeader rowsUsed={2}>Creative Showcase</SectionHeader>

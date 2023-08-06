@@ -1,8 +1,9 @@
 <script>
+	import HeadMetadata from '$lib/components/utilities/headMetadata.svelte';
     
     import PageWrapper from "$lib/components/layout/grid.svelte";
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
-	import NameGlitch from './../../../lib/components/texts/nameGlitch.svelte';
+	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
     import Thumb from '$lib/components/buttons/thumb.svelte';
     import ItemShowcase from './itemShowcase.svelte';
 	import Comment from './comment.svelte';
@@ -31,12 +32,13 @@
 
 </script>
 
-<svelte:head>
-    <meta property="og:title" content={postData.postName} />
-    <meta property="og:description" content={postData.shortDescription} />
-    <meta property="og:author" content="Stephen M. Smith" />
-    <meta property="og:image" content={''} />
-</svelte:head>
+<HeadMetadata 
+    title={postData.postName}
+    description={postData.shortDescription}
+    type="article"
+    image={postData.fileName}
+    imagePath='/creativePosts/'
+/>
 
 <PageWrapper padBottom={false}>
 <PositionInWrapper>

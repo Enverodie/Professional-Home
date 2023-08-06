@@ -1,12 +1,20 @@
 <script>
 	import { page } from '$app/stores';
+    import { imgFileTypes, getFileExtension } from '$lib/constants/fileExtension';
 
     export let title = false; // title also handled in layout
     export let description = false;
-    export let image = false; // accepts a file path
+    export let image = []; // accepts a file name
+    export let imagePath = '';
     export let type = 'website';
 
-    if (typeof image === 'string') images = [images];
+    if (typeof image === 'string') image = [image];
+    if (typeof image === 'object') image = image.filter(img => {
+        let extension = getFileExtension(img);
+        return (imgFileTypes.includes(extension)) && (extension !== '.svg');
+    });
+    image = image.map(img => imagePath + img);
+    if (image.length === 0) image.push('/page thumbnail.png');
 </script>
 
 <svelte:head>

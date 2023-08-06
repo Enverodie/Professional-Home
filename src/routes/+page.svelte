@@ -17,7 +17,11 @@
 
 </script>
 
-<HeadMetadata />
+<HeadMetadata 
+	title="Home - Enverodie"
+	description="The homepage of Stephen M. Smith, professional full-stack web developer and tech enthusiast." 
+
+	/>
 
 <Header />
 <PageWrapper bind:trackedIDs bind:position={viewportPosition} showSideNav={true}>
