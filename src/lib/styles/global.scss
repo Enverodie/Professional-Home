@@ -104,11 +104,19 @@
     --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless));
     --boxStrokeSize: calc(1px * var(--boxStrokeSizeUnitless));
 
+    --boxOpacity: .1;
+
     --hoverShadow: 
         1px 0px 0px var(--color2),
         2px .2px .2px .2px var(--color2);
 
     --defaultPadding: 1em;
+    --defaultThumbnailGradientAngle: 135deg;
+    --defaultButtonBorderRadius: 2px;
+    --defaultBackgroundBoxBorder: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid var(--boxStrokeSize);
+    --defaultButtonBackgroundColor: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
+
+    --focusOutlineStyle: var(--boxStrokeSize) solid var(--color2);
 }
 
 /* Fonts */
@@ -201,7 +209,7 @@ textarea {
     margin: 0 0 0.5em 0;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: var(--defaultButtonBorderRadius);
 }
 
 input:disabled {
@@ -226,6 +234,31 @@ button:not(:disabled):active {
 
 button:focus {
     border-color: #666;
+}
+
+.carousel, .button1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .1em;
+    padding: .2em;
+    color: var(--color4);
+    background-color: var(--defaultButtonBackgroundColor);
+    border: none;
+    border-radius: var(--defaultButtonBorderRadius);
+    cursor: pointer;
+
+    &:hover {
+        background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .8);
+    }
+
+    &:active {
+        background-color: hsla(var(--color2H), var(--color2S), var(--color2L), .2);
+    }
+
+    &:focus {
+        outline: var(--focusOutlineStyle);
+    }
 }
 
 /* re-enable later?

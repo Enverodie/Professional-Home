@@ -73,6 +73,7 @@
             color: var(--color7);
             border: var(--boxStrokeSize) solid var(--color6);
             font-weight: bold;
+            padding: 1em 0;
 
             .text {
                 margin: calc(var(--defaultPadding) * 2);
@@ -81,9 +82,10 @@
     }
 
     .withinGrid {
-        height: calc(var(--boxImgSize) * var(--rowsUsed));
+        height: calc((var(--boxImgSize) + 1px) * var(--rowsUsed));
         .textBox {
-            width: 100%;
+            // width: 100%;
+            padding: 0;
         }
     }
 

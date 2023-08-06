@@ -15,7 +15,7 @@
 
     const desktopNavBreakpoint = 800;
 
-    let path = $page.error ? "Enverodie.com" : getRouteName($page.url.pathname);
+    let path = $page.error ? "Enverodie.com" : $page.url.pathname.split('/').reduce((previousValue, currentValue) => {return (previousValue? (getRouteName('/' + previousValue) + " > ") : previousValue) + getRouteName('/' + currentValue)});
     let windowWidth;
 
     let nav;
