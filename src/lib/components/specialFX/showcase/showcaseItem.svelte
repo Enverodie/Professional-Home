@@ -43,7 +43,7 @@
             --moveUp: {moveUpAmount};
         '>
             {#if displayImage}
-                <img class="itemDisplay" src='/creativePosts/{fileName}' alt={imgData.description || ''} />
+                <img class="itemDisplay" src='/creativePosts/thumb/{fileName}.jpeg' alt={imgData.description || ''} />
             {:else}
                 <div class="itemDisplay" style="--hexTo: {colorTo}; --hexFrom: {colorFrom}; padding: 2ch;">{imgData.postName}</div>
             {/if}

@@ -36,7 +36,7 @@
             {getFileExtension(usedFileName)}
         </div>
     {:else}
-        <img class="thumbnail" src={"/creativePosts/" + usedFileName} alt="thumbnail" />
+        <img class="thumbnail" src={"/creativePosts/thumb/" + usedFileName + ".jpeg"} alt="thumbnail" />
     {/if}
 
     <div class="description">
