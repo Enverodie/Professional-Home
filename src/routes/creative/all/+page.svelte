@@ -16,6 +16,7 @@
 <HeadMetadata 
     title="All posts - Enverodie"
     description="See all the creative stuff I've posted!"
+    image="/Art page image.jpg"
 />
 
 <PageWrapper>

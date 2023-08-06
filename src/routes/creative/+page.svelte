@@ -17,6 +17,7 @@
 <HeadMetadata 
     title="Creative - Enverodie"
     description="Come check out all the cool, creative things I've done or want to show off!"
+    image="/Art page image.jpg"
 />
 
 <PageWrapper>
