@@ -495,7 +495,10 @@
     1,
     0
   ],
-  "fileName": "Alone Together v3.txt"
+  "fileName": "Alone Together v3.txt",
+  "contentWarnings": [
+    0
+  ]
 },
 {
   "_id": {
@@ -591,4 +594,64 @@
     1
   ],
   "fileName": "Hackerman on a Subway.txt"
+},
+{
+  "_id": {
+    "$oid": "64c8acde00d8c6190f3058fa"
+  },
+  "postName": "The Meek",
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "In an oppressive kingdom, a few villagers are slated for execution after attempting to rebel. \"The Meek\" was originally one of my least favorite works. I wrote and submitted this short story as my final submission in a creative writing course in college. I am not accustomed to writing fantasy, and medieval is not my favorite genre. I wanted to challenge myself to writing in a style I was not comfortable with. Despite this, I am surprisingly proud of the final revision. This story has gone through multiple revisions. In revising \"The Meek,\" I wanted to really show the motivations for the characters’ actions. The first drafts had no flashbacks, so I found the characters' motives were unclear. Adding characters, giving names to these characters, focusing on a few select ones, and making their motivaions more clear helped a lot in building an interesting narrative that tied back to the interesting setting already present in first drafts.",
+  "shortDescription": "In an oppressive kingdom, a few villagers are slated for execution after attempting to rebel.",
+  "type": [
+    1,
+    0
+  ],
+  "fileName": "The Meek.txt",
+  "dateCreated": {
+    "$date": "2019-10-06T22:03:00.000Z"
+  },
+  "contentWarnings": [
+    1
+  ]
+},
+{
+  "_id": {
+    "$oid": "64c8b37200d8c6190f3058fb"
+  },
+  "postName": "Fire",
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "",
+  "shortDescription": "",
+  "type": [
+    1,
+    1
+  ],
+  "fileName": "Fire.txt",
+  "dateCreated": {
+    "$date": "2019-10-13T16:43:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64c8baef00d8c6190f3058fc"
+  },
+  "postName": "Granny's electric cart",
+  "comments": null,
+  "dislikes": 0,
+  "likes": 0,
+  "longDescription": "In a creative writing course, I was prompted to write a poem giving voice to someone who has \"done something immoral or criminal.\" The idea was to get the reader to empathize with the speaker... But I don't know what compelled me to make this absolute masterpiece.",
+  "shortDescription": "I was told to write a poem of empathy, but I created comedy instead.",
+  "type": [
+    1,
+    1
+  ],
+  "fileName": "granny's electric cart.txt",
+  "dateCreated": {
+    "$date": "2019-10-09T12:00:00.000Z"
+  }
 }]
