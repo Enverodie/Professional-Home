@@ -1,9 +1,15 @@
-export const NAVIGABLE_ROUTES = ['/', '/Projects', '/Hire'];
-export const INCOMPLETE_ROUTES = ['/Writings', '/CreatedGraphics', '/Blog', '/MinecraftBuilds', '/ContactMe']
+export const NAVIGABLE_ROUTES = ['/', '/software', '/creative', '/contact'];
 
 // Gets the name of a route string of the format provided in NAVIGABLE_ROUTES
 export function getRouteName(route) {
-    return route.slice(1) || "Home";
+    route = route.split('/');
+    route = route.reduce((previousValue, currentValue) => {
+        if (previousValue) previousValue += ' - ';
+        if (currentValue) return previousValue + (currentValue[0].toUpperCase() + currentValue.slice(1));
+        else return previousValue;
+    }, '');
+    if (!route) return "Home";
+    else return route;
 }
 
 // A helper function to decide whether or not the provided cssClass should be applied

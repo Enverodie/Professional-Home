@@ -1,29 +1,17 @@
 <script>
     import { page } from '$app/stores';
-    import { NAVIGABLE_ROUTES, INCOMPLETE_ROUTES, getRouteName, printClass, splitPascalCase } from '../../constants/navigableRoutes';
+    import { NAVIGABLE_ROUTES, getRouteName, printClass, splitPascalCase } from '../../constants/navigableRoutes';
     import HumbleAnchor from "../buttons/humbleAnchor.svelte";
-
-    // let path = window.location.pathname;
-    let path = $page.url.pathname;
 
 </script>
 
 <div class="navElements">
-    {#each NAVIGABLE_ROUTES.filter(r => r !== path) as route, index}
+    {#each NAVIGABLE_ROUTES.filter(r => !(r === '/' && $page.url.pathname === r)) as route, index}
         <HumbleAnchor 
             href="{route}"
             class="{printClass(index, 0, "navFirstChild")}"
             >
             {splitPascalCase(getRouteName(route))}
-        </HumbleAnchor>
-    {/each}
-    {#each INCOMPLETE_ROUTES as iroute, index}
-        <HumbleAnchor 
-            href="{iroute}"
-            deadLink={true}
-            class="{printClass(index, INCOMPLETE_ROUTES.length-1, "navLastChild")}"
-            >
-            {splitPascalCase(getRouteName(iroute))}
         </HumbleAnchor>
     {/each}
 </div>

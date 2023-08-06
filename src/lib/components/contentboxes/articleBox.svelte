@@ -5,6 +5,10 @@
 
     import { navbar } from '$lib/stores/gui.js';
 
+    export let boxesAbove = 1;
+    export let overflow = false;
+    if (!boxesAbove) boxesAbove = 0;
+
     export let fullHeight = false;
 
     let navbarHeight = 0;
@@ -17,14 +21,14 @@
 
 </script>
 
-<article id={$$props.id} style="{$$props.style}; --jumpTo-Margin: {navbarHeight}px;">
+<article id={$$props.id} style={($$props.style?  $$props.style + ';' : '') + ` --jumpTo-Margin: ${navbarHeight}px; --boxesAbove: ${boxesAbove};`}>
 
     <!-- 
         provides ::before and ::after pseudoelements 
         in an attempt to vertical align 
         the articles with the background.
     -->
-    <div class="slotContainer" style={fullHeight? 'height: 100%;' : ''}>
+    <div class="slotContainer" style={(overflow? "overflow: auto;" : '')(fullHeight? 'height: 100%;' : '')}>
         <!-- The article's content -->
         <slot />
     </div>
@@ -37,8 +41,9 @@
 
         box-sizing: border-box;
         background-color: var(--color1);
-        border: var(--boxStrokeSize) solid hsla(var(--color2H), var(--color2S), var(--color2L), .1);
+        border: var(--defaultBackgroundBoxBorder);
         padding: var(--defaultPadding);
+        margin-top: calc((var(--boxImgSize) * var(--boxesAbove)) + var(--boxOutsideSize));
         display: flex;
         justify-content: center;
         flex-direction: column;

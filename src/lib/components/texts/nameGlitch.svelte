@@ -6,9 +6,18 @@
      * https://www.youtube.com/watch?v=7Xyg8Ja7dyY
      */
 
+    export let mainColor = "var(--color2)";
+    export let altColor = "var(--color7)";
+
 </script>
 
-<h1 class="{$$props.class} glitch">
+<h1 
+    class="{$$props.class} glitch" 
+    style={
+            ($$props.style || '') + 
+            ` --mainColor: ${mainColor};` + 
+            ` --altColor: ${altColor};`
+    }>
     <span><slot></slot></span>
     <span aria-hidden="true"><slot></slot></span>
     <span aria-hidden="true"><slot></slot></span>
@@ -17,27 +26,27 @@
 <style lang='scss'>
 
     @mixin glitchStage01 {
-        // text-shadow: -.03em .03em 0 var(--color7);
-        text-shadow: 0 0 0 var(--color2);
+        // text-shadow: -.03em .03em 0 var(--altColor);
+        text-shadow: 0 0 0 var(--mainColor);
     }
     @mixin glitchStage02($intensity: 1.2) {
         $glowEmphasis: .04em;
         text-shadow: 
-            calc(.015em * $intensity) calc(-.025em* $intensity)  0 var(--color7),
-            calc(.015em * $intensity) calc(-.025em* $intensity)  $glowEmphasis var(--color7);
+            calc(.015em * $intensity) calc(-.025em* $intensity)  0 var(--altColor),
+            calc(.015em * $intensity) calc(-.025em* $intensity)  $glowEmphasis var(--altColor);
     }
     @mixin glitchStage03($intensity: 1.2) {
         $glowEmphasis: .04em;
         text-shadow: 
-            calc(.024em * $intensity) calc(.013em * $intensity) 0 var(--color2),
-            calc(.024em * $intensity) calc(.013em * $intensity) $glowEmphasis var(--color2);
-        // text-shadow: 0 0 0 var(--color2);
+            calc(.024em * $intensity) calc(.013em * $intensity) 0 var(--mainColor),
+            calc(.024em * $intensity) calc(.013em * $intensity) $glowEmphasis var(--mainColor);
+        // text-shadow: 0 0 0 var(--mainColor);
     }
     @mixin glitchStage04($intensity: 1.2) {
         $glowEmphasis: .04em;
         text-shadow: 
-            calc(-.014em* $intensity)  calc(-.025em* $intensity)  0 var(--color7),
-            calc(-.014em* $intensity)  calc(-.025em* $intensity)  $glowEmphasis var(--color7);
+            calc(-.014em* $intensity)  calc(-.025em* $intensity)  0 var(--altColor),
+            calc(-.014em* $intensity)  calc(-.025em* $intensity)  $glowEmphasis var(--altColor);
     }
 
     $glitchIntensity: 1.1;
@@ -72,7 +81,7 @@
             
             &:nth-child(1) {
                 position: relative;
-                color: var(--color2);
+                color: var(--mainColor);
                 z-index: 3;
                 text-shadow: $text-shadow-1, $text-shadow-2;
                 -webkit-user-select: auto;

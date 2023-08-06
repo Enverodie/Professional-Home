@@ -72,10 +72,6 @@
             vertical-align: text-top;
         }
 
-        :global(.aboutSection h2) {
-            // text-align: center;
-        }
-
         :global(.aboutSection hr) {        
             height: 2px;
             background-color: var(--color7);

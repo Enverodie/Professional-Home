@@ -30,6 +30,7 @@
     export let trackedIDs = []; // optional value - if no tracked ids, remove side nav
     export let position = 0;
     export let backgroundPosition = "absolute";
+    export let padBottom = true;
 
     // component internal state
 
@@ -118,6 +119,7 @@
             --sidebarColumnFR: {sidebarColumn}fr;
             --baseSpacingLeftValue: {baseSpacingLeftValue}px;
             --baseSpacingRightValue: {baseSpacingRightValue}px;
+            --usePadBottom: {padBottom? 1 : 0}
             " 
         bind:this={mainElement} 
         bind:clientWidth={width} 
@@ -175,9 +177,17 @@
         --extraBoxLeft: var(--extraBoxRight);
         width: 100vw;
 
-        padding-bottom: var(--boxImgSize);
+        padding-bottom: calc(var(--boxImgSize) * var(--usePadBottom));
         position: relative;
+
+        display: flex;
+        flex-direction: column;
         
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
         :global(.wrapperPositioned) {
             display: flex;
@@ -185,8 +195,11 @@
             margin-top: var(--boxImgSize);
             padding-top: var(--boxOutsideSize);
             padding-bottom: var(--boxOutsideSize);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
             padding-left: calc(var(--baseSpacingLeftValue) + (var(--boxImgSize) * var(--extraBoxLeft)));
-            padding-right: calc(var(--baseSpacingRightValue) + (var(--boxImgSize) * var(--extraBoxRight)));
+            padding-right: calc(1px + var(--baseSpacingRightValue) + (var(--boxImgSize) * var(--extraBoxRight)));
             height: calc(var(--boxImgSize) * 14);
         }
 
