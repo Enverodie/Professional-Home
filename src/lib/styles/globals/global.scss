@@ -1,0 +1,107 @@
+:root {
+
+    $boxImgSizeUnitless: 55;
+    $boxOutsideSizeUnitless: 3;
+    $boxStrokeSizeUnitless: 2;
+    $boxSizeUnitless: $boxImgSizeUnitless - $boxOutsideSizeUnitless;
+
+    --boxImgSizeUnitless: #{$boxImgSizeUnitless};
+    --boxOutsideSizeUnitless: #{$boxOutsideSizeUnitless}; // (55-49)/2
+    --boxStrokeSizeUnitless: #{$boxStrokeSizeUnitless};
+    --boxSizeUnitless: calc(var(--boxImgSizeUnitless) - var(--boxOutsideSizeUnitless));
+
+    --boxImgSize: calc(1px * var(--boxImgSizeUnitless));
+    --boxSize: calc(1px * var(--boxSizeUnitless));
+    --boxOutsideSize: calc(1px * var(--boxOutsideSizeUnitless));
+    --boxStrokeSize: calc(1px * var(--boxStrokeSizeUnitless));
+
+    --boxOpacity: .1;
+
+    --hoverShadow: 
+        1px 0px 0px var(--color2),
+        2px .2px .2px .2px var(--color2);
+
+    --defaultPadding: 1em;
+    --defaultThumbnailGradientAngle: 135deg;
+    --defaultButtonBorderRadius: 2px;
+    --defaultBackgroundBoxBorder: hsla(var(--color2H), var(--color2S), var(--color2L), .1) solid var(--boxStrokeSize);
+    --defaultButtonBackgroundColor: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
+
+    --focusOutlineStyle: var(--boxStrokeSize) solid var(--color2);
+}
+
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #150123;
+    color: #333;
+    margin: 0;
+    // padding: 8px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* || Links */
+
+a {
+    color: rgb(0, 100, 200);
+}
+
+a:visited {
+    color: rgb(0, 80, 160);
+}
+
+/* || Forms */
+
+label {
+    display: block;
+}
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-padding: 0.4em 0;
+    padding: 0.4em;
+    margin: 0 0 0.5em 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: var(--defaultButtonBorderRadius);
+}
+
+input:disabled {
+    color: #ccc;
+}
+
+/* || Buttons */
+
+button {
+    color: #333;
+    background-color: #f4f4f4;
+    outline: none;
+}
+
+button:disabled {
+    color: #999;
+}
+
+button:not(:disabled):active {
+    background-color: #ddd;
+}
+
+button:focus {
+    border-color: #666;
+}

@@ -22,5 +22,9 @@
 <slot></slot>
 
 <style global lang="scss">
-    @import "src/lib/styles/global.scss";
+    @import "src/lib/styles/globals/global.scss";
+    @import "src/lib/styles/globals/color.scss";
+    @import "src/lib/styles/globals/text.scss";
+    @import "src/lib/styles/globals/markup.scss";
+    @import "src/lib/styles/globals/class.scss";
 </style>

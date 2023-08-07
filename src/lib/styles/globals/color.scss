@@ -1,0 +1,51 @@
+:root {
+        // caution: These are ONLY TO BE used for reference; will not update the actually used variables
+        --color1HEX: #150123;
+        --color2HEX: #f36bfa;
+        --color3HEX: #fac9fd;
+        --color4HEX: #fcdcfe;
+        --color5HEX: #150250;
+        --color6HEX: #5c6cff;
+        --color7HEX: #8f9aff;
+    
+        --color1H: 275;
+        --color1S: 94%;
+        --color1L: 7%;
+    
+        --color2H: 297;
+        --color2S: 93%;
+        --color2L: 70%;
+    
+        --color3H: 297;    
+        --color3S: 93%;
+        --color3L: 89%;    
+    
+        --color4H: 296;
+        --color4S: 94%;
+        --color4L: 93%;
+    
+        --color5H: 255;
+        --color5S: 95%;    
+        --color5L: 16%;
+        
+        --color6H: 234;
+        --color6S: 100%;    
+        --color6L: 68%;
+    
+        --color7H: 234;
+        --color7S: 100%;    
+        --color7L: 78%;
+    
+        --colorAlertH: 360;
+        --colorAlertS: 100%;
+        --colorAlertL: 39%;
+    
+        --color1: hsl(var(--color1H), var(--color1S), var(--color1L));
+        --color2: hsl(var(--color2H), var(--color2S), var(--color2L));
+        --color3: hsl(var(--color3H), var(--color3S), var(--color3L));
+        --color4: hsl(var(--color4H), var(--color4S), var(--color4L));
+        --color5: hsl(var(--color5H), var(--color5S), var(--color5L));
+        --color6: hsl(var(--color6H), var(--color6S), var(--color6L));
+        --color7: hsl(var(--color7H), var(--color7S), var(--color7L));
+        --colorAlert: hsl(var(--colorAlertH), var(--colorAlertS), var(--colorAlertL));
+}
