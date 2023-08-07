@@ -27,9 +27,14 @@
 <PageWrapper bind:trackedIDs bind:position={viewportPosition} showSideNav={true}>
 
 	<PositionInWrapper>
-		<ArticleBox id={trackedIDs[0]} style={(viewportPosition === 0) ? `border-color: ${borderColor}` : ''} >
-			<About />
-		</ArticleBox>
+		<div class="flexbox">
+			<ArticleBox id={trackedIDs[0]} class="aboutBox" style={(viewportPosition === 0 ? `border-color: ${borderColor};` : '')} >
+				<About />
+			</ArticleBox>
+			<div class="flexitem">
+				<img class="wavingMascot" src="/images/about.png" alt="Enverodie mascot waving" />
+			</div>
+		</div>
 	</PositionInWrapper>
 
 	<PositionInWrapper>
@@ -39,3 +44,59 @@
 	</PositionInWrapper>
 		
 </PageWrapper>
+
+<style lang="scss">
+
+	:global(.aboutBox) {
+		width: 100%;
+	}
+
+	.flexbox {
+		display: flex;
+		justify-content: space-between;
+
+		.flexitem {
+			flex: 1;
+			align-items: center;
+			justify-content: center;
+			&>* { width: 90%; }
+			display: none;
+		}
+
+		.wavingMascot {
+			// transform: scaleX(-1);
+		}
+
+	}
+
+@media only screen and (min-width: 1000px) {
+
+	:global(.aboutBox) {
+		width: calc((var(--boxImgSize) * 10) - (var(--boxOutsideSize) * 2));
+		box-sizing: border-box;
+	}
+
+	.flexbox .flexitem {
+		display: flex;
+	}
+
+    // .flexbox {
+    //     grid-template-columns: 3fr 3fr;
+
+    //     &>* {
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+
+    //         &:last-child {
+    //             padding: 1em;
+    //         }
+
+    //         img {
+    //             max-width: 100%;
+    //         }
+    //     }
+    // }
+}
+
+</style>

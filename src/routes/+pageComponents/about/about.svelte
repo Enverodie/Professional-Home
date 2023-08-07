@@ -20,9 +20,7 @@
 
 <!-- I'm using the gridItem class as a way of adding empty columns to the grid layout; it serves no other purpose -->
 <div class="about">
-    <div class="grid">
-        <div class="gridItem"></div>
-        <div class="gridItem aboutText">
+        <div class="aboutText">
             <AboutMe class="aboutSection">
                 <span>Hi, I'm Stephen M. Smith. <span class="emoji" style="font-size: 1.5em;">😄</span></span><br>
                 <br>
@@ -40,32 +38,19 @@
             </AboutTheSite>
             <AboutLinks />
         </div>
-        <div class="gridItem"></div>
-        <div class="gridItem">
-            <img src="/images/about.png" alt="Enverodie mascot waving" />
-        </div>
-    </div>
 </div>
 
 <style lang="scss">
 
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-
-        &>* {
-            display: none;
-
-            &.aboutText {
-                display: block;
-            }
-        }
-
+    .about {
+        display: flex;
+        justify-content: center;
     }
-
     /* Contains all the sections of about that are dominantly text-based. */
     .aboutText {
         
+        max-width: var(--defaultLineLength);
+
         :global(.aboutSection) {
             text-align: justify;
             text-align-last: center;
@@ -86,25 +71,5 @@
             margin-bottom: 2em;
         }
     }
-
-@media only screen and (min-width: 1000px) {
-    .grid {
-        grid-template-columns: .25fr 3fr .5fr 3fr;
-
-        &>* {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            &:last-child {
-                padding: 1em;
-            }
-
-            img {
-                max-width: 100%;
-            }
-        }
-    }
-}
     
 </style>
