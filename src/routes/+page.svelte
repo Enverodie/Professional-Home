@@ -72,7 +72,7 @@
 @media only screen and (min-width: 1000px) {
 
 	:global(.aboutBox) {
-		width: calc((var(--boxImgSize) * 10) - (var(--boxOutsideSize) * 2));
+		width: calc((var(--boxImgSize) * 14) - (var(--boxOutsideSize) * 2));
 		box-sizing: border-box;
 	}
 
