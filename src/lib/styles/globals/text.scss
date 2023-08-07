@@ -1,6 +1,18 @@
+/*
+        text.scss stores all the global text-related variables 
+        referenced throughout the site, but nothing else. To 
+        see how these colors are used, refer to markup.scss 
+        or class.scss.
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Fresca&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root {
+
+    --titleLarge: 36px;
+    --titleDefault: 24px;
+    --titleSmall: 16px;
+
     --textLarge: 24px;
     --textDefault: 16px;
     --textSmall: 10px;
@@ -13,29 +25,6 @@
     --defaultTextShadow: 
         1px 0px 0px var(--color2),
         2px 0px 2px var(--color2);
-}
 
-h1 {
-    font-family: var(--fontExtravagant);
-}
-
-h2, h3, h4, h5, h6, hr {
-    font-family: var(--fontHeader);
-    text-shadow: var(--defaultTextShadow);
-}
-
-a, p, label, div, img {
-    font-family: var(--fontBody);
-}
-
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-code {
-    font-family: var(--fontBodyMono);
+    --defaultLineLength: 60ch;
 }

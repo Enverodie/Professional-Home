@@ -1,9 +1,32 @@
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #150123;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 h1 {
     color: var(--color4);
+    font-family: var(--fontExtravagant);
 }
 
 h2, h3, h4, h5, h6, hr {
     color: var(--color7);
+    font-family: var(--fontHeader);
+    text-shadow: var(--defaultTextShadow);
 }
 
 hr {
@@ -12,4 +35,46 @@ hr {
 
 a, p, label, div, img {
     color: var(--color3);
+    font-family: var(--fontBody);
+}
+
+a {
+    color: rgb(0, 100, 200);
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+    &:visited { color: rgb(0, 80, 160); }
+}
+
+label {
+    display: block;
+}
+
+code {
+    font-family: var(--fontBodyMono);
+}
+
+input,
+button,
+select,
+textarea {
+    -webkit-padding: 0.4em;
+    padding: 0.4em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: var(--defaultButtonBorderRadius);
+}
+
+input:disabled {
+    color: #ccc;
+}
+
+button {
+    color: #333;
+    background-color: #f4f4f4;
+    outline: none;
+
+    &:disabled { color: #999; }
+    &:not(:disabled):active { background-color: #ddd; }
+    &:focus { border-color: #666; }
 }

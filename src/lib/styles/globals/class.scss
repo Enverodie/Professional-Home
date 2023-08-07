@@ -1,8 +1,15 @@
+.gridlikeBox {
+    box-sizing: border-box;
+    background-color: var(--color1);
+    border: var(--defaultBackgroundBoxBorder);
+    padding: var(--defaultPadding);
+}
+
 .emoji {
     filter: contrast(160%) hue-rotate(230deg);
 }
 
-.carousel, .button1 {
+.button1, .carousel {
     display: flex;
     align-items: center;
     justify-content: center;

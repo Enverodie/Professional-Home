@@ -19,7 +19,10 @@
 
 </script>
 
-<article id={$$props.id} style={($$props.style?  $$props.style + ';' : '') + ` --jumpTo-Margin: ${navbarHeight}px; --boxesAbove: ${boxesAbove};`}>
+<article 
+    id={$$props.id} 
+    class={"gridlikeBox " + ($$props.class || '')} 
+    style={($$props.style?  $$props.style + ';' : '') + ` --jumpTo-Margin: ${navbarHeight}px; --boxesAbove: ${boxesAbove};`}>
 
     <!-- 
         provides ::before and ::after pseudoelements 
@@ -37,16 +40,11 @@
 
     article {
 
-        box-sizing: border-box;
         float: left;
-        background-color: var(--color1);
-        border: var(--defaultBackgroundBoxBorder);
-        padding: var(--defaultPadding);
         margin-top: calc((var(--boxImgSize) * var(--boxesAbove)) + var(--boxOutsideSize));
         display: flex;
         justify-content: center;
         flex-direction: column;
-        width: 100%;
         scroll-margin-top: calc(var(--jumpTo-Margin) + 1em);
         transition: border .5s ease;
         
