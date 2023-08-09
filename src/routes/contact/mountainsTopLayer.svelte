@@ -1,0 +1,1 @@
+<img class={$$props.class} src="/svgs/contactShowcase/Upper layer mountains.svg" alt="" />
