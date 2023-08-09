@@ -30,12 +30,13 @@
             <img src="/svgs/Codepen-Logos/codepen-logo-white.svg" alt="CodePen" />
         </a>
     </div>
-    <div>
+    <!-- Todo: consider removing entirely -->
+    <!-- <div>
         <a id="aboutLinks-Resume" href="/resume" target="_blank" rel="noreferrer">
             <label for="aboutLinks-Resume">Resume</label>
             <img src="/svgs/customIcons/document.svg" alt="Resume" />
         </a>
-    </div>
+    </div> -->
 </div>
 
 <style lang="scss">
