@@ -19,16 +19,16 @@
             { id: 110, name: 'SASS/SCSS', icon: '/svgs/technologies-icons/sass-seal-color-reversed.png', description: '' },
         ] },
         { name: 'Programming languages', examples: [
-            { id: 130, name: 'Java', icon: '', description: '' },
-            { id: 150, name: 'C', icon: '', description: '' },
-            { id: 170, name: 'Python', icon: '', description: '' },
-            { id: 190, name: 'PHP', icon: '', description: '' }
+            { id: 130, name: 'Java', icon: '/svgs/technologies-icons/Duke_(Java_mascot)_waving.svg', description: '' },
+            { id: 150, name: 'C', icon: '/svgs/technologies-icons/C_Programming_Language.svg', description: '' },
+            { id: 170, name: 'Python', icon: '/svgs/technologies-icons/Python-logo-notext.svg', description: '' },
+            { id: 190, name: 'PHP', icon: '/svgs/technologies-icons/Official PHP Logo.svg', description: '' }
         ] },
         { name: 'Databases', examples: [
             { id: 210, name: 'MySQL', icon: '', description: '' },
-            { id: 230, name: 'MariaDB', icon: '', description: '' },
+            { id: 230, name: 'MariaDB', icon: '/svgs/technologies-icons/MariaDB_colour_logo.svg', description: '' },
             { id: 250, name: 'PostgreSQL', icon: '', description: '' },
-            { id: 270, name: 'MongoDB', icon: '', description: '' }
+            { id: 270, name: 'MongoDB', icon: '/svgs/technologies-icons/MongoDB_Logomark_SpringGreen.svg', description: '' }
         ] },
     ];
     let activeCategory = 0;
