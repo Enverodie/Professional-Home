@@ -40,8 +40,10 @@
 	<section class="experience">
 		<PositionInWrapper>
 			<Experience />
-			<h2>See skills in action</h2>
-			<HumbleAnchor href="/software">Projects</HumbleAnchor>
+			<div style="display: flex; flex-direction: column; align-items: center;">
+				<p style="font-size: var(--titleDefault); text-align: center; margin-bottom: .6rem;">See skills in action</p>
+				<HumbleAnchor style="margin-right: 0%; margin-left: 0%; width: fit-content;" href="/software">Projects</HumbleAnchor>
+			</div>
 		</PositionInWrapper>
 	</section>
 

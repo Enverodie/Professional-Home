@@ -105,7 +105,7 @@
             on:mouseenter={() => {cardsHovered = true}} 
             on:mouseleave={() => {cardsHovered = false}} >
             <button class="button1" class:invisible={categories[activeCategory].examples.length < 3} on:click={() => {updatePosition(true)}}>&lsaquo;</button>
-            <div style="overflow: hidden; height: 100%; flex: 1; margin: 0 2%;">
+            <div style={"overflow: hidden; height: 100%; flex: 1;" + (categories[activeCategory].examples.length >= 3?" margin: 0 2%;" : '')}>
                 <div class="cards" class:animateForward={animateForward} class:animateBackward={animateBackward} style="--animationTimeMS: {animationTimeMS}ms;">
                     {#each cycleableArray as item, index (item.id)}
                         <ExperienceCard item={item} removeTabbable={animateForward || animateBackward || (index < 1 || index > 2)} />
@@ -139,6 +139,7 @@
         gap: 1ch;
         align-items: center;
         text-align: center;
+        margin-bottom: .6rem;
 
         .active {
             background-color: var(--color5);
@@ -155,6 +156,8 @@
     .cardsContainer {
         height: 300px;
         display: flex;
+        &>*:first-child { margin-left: 0; }
+        &>*:last-child { margin-right: 0; }
     }
 
     .cards {
