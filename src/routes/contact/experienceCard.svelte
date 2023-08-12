@@ -11,7 +11,7 @@
     <div class="textIcon">
         <div class="name">{name}</div>
         <img src={icon} alt={name + " icon"} />
-        <button class="button1 descriptionButton" on:click={() => {showDescription = !showDescription}} tabindex={removeTabbable? -1 : 0}>
+        <button class="button1 descriptionButton" class:invisible={!description} on:click={() => {showDescription = !showDescription}} tabindex={removeTabbable? -1 : 0}>
             ?
         </button>
     </div>
@@ -20,6 +20,10 @@
 
 <style lang="scss">
     
+    .invisible {
+        visibility: hidden;
+    }
+
     .card {
         &:first-child { margin-left: 0; }
         &:last-child { margin-right: 0; }
