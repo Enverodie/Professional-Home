@@ -29,7 +29,7 @@
 							<p>As your</p>
 							<NameGlitch style="font-size: var(--titleLarge);">Web Developer</NameGlitch>
 						</div>
-						<HumbleAnchor href="#">Why me?</HumbleAnchor>
+						<HumbleAnchor href="#experience">Why me?</HumbleAnchor>
 					</div>
 				</IntroductionBox>
 			</div>
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	</div>
-	<section class="experience">
+	<section id="experience" class="experience">
 		<PositionInWrapper>
 			<Experience />
 			<div style="display: flex; flex-direction: column; align-items: center;">
@@ -57,6 +57,10 @@
 </PageWrapper>
 
 <style lang='scss'>
+
+	:global(html) {
+		scroll-behavior: smooth;
+	}
 
 	.scenery {
 		height: 400px;
