@@ -8,6 +8,8 @@
 	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
     import Experience from './experience.svelte';
+    import Floodlight from './floodlight.svelte';
+    import CityLayer from './cityLayer.svelte';
 
 </script>
 
@@ -34,7 +36,12 @@
 		</PositionInWrapper>
 		<div class="bottomOfShowcase">
 			<MountainsBottomLayer class="bottomLayerMountains" />
-			<MountainsTopLayer class="topLayerMountains" />
+			<div class="topLayer">
+				<CityLayer class="city" />
+				<Floodlight class="floodlight" style="left: 15%; height: 300%; animation-duration: 6.5s" />
+				<Floodlight class="floodlight" style="left: 42%; height: 300%; animation-delay: -4s" />
+				<MountainsTopLayer class="mountains" />
+			</div>
 		</div>
 	</div>
 	<section class="experience">
@@ -65,7 +72,7 @@
 
 		.me { display: none; flex: 1; }
 		:global(.introductionBoxContainer) { 
-			z-index: 1;
+			z-index: 4;
 		}
 	}
 
@@ -91,15 +98,46 @@
 
 		:global(.bottomLayerMountains) {
 			width: 100%;
-			z-index: 0;
+			z-index: 1;
 			margin: 0;
 			bottom: calc(100% - 2px);
 		}
 
-		:global(.topLayerMountains) {
-			width: 100%;
-			z-index: 0;
-			margin: -2px 0 0;
+		.topLayer {
+			position: relative;
+			background-color: var(--color1);
+			z-index: 2;
+
+			:global(svg) {
+				width: 100%;
+				height: 100%;
+			}
+
+			:global(.mountains) {
+				z-index: 3;
+				margin: -2px 0 0;
+			}
+
+			:global(.floodlight) {
+				width: initial;
+				height: initial;
+				position: absolute;
+				animation: searchlight1 8s ease-in-out alternate-reverse infinite;
+				transform-origin: bottom center;
+			}
+			
+			:global(.city) {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				z-index: -1;
+			}
+		}
+
+		:global(.floodlight) {
+			position: absolute;
+			bottom: 0;
+			z-index: -1;
 		}
 	}
 
@@ -107,6 +145,15 @@
 		margin-top: -1px;
 		padding: var(--boxImgSize) 0;
 		background-color: var(--color1);
+	}
+
+	@keyframes searchlight1 {
+		from {
+			transform: rotate(-20deg);
+		}
+		to {
+			transform: rotate(20deg);
+		}
 	}
 
 	@media (min-width: 1000px) {

@@ -1,0 +1,16 @@
+<svg class={$$props.class} style={$$props.style} width="512" height="513" viewBox="0 0 512 513" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1011_218)">
+        <path d="M144.311 12.7347C217.863 -3.70616 294.137 -3.70616 367.689 12.7347L256 512.404L144.311 12.7347Z" fill="url(#paint0_radial_1011_218)" fill-opacity="0.2"/>
+    </g>
+    <defs>
+        <radialGradient id="paint0_radial_1011_218" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 512.404) rotate(-90) scale(512)">
+            <stop offset="0.494792" stop-color="#F36BFA"/>
+            <stop offset="1" stop-color="#F36BFA" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="clip0_1011_218">
+            <rect width="512" height="512" fill="white" transform="translate(0 0.404053)"/>
+        </clipPath>
+    </defs>
+</svg>
+
+
