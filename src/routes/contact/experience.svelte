@@ -130,7 +130,7 @@
     }
 
     .activeLabel {
-        font-size: var(--titleDefault);
+        font-size: var(--titleSmall);
         margin: var(--defaultPadding) 0;
         display: flex;
         flex-wrap: wrap;

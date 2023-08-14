@@ -4,7 +4,7 @@
     import PageWrapper from '$lib/components/layout/grid.svelte';
     import MountainsBottomLayer from './mountainsBottomLayer.svelte';
     import MountainsTopLayer from './mountainsTopLayer.svelte';
-    import IntroductionBox from './introductionBox.svelte';
+    import TaperedBox from './taperedBox.svelte';
 	import NameGlitch from '$lib/components/texts/nameGlitch.svelte';
 	import HumbleAnchor from '$lib/components/buttons/humbleAnchor.svelte';
     import Experience from './experience.svelte';
@@ -19,7 +19,7 @@
 		<PositionInWrapper>
 			<div class="topInfoFlex">
 				<div class="me"></div>
-				<IntroductionBox class="introductionBoxContainer">
+				<TaperedBox onBottom={false} class="introductionBoxContainer">
 					<div class="introduction">
 						<div>
 							<p>Imagine</p>
@@ -31,7 +31,7 @@
 						</div>
 						<HumbleAnchor href="#experience">Why me?</HumbleAnchor>
 					</div>
-				</IntroductionBox>
+				</TaperedBox>
 			</div>
 		</PositionInWrapper>
 		<div class="bottomOfShowcase">
@@ -48,11 +48,20 @@
 		<PositionInWrapper>
 			<Experience />
 			<div style="display: flex; flex-direction: column; align-items: center;">
-				<p style="font-size: var(--titleDefault); text-align: center; margin-bottom: .6rem;">See skills in action</p>
+				<p style="font-size: var(--titleSmall); text-align: center; margin-bottom: .6rem;">See skills in action</p>
 				<HumbleAnchor style="margin-right: 0%; margin-left: 0%; width: fit-content;" href="/software">Projects</HumbleAnchor>
 			</div>
 		</PositionInWrapper>
 	</section>
+	<TaperedBox onBottom={true} onTop={false} aestheticOnly={true} />
+	<PositionInWrapper style="margin-top: var(--boxImgSize);">
+		<TaperedBox reverse={true} onTop={false} onBottom={true} class="introductionBoxContainer">
+			<div class="introduction">
+				<div style="font-size: var(--titleSmall); text-align: center;">Want me on your team?</div>
+				<HumbleAnchor href="mailto:enverodie@gmail.com">Contact</HumbleAnchor>
+			</div>
+		</TaperedBox>
+	</PositionInWrapper>
 
 </PageWrapper>
 
@@ -67,6 +76,7 @@
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
+		margin-top: var(--boxImgSize);
 	}
 
 	.topInfoFlex {
@@ -164,6 +174,7 @@
 		.scenery {
 			height: 50vw;
 			max-height: 850px;
+			margin-top: 0;
 		}
 
 		.topInfoFlex {
