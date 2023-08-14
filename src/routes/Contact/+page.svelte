@@ -17,7 +17,7 @@
 
 	<div class="scenery">
 		<PositionInWrapper>
-			<div class="topInfoFlex">
+			<div class="infoGrid">
 				<div class="me"></div>
 				<TaperedBox onBottom={false} class="introductionBoxContainer">
 					<div class="introduction">
@@ -55,12 +55,16 @@
 	</section>
 	<TaperedBox onBottom={true} onTop={false} aestheticOnly={true} />
 	<PositionInWrapper style="margin-top: var(--boxImgSize);">
-		<TaperedBox reverse={true} onTop={false} onBottom={true} class="introductionBoxContainer">
-			<div class="introduction">
-				<div style="font-size: var(--titleSmall); text-align: center;">Want me on your team?</div>
-				<HumbleAnchor href="mailto:enverodie@gmail.com">Contact</HumbleAnchor>
-			</div>
-		</TaperedBox>
+		<div class="infoGrid" style="margin: 0;">
+			<img class="me" src="/me-by-grass.jpg" alt="me standing in front of a grass field smiling at the camera" />
+			<TaperedBox reverse={true} onTop={false} onBottom={true} class="introductionBoxContainer">
+				<div class="introduction">
+					<img class="me inside" src="/me-by-grass.jpg" alt="me standing in front of a grass field smiling at the camera" />
+					<div style="font-size: var(--titleSmall); text-align: center;">Want me on your team?</div>
+					<HumbleAnchor href="mailto:enverodie@gmail.com">Contact</HumbleAnchor>
+				</div>
+			</TaperedBox>
+		</div>
 	</PositionInWrapper>
 
 </PageWrapper>
@@ -79,12 +83,20 @@
 		margin-top: var(--boxImgSize);
 	}
 
-	.topInfoFlex {
+	.infoGrid {
 		margin: var(--boxImgSize) 0;
 		display: grid;
 		grid-template-columns: 1fr;
 
-		.me { display: none; flex: 1; }
+		.me { 
+			display: none; 
+			flex: 1; 
+			object-fit: contain;
+			width: 100%;
+			max-height: 75vh;
+
+			&.inside { max-height: 50vh; display: block; }
+		}
 		:global(.introductionBoxContainer) { 
 			z-index: 4;
 		}
@@ -177,9 +189,12 @@
 			margin-top: 0;
 		}
 
-		.topInfoFlex {
+		.infoGrid {
 			grid-template-columns: 1fr 1fr;
-			.me { display: block; }
+			.me { 
+				display: block; 
+				&.inside { display: none; }
+			}
 			:global(.introductionBoxContainer) { 
 				--boxesWide: 9;
 

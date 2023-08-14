@@ -13,7 +13,7 @@
 
 </script>
 
-<div class={$$props.class} class:hasContent={!aestheticOnly}>
+<div class={"container " + $$props.class} class:hasContent={!aestheticOnly}>
 	{#if onTop}
 		{#each taperTop as amount}
 			<div class="gridlikeBox" style="height: {amount}px"></div>
@@ -33,6 +33,11 @@
 
 <style lang="scss">
 
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.hasContent .gridlikeBox {
 		&:first-child { margin-top: 0; }
 		&:last-child { margin-bottom: 0; }
@@ -45,6 +50,10 @@
 		&.main {
 			min-height: 100px;
 			background-color: hsla(var(--color1H), var(--color1S), var(--color1L), .7);
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 		}
 	}
     
