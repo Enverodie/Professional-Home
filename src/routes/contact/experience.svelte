@@ -4,6 +4,7 @@
     import ExperienceCard from "./experienceCard.svelte";
 
     const timeToCycle = 2000;
+    const cardsBreakpoint = 800; // in px, see SCSS @media breakpoint below as well
 
     let categories = [
         { name: 'JS libraries', examples: [
@@ -34,8 +35,11 @@
     let activeCategory = 0;
     let firstItemIndex = 0;
 
+    let innerWidth; // comes from svelte:window
+
     let cardsHovered = false;
-    $: cycle = (!cardsHovered) && categories[activeCategory].examples.length >= 3;
+    $: numCardsDisplayable = (typeof innerWidth !== 'undefined' && innerWidth >= cardsBreakpoint)? 2 : 1;
+    $: cycle = (!cardsHovered) && (categories[activeCategory].examples.length > numCardsDisplayable);
     function generateCycleableArray(firstItemIndex, activeCategory) {
         let startArrayHalf = categories[activeCategory].examples.slice(firstItemIndex);
         let lastArrayHalf = categories[activeCategory].examples.slice(0, firstItemIndex);
@@ -90,6 +94,8 @@
 
 </script>
 
+<svelte:window bind:innerWidth={innerWidth} />
+
 <div class='container'>
     <div class="activeCategory">
         <div class="activeLabel">
@@ -103,8 +109,9 @@
         <div 
             class="cardsContainer" 
             on:mouseenter={() => {cardsHovered = true}} 
-            on:mouseleave={() => {cardsHovered = false}} >
-            <button class="button1" class:invisible={categories[activeCategory].examples.length < 3} on:click={() => {updatePosition(true)}}>&lsaquo;</button>
+            on:mouseleave={() => {cardsHovered = false}}
+            style={(cycleableArray.length <= 2? '--cardFullSize: 101%;' : '')} >
+            <button class="button1" class:invisible={categories[activeCategory].examples.length <= numCardsDisplayable} on:click={() => {updatePosition(true)}}>&lsaquo;</button>
             <div style={"overflow: hidden; height: 100%; flex: 1;" + (categories[activeCategory].examples.length >= 3?" margin: 0 2%;" : '')}>
                 <div class="cards" class:animateForward={animateForward} class:animateBackward={animateBackward} style="--animationTimeMS: {animationTimeMS}ms;">
                     {#each cycleableArray as item, index (item.id)}
@@ -112,7 +119,7 @@
                     {/each}
                 </div>
             </div>
-            <button class="button1" class:invisible={categories[activeCategory].examples.length < 3} on:click={() => {updatePosition()}}>&rsaquo;</button>
+            <button class="button1" class:invisible={categories[activeCategory].examples.length <= numCardsDisplayable} on:click={() => {updatePosition()}}>&rsaquo;</button>
         </div>
     </div>
 </div>
@@ -152,19 +159,24 @@
         }
     }
 
-
+    :global(.cardsContainer) {
+        --cardFullSize: 101%;
+        --cardHorizontalMargin: 1%;
+        --cardWidth: calc(var(--cardFullSize) - var(--cardHorizontalMargin));
+    }
     .cardsContainer {
         height: 300px;
         display: flex;
-        &>*:first-child { margin-left: 0; }
-        &>*:last-child { margin-right: 0; }
+        &>button:first-child { margin-left: 0; }
+        &>button:last-child { margin-right: 0; }
     }
 
     .cards {
+        --totalCardSize: calc(var(--cardWidth) + (var(--cardHorizontalMargin) * 2));
         white-space: nowrap;
         position: relative;
         height: 100%;
-        left: -51%;
+        left: calc(-1 * var(--totalCardSize));
         &.animateForward {
             animation: scroll var(--animationTimeMS) ease-in-out;
         }
@@ -178,16 +190,22 @@
             left: 0%;
         }
         to {
-            left: -51%;
+            left: calc(-1 * var(--totalCardSize));
         }
     }
 
     @keyframes scrollBackward {
         from {
-            left: -102%;
+            left: calc(-2 * var(--totalCardSize));
         }
         to {
-            left: -51%;
+            left: calc(-1 * var(--totalCardSize));
+        }
+    }
+
+    @media (min-width: 800px) {
+        :global(.cardsContainer) {
+            --cardFullSize: 50%;
         }
     }
 </style>
