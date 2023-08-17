@@ -29,8 +29,8 @@
         &:last-child { margin-right: 0; }
         box-sizing: border-box;
         padding: var(--defaultPadding);
-        margin: 0 1%;
-        width: 49%;
+        margin: 0 var(--cardHorizontalMargin);
+        width: var(--cardWidth);
         height: 100%;
         text-align: center;
         display: inline-block;
