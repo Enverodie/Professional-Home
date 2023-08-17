@@ -59,7 +59,7 @@
 			<img class="me" src="/images/me-by-grass-2-small.jpg" alt="me standing in front of a grass field smiling at the camera" />
 			<TaperedBox reverse={true} onTop={false} onBottom={true} class="introductionBoxContainer">
 				<div class="introduction">
-					<img class="me inside" src="/images/me-by-grass-3-small.jpg" alt="me standing in front of a grass field smiling at the camera" />
+					<img class="me inside" src="/images/me-by-grass-2-small.jpg" alt="me standing in front of a grass field smiling at the camera" />
 					<div style="font-size: var(--titleSmall); text-align: center;">Want me on your team?</div>
 					<HumbleAnchor href="mailto:enverodie@gmail.com">Contact</HumbleAnchor>
 				</div>
