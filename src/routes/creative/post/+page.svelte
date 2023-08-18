@@ -72,7 +72,7 @@
                         {postData.dislikes + dislikePressed}
                     </div> -->
                 </header>
-                <a class="thePostLink" href="#thePost">Go to post</a>
+                <!-- <a class="thePostLink" href="#thePost">Go to post</a> -->
                 <div class="description">
                     {postData.description}
                 </div>

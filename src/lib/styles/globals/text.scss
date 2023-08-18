@@ -9,9 +9,9 @@
 
 :root {
 
-    --titleLarge: 48px;
-    --titleDefault: 36px;
-    --titleSmall: 24px;
+    --titleLarge: 36px;
+    --titleDefault: 24px;
+    --titleSmall: 16px;
 
     --textLarge: 24px;
     --textDefault: 16px;
@@ -27,4 +27,12 @@
         2px 0px 2px var(--color2);
 
     --defaultLineLength: 60ch;
+}
+
+@media (min-width: 800px) {
+    :root {
+        --titleLarge: 48px;
+        --titleDefault: 36px;
+        --titleSmall: 24px;    
+    }
 }

@@ -36,6 +36,7 @@
     }
 
     let active = false;
+    $: if (typeof document !== 'undefined') document.body.style.overflow = (active)? 'hidden' : 'auto'; 
 
     function onKeydown(e) {
         switch(e.key) {
@@ -87,9 +88,9 @@
             <label class="carousel" on:click|preventDefault={clickedCensorCheck}>Hide Censored <input type="checkbox" checked={censorChecked} /></label>
         {/if}
         {#if active}
-            <button class="carousel xbutton" on:click={() => {active = false}}>X</button>
+            <button class="carousel xbutton" on:click={() => {active = false}}>Close <div class="icon" aria-hidden="true">X</div></button>
         {:else}
-            <button class="carousel xbutton" on:click={() => {active = true}}>&#x2197;</button>
+            <button class="carousel xbutton" on:click={() => {active = true}}>Expand <div class="icon" aria-hidden="true">&#x2197;</div></button>
         {/if}
     </div>
     <div class="content">
@@ -194,9 +195,20 @@
         }
 
         .xbutton {
-            width: 2em;
             flex: inherit;
+            .icon {
+                display: block;
+                width: 1.5em;
+                background-color: var(--color1);
+                margin: 4px;
+                border-radius: var(--defaultButtonBorderRadius);
+            }
         }
+
+        .xbutton:active .icon {
+            background-color: var(--color2);
+            color: var(--color1);
+        } 
     }
 
     .textItem.isShortStory {

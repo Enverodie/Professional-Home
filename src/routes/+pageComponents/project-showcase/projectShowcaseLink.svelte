@@ -14,10 +14,10 @@
 <a class="{classList[0]}" style="--bkgImg: url({backgroundImage})" href={href} target={$$props.target}>
     <div class="{classList[1]}" style="{$$props.style}">
         <div class="textFlex">
-            <img src="/svgs/arrows/arrow.svg" alt="<-" aria-hidden />
             <span>
                 <slot></slot>
             </span>
+            <img src="/svgs/arrows/arrow.svg" alt="<-" aria-hidden />
         </div>
     </div>
 </a>
@@ -78,10 +78,13 @@
         /* Contains the descriptive text (and arrow) that explain the showcased item */
         div.textFlex {
             display: flex;
+            flex-wrap: wrap;
             gap: .4em;
+            justify-content: center;
             align-items: center;
-            width: min-content;
-            font-size: 24px;
+            text-align: center;
+            width: 50%;
+            font-size: var(--titleSmall);
             padding: .4em .7em;
             background-color: hsla(var(--color5H), var(--color5S), var(--color5L), .7);
             border-radius: 8px;
@@ -97,31 +100,9 @@
 
             img {
                 height: .8em;
+                transform: rotate(180deg);
             }
         }
     }
 
-    @media only screen and (min-width: 900px) {
-        a div.textFlex {
-            font-size: 16px;
-        }
-    }
-
-    @media only screen and (min-width: 950px) {
-        a div.textFlex {
-            font-size: 22px;
-        }
-    }
-
-    @media only screen and (min-width: 1100px) {
-        a div.textFlex {
-            font-size: 25px;
-        }
-    }
-
-    @media only screen and (min-width: 1300px) {
-        a div.textFlex {
-            font-size: 32px;
-        }
-    }
 </style>

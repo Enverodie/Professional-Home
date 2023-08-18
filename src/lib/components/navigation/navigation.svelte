@@ -13,7 +13,7 @@
     import { navbar } from '../../stores/gui.js'
     import { page } from '$app/stores'
 
-    const desktopNavBreakpoint = 800;
+    const desktopNavBreakpoint = 1000;
 
     let path = $page.error ? "Enverodie.com" : $page.url.pathname.split('/').reduce((previousValue, currentValue) => {return (previousValue? (getRouteName('/' + previousValue) + " > ") : previousValue) + getRouteName('/' + currentValue)});
     let windowWidth;
