@@ -10,6 +10,7 @@
 	import ArticleBox from '$lib/components/contentboxes/articleBox.svelte';
 	import PositionInWrapper from '$lib/components/utilities/positionInWrapper.svelte';
     import SectionHeader from '../../lib/components/texts/sectionHeader.svelte';
+    import SallyRideCanvas from './+pageComponents/sallyRideCanvas.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
 
@@ -19,6 +20,11 @@
         this.alt = alt;
         this.description = description;
     }
+
+    let sallyRideImages=[
+        new showcaseImage("/images/showcase/sallyRide01.png", "Sally ride website homepage 1", "A screenshot of the sally ride homepage on tablet view"),
+        new showcaseImage("/images/showcase/sallyRide02.jpg", "Sally ride website homepage 2", "A screenshot of the sally ride homepage on desktop view"),
+    ]
 
     let simulationSandboxImages = [
         new showcaseImage("/images/showcase/simulationSandbox01.png", "Colorful field of cellular automata on black background", "Conway's Game of Life lifeforms clashing with a 1D cellular automata"),
@@ -41,6 +47,32 @@
 
     <PositionInWrapper>
         <ArticleBox extraStyles={articleBoxEdits} boxesAbove={false}>
+            <ShowcaseItem images={sallyRideImages}>
+                <SallyRideCanvas slot="containedEffects" />
+                <h2>Sally Ride Outreach Campaign Website</h2>
+                <p>
+                    I decided to remaster an originally static website I made sophomore year for fun. <br>
+                    <br>
+                    The goal: redesign and develop the original site, keeping the contents as true to the original as possible. Things I've learned in relation to usability and aesthetics over the years I kept in mind throughout.<br>
+                    <br>
+                    I wanted a quick project to demonstrate how far I've come in web/UI/UX design and development, and my old team's i101 semester project was perfect for that.
+                </p>
+                <div class="buttonsFlex">
+                    <HumbleAnchor href="https://github.com/Enverodie/sally-ride-redesign" target="_blank" rel="noreferrer">
+                        Source code
+                        <img slot="icon" src="/svgs/github-mark/github-mark-white.svg" alt="Github" style="height: 1.5em;"/>
+                    </HumbleAnchor>
+                    <HumbleAnchor href="http://sallyride.enverodie.com/" target="_blank" rel="noreferrer">
+                        Visit! 
+                        <img slot="icon" src="/svgs/arrows/arrow-white.svg" alt="<-" aria-hidden style="transform: rotate(180deg); height: 1em;" />
+                    </HumbleAnchor>
+                </div>
+            </ShowcaseItem>
+        </ArticleBox>
+    </PositionInWrapper>
+
+    <PositionInWrapper>
+        <ArticleBox extraStyles={articleBoxEdits}>
             <ShowcaseItem images={simulationSandboxImages}>
                 <SimulationCanvas slot="containedEffects" />
                 <h2>Simulation Sandbox</h2>

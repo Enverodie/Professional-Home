@@ -82,13 +82,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 100%;
             gap: .75em;
             box-sizing: border-box;
+            height: 30vh;
     
             img {
-                max-width: 100%;
-                max-height: 100%;
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
             }
         }
 
