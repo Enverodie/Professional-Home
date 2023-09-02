@@ -63,6 +63,7 @@
         box-sizing: border-box;
         padding: var(--boxOutsideSize) 0;
         margin: var(--boxImgSize) 0;
+        background-color: var(--color1);
         
         .textBox {
             flex: 1;
@@ -86,6 +87,9 @@
         .textBox {
             // width: 100%;
             padding: 0;
+            .text {
+                margin: 0;
+            }
         }
     }
 

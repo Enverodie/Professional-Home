@@ -13,6 +13,7 @@
     import SallyRideCanvas from './+pageComponents/sallyRideCanvas.svelte';
 
     const articleBoxEdits = "margin-top: 0; padding: 0;";
+    const codepenHeights = 600;
 
     // TODO: consider moving this to a javascript file and use it elsewhere in the app.
     function showcaseImage(src, alt, description) {
@@ -99,6 +100,64 @@
             </ShowcaseItem>
         </ArticleBox>
     </PositionInWrapper>
+    
+    <SectionHeader rowsUsed={1}>Codepens</SectionHeader>
+
+    <PositionInWrapper>
+        <ArticleBox boxesAbove={false}>
+            <h2>BlossomOS</h2>
+            <p class="codepen" data-height={codepenHeights} data-default-tab="result" data-slug-hash="mdzKMoE" data-user="enverodie" style={`height: ${codepenHeights}px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;`}>
+                <span>See the Pen <a href="https://codepen.io/enverodie/pen/mdzKMoE">
+                BlossomOS</a> by Enverodie (<a href="https://codepen.io/enverodie">@enverodie</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+              <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </ArticleBox>
+
+        <ArticleBox>
+            <h2>Multi-Size Image Gallery</h2>
+            <p style="text-align: center;">(I also implemented this in <a href="/creative">Creative</a>. Go check that out too!)</p>
+            <p class="codepen" data-height={codepenHeights} data-default-tab="result" data-slug-hash="BaGWKjX" data-user="enverodie" style={`height: ${codepenHeights}px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;`}>
+                <span>See the Pen <a href="https://codepen.io/enverodie/pen/BaGWKjX">
+                Multi-Size Image Gallery</a> by Enverodie (<a href="https://codepen.io/enverodie">@enverodie</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+              <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </ArticleBox>
+
+        <ArticleBox>
+            <h2>Bouncing Shapes</h2>
+            <p style="text-align: center;">&macr;\_(ツ)_/&macr;</p>
+            <p class="codepen" data-height={codepenHeights} data-default-tab="result" data-slug-hash="QWZPRVP" data-user="enverodie" style={`height: ${codepenHeights}px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;`}>
+                <span>See the Pen <a href="https://codepen.io/enverodie/pen/QWZPRVP">
+                Bouncing shapes</a> by Enverodie (<a href="https://codepen.io/enverodie">@enverodie</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+              <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </ArticleBox>
+
+        <ArticleBox>
+            <h2>Eerie website</h2>
+            <p class="codepen" data-height={codepenHeights} data-default-tab="result" data-slug-hash="dyqzzoX" data-user="enverodie" style="height: {codepenHeights}px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/enverodie/pen/dyqzzoX">
+                Eerie website</a> by Enverodie (<a href="https://codepen.io/enverodie">@enverodie</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+              <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </ArticleBox>
+
+        <ArticleBox>
+            <h2>Hodophilia Mock Brand logo</h2>
+            <p style="text-align: center;">In university I had a semester-long group project to develop a travel management platform. In my free time, I wanted to challenge myself to make a logo for our "brand".</p>
+            <p class="codepen" data-height={codepenHeights} data-default-tab="result" data-slug-hash="wvXwPKw" data-user="enverodie" style="height: {codepenHeights}px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/enverodie/pen/wvXwPKw">
+                Hodophilia Mock Brand Splash</a> by Enverodie (<a href="https://codepen.io/enverodie">@enverodie</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+              </p>
+              <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </ArticleBox>
+    </PositionInWrapper>
+
 </PageWrapper>
 
 <style lang="scss">
