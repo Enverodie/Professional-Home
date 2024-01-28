@@ -111,11 +111,15 @@
         }
     }
 
+    let showcaseWidth;
+
 </script>
 
 <div 
+    bind:clientWidth={showcaseWidth}
     class={"showcase" + ($$props.class? " " + $$props.class : '') }
     style={($$props.style? $$props.style + ';' : '') + `
+        --clientWidth: ${showcaseWidth? showcaseWidth + 'px' : '0px'};
         --numHorizontal: ${cols};
         --numVertical: ${rows};
     `}>
@@ -150,7 +154,7 @@
     // border-radius: 5px;
 
     width: 100%;
-    height: 100%;
+    height: calc((var(--clientWidth) / var(--numHorizontal)) * var(--numVertical));
 
 }
 
