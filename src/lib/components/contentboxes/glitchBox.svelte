@@ -1,8 +1,9 @@
 <script>
     export let scrollable = false;
+    export let zIndex = 1;
 </script>
-<div class="glitch">
-    <div class="glitchContents" style={scrollable? 'overflow: auto;' : ''}>
+<div class="glitch" style={`z-index: ${zIndex};`}>
+    <div class="glitchContents" style={$$props.style + (scrollable? '; overflow: auto;' : '')}>
         <slot />
     </div>
 </div>
@@ -14,7 +15,6 @@
         // padding: 1em;
         height: 100%;
         box-sizing: border-box;
-        z-index: 1;
 
         &::before, &::after {
             content: '';

@@ -10,7 +10,7 @@ export const load = function({url}) {
     if (url.pathname === '/creative') streamed = {
         topPostsPrimary: new Promise(
             (resolve, reject) => {
-                getTopPosts(12, 4, filter_artworkAndWriting)
+                getTopPosts(21, 4, filter_artworkAndWriting)
                     .then(response => { resolve(response) })
                     .catch(e => reject(e));
             }),

@@ -22,7 +22,7 @@
     }, 200);
 
 </script>
-<div class={"searchbar " + $$props.class}>
+<div class={"searchbar " + $$props.class} style={$$props.style}>
     <div class="searchSection">
         <input class="typehere" type="text" autocomplete="off" placeholder="Search..." on:input={debouncedInput} bind:value={inputField} />
         <!-- Caution: I don't know how adding autofocus on the *image* works but adding it to input doesn't. Keep an eye on this... -->

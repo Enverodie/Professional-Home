@@ -34,8 +34,11 @@
         images.length
     );
     
-    export let rows = Math.floor(Math.sqrt(imageCount));
-    export let cols = Math.ceil(imageCount / rows) || 0;
+    export let rows;
+    export let cols = 1;
+    rows = rows || cols? Math.ceil(imageCount / cols) : Math.floor(Math.sqrt(imageCount));
+    console.log("rows: ", rows, "cols: ", cols);
+    cols = cols || Math.ceil(imageCount / rows);
     let filteredImages = [];
 
     if (imageCount > 0) {

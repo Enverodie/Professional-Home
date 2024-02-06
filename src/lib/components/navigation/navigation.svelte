@@ -69,13 +69,21 @@
     }
 
     nav {
+        --outsideBlurDistance: 1px;
+
         background-color: var(--color5);
         padding: .5em 1em;
+        margin: 0px auto var(--boxOutsideSize);
 
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        box-sizing: border-box;
+        height: var(--navbarHeight);
+
+        filter: drop-shadow(0px var(--outsideBlurDistance) 1px var(--color2)) drop-shadow(0px calc(-1 * var(--outsideBlurDistance)) 1px var(--color2));
 
         .icon {
             font-weight: 700;

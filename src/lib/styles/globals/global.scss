@@ -29,4 +29,7 @@
     --defaultButtonBackgroundColor: hsla(var(--color2H), var(--color2S), var(--color2L), .5);
 
     --focusOutlineStyle: var(--boxStrokeSize) solid var(--color2);
+
+    // --navbarHeight: 70px;
+    --navbarHeight: var(--boxImgSize);
 }
