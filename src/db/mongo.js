@@ -124,6 +124,7 @@ export const projection_thumbnail = {
     likes: "$likes",
     description: "$shortDescription",
     fileName: "$fileName",
+    thubmnailSize: "$thumbnailSize"
 };
 export const projection_post = {
     _id: {
